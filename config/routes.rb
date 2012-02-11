@@ -1,6 +1,8 @@
 Coworfing::Application.routes.draw do
   
 
+  resources :places
+
   root :to => "home#index"
 
   devise_for :users

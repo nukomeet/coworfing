@@ -20,7 +20,7 @@
           .nav-collapse
             %ul.nav
               %li.active
-                = link_to 'Events', '' 
+                = link_to 'Places', places_path 
             %ul.nav.pull-right
               %li.divider-vertical
               %li.dropdown
@@ -66,9 +66,8 @@
                 %a{:href => "#"}
                   %i.icon-flag
                   Help
-
-
-      #main{:role => "main"}
-        = yield
+        .span8
+          #main{:role => "main"}
+            = yield
 
       %footer

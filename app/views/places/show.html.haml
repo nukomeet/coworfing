@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @place.name
+%p
+  %b Desc:
+  = @place.desc
+%p
+  %b Price:
+  = @place.price
+%p
+  %b Address line1:
+  = @place.address_line1
+%p
+  %b Address line2:
+  = @place.address_line2
+%p
+  %b City:
+  = @place.city
+%p
+  %b Zipcode:
+  = @place.zipcode
+%p
+  %b Country:
+  = @place.country
+
+= link_to 'Edit', edit_place_path(@place)
+\|
+= link_to 'Back', places_path
