@@ -1,0 +1,35 @@
+%h1 Listing places
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Desc
+      %th Price
+      %th Address line1
+      %th Address line2
+      %th City
+      %th Zipcode
+      %th Country
+      %th
+      %th
+      %th
+
+  %tbody
+    - @places.each do |place|
+      %tr
+        %td= place.name
+        %td= place.desc
+        %td= place.price
+        %td= place.address_line1
+        %td= place.address_line2
+        %td= place.city
+        %td= place.zipcode
+        %td= place.country
+        %td= link_to 'Show', place
+        %td= link_to 'Edit', edit_place_path(place)
+        %td= link_to 'Destroy', place, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Place', new_place_path
