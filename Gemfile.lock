@@ -207,6 +207,9 @@ GEM
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
+    simple_form (1.5.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     sprockets (2.1.2)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -265,6 +268,7 @@ DEPENDENCIES
   rb-fsevent
   rspec-rails (>= 2.8.1)
   sass-rails (~> 3.2.3)
+  simple_form
   therubyracer
   thin
   uglifier (>= 1.0.3)
