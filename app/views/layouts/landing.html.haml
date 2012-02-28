@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title Coworfing 
+    %link{:href => "http://fonts.googleapis.com/css?family=Lobster", :rel=>"stylesheet", :type =>"text/css"}
+    %meta{:charset => "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    = stylesheet_link_tag :application, :media => "all"
+    = javascript_include_tag :application
+    = csrf_meta_tags
+  %body{:class => params[:controller]}
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'Coworfing', root_path, class: 'brand'
+          .nav-collapse
+            %ul.nav
+              %li.active
+                = link_to 'About', ''
+            %ul.nav.pull-right
+              %li.divider-vertical
+              %li.dropdown
+                %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
+                  Profile 
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} Home
+          / /.nav-collapse
+
+    #container.container
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+
+      #main{:role => "main"}
+        = yield
+
+      %footer
