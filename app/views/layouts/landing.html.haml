@@ -12,31 +12,15 @@
   %body{:class => params[:controller]}
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %h1
-            = link_to 'Coworfing', root_path, class: 'brand'
-          .nav-collapse
-            %ul.nav
-              %li.active
-                = link_to 'Sign up', ''
-              %li.active
-                = link_to 'Sign in', ''
-              %li.active
-                = link_to 'About', ''
-            %ul.nav.pull-right
-              %li.divider-vertical
-              %li.dropdown
-                %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
-                  Profile 
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    %a{:href => "#"} Home
-          / /.nav-collapse
+        %h1
+          = link_to 'Coworfing', root_path, class: 'brand'
+        %form.pull-right.signin
+          %fieldset
+            %input{:type => "text", :name => "username", :class => "text", :placeholder => "Username" }
+            %input{:type => "text", :name => "pass", :class => "password", :placeholder => "Password"}
+            =link_to 'Sign me in please', new_user_session_path, class: 'btn btn-info btn-large'
+
+
 
     #container.container
       - flash.each do |name, msg|
