@@ -2,16 +2,33 @@
   %h1 Coworfing 
   %p &nbsp;
   %p &nbsp;
-  %p.lead 
-    A peer-to-peer coworking network 
-    = link_to 'WTF?', new_user_session_path, class: 'btn btn-danger btn-large', id: 'WTF'
+.lead 
+  Our homes are coworking spaces
+%p &nbsp;
+%p &nbsp;
+.row
+  .span9
+    .map
+      %iframe{:frameborder => "0", :height => "350", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://maps.google.com/maps/ms?msa=0&msid=216887662531611507523.0004bafc2749916c11cdf&hl=fr&ie=UTF8&t=m&ll=48.864769,2.367776&spn=0.046074,0.049169&output=embed", :width => "425"}
+    %p &nbsp;
+    %p &nbsp;
+    = link_to 'Explain me what it is all about', new_user_session_path, class: 'btn btn-danger btn-large'
 
-  %p &nbsp;
-  %p &nbsp;
-  %p &nbsp;
-= link_to 'Join the Revolution', new_user_session_path, class: 'btn btn-info btn-large'
-= link_to 'Sign In', new_user_session_path, class: 'btn btn-danger btn-large'
-
-%hr/
+  
+  .span3.pull-right
+    %p &nbsp;
+    %p &nbsp;
+    %p &nbsp;
+    %h2
+      Be bold, join us
+    %hr
+      %input{:type => "text", :name => "mail", :class => "text", :placeholder => "Your mail" }
+      %input{:type => "text", :name => "pass", :class => "password", :placeholder => "Invent a tricky password"}
+      %input{:type => "text", :name => "adress", :class => "text", :placeholder => "Your adress" }
+      = link_to 'Join the Revolution', new_user_session_path, class: 'btn btn-info btn-large'
 
 //= link_to 'New Entry', new_entry_path, class: 'btn btn-large'
+
+
+
+%br/
