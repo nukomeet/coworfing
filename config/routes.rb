@@ -1,5 +1,7 @@
 Coworfing::Application.routes.draw do
   
+  get "home/about"
+
   devise_for :users
 
   resources :places
