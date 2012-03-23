@@ -1,0 +1,21 @@
+%p.list-place.centered
+  = link_to ' Add New Place ', new_place_path, { class: 'btn btn-info btn-large' } 
+
+%hr
+
+.thumbnails
+  - @places.each do |place|
+    .span4
+      .thumbnail
+        %img{src: 'http://placehold.it/420x340'}
+        .caption
+          %h5= place.name
+          %p= place.desc
+          %p= place.address_line1
+          %p
+            .btn-toolbar
+              .btn-group
+                = link_to 'Show', place, { class: 'btn' }
+              .btn-group
+                = link_to 'Edit', edit_place_path(place), { class: 'btn' }
+                = link_to 'Destroy', place, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger'
