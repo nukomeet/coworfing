@@ -13,10 +13,6 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
           = link_to 'Coworfing', root_path, class: 'brand'
           .nav-collapse
             %ul.nav
@@ -28,48 +24,14 @@
                 %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
                   Profile 
                   %b.caret
-                %ul.dropdown-menu
-                  %li
-                    %a{:href => "#"} Home
-          / /.nav-collapse
+          .nav-collapse
 
     #container.container
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 
-      .row
-        .span4
-          .well
-            %ul.nav.nav-list
-              %li.nav-header List header
-              %li.active
-                %a{:href => "#"}
-                  %i.icon-white.icon-home
-                  Home
-              %li
-                %a{:href => "#"}
-                  %i.icon-book
-                  Library
-              %li
-                %a{:href => "#"}
-                  %i.icon-pencil
-                  Applications
-              %li.nav-header Another list header
-              %li
-                %a{:href => "#"}
-                  %i.icon-user
-                  Profile
-              %li
-                %a{:href => "#"}
-                  %i.icon-cog
-                  Settings
-              %li
-                %a{:href => "#"}
-                  %i.icon-flag
-                  Help
 
+    #main{:role => "main"}
+      = yield
 
-      #main{:role => "main"}
-        = yield
-
-      %footer
+    %footer

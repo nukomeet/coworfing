@@ -1,14 +1,3 @@
-%header#overview.jumbotron.subhead
-  %h1 Coworfing 
-  %p &nbsp;
-  %p &nbsp;
-
-.map
-  %iframe{:frameborder => "0", :height => "650", :width => "800", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://maps.google.com/maps/ms?msa=0&msid=216887662531611507523.0004bafc2749916c11cdf&hl=fr&ie=UTF8&t=m&ll=48.864769,2.367776&spn=0.046074,0.049169&output=embed"}
-
-  
-//= link_to 'New Entry', new_entry_path, class: 'btn btn-large'
-
 #myModal.modal.fade.in 
   .modal-header
     %a.close{"data-dismiss" => "modal"} ×
@@ -30,7 +19,24 @@
     %p &nbsp;
     %input{:type => "text", :name => "mail", :class => "text", :placeholder => "Mail" }
     %input{:type => "text", :name => "pass", :class => "password", :placeholder => "Password"}
-    = link_to 'Login', root_path, class: 'btn btn-info btn-large'
+    = link_to 'Login', root_path, 'data-dismiss' => 'modal', class: 'btn btn-info btn-large'
+
 .modal-backdrop.fade.in
+
+.container
+  .row-fluid
+    .span8
+      .map
+        %iframe{:frameborder => "0", :height => "500", :width => "600", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://maps.google.com/maps/ms?msa=0&msid=216887662531611507523.0004bafc2749916c11cdf&hl=fr&ie=UTF8&t=m&ll=48.864769,2.367776&spn=0.046074,0.049169&output=embed"}
+     
+    .span4.sidebar
+      %p
+        &nbsp;
+        &nbsp;
+        &nbsp;
+      %h3
+        I am a stranger. I come in peace. Take me to your leader and there will be a massive reward for you in eternity.
+  
+//= link_to 'New Entry', new_entry_path, class: 'btn btn-large'
 
 %br/

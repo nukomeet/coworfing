@@ -1,5 +1,6 @@
 Coworfing::Application.routes.draw do
   
+  get "home/about"
 
   root :to => "home#index"
 
