@@ -93,6 +93,7 @@ GEM
     foreman (0.39.0)
       term-ansicolor (~> 1.0.7)
       thor (>= 0.13.6)
+    geocoder (1.1.1)
     gherkin (2.7.7)
       json (>= 1.4.6)
     growl (1.0.3)
@@ -251,6 +252,7 @@ DEPENDENCIES
   devise (>= 2.0.0)
   factory_girl_rails (>= 1.6.0)
   foreman
+  geocoder
   growl
   guard (>= 0.6.2)
   guard-bundler (>= 0.1.3)

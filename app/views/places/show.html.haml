@@ -1,30 +1,22 @@
-%p#notice= notice
+.row
+  .span4
+    %img{src: 'http://placehold.it/240x160'}
 
-%p
-  %b Name:
-  = @place.name
-%p
-  %b Desc:
-  = @place.desc
-%p
-  %b Price:
-  = @place.price
-%p
-  %b Address line1:
-  = @place.address_line1
-%p
-  %b Address line2:
-  = @place.address_line2
-%p
-  %b City:
-  = @place.city
-%p
-  %b Zipcode:
-  = @place.zipcode
-%p
-  %b Country:
-  = @place.country
+    %h5= @place.name
+    %p= @place.desc
+    %p= @place.address_line1
+    %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
 
-= link_to 'Edit', edit_place_path(@place)
-\|
-= link_to 'Back', places_path
+  .span8
+    = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.coordinates[1]}%2C#{@place.coordinates[0]}"
+
+.row
+  .thumbnails
+    - @place.nearbys(5, {:units => :km}).each do |place|
+      .span3
+        .thumbnail
+          %img{src: 'http://placehold.it/420x340'}
+          .caption
+            %h5= place.name
+            %p= place.address
+

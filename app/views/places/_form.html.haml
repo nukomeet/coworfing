@@ -3,14 +3,10 @@
 
   %fieldset
     %legend List Your Place
+
     = f.input :name
-    = f.input :desc
-    = f.input :price
+    = f.input :desc, as: :text, input_html: { rows: 4 }
     = f.input :address_line1
-    = f.input :address_line2
-    = f.input :city
-    = f.input :zipcode
-    = f.input :country
 
     .form-actions
       = f.button :submit, class: 'btn-success btn-large'
