@@ -37,3 +37,6 @@
         Feeling alone? 
         %a{:href => "#"} Upload your place
         and answer the requests.
+    .span4.pull-right
+      %input{:type => "text", :name => "mail", :class => "text pull-right", :placeholder => "Your mail" }
+      = link_to 'Invite me', new_user_session_path, class: 'btn btn-info btn-large pull-right'

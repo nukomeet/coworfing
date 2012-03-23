@@ -1,6 +1,7 @@
 #myModal.modal.fade.in 
   .modal-header
     %a.close{"data-dismiss" => "modal"} ×
+    %p &nbsp;
     %h1 Coworfing
     %p Our homes are coworking spaces
   .modal-body
@@ -11,15 +12,14 @@
     %p &nbsp;
     %input{:type => "text", :name => "mail", :class => "text", :placeholder => "Your mail" }
     = link_to 'Invite me', new_user_session_path, class: 'btn btn-info btn-large'
-    %p &nbsp;
-    %p &nbsp;
-    = link_to 'Explain me what it is all about', new_user_session_path, class: 'btn btn-danger btn-large'
+    = link_to 'Explain me', home_about_path, class: 'btn btn-danger btn-large'
   .modal-footer
     %h3 Log in 
     %p &nbsp;
     %input{:type => "text", :name => "mail", :class => "text", :placeholder => "Mail" }
     %input{:type => "text", :name => "pass", :class => "password", :placeholder => "Password"}
     = link_to 'Login', root_path, 'data-dismiss' => 'modal', class: 'btn btn-info btn-large'
+    %p &nbsp;
 
 .modal-backdrop.fade.in
 
@@ -37,6 +37,4 @@
       %h3
         I am a stranger. I come in peace. Take me to your leader and there will be a massive reward for you in eternity.
   
-//= link_to 'New Entry', new_entry_path, class: 'btn btn-large'
-
 %br/
