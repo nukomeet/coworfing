@@ -17,56 +17,28 @@
             %span.icon-bar
             %span.icon-bar
           = link_to 'Coworfing', root_path, class: 'brand'
-          .nav-collapse
-            %ul.nav
-              %li.active
-                = link_to 'Places', places_path 
-            %ul.nav.pull-right
-              %li.divider-vertical
-              %li.dropdown
-                %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
-                  Profile 
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    %a{:href => "#"} Home
-          / /.nav-collapse
+          - if user_signed_in?
+            .nav-collapse
+              %ul.nav
+              %ul.nav.pull-right
+                %li.divider-vertical
+                %li.dropdown
+                  %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
+                    Account 
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li= link_to 'Your Profile', edit_user_registration_path
+                    %li= link_to 'Your Places', places_path
+                    %li.divider
+                    %li= link_to 'Help', destroy_user_session_path, method: :delete
+                    %li= link_to 'Log out', destroy_user_session_path, method: :delete
+            / /.nav-collapse
 
     #container.container
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+      = render :partial => "shared/flash_messages", :locals => {:flash => flash}
 
       .row
-        .span4
-          .well
-            %ul.nav.nav-list
-              %li.nav-header List header
-              %li.active
-                %a{:href => "#"}
-                  %i.icon-white.icon-home
-                  Home
-              %li
-                %a{:href => "#"}
-                  %i.icon-book
-                  Library
-              %li
-                %a{:href => "#"}
-                  %i.icon-pencil
-                  Applications
-              %li.nav-header Another list header
-              %li
-                %a{:href => "#"}
-                  %i.icon-user
-                  Profile
-              %li
-                %a{:href => "#"}
-                  %i.icon-cog
-                  Settings
-              %li
-                %a{:href => "#"}
-                  %i.icon-flag
-                  Help
-        .span8
+        .span12
           #main{:role => "main"}
             = yield
 

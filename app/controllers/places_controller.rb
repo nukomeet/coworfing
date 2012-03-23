@@ -25,6 +25,7 @@ class PlacesController < ApplicationController
   # GET /places/new.json
   def new
     @place = Place.new
+    @place.name = "#{current_user.name}'s place"
 
     respond_to do |format|
       format.html # new.html.erb
