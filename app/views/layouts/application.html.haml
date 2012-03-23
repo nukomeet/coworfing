@@ -2,6 +2,7 @@
 %html
   %head
     %title Coworfing 
+    %link{:href => "http://fonts.googleapis.com/css?family=Lobster", :rel=>"stylesheet", :type =>"text/css"}
     %meta{:charset => "utf-8"}
     %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
@@ -12,14 +13,12 @@
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
-          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
           = link_to 'Coworfing', root_path, class: 'brand'
           - if user_signed_in?
             .nav-collapse
               %ul.nav
+              %li.active
+                = link_to 'About', ''
               %ul.nav.pull-right
                 %li.divider-vertical
                 %li.dropdown
@@ -42,4 +41,4 @@
           #main{:role => "main"}
             = yield
 
-      %footer
+    %footer

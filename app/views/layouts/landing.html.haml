@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title Coworfing 
+    %link{:href => "http://fonts.googleapis.com/css?family=Lobster", :rel=>"stylesheet", :type =>"text/css"}
+    %meta{:charset => "utf-8"}
+    %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    = stylesheet_link_tag :application, :media => "all"
+    = javascript_include_tag :application
+    = csrf_meta_tags
+  %body{:class => params[:controller]}
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        %h1
+          = link_to 'Coworfing', root_path, class: 'brand'
+        %form.pull-right.signin
+          %fieldset
+            %input{:type => "text", :name => "username", :class => "text", :placeholder => "Username" }
+            %input{:type => "text", :name => "pass", :class => "password", :placeholder => "Password"}
+            =link_to 'Sign me in please', new_user_session_path, class: 'btn btn-info btn-large'
+
+
+
+    #container.container
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+
+      #main{:role => "main"}
+        = yield
+
+      %footer
