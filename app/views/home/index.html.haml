@@ -2,33 +2,35 @@
   %h1 Coworfing 
   %p &nbsp;
   %p &nbsp;
-.lead 
-  Our homes are coworking spaces
-%p &nbsp;
-%p &nbsp;
-.row
-  .span9
-    .map
-      %iframe{:frameborder => "0", :height => "350", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://maps.google.com/maps/ms?msa=0&msid=216887662531611507523.0004bafc2749916c11cdf&hl=fr&ie=UTF8&t=m&ll=48.864769,2.367776&spn=0.046074,0.049169&output=embed", :width => "425"}
+
+.map
+  %iframe{:frameborder => "0", :height => "650", :width => "800", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://maps.google.com/maps/ms?msa=0&msid=216887662531611507523.0004bafc2749916c11cdf&hl=fr&ie=UTF8&t=m&ll=48.864769,2.367776&spn=0.046074,0.049169&output=embed"}
+
+  
+//= link_to 'New Entry', new_entry_path, class: 'btn btn-large'
+
+#myModal.modal.fade.in 
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %h1 Coworfing
+    %p Our homes are coworking spaces
+  .modal-body
+    %h3 Register
+    %p &nbsp;
+    %p We are a network of teleworker, freelancer, independant and entrepreneurs. We put in common our workplaces and home offices. 
+    %p Find places to work anywhere and stop working alone. 
+    %p &nbsp;
+    %input{:type => "text", :name => "mail", :class => "text", :placeholder => "Your mail" }
+    = link_to 'Invite me', new_user_session_path, class: 'btn btn-info btn-large'
     %p &nbsp;
     %p &nbsp;
     = link_to 'Explain me what it is all about', new_user_session_path, class: 'btn btn-danger btn-large'
-
-  
-  .span3.pull-right
+  .modal-footer
+    %h3 Log in 
     %p &nbsp;
-    %p &nbsp;
-    %p &nbsp;
-    %h2
-      Be bold, join us
-    %hr
-      %input{:type => "text", :name => "mail", :class => "text", :placeholder => "Your mail" }
-      %input{:type => "text", :name => "pass", :class => "password", :placeholder => "Invent a tricky password"}
-      %input{:type => "text", :name => "adress", :class => "text", :placeholder => "Your adress" }
-      = link_to 'Join the Revolution', new_user_session_path, class: 'btn btn-info btn-large'
-
-//= link_to 'New Entry', new_entry_path, class: 'btn btn-large'
-
-
+    %input{:type => "text", :name => "mail", :class => "text", :placeholder => "Mail" }
+    %input{:type => "text", :name => "pass", :class => "password", :placeholder => "Password"}
+    = link_to 'Login', root_path, class: 'btn btn-info btn-large'
+.modal-backdrop.fade.in
 
 %br/
