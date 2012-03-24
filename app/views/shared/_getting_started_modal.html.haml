@@ -11,6 +11,7 @@
     .input-append
       %input{:type => "text", :name => "mail", :class => "span4", :placeholder => "Enter your email address..." }
       = link_to 'Invite me', new_user_session_path, class: 'btn btn-large'
+      = link_to 'Explain me', about_path, class: 'btn btn-danger btn-large'
   .modal-footer
     %h3 Already have an account? 
     = link_to 'Login', new_user_session_path, class: 'btn btn-info btn-large'
