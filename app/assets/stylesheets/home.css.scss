@@ -43,5 +43,20 @@
   font-style: italic;
 }
 
+@font-face {
+    font-family: 'Lobster13Regular';
+    src: url("<%= asset_path('/fonts/Lobster_1.3-webfont.eot') %>");
+    src: url("<%= asset_path('/fonts/Lobster_1.3-webfont.eot?#iefix') %> format('embedded-opentype')"),
+         url("<%= asset_path('/fonts/Lobster_1.3-webfont.woff') %> format('woff')"),
+         url("<%= asset_path('/fonts/Lobster_1.3-webfont.ttf') %> format('truetype')"),
+         url("<%= asset_path('/fonts/Lobster_1.3-webfont.svg#Lobster13Regular') %> format('svg')");
+    font-weight: normal;
+    font-style: normal;
 
+}
 
+.fontface {
+    font: 70px/78px 'Lobster13Regular', Arial, sans-serif;letter-spacing: 0;
+    color: #3C7AA3;
+    text-align: center;
+}
