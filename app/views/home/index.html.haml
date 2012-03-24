@@ -1,14 +1,17 @@
 .container
-  %header.logo
-    .inner
-      %h1.fontface Coworfing
-      %p "I am a stranger. I come in peace. Take me to your leader and there will be a massive reward for you in eternity."
-
   .row
-    %p.centered
-      %a.btn.btn-large.inception{"data-toggle" => "modal", :href => "#getting-started"} 
-        Request an invitation
-      = link_to 'Explain me', about_path, class: 'btn btn-danger btn-large'
+    &nbsp;
+    &nbsp; 
+    &nbsp;
+    %h1
+      Find a nice place and make a request
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      .pull-right
+        = link_to 'Add your place', new_place_path, class: 'btn btn-info btn-large'
+        = link_to 'Explain me', about_path, class: 'btn btn-large'
 
   %hr
 
@@ -18,4 +21,5 @@
         #mapino.thumbnail
 %br/
 
-= render partial: 'shared/getting_started_modal' 
+- unless user_signed_in?
+  = render partial: 'shared/getting_started_modal' 

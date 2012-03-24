@@ -11,12 +11,12 @@ class Ability
     end
 
     if user.regular? 
-      can :read, :all
-
-      can :update, user, :active => true, :user_id => user.id 
-
+      can :manage, Place, :active => true, :user_id => user.id
       can :create, Place
-      can :update, Place, :user_id =>  user.id
+
+      can :update, User, :active => true, :user_id => user.id 
+
+      can :read, :all
     end
 
     can :read, Home

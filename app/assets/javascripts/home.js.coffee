@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-    $("#getting-started").modal('hide')
+    $("#getting-started").modal('show')
 
 #jQuery ->
 #  $(".nav li a").click (e) ->
