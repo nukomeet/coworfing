@@ -5,7 +5,7 @@ class Ability
     # Define abilities for the passed in user here. For example:
     user ||= User.new
 
-    if user.super_admin?
+    if user.admin?
       can :manage, :all
       can :manage, Resque
     end
@@ -17,8 +17,9 @@ class Ability
 
       can :create, Place
       can :update, Place, :user_id =>  user.id
-
     end
+
+    can :read, Home
 
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

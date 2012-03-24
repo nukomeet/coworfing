@@ -1,6 +1,6 @@
 Coworfing::Application.routes.draw do
   
-  match 'about' => 'home/about', via: :get, as: :about
+  match 'about' => 'home#about', via: :get, as: :about
 
   devise_for :users, skip: [:sessions]
   as :user do
