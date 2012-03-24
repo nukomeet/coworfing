@@ -2,10 +2,11 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+jQuery ->
+    $("#getting-started").modal('hide')
 
 #jQuery ->
 #  $(".nav li a").click (e) ->
 #    $this = $(this)
 #    $this.addClass "active"  unless $this.hasClass("active")
 #    e.preventDefault()
-#
