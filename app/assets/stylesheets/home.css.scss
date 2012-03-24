@@ -28,7 +28,6 @@
 
 .logo h1 {
   font-size: 56px;
-  font-weight: bold;
   text-align: center;
   margin-bottom: 18px;
 }
@@ -45,18 +44,18 @@
 
 @font-face {
     font-family: 'Lobster13Regular';
-    src: url("<%= asset_path('/fonts/Lobster_1.3-webfont.eot') %>");
-    src: url("<%= asset_path('/fonts/Lobster_1.3-webfont.eot?#iefix') %> format('embedded-opentype')"),
-         url("<%= asset_path('/fonts/Lobster_1.3-webfont.woff') %> format('woff')"),
-         url("<%= asset_path('/fonts/Lobster_1.3-webfont.ttf') %> format('truetype')"),
-         url("<%= asset_path('/fonts/Lobster_1.3-webfont.svg#Lobster13Regular') %> format('svg')");
+    src: font-url('Lobster_1.3-webfont.eot');
+    src: font-url('Lobster_1.3-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('Lobster_1.3-webfont.woff') format('woff'),
+         font-url('Lobster_1.3-webfont.ttf') format('truetype'),
+         font-url('Lobster_1.3-webfont.svg#Lobster13Regular') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
 .fontface {
-    font: 70px/78px 'Lobster13Regular', Arial, sans-serif;letter-spacing: 0;
+    font: 50px/58px 'Lobster13Regular', Arial, sans-serif;letter-spacing: 0;
     color: #3C7AA3;
     text-align: center;
 }
