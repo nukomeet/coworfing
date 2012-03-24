@@ -2,43 +2,41 @@
 %html
   %head
     %title Coworfing 
-    %link{:href => "http://fonts.googleapis.com/css?family=Lobster", :rel=>"stylesheet", :type =>"text/css"}
     %meta{:charset => "utf-8"}
     %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+
+    %script{:src => "//maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
+
     = stylesheet_link_tag :application, :media => "all"
     = javascript_include_tag :application
     = csrf_meta_tags
+
   %body{:class => params[:controller]}
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
           = link_to 'Coworfing', root_path, class: 'brand'
-          - if user_signed_in?
-            .nav-collapse
-              %ul.nav
-              %li.active
-                = link_to 'About', ''
-              %ul.nav.pull-right
-                %li.divider-vertical
-                %li.dropdown
-                  %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
-                    Account 
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li= link_to 'Your Profile', edit_user_registration_path
-                    %li= link_to 'Your Places', places_path
-                    %li.divider
-                    %li= link_to 'Help', destroy_user_session_path, method: :delete
-                    %li= link_to 'Log out', destroy_user_session_path, method: :delete
+          .nav-collapse
+            %ul.nav
+            %ul.nav.pull-right
+              %li.divider-vertical
+              %li.dropdown
+                %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
+                  Account 
+                  %b.caret
+                %ul.dropdown-menu
+                  %li= link_to 'Your Profile', edit_user_registration_path
+                  %li= link_to 'Your Places', places_path
+                  %li.divider
+                  %li= link_to 'Help', destroy_user_session_path, method: :delete
+                  %li= link_to 'Log out', destroy_user_session_path, method: :delete
             / /.nav-collapse
 
     #container.container
       = render :partial => "shared/flash_messages", :locals => {:flash => flash}
 
-      .row
-        .span12
-          #main{:role => "main"}
-            = yield
+      #main{:role => "main"}
+        = yield
 
     %footer
