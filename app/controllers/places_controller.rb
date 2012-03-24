@@ -2,7 +2,7 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+    @places = Place.limit(params[:limit].to_i)
 
     respond_to do |format|
       format.html # index.html.erb

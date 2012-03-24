@@ -1,5 +1,5 @@
 .row
-  .span4
+  .span6
     %img{src: 'http://placehold.it/240x160'}
 
     %h5= @place.name
@@ -7,16 +7,20 @@
     %p= @place.address_line1
     %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
 
-  .span8
+  .span6
     = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.coordinates[1]}%2C#{@place.coordinates[0]}"
 
+%hr
+
 .row
-  .thumbnails
-    - @place.nearbys(5, {:units => :km}).each do |place|
-      .span3
-        .thumbnail
-          %img{src: 'http://placehold.it/420x340'}
-          .caption
-            %h5= place.name
-            %p= place.address
+  .span12
+    %h2 Near by
+    .thumbnails
+      - @place.nearbys(5, {:units => :km}).each do |place|
+        .span3
+          .thumbnail
+            %img{src: 'http://placehold.it/240x160'}
+            .caption
+              %h5= place.name
+              %p= place.address
 
