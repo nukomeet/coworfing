@@ -1,0 +1,16 @@
+#getting-started.modal.hide.fade.in 
+  .modal-header
+    %a.close{"data-dismiss" => "modal"} ×
+    %p &nbsp;
+    %h1 Coworfing
+    %p Our homes are coworking spaces
+  .modal-body
+    %h3 Register
+    %p We are a network of teleworker, freelancer, independant and entrepreneurs. We put in common our workplaces and home offices. 
+    %p Find places to work anywhere and stop working alone. 
+    .input-append
+      %input{:type => "text", :name => "mail", :class => "span4", :placeholder => "Enter your email address..." }
+      = link_to 'Invite me', new_user_session_path, class: 'btn btn-large'
+  .modal-footer
+    %h3 Already have an account? 
+    = link_to 'Login', new_user_session_path, class: 'btn btn-info btn-large'
