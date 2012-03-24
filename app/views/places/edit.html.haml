@@ -1,7 +1,8 @@
-%h1 Editing place
+= if can? :update, @place
+  %h1 Editing place
 
-= render 'form'
+  = render 'form'
 
-= link_to 'Show', @place
-\|
-= link_to 'Back', places_path
+  = link_to 'Show', @place
+  \|
+  = link_to 'Back', places_path
