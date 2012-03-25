@@ -19,7 +19,7 @@ $(function() {
             {
                 latitude: place.coordinates[1],
                 longitude: place.coordinates[0],
-                content: '<strong>Some HTML content</strong>'
+                content: "<strong>Some HTML content</strong><br/><br/><a href='/places/" + place._id + "' class='btn btn-info'>Show</a>"
             });
     }
 });
