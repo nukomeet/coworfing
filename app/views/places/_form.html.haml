@@ -1,4 +1,4 @@
-= simple_form_for(@place, html: { class: 'form-horizontal'}) do |f|
+= simple_form_for(@place, html: { multipart: true, class: 'form-horizontal'}) do |f|
   = f.error_notification
 
   %fieldset
@@ -7,6 +7,10 @@
     = f.input :name
     = f.input :desc, as: :text, input_html: { rows: 4 }
     = f.input :address_line1
+
+    = f.input :photo, as: :file
+    %ul.thumbnails
+      %li.thumbnail= image_tag(@place.photo_url) if @place.photo?
 
     .form-actions
       = f.button :submit, class: 'btn-success btn-large'

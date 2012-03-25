@@ -2,6 +2,8 @@ class Place
   include Mongoid::Document
   include Geocoder::Model::Mongoid
 
+  mount_uploader :photo, PhotoUploader
+
   field :name
   field :desc
   field :price, type:  Integer
@@ -12,6 +14,8 @@ class Place
   field :country
 
   field :coordinates, type: Array
+
+  field :photo
 
   geocoded_by :address 
 

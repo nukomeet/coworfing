@@ -1,6 +1,9 @@
 .row
   .span6
-    %img{src: 'http://placehold.it/240x160'}
+    - if @place.photo?
+      = image_tag(@place.photo_url)
+    - else
+      %img{src: 'http://placehold.it/240x160'}
 
     %h5= @place.name
     %p= @place.desc
