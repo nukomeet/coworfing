@@ -1,7 +1,7 @@
 .row
   .span6
     - if @place.photo?
-      = image_tag(@place.photo_url)
+      = image_tag(@place.photo_url(:thumb))
     - else
       %img{src: 'http://placehold.it/240x160'}
 
