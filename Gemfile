@@ -9,7 +9,6 @@ gem 'capistrano'
 gem 'simple_form'
 gem 'country_select'
 gem 'geocoder'
-gem 'carrierwave'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -52,3 +51,6 @@ gem "devise", ">= 2.0.0"
 gem "bootstrap-sass"
 gem "rails-footnotes", ">= 3.7", :group => :development
 gem "cancan"
+gem 'carrierwave'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick'
