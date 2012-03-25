@@ -1,25 +1,19 @@
-.container
-  .row
-    &nbsp;
-    &nbsp; 
-    &nbsp;
+.row
+  .span8
     %h1
       Find a nice place and make a request
-      &nbsp;
-      &nbsp;
-      &nbsp;
-      &nbsp;
-      .pull-right
-        = link_to 'Add your place', new_place_path, class: 'btn btn-info btn-large'
-        = link_to 'Explain me', about_path, class: 'btn btn-large'
+  .span4
+    .pull-right
+      = link_to 'Add your place', new_place_path, class: 'btn btn-info btn-large'
+      = link_to 'Explain me', about_path, class: 'btn btn-large'
 
-  %hr
+%hr
 
-  .row
+.row
+  .span12
     %ul.thumbnails
       %li.span12
         #mapino.thumbnail
-%br/
 
 - unless user_signed_in?
   = render partial: 'shared/getting_started_modal' 

@@ -6,9 +6,10 @@ gem 'therubyracer'
 gem 'foreman'
 gem 'thin'
 gem 'capistrano'
-gem 'simple_form', '2.0.0.rc'
+gem 'simple_form'
 gem 'country_select'
 gem 'geocoder'
+gem 'carrierwave'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

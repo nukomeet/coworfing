@@ -1,24 +1,15 @@
-= form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
+
   %fieldset 
-    %legend Sign In
+    %legend Login 
 
-    %div.control-group
-      = f.label :email, class: 'control-label'
-      %div.controls
-        = f.email_field :email
-
-    %div.control-group
-      = f.label :password
-      %div.controls
-        = f.password_field :password
+    = f.input :email
+    = f.input :password
 
     - if devise_mapping.rememberable?
-      %div.control-group
-        = f.label :remember_me
-        %div.controls
-          = f.check_box :remember_me
+      = f.input :remember_me, as: :boolean
 
-    %div.form-actions
+    .form-actions
       = f.submit "Sign in", class: 'btn btn-primary'
-
-    = render "links"
+      - if devise_mapping.recoverable? && controller_name != 'passwords'
+        = link_to "Forgot your password?", new_password_path(resource_name), class: 'btn'
