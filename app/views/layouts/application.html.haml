@@ -37,7 +37,8 @@
                 %li.dropdown
                   %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
                     %i.icon-user.icon-white
-                    Account 
+                    Logged as
+                    = current_user.name
                     %b.caret
                   %ul.dropdown-menu
                     %li= link_to 'Your Profile', edit_user_registration_path
