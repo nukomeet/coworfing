@@ -1,0 +1,16 @@
+.row-fluid
+  .span4
+    &nbsp;
+  %table.table.span8
+    %thead
+      %tr
+        %th #
+        %th Email 
+        %th Requested At 
+
+    %tbody
+      - @demands.each_with_index do |demand, idx|
+        %tr
+          %td= idx+1
+          %td= demand.email
+          %td= demand.created_at

@@ -3,6 +3,8 @@ class HomeController < ApplicationController
   end
 
   def places
+    authorize! :see, :places
+
     @places = Place.limit(params[:limit].to_i)
 
     respond_to do |format|

@@ -1,2 +1,10 @@
-%p
-  Public User Profile goes here.
+.page-header
+  %h1= "#{@user.username}'s profile"
+
+.row-flud
+  .span12
+    %h4 Contact Info
+    - if user_signed_in?
+      = @user.email
+    - else
+      %p You must be logged in to see that information.

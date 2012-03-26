@@ -1,5 +1,6 @@
 class Place
   include Mongoid::Document
+  include Mongoid::Timestamps
   include Geocoder::Model::Mongoid
 
   mount_uploader :photo, PhotoUploader

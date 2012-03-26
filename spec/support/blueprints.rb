@@ -15,3 +15,7 @@ end
 Place.blueprint do
   # Attributes here
 end
+
+Demand.blueprint do
+  # Attributes here
+end

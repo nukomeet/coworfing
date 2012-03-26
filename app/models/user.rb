@@ -1,5 +1,6 @@
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   # Defining roles
   ROLES = %w(regular admin)
@@ -53,11 +54,12 @@ class User
   index :invitation_token
 
   field :name
-  field :role
+  field :role, default: 'regular'
+  field :username
 
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, :case_sensitive => false
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :role
+  validates_presence_of :name, :email, :username
+  validates_uniqueness_of :name, :email, :username, :case_sensitive => false
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username
 
   has_many :places
   has_many :invitations, class_name: 'User', as:  :invited_by

@@ -1,5 +1,8 @@
 .page-header
   %h1= @place.name
+  %p 
+    Added by
+    = link_to @place.user.username, profile_path(@place.user.username) 
 
 .row-fluid
   .span4
@@ -15,13 +18,15 @@
       .span4
         %h3 Address
         %p= @place.address
+        %a.disabled.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
+          %i.icon-white.icon-lock
+          Make a demand 
 
       .span4
         %h3 Description
         %p= @place.desc
     - if can? :update, @place 
       %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
-
 
 %hr
 
@@ -38,3 +43,5 @@
           %h5= place.name
           %p= place.address
 
+- if false
+  = render partial: 'shared/demand_modal' 
