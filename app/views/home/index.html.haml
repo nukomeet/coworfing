@@ -1,4 +1,4 @@
-.row
+.row-fluid
   .span8
     %h1
       Find a nice place and make a request
@@ -9,11 +9,9 @@
 
 %hr
 
-.row
-  .span12
-    %ul.thumbnails
-      %li.span12
-        #mapino.thumbnail
+%ul.thumbnails.row-fluid
+  %li.span12
+    #mapino.thumbnail
 
 - unless user_signed_in?
   = render partial: 'shared/getting_started_modal' 

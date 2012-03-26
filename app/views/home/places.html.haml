@@ -1,13 +1,15 @@
 .row-fluid
   .span12
     %p.list-place.centered
-      = link_to ' Add Your Place ', new_place_path, { class: 'btn btn-info btn-large' } 
+      = link_to new_place_path, { class: 'btn btn-info btn-large' } do
+        %i.icon-map-marker.icon-white
+        &nbsp; Add Your Place
 
     %hr
 
 %ul.row-fluid.thumbnails
   - @places.each do |place|
-    %li.span4
+    %li.span3
       .thumbnail
         - if place.photo?
           = image_tag(place.photo_url)
@@ -20,7 +22,4 @@
           %p
             .btn-toolbar
               .btn-group
-                = link_to 'Show', place, { class: 'btn' }
-              .btn-group
-                = link_to 'Edit', edit_place_path(place), { class: 'btn' }
-                = link_to 'Destroy', place, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger'
+                = link_to 'View details »', place, { class: 'btn' }

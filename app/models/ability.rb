@@ -11,15 +11,15 @@ class Ability
     end
 
     if user.regular? 
-      can :manage, Place, :active => true, :user_id => user.id
+      can :manage, Place, :user_id => user.id
       can :create, Place
+      can :read, Place
 
-      can :update, User, :active => true, :user_id => user.id 
+      can :update, User, :user_id => user.id 
 
-      can :read, :all
     end
 
-    can :read, Home
+    #can :read, Home
 
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are

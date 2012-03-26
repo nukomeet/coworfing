@@ -17,6 +17,11 @@
 
 body {
   padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  background-color: #EFEFEF;
+}
+
+hr {
+  border-color: #DFDFDF; 
 }
 
 .subhead h1 {
@@ -65,3 +70,6 @@ body {
   margin-left: 0;
   margin-top: 12px;
 }
+
+ul.thumbnails.row-fluid { 
+margin-left: 0px; margin-bottom: 0; }

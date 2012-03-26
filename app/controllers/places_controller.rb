@@ -1,11 +1,11 @@
 class PlacesController < ApplicationController
-  #load_and_authorize_resource
+  load_and_authorize_resource
   before_filter :authenticate_user!
 
   # GET /places
   # GET /places.json
   def index
-    @places = Place.limit(params[:limit].to_i)
+    @places = current_user.places
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +45,7 @@ class PlacesController < ApplicationController
   # POST /places.json
   def create
     @place = Place.new(params[:place])
+    @place.user = current_user
 
     respond_to do |format|
       if @place.save

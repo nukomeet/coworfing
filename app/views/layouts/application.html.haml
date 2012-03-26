@@ -15,10 +15,19 @@
   %body{:class => params[:controller]}
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
+        .container-fluid
           = link_to 'Coworfing', root_path, class: 'brand'
           .nav-collapse
             %ul.nav
+              %li
+                = link_to map_path do
+                  %i.icon-picture.icon-white
+                  Map
+              %li
+                = link_to list_path do
+                  %i.icon-th.icon-white
+                  List 
+
             - unless user_signed_in?
               %ul.nav.pull-right
                 %li= link_to 'Login', new_user_session_path
@@ -27,6 +36,7 @@
                 %li.divider-vertical
                 %li.dropdown
                   %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
+                    %i.icon-user.icon-white
                     Account 
                     %b.caret
                   %ul.dropdown-menu
@@ -37,7 +47,7 @@
                     %li= link_to 'Log out', destroy_user_session_path, method: :delete
               / /.nav-collapse
 
-    #container.container
+    #container.container-fluid
       = render :partial => "shared/flash_messages", :locals => {:flash => flash}
 
       #main{:role => "main"}
