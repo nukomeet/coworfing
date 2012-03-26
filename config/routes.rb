@@ -2,6 +2,9 @@ Coworfing::Application.routes.draw do
   
   match 'about' => 'home#about', via: :get, as: :about
 
+  match 'search/map' => 'home#index', via: :get, as: :map
+  match 'search/list' => 'home#places', via: :get, as: :list
+
   devise_for :users, skip: [:sessions]
   as :user do
     get 'login' => 'devise/sessions#new', :as => :new_user_session

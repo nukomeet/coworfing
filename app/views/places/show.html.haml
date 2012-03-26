@@ -1,29 +1,40 @@
-.row
-  .span6
-    - if @place.photo?
-      = image_tag(@place.photo_url(:thumb))
-    - else
-      %img{src: 'http://placehold.it/240x160'}
+.page-header
+  %h1= @place.name
 
-    %h5= @place.name
-    %p= @place.desc
-    %p= @place.address_line1
-    %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
-
-  .span6
+.row-fluid
+  .span4
     = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.coordinates[1]}%2C#{@place.coordinates[0]}"
+  .span8
+    .row-fluid
+      .span8
+        - if @place.photo?
+          = image_tag(@place.photo_url(:thumb))
+        - else
+          %img{src: 'http://placehold.it/240x160'}
+    .row-fluid
+      .span4
+        %h3 Address
+        %p= @place.address
+
+      .span4
+        %h3 Description
+        %p= @place.desc
+    - if can? :update, @place 
+      %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
+
 
 %hr
 
-.row
-  .span12
-    %h2 Near by
-    .thumbnails
-      - @place.nearbys(5, {:units => :km}).each do |place|
-        .span3
-          .thumbnail
-            %img{src: 'http://placehold.it/240x160'}
-            .caption
-              %h5= place.name
-              %p= place.address
+%h2 Near by
+%ul.thumbnails.row-fluid
+  - @place.nearbys(5, {:units => :km}).each do |place|
+    .span2
+      .thumbnail
+        - if place.photo?
+          = image_tag(place.photo_url(:thumb))
+        - else
+          %img{src: 'http://placehold.it/300x200'}
+        .caption
+          %h5= place.name
+          %p= place.address
 
