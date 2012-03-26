@@ -5,6 +5,8 @@ Coworfing::Application.routes.draw do
   match 'search/map' => 'home#index', via: :get, as: :map
   match 'search/list' => 'home#places', via: :get, as: :list
 
+  match 'profile/:username' => 'users#show', via: :get, as: :profile
+
   devise_for :users, skip: [:sessions], controllers: { invitations: 'users/invitations' }
   as :user do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
@@ -12,7 +14,8 @@ Coworfing::Application.routes.draw do
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :places
+  resources :places 
+  resources :demands
 
   root :to => "home#index"
 
