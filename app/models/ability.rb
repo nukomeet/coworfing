@@ -7,7 +7,7 @@ class Ability
 
     if user.admin?
       can :manage, :all
-      can :manage, Resque
+      can :invite, User
     end
 
     if user.regular? 

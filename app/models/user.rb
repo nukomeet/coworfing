@@ -5,8 +5,8 @@ class User
   ROLES = %w(regular admin)
 
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  # :token_authenticatable, :encryptable, :timeoutable and :omniauthable
+  devise :invitable, :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
@@ -31,18 +31,27 @@ class User
   # field :password_salt, :type => String
 
   ## Confirmable
-  # field :confirmation_token,   :type => String
-  # field :confirmed_at,         :type => Time
-  # field :confirmation_sent_at, :type => Time
-  # field :unconfirmed_email,    :type => String # Only if using reconfirmable
+  field :confirmation_token,   :type => String
+  field :confirmed_at,         :type => Time
+  field :confirmation_sent_at, :type => Time
+  field :unconfirmed_email,    :type => String # Only if using reconfirmable
 
   ## Lockable
-  # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
-  # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
-  # field :locked_at,       :type => Time
+  field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
+  field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
+  field :locked_at,       :type => Time
 
   ## Token authenticatable
   # field :authentication_token, :type => String
+
+  ## Invitable
+  field :invitation_token
+  field :invitation_sent_at, type: Time
+  field :invitation_accepted_at, type: Time
+  field :invitation_limit, type: Integer 
+
+  index :invitation_token
+
   field :name
   field :role
 
@@ -51,6 +60,7 @@ class User
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :role
 
   has_many :places
+  has_many :invitations, class_name: 'User', as:  :invited_by
  
   #defining roles 
   def admin?
