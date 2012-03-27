@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require jquery.gmap.min
+//= require jquery-ui-timepicker-addon
 //= require_tree .

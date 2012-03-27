@@ -16,6 +16,7 @@ class Ability
       can :read, Place
 
       can :update, User, :user_id => user.id 
+      can :show, User
 
     end
 
