@@ -4,6 +4,8 @@
 
 jQuery ->
     $("#getting-started").modal('show')
+    $("input.date_picker").datetimepicker({ dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm' })
+
 
 #jQuery ->
 #  $(".nav li a").click (e) ->
