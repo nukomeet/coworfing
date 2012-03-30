@@ -1,0 +1,17 @@
+.row-fluid
+  .span12
+    = simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { method: :put, class: 'form-horizontal' } do |f|
+      = devise_error_messages!
+
+      = f.hidden_field :invitation_token
+
+      %fieldset
+        %legend Create Your Account
+
+        = f.input :name
+        = f.input :username
+        = f.input :password
+        = f.input :password_confirmation
+
+      .form-actions
+        = f.submit "Go ahead, create it", class: 'btn-success btn'
