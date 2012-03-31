@@ -32,7 +32,7 @@
 
 %h2 Near by
 %ul.thumbnails.row-fluid
-  - @place.nearbys(5, {:units => :km}).each do |place|
+  - @place.nearbys(0.5, {:units => :km}).each do |place|
     .span2
       .thumbnail
         - if place.photo?
