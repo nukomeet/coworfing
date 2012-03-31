@@ -19,7 +19,7 @@ $(function() {
             {
                 latitude: place.coordinates[1],
                 longitude: place.coordinates[0],
-                content: "<strong>" + place.name + "</strong><br/><br/><a href='/places/" + place._id + "' class='btn btn-info'>View details »</a>"
+                content: "<strong>" + place.name + "</strong><br/><br/><a href='/places/" + place.id + "' class='btn btn-info'>View details »</a>"
             });
     }
 });
