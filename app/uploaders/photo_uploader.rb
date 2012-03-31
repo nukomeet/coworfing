@@ -2,13 +2,11 @@
 
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  include CarrierWave::MimeTypes
 
-  storage :file
-  # storage :fog
+  process :set_content_type
 
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
+  storage :fog
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -22,6 +20,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  version :petit do
+    process :resize_to_limit => [100, 100]
+  end
+
   version :thumb do
     process :resize_to_limit => [240, 240]
   end
