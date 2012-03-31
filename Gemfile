@@ -8,6 +8,7 @@ gem 'simple_form'
 gem 'country_select'
 gem 'geocoder'
 
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -45,3 +46,4 @@ gem 'rabl'
 gem 'yajl-ruby'
 gem 'devise_invitable'
 gem 'heroku'
+gem 'fog'
