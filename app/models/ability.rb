@@ -15,9 +15,10 @@ class Ability
       can :create, Place
       can :read, Place
 
+      can :see, :places
+
       can :update, User, :user_id => user.id 
       can :show, User
-
     end
 
     can :create, Demand 
