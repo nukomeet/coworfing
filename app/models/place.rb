@@ -7,6 +7,8 @@ class Place
 
   field :name
   field :desc
+  field :wifi
+  field :transport
   field :price, type:  Integer
   field :address_line1
   field :address_line2
