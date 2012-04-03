@@ -11,7 +11,10 @@ en:
     error_notification:
       default_message: "Some errors were found, please take a look:"
     # Labels and hints examples
-    # labels:
+    labels:
+      place: 
+        adress_line1: 'Adress'
+        desc: 'Description'
     #   password: 'Password'
     #   user:
     #     new:
