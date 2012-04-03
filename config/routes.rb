@@ -2,6 +2,8 @@ Coworfing::Application.routes.draw do
   
   match 'about' => 'home#about', via: :get, as: :about
 
+  match 'home/location' => 'home#location'
+
   match 'search/map' => 'home#index', via: :get, as: :map
   match 'search/list' => 'home#places', via: :get, as: :list
 
