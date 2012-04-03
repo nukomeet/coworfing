@@ -1,6 +1,11 @@
 $(function() { 
+    var user_location = ""
+    $.getJSON("/home/location", {}, function(json) {
+        user_location = json[0].city + ", " + json[0].country;
+    });
+
     $('#mapino').gMap({
-        address: "Paris",
+        address: user_location,
         zoom: 12 
     });
 
