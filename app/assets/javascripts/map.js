@@ -1,11 +1,22 @@
+
+
+
 $(function() { 
-    var user_location = ""
-    $.getJSON("/home/location", {}, function(json) {
-        user_location = json[0].city + ", " + json[0].country;
-    });
+    var user_location = "";
+
+    user_location = $.parseJSON(
+        $.ajax({
+              type: 'GET',
+              url: '/home/location',
+              dataType: 'json',
+              success: function() { },
+              data: {},
+              async: false
+        }).responseText
+    );
 
     $('#mapino').gMap({
-        address: user_location,
+        address: user_location.city + ", " + user_location.country,
         zoom: 12 
     });
 
