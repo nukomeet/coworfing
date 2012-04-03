@@ -13,7 +13,7 @@
         - if @place.photo?
           = image_tag(@place.photo_url(:thumb))
         - else
-          %img{src: 'http://placehold.it/240x160'}
+          %img{src: 'http://placehold.it/240x160&text=Add+Your+Photo'}
     .row-fluid
       .span4
         %h3 Address
