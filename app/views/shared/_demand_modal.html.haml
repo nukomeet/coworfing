@@ -6,6 +6,7 @@
       %h3 Make a place request 
     .modal-body
       %fieldset
+        = f.input :date, input_html: { rows: 4, class: 'span4 date_picker' }
         = f.input :body, as: :text, input_html: { rows: 4, class: 'span4' }
 
     .modal-footer
