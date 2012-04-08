@@ -13,9 +13,10 @@
           %th #
           %th From
           %th Place Name
+          %th Date 
           %th Status 
-          %th Requested At
-          %th{colspan: 3}
+          %th Received 
+          %th
 
       %tbody
         - @place_requests.each_with_index do |place_request, idx|
@@ -25,13 +26,14 @@
               = link_to place_request.booker.name, profile_path(place_request.booker.username)
             %td
               = link_to place_request.place.name, place_path(place_request.place)
-            %td= place_request.status
-            %td= l place_request.created_at
+            %td= l place_request.date
+            %td= status_h(place_request.status)
+            %td= time_ago_in_words(place_request.created_at)
             %td
               .btn-toolbar.pull-right
                 .btn-group
                   = confirm_button_with_class('Approve', approve_place_request_path(place_request), 'Are you sure?', 'btn btn-success', ! place_request.pending?)
                   = confirm_button_with_class('Reject', reject_place_request_path(place_request), 'Are you sure?', 'btn btn-danger', ! place_request.pending?)
           %tr
-            %td{colspan:4}
+            %td{colspan:6}
               %em= place_request.body

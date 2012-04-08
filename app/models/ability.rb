@@ -19,6 +19,11 @@ class Ability
 
       can :update, User, :user_id => user.id 
       can :show, User
+
+      can :read, PlaceRequest, booker_id: user.id 
+      can :read, PlaceRequest, receiver_id: user.id 
+      can :update, PlaceRequest, status: :pending, receiver_id: user.id
+      can :create, PlaceRequest 
     end
 
     can :create, Demand 

@@ -18,9 +18,10 @@
       .span4
         %h3 Address
         %p= @place.address
-        %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
-          %i.icon-white.icon-lock
-          Make a demand 
+        - unless @place.owned_by(current_user)
+          %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
+            %i.icon-white.icon-lock
+            Make a demand 
 
       .span4
         %h3 Description

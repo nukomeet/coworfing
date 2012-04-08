@@ -14,7 +14,7 @@
           %th To
           %th Place Name
           %th Status 
-          %th Sent At 
+          %th Sent 
 
       %tbody
         - @place_requests.each_with_index do |place_request, idx|
@@ -24,8 +24,8 @@
               = link_to place_request.receiver.name, profile_path(place_request.receiver.username)
             %td
               = link_to place_request.place.name, place_path(place_request.place)
-            %td= place_request.status
-            %td= l place_request.created_at
+            %td= status_h(place_request.status)
+            %td= time_ago_in_words(place_request.created_at)
           %tr
             %td{colspan:4}
               %em= place_request.body

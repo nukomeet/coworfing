@@ -1,4 +1,21 @@
 module ApplicationHelper
+  def status_h(status)
+    name = "info"
+
+    case status
+    when :pending
+      name = "info"
+    when :approved
+      name = "success"
+    when :rejected
+      name = "important"
+    else
+      status.to_s
+    end
+    
+    content_tag :span, status, class: "label label-#{name}"
+  end
+
   def twitterized_type(type)
     case type
     when :alert
