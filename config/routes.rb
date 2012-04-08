@@ -1,5 +1,6 @@
 Coworfing::Application.routes.draw do
   
+
   match 'about' => 'home#about', via: :get, as: :about
 
   match 'home/location' => 'home#location'
@@ -8,6 +9,7 @@ Coworfing::Application.routes.draw do
   match 'search/list' => 'home#places', via: :get, as: :list
 
   match 'profile/:username' => 'users#show', via: :get, as: :profile
+
 
   devise_for :users, skip: [:sessions], controllers: { invitations: 'users/invitations', registrations: 'registrations' }
   as :user do
@@ -18,6 +20,12 @@ Coworfing::Application.routes.draw do
 
   resources :places 
   resources :demands
+  resources :place_requests, path: 'requests' do
+    get 'approve', on: :member
+    get 'reject', on: :member
+    get 'received', on: :collection
+    get 'sent', on: :collection
+  end
 
   root :to => "home#index"
 

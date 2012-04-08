@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Active:
+  = @place_request.active
+
+= link_to 'Edit', edit_place_request_path(@place_request)
+\|
+= link_to 'Back', place_requests_path

@@ -47,3 +47,4 @@ gem 'yajl-ruby'
 gem 'devise_invitable'
 gem 'heroku'
 gem 'fog'
+gem "symbolize", :require => "symbolize/mongoid"

@@ -18,7 +18,7 @@
       .span4
         %h3 Address
         %p= @place.address
-        %a.disabled.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
+        %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
           %i.icon-white.icon-lock
           Make a demand 
 
@@ -43,5 +43,4 @@
           %h5= place.name
           %p= place.address
 
-- if false
-  = render partial: 'shared/demand_modal' 
+= render partial: 'shared/demand_modal' 

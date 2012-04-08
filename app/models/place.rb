@@ -24,6 +24,8 @@ class Place
 
   belongs_to :user
 
+  has_many :place_requests
+
   after_validation :geocode, if: :address_line1_changed?
 
   def address
