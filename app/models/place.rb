@@ -31,4 +31,8 @@ class Place
   def address
     [address_line1, 'Paris', 'France'].join(', ')
   end
+
+  def owned_by(user)
+    self.user == user
+  end
 end

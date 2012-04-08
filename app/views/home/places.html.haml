@@ -7,9 +7,9 @@
 
     %hr
 
-%ul.row-fluid.thumbnails
+%ul.row-fluid.thumbnails.masonry
   - @places.each do |place|
-    %li.span3
+    %li.span3.brick
       .thumbnail
         - if place.photo?
           = image_tag(place.photo_url)

@@ -5,6 +5,11 @@
 jQuery ->
     $("#getting-started").modal('show')
     $("input.date_picker").datetimepicker({ dateFormat: 'yy-mm-dd', timeFormat: 'hh:mm' })
+    #$('.masonry').masonry({
+    #  itemSelector : '.brick',
+    #  columnWidth: (containerWidth) ->
+    #    containerWidth / 4
+    #})
 
 
 #jQuery ->

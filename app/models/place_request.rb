@@ -13,4 +13,6 @@ class PlaceRequest
   field :body
 
   symbolize :status, in: [:pending, :approved, :rejected], default: :pending, scopes: true, methods: true
+
+  validates :date, :body, presence: true
 end
