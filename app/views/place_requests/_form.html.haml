@@ -1,0 +1,8 @@
+= simple_form_for(@place_request) do |f|
+  = f.error_notification
+
+  .inputs
+    = f.input :active
+
+  .actions
+    = f.button :submit

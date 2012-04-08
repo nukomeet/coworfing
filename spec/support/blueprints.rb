@@ -19,3 +19,7 @@ end
 Demand.blueprint do
   # Attributes here
 end
+
+PlaceRequest.blueprint do
+  # Attributes here
+end
