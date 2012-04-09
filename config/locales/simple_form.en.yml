@@ -15,13 +15,17 @@ en:
       place: 
         adress_line1: 'Adress'
         desc: 'Description'
+        wifi: 'WIFI Access Code'
+        address_line1: 'Address'
     #   password: 'Password'
     #   user:
     #     new:
     #       email: 'E-mail para efetuar o sign in.'
     #     edit:
     #       email: 'E-mail.'
-    # hints:
-    #   username: 'User name to sign in.'
-    #   password: 'No special characters, please.'
+    hints:
+      place:
+        name: 'Name should be between 5 to 45 characters long'
+        desc: 'Description should be between 5 to 500 characters long'
+
 

@@ -26,6 +26,9 @@ class Place
 
   has_many :place_requests
 
+  validates :name, length: { in: 5..45 }
+  validates :desc, length: { in: 5..500 }
+
   after_validation :geocode, if: :address_line1_changed?
 
   def address
