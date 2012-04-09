@@ -13,7 +13,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  process :resize_to_limit => [800, 800]
+  process :resize_to_fill => [800, 600]
   #
   # def scale(width, height)
   #   # do something
@@ -21,11 +21,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :petit do
-    process :resize_to_limit => [100, 100]
+    process :resize_to_fill => [120, 90]
   end
 
   version :thumb do
-    process :resize_to_limit => [240, 240]
+    process :resize_to_fill => [240, 180]
+  end
+
+  version :medium do
+    process :resize_to_fill => [320, 240]
   end
 
   def extension_white_list

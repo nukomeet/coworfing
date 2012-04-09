@@ -12,14 +12,16 @@
     %li.span3.brick
       .thumbnail
         - if place.photo?
-          = image_tag(place.photo_url)
+          = image_tag(place.photo_url(:medium))
         - else
           %img{src: 'http://placehold.it/420x340'}
         .caption
           %h5= place.name
-          %p= place.desc
+          %p= truncate(place.desc, length: 45)
           %p= place.address_line1
           %p
             .btn-toolbar
               .btn-group
-                = link_to 'View details »', place, { class: 'btn' }
+                = link_to place, { class: 'btn' } do
+                  %i.icon-info-sign
+                  View Details »
