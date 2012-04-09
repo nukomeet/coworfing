@@ -14,7 +14,7 @@
         - if place.photo?
           = image_tag(place.photo_url(:medium))
         - else
-          %img{src: 'http://placehold.it/420x340'}
+          = image_tag('home.jpg')
         .caption
           %h5= place.name
           %p= truncate(place.desc, length: 45)
