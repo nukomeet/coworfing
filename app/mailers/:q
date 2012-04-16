@@ -1,5 +1,0 @@
-class Notification < ActionMailer::Base
-  def notification_request(user)
-    mail(:to => user.email, :subject => "Coworfing Request", :from "bonjour@nukomeet.com")
-  end
-end
