@@ -16,6 +16,7 @@ class DemandsController < ApplicationController
 
     respond_to do |format|
       if @demand.save
+        NotificationMailer.request_notification(@demand).deliver
         format.html { redirect_to root_url, notice: 'Invitation Request was successfully sent.' }
       else
         format.html { render action: "new" }
