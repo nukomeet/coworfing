@@ -66,6 +66,7 @@ class PlaceRequestsController < ApplicationController
 
     respond_to do |format|
       if @place_request.save
+        Notification.notification_request(@place_request.receiver).deliver
         format.html { redirect_to @place_request, notice: 'Place request was successfully created.' }
         format.json { render json: @place_request, status: :created, location: @place_request }
       else
