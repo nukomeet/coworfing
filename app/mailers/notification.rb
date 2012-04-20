@@ -1,6 +1,8 @@
 class Notification < ActionMailer::Base
-  def notification_request(user)
-    mail(:to => user, :subject => "Coworfing Request", :from => "bonjour@nukomeet.com")
+  default from: "bonjour@nukomeet.com"
+
+  def request_notification_email(user)
+    mail to: user.email, subject: "Coworfing Request Pending"
   end
 end
 
