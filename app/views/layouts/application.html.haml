@@ -23,6 +23,16 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
           })();
 
+    #fb-root
+      :javascript
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=225646797493471";
+        fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+
   %body{:class => params[:controller]}
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -58,6 +68,11 @@
                     %li.divider
                     %li= link_to 'Help', destroy_user_session_path, method: :delete
                     %li= link_to 'Log out', destroy_user_session_path, method: :delete
+            .pull-right{:style => "margin-top:10px"}
+              :javascript
+                  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+              .fb-like{"data-colorscheme" => "dark", "data-font" => "verdana", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
+              %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/coworfing"} Follow @coworfing
               / /.nav-collapse
 
     #container.container-fluid
