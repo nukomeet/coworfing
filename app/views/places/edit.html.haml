@@ -5,3 +5,5 @@
 = link_to 'Show', @place
 \|
 = link_to 'Back', places_path
+\|
+= link_to 'Delete this place', @place, :confirm => 'You are about to delete this place. Are you sure?', :method => :delete
