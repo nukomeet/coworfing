@@ -26,6 +26,8 @@
       .span4
         %h3 Description
         %p= @place.desc
+        %p= @place.wifi
+        %p= @place.transport
     - if can? :update, @place 
       %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
 
