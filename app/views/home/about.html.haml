@@ -1,6 +1,6 @@
 .container
   .row
-    .span8
+    .span6{:style => "text-align:justify"}
       %h2
         About us
       %p 
@@ -8,9 +8,9 @@
         %a{:href  => "http://www.twitter.com/zaiste"} @zaiste
         &
         %a{:href => "http://www..twitter.com/albanlv"}@albanlv
-        ) and we have been free-lancing for a few monthes, before founding an
+        ) and we have been free-lancing for a few months, before founding an
         %a{:href => "http://www.nukomeet.com"} open company.
-        We work from home, coworking spaces, cafés, airports... wherever you can find a decent wi-fi. We are nomads who like to work in different places. It helps us to boost our creativity, to meet new people, and to get a fresh view point on our problems. We enjoy to work to have as well as working in group and connect with like-minded individuals.  
+        We work from home, coworking spaces, cafés, airports... wherever you can find a decent wi-fi. We are nomads who like to work in different places. It helps us boost our creativity, meet new people, and to get a fresh view point on our problems. We enjoy to work to have as well as working in group and connect with like-minded individuals.  
       %h2
         Our story
       %p 
@@ -18,24 +18,31 @@
         %a{:href => "http://www.twitter.com/ecolepublique"} @ecolepublique
         ) we just gathered adresses of cool cafés in Paris, were the wi-fi is decent and waiters are not assholes (both conditions are hard to find in the same place). Then, the idea came to us : why not open our own homes to other free-lancers/independent/entrepreneurs/squirrels and go to their places? That's how the legend was born. 
       %h2
-        Where we are now
+        Where we stand now
       %p
         The app is not polished, it is not perfect, and we could add a lot of features, but it does what we wanted to : display a map with the open workplaces and the contact to get there.
       %p
         We wanted to connect the app to couchsurfing, so you can automatically fill a profile and display your level of trust (number of recommendations), but unfortunately there is no proper API to do that.
       %p
-        We think there is a lot of potential in this idea, we believe in a world in which people will enjoy their work, work anywhere and use it to connect to other people and have fun. This is why we open-sourced the project. You can find it 
-        %a{:href => "http://www.github.com/zaiste/coworfing"} here 
-        and contribute.
+        We think there is a lot of potential in this idea, we believe in a world in which people will enjoy their work, work anywhere and use it to connect to other people and have fun. 
       %h2
         How to use this app
       %p
-        Need a place to work? 
-        %a{:href => "#"} Browse the map
-        , find a nice place, and request for a coworfing!
+        Need a place to work? Browse the map, find a nice place, and request for a coworfing!
       %p
-        Feeling alone? 
-        %a{:href => "#"} Upload your place
-        and answer the requests.
-    .span4
-      &nbsp;
+        Feeling alone? Upload your place and welcome people.
+    .span5.offset1
+      %p &nbsp;
+      = simple_form_for(Demand.new) do |f|
+        .input-append
+          %p &nbsp;
+          = f.input :email, label: false, input_html: {placeholder: 'Enter your email address...' }
+          .pull-right
+            = f.submit 'Invite me', class: 'btn btn-large', :style => "text-align:center"
+        %p &nbsp;
+        %hr/
+        %p &nbsp;
+        %h3 Already have an account? 
+        .pull-right
+          = link_to 'Login', new_user_session_path, class: 'btn btn-info btn-large' 
+        %p &nbsp;
