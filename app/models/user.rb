@@ -65,6 +65,7 @@ class User
   has_many :invitations, class_name: 'User', as:  :invited_by
   has_many :place_requests_received, class_name: 'PlaceRequest', inverse_of: :receiver
   has_many :place_requests_sent, class_name: 'PlaceRequest', inverse_of: :booker
+  has_many :comments
  
   #defining roles 
   def admin?
