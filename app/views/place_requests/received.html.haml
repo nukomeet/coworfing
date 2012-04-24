@@ -23,9 +23,9 @@
           %tr
             %td{rowspan:2}= idx+1
             %td
-              = link_to place_request.booker.name, profile_path(place_request.booker.username)
+              = link_to place_request.booker_name, profile_path(place_request.booker_username)
             %td
-              = link_to place_request.place.name, place_path(place_request.place)
+              = link_to place_request.place_name, place_path(place_request.place || 'DELETED')
             %td= l place_request.date
             %td= status_h(place_request.status)
             %td= time_ago_in_words(place_request.created_at)
