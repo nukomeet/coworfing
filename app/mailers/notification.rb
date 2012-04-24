@@ -4,5 +4,9 @@ class Notification < ActionMailer::Base
   def request_notification_email(user)
     mail to: user.email, subject: "Coworfing Request Pending"
   end
+
+  def request_confirmation_email(user)
+    mail to: user.email, subject: "Your coworfing request has been accepted"
+  end
 end
 
