@@ -38,4 +38,6 @@ class Place
   def owned_by(user)
     self.user == user
   end
+
+  has_many :comments
 end

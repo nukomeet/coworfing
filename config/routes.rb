@@ -18,7 +18,10 @@ Coworfing::Application.routes.draw do
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :places 
+  resources :places do 
+    resources :comments
+  end
+
   resources :demands
   resources :place_requests, path: 'requests' do
     get 'approve', on: :member
