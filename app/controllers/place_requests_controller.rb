@@ -109,6 +109,7 @@ class PlaceRequestsController < ApplicationController
     @place_request.update_attribute('status', :approved) if @place_request.pending?
 
     respond_to do |format|
+      Notification.request_confirmation_email(@place_request.booker).deliver
       format.html { redirect_to received_place_requests_url }
     end
   end
