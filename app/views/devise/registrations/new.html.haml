@@ -9,7 +9,16 @@
     = f.input :email
     = f.input :password
     = f.input :password_confirmation
-    = f.input :bio
+    = f.input :bio, as: :text, input_html: { rows: 4}
+    - unless @user.photo?
+      = f.input :photo, as: :file
+      = f.input :photo_cache, as: :hidden
+    - else
+      = f.input :remove_photo, as: :boolean
+      .control-group
+      .controls
+        %ul.thumbnails
+          %li.thumbnail= image_tag(@user.photo_url)
 
     .form-actions
       = f.submit "Sign up", class: 'btn btn-primary'
