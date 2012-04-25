@@ -54,7 +54,7 @@ class User
   index :invitation_token
 
   field :name
-  field :role, default: 'regular'
+  field :role
   field :username
 
   validates_presence_of :name, :email, :username
