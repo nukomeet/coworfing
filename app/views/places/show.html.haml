@@ -30,9 +30,24 @@
         %p= @place.transport
     - if can? :update, @place 
       %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
+      
+%hr
+- if @place.comments.size > 0
+  %h2 Comments
+  - for comment in @place.comments
+    %h3
+      = link_to comment.user.username, profile_path(comment.user.username) 
+      's opinion
+    %p= comment.content
+    %hr
+%h2 Tell us what you think about this place 
+= form_for [@place, Comment.new] do |f|
+  %p
+  %p= f.text_area :content, :rows => 10, class: 'span6'
+  = f.button :submit, class: 'btn-success btn-large'
+
 
 %hr
-
 %h2 Near by
 %ul.thumbnails.row-fluid
   - @place.nearbys(0.5, {:units => :km}).each do |place|

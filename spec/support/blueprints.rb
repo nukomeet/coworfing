@@ -23,3 +23,7 @@ end
 PlaceRequest.blueprint do
   # Attributes here
 end
+
+Comment.blueprint do
+  # Attributes here
+end
