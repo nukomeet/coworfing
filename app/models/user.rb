@@ -56,7 +56,7 @@ class User
   index :invitation_token
 
   field :name
-  field :role, default: 'regular'
+  field :role
   field :username
   
   field :bio
