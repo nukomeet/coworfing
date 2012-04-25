@@ -35,12 +35,15 @@
 - if @place.comments.size > 0
   %h2 Comments
   - for comment in @place.comments
-    = link_to @comment.user.username, profile_path(@comment.user.username) 
+    %h3
+      = link_to comment.user.username, profile_path(comment.user.username) 
+      's opinion
     %p= comment.content
-%h2 New Comment
+    %hr
+%h2 Tell us what you think about this place 
 = form_for [@place, Comment.new] do |f|
   %p
-  %p= f.text_area :content, :rows => 10
+  %p= f.text_area :content, :rows => 10, class: 'span6'
   = f.button :submit, class: 'btn-success btn-large'
 
 
