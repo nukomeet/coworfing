@@ -9,18 +9,11 @@
     = f.input :email
     = f.input :password
     = f.input :password_confirmation
-    = f.input :current_password
+    = f.input :current_password, :placeholder => "Enter your pass to edit your profile"
     = f.input :bio, as: :text, input_html: {rows: 4}
 
-    - unless @user.photo?
-      = f.input :photo, as: :file
-      = f.input :photo_cache, as: :hidden
-    - else
-      = f.input :remove_photo, as: :boolean
-      .control-group
-      .controls
-        %ul.thumbnails
-          %li.thumbnail= image_tag(@user.photo_url)
+    = f.input :photo, as: :file
+    = f.input :photo_cache, as: :hidden
 
     .form-actions
       = f.button :submit, class: 'btn-success btn-large'
