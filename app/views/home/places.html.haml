@@ -3,7 +3,7 @@
     %p.list-place.centered
       = link_to new_place_path, { class: 'btn btn-info btn-large' } do
         %i.icon-map-marker.icon-white
-        &nbsp; Add Your Place
+        &nbsp; Add a place
 
     %hr
 
@@ -17,8 +17,8 @@
           = image_tag('home.jpg')
         .caption
           %h5= place.name
-          %p= truncate(place.desc, length: 45)
-          %p= place.address_line1
+          %p= truncate(place.desc, length: 36)
+          %p= truncate(place.address_line1, length: 36)
           %p
             .btn-toolbar
               .btn-group
