@@ -56,10 +56,11 @@ class User
   field :name
   field :role, default: 'regular'
   field :username
+  field :bio
 
   validates_presence_of :name, :email, :username
   validates_uniqueness_of :name, :email, :username, :case_sensitive => false
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :bio
 
   has_many :places
   has_many :invitations, class_name: 'User', as:  :invited_by

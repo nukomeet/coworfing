@@ -10,6 +10,7 @@
     = f.input :password
     = f.input :password_confirmation
     = f.input :current_password
+    = f.input :bio, as: :text, input_html: {rows: 4}
 
     .form-actions
       = f.button :submit, class: 'btn-success btn-large'
