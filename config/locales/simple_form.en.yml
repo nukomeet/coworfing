@@ -17,6 +17,7 @@ en:
         desc: 'Description'
         wifi: 'WIFI Access Code'
         address_line1: 'Address'
+        public: Public?
     #   password: 'Password'
     #   user:
     #     new:
@@ -27,5 +28,6 @@ en:
       place:
         name: 'Name should be between 5 to 45 characters long'
         desc: 'Description should be between 5 to 500 characters long'
+        public: 'Check the box if the place is considered public'
 
 
