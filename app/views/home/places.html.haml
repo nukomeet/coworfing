@@ -16,7 +16,12 @@
         - else
           = image_tag('home.jpg')
         .caption
-          %h5= place.name
+          %h5
+            = place.name
+            - if place.public
+              %span.label.label-info.pull-right.upcase public
+            - else
+              %span.label.label-warning.pull-right.upcase private
           %p= truncate(place.desc, length: 36)
           %p= truncate(place.address_line1, length: 36)
           %p

@@ -15,6 +15,7 @@ class Place
   field :city
   field :zipcode
   field :country
+  field :public, type: Boolean, default: false
 
   field :coordinates, type: Array
 

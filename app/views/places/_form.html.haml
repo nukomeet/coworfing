@@ -9,6 +9,7 @@
     = f.input :wifi, input_html: { class: 'span5' }
     = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
     = f.input :address_line1, input_html: { class: 'span5' }
+    = f.input :public, as: :boolean
 
     - unless @place.photo?
       = f.input :photo, as: :file
