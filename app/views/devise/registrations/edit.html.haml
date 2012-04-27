@@ -7,13 +7,11 @@
     = f.input :name
     = f.input :username
     = f.input :email
-    = f.input :password
-    = f.input :password_confirmation
-    = f.input :current_password, :placeholder => "Enter your pass to edit your profile"
     = f.input :bio, as: :text, input_html: {rows: 4}
 
     = f.input :photo, as: :file
     = f.input :photo_cache, as: :hidden
+    = link_to "Change your password", edit_user_password_path
 
     .form-actions
       = f.button :submit, class: 'btn-success btn-large'

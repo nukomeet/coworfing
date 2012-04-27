@@ -10,12 +10,15 @@ Coworfing::Application.routes.draw do
 
   match 'profile/:username' => 'users#show', via: :get, as: :profile
 
-
   devise_for :users, skip: [:sessions], controllers: { invitations: 'users/invitations', registrations: 'registrations' }
   as :user do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
     post 'login' => 'devise/sessions#create', :as => :user_session
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+  
+  devise_for :users do
+    match "/users/password/edit" => "devise_passwords#edit" 
   end
 
   resources :places do 

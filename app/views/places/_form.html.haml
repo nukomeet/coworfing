@@ -2,25 +2,33 @@
   = f.error_notification
 
   %fieldset
-    %legend List Your Place
+    .span9
+      %legend List Your Place
 
-    = f.input :name, input_html: { class: 'span5' }
-    = f.input :desc, as: :text, input_html: { rows: 4, class: 'span5' }
-    = f.input :wifi, input_html: { class: 'span5' }
-    = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
-    = f.input :address_line1, input_html: { class: 'span5' }
-    = f.input :public, as: :boolean
+      = f.input :name, input_html: { class: 'span5' }
+      = f.input :desc, as: :text, input_html: { rows: 4, class: 'span5' }
+      = f.input :wifi, input_html: { class: 'span5' }
+      = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
+      = f.input :address_line1, input_html: { class: 'span5' }
 
-    - unless @place.photo?
-      = f.input :photo, as: :file
-      = f.input :photo_cache, as: :hidden
-    - else
-      = f.input :remove_photo, as: :boolean
-      .control-group
-        .control-label Image
-        .controls
-          %ul.thumbnails
-            %li.thumbnail= image_tag(@place.photo_url) 
+    .span6
+      %legend Provide some details
+      = f.input :reward, input_html: { class: 'span5' }
+      = f.input :public, as: :boolean
+      = f.input :smoke, as: :boolean
+      = f.input :music, as: :boolean
+      = f.input :discussion, as: :boolean
 
-    .form-actions
-      = f.button :submit, class: 'btn-success btn-large'
+      - unless @place.photo?
+        = f.input :photo, as: :file
+        = f.input :photo_cache, as: :hidden
+      - else
+        = f.input :remove_photo, as: :boolean
+        .control-group
+          .control-label Image
+          .controls
+            %ul.thumbnails
+              %li.thumbnail= image_tag(@place.photo_url) 
+
+  .form-actions
+    = f.button :submit, class: 'btn-success btn-large'
