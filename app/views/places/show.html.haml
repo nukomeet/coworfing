@@ -14,20 +14,46 @@
           = image_tag(@place.photo_url(:thumb))
         - else
           %img{src: 'http://placehold.it/240x160&text=Add+Your+Photo'}
-    .row-fluid
-      .span4
-        %h3 Address
+        %p
+        %p
+        %p
+        %p.icon-map-marker
         %p= @place.address
         - unless @place.owned_by(current_user)
-          %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
-            %i.icon-white.icon-lock
-            Make a demand 
+          - if @place.public
+            %span.label.label-info.upcase public
+            %p
+            %p This is a public place, no need to make a request.
+          - else
+            %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
+              %i.icon-white.icon-lock
+              Make a demand 
 
       .span4
         %h3 Description
         %p= @place.desc
+        %p.icon-signal
         %p= @place.wifi
+        %p.icon-plane
         %p= @place.transport
+        - if @place.music
+          %span.icon-music
+          %p Music in the air
+        - else
+          %span.icon-headphones
+          %p This is a quiet place
+        - if @place.smoke
+          %span.icon-ok-circle
+          %p Smoking is allowed
+        - else
+          %span.icon-ban-circle
+          %p Smoking is not allowed
+        - if @place.discussion
+          %span.icon-comment
+          %p Discussion is welcome
+        - else
+          %span.icon-remove-circle
+          %p No blabla please
     - if can? :update, @place 
       %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
       
