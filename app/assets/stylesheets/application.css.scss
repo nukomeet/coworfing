@@ -17,9 +17,19 @@
 @import "bootstrap";
 @import 'font-awesome';
 
+
 body {
-  padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+  padding-top: 160px; /* 60px to make the container go all the way to the bottom of the topbar */
   background-color: #EFEFEF;
+}
+
+ul.nav li.dropdown:hover ul.dropdown-menu{
+      display: block;    
+    }
+
+.navbtn{
+  margin-left:50px;
+  margin-top: 36px;
 }
 
 hr {
@@ -79,3 +89,5 @@ margin-left: 0px; margin-bottom: 0; }
 .upcase {
   text-transform: uppercase;
 }
+
+
