@@ -36,54 +36,60 @@
   %body{:class => params[:controller]}
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container-fluid{:style => "background-color: #4078BC;"} 
+        .container-fluid
+          = link_to 'Coworfing', root_path, class: 'brand'
           .nav-collapse
             %ul.nav
-              %li.navbtn.dropdown
-                %a.btn.dropdown-toggle{:'data-toggle' => "dropdown", :style => "margin-left: 200px;"}  
+              %li.navbtn.dropdown{:style => "margin-left: 100px;"}  
+                %a.dropdown-toggle{:'data-toggle' => "dropdown"}
                   %i.icon-home.icon-white
                   Places
                   %b.caret
                 %ul.dropdown-menu
                   %li
                     = link_to map_path do
-                      %i.icon-picture.icon-white
-                      Map
+                      %i.icon-map-marker.icon-white
+                      Browse the map
                   %li
                     = link_to list_path do
-                      %i.icon-th.icon-white
-                      List 
+                      %i.icon-th-list.icon-white
+                      Browse the list 
                   %li
-                    = link_to list_path do
-                      %i.icon-th.icon-white
+                    = link_to places_path do
+                      %i.icon-home.icon-white
                       Your places 
                   %li
                     = link_to new_place_path do
-                      %i.icon-th.icon-white
+                      %i.icon-plus.icon-white
                       Add a place 
               %li.navbtn.dropdown
-                %a.btn.dropdown-toggle{:'data-toggle' => "dropdown"} 
-                  %i.icon-user.icon-white
-                  People
-                  %b.caret
-              %li.navbtn.dropdown
-                %a.btn.dropdown-toggle{:'data-toggle' => "dropdown"}
-                  %i.icon-play.icon-white
+                %a.dropdown-toggle{:'data-toggle' => "dropdown"}
+                  %i.icon-question-sign.icon-white
                   Requests
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to received_place_requests_path do
+                      %i.icon-inbox.icon-white
+                      Received 
+                  %li
+                    = link_to sent_place_requests_path do
+                      %i.icon-share.icon-white
+                      Sent 
               %li.navbtn.dropdown
-                %a.btn.dropdown-toggle{:'data-toggle' => "dropdown "}
-                  %i.icon-heart.icon-white
+                %a.dropdown-toggle{:'data-toggle' => "dropdown "}
+                  %i.icon-info-sign.icon-white
                   About
                   %b.caret
                 %ul.dropdown-menu
                   %li
                     = link_to about_path do
-                      %i.icon-th.icon-white
+                      %i.icon-info-sign.icon-white
                       About us
                   %li
-                    = link_to about_path do
-                      %i.icon-th.icon-white
-                      About us
+                    = link_to('http://coworfing.tumblr.com') do
+                      %i.icon-heart.icon-white
+                      Blog
 
             - unless user_signed_in?
               %ul.nav.pull-right
@@ -91,20 +97,15 @@
             - else
               %ul.nav.pull-right
                 %li.dropdown
-                  %a.dropdown-toggle{:'data-toggle' => "dropdown", :style => "margin-top :36px; margin-right: 20px;"} 
+                  %a.dropdown-toggle{:'data-toggle' => "dropdown", :style => "margin-top: 20px; margin-right: 20px;"} 
                     %i.icon-user.icon-white
                     Logged as
                     = current_user.name
                     %b.caret
                   %ul.dropdown-menu
-                    %li= link_to 'Your Profile', edit_user_registration_path
-                    %li= link_to 'Your Places', places_path
-                    %li= link_to 'Your Requests', received_place_requests_path
                     %li.divider
                     %li= link_to 'Help', destroy_user_session_path, method: :delete
                     %li= link_to 'Log out', destroy_user_session_path, method: :delete
-                .brand.pull-right
-                  = link_to image_tag("header.png"), root_path
 
 
     #container.container-fluid
