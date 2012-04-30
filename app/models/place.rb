@@ -15,7 +15,11 @@ class Place
   field :city
   field :zipcode
   field :country
+  field :reward
   field :public, type: Boolean, default: false
+  field :smoke, type: Boolean, default: false
+  field :music, type: Boolean, default: true
+  field :discussion, type: Boolean, default: true
 
   field :coordinates, type: Array
 

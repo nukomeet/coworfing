@@ -22,6 +22,18 @@
               %span.label.label-info.pull-right.upcase public
             - else
               %span.label.label-warning.pull-right.upcase private
+            - if place.music
+              %span.icon-music
+            - else
+              %span.icon-headphones
+            - if place.smoke
+              %span.icon-ok-circle
+            - else
+              %span.icon-ban-circle
+            - if place.discussion
+              %span.icon-comment
+            - else
+              %span.icon-remove-circle
           %p= truncate(place.desc, length: 30)
           %p= truncate(place.address_line1, length: 30)
           %p
