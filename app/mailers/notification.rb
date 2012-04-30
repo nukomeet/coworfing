@@ -8,5 +8,9 @@ class Notification < ActionMailer::Base
   def request_confirmation_email(user)
     mail to: user.email, subject: "Your coworfing request has been accepted"
   end
+
+  def comment_email(user)
+    mail to: user.email, subject: "There is a new comment on your place"
+  end
 end
 
