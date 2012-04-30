@@ -17,6 +17,7 @@ group :assets do
 end
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
+gem 'font-awesome-rails'
 gem "haml", ">= 3.1.4"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "rspec-rails", ">= 2.8.1", :group => [:development, :test]
