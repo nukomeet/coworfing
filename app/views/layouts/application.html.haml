@@ -36,27 +36,62 @@
   %body{:class => params[:controller]}
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container-fluid
-          = link_to 'Coworfing', root_path, class: 'brand'
+        .container-fluid{:style => "background-color: #4078BC;"} 
           .nav-collapse
             %ul.nav
-              %li
-                = link_to map_path do
-                  %i.icon-picture.icon-white
-                  Map
-              %li
-                = link_to list_path do
-                  %i.icon-th.icon-white
-                  List 
+              %li.navbtn.dropdown
+                %a.btn.dropdown-toggle{:'data-toggle' => "dropdown", :style => "margin-left: 200px;"}  
+                  %i.icon-home.icon-white
+                  Places
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to map_path do
+                      %i.icon-picture.icon-white
+                      Map
+                  %li
+                    = link_to list_path do
+                      %i.icon-th.icon-white
+                      List 
+                  %li
+                    = link_to list_path do
+                      %i.icon-th.icon-white
+                      Your places 
+                  %li
+                    = link_to new_place_path do
+                      %i.icon-th.icon-white
+                      Add a place 
+              %li.navbtn.dropdown
+                %a.btn.dropdown-toggle{:'data-toggle' => "dropdown"} 
+                  %i.icon-user.icon-white
+                  People
+                  %b.caret
+              %li.navbtn.dropdown
+                %a.btn.dropdown-toggle{:'data-toggle' => "dropdown"}
+                  %i.icon-play.icon-white
+                  Requests
+              %li.navbtn.dropdown
+                %a.btn.dropdown-toggle{:'data-toggle' => "dropdown "}
+                  %i.icon-heart.icon-white
+                  About
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to about_path do
+                      %i.icon-th.icon-white
+                      About us
+                  %li
+                    = link_to about_path do
+                      %i.icon-th.icon-white
+                      About us
 
             - unless user_signed_in?
               %ul.nav.pull-right
                 %li= link_to 'Login', new_user_session_path
             - else
               %ul.nav.pull-right
-                %li.divider-vertical
                 %li.dropdown
-                  %a.dropdown-toggle{:'data-toggle' => "dropdown"} 
+                  %a.dropdown-toggle{:'data-toggle' => "dropdown", :style => "margin-top :36px; margin-right: 20px;"} 
                     %i.icon-user.icon-white
                     Logged as
                     = current_user.name
@@ -68,12 +103,9 @@
                     %li.divider
                     %li= link_to 'Help', destroy_user_session_path, method: :delete
                     %li= link_to 'Log out', destroy_user_session_path, method: :delete
-            .pull-right{:style => "margin-top:10px"}
-              :javascript
-                  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-              .fb-like{"data-colorscheme" => "dark", "data-font" => "verdana", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
-              %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/coworfing"} Follow @coworfing
-              / /.nav-collapse
+                .brand.pull-right
+                  = link_to image_tag("header.png"), root_path
+
 
     #container.container-fluid
       = render :partial => "shared/flash_messages", :locals => {:flash => flash}
