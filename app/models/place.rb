@@ -37,7 +37,7 @@ class Place
   after_validation :geocode, if: :address_line1_changed?
 
   def address
-    [address_line1, 'Paris', 'France'].join(', ')
+    [address_line1].join(', ')
   end
 
   def owned_by(user)
