@@ -5,11 +5,11 @@
     = link_to @place.user.username, profile_path(@place.user.username) 
 
 .row-fluid
-  .span4
+  .span5
     = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.coordinates[1]}%2C#{@place.coordinates[0]}"
-  .span8
-    .row-fluid
-      .span8
+  .span7
+    .row
+      .span4
         - if @place.photo?
           = image_tag(@place.photo_url(:thumb))
         - else
@@ -29,7 +29,7 @@
               %i.icon-white.icon-lock
               Make a demand 
 
-      .span4
+      .span3
         %h3 Description
         %p= @place.desc
         %p.icon-signal
