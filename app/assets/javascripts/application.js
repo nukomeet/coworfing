@@ -17,5 +17,6 @@
 //= require jquery.gmap.min
 //= require jquery-ui-timepicker-addon
 //= require jquery.masonry.min
+//= require chosen-jquery
 //= require_tree .
 
