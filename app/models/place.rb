@@ -34,10 +34,10 @@ class Place
   validates :name, length: { in: 5..45 }
   validates :desc, length: { in: 5..500 }
 
-  after_validation :geocode, if: :address_line1_changed?
+  after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
 
   def address
-    [address_line1].join(', ')
+    [address_line1, city, country].join(', ')
   end
 
   def owned_by(user)
