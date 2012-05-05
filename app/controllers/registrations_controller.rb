@@ -30,7 +30,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
     def edit
-          @user = current_user
+      @user = current_user
     end
      
     def update
