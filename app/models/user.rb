@@ -60,12 +60,16 @@ class User
   field :username
   
   field :bio
+  field :website
+  field :twitter
 
   field :photo
 
+  field :public, type: Boolean
+
   validates_presence_of :name, :email, :username
   validates_uniqueness_of :name, :email, :username, :case_sensitive => false
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :bio, :photo
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :bio, :photo, :website, :twitter, :public
 
   has_many :places
   has_many :invitations, class_name: 'User', as:  :invited_by

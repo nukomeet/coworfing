@@ -1,0 +1,17 @@
+%ul.row-fluid.span12.thumbnails
+  - @users.each do |user|
+    %li.span2
+      .thumbnail
+        - if user.photo?
+          = image_tag(user.photo_url(:medium))
+        - else
+          = image_tag('http://placekitten.com/150/150')
+        .caption
+          %h5
+            = user.name
+          %p
+            .btn-toolbar
+              .btn-group
+                = link_to profile_path(user.username), { class: 'btn' } do
+                  %i.icon-info-sign
+                  View Details »

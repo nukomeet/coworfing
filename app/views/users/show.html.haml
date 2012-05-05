@@ -1,22 +1,28 @@
-.page-header
-  %h1= "#{@user.username}'s profile"
-
 .row-fluid
-  .span4
-    %h4 Contact Info
-    - if user_signed_in?
-      = @user.email
-    - else
-      %p You must be logged in to see that information.
-  .span4
-    %h4= " Who is #{@user.username}?"
-    = @user.bio
-  .span4
+  .span3
     - if @user.photo?
-      = image_tag(@user.photo_url(:thumb))
+      = image_tag(@user.photo_url(:profile))
     - else 
-      %p Alas, this user is timid, there is no pic.
-%p
-%p
-%p
+      = image_tag('http://placekitten.com/300/350')
+  .span8
+    %h1= "#{@user.username}'s profile"
+    %hr
+
+    %table.table.table-striped
+      %tbody
+        %tr
+          %th.span2 Email
+          %td= @user.email if user_signed_in?
+        %tr
+          %th Bio 
+          %td= @user.bio
+        %tr
+          %th Website 
+          %td= link_to @user.website, @user.website
+        %tr
+          %th Skillz 
+          %td
+        %tr
+          %th Twitter 
+          %td= link_to "@#{@user.twitter}", "http://twitter.com/#{@user.twitter}"
 %hr
