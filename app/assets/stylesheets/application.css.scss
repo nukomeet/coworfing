@@ -25,22 +25,6 @@ body {
   background-color: #EFEFEF;
 }
 
-ul.nav li.dropdown:hover ul.dropdown-menu{
-      display: block;    
-    }
-ul.nav li.dropdown ul.dropdown-menu li{
-      margin-top: 9px;    
-      margin-bottom: 9px;    
-      font-size: 16px;
-    }
-
-.navbtn{
-  margin-left:90px;
-  font-size:18px;
-  letter-spacing:1px;
-  margin-top: 20px
-}
-
 hr {
   border-color: #DFDFDF; 
 }
@@ -64,14 +48,6 @@ hr {
 
 .centered {
   text-align: center;
-}
-
-.navbar .brand {
-  color: #999 ;
-  font-family: 'Lobster';
-  letter-spacing:1px;
-  font-size: 28px;
-  margin-top:15px;
 }
 
 .model-window input {
@@ -103,3 +79,16 @@ margin-left: 0px; margin-bottom: 0; }
 }
 
 
+
+.navbar .nav > li > a {
+  color: #EFEFEF;
+  font-size: 1.2em;
+}
+
+.navbar .brand {
+  text-transform: uppercase;
+  color: #4DBCE9;
+  font-family: 'Lobster';
+  letter-spacing: 2px;
+  
+}
