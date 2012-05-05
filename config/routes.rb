@@ -9,6 +9,7 @@ Coworfing::Application.routes.draw do
   match 'search/list' => 'home#places', via: :get, as: :list
 
   match 'profile/:username' => 'users#show', via: :get, as: :profile
+  match 'people' => 'users#index', via: :get, as: :people
 
   devise_for :users, skip: [:sessions], controllers: { invitations: 'users/invitations', registrations: 'registrations' }
   as :user do
