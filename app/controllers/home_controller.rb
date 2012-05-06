@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
   end
 
-  def places
+  def map
     @places = []
     authorize! :see, :places
 
