@@ -7,6 +7,12 @@
 
     %hr
 
+    = form_tag list_path, method: :post, class: 'form-inline'  do
+      = select_tag "cities", options_from_collection_for_select(Place.all, "city", "city"), multiple: true, class: 'span6 chzn-select'
+      %p= submit_tag 'Filter/Clear', class: 'btn btn-warning'
+
+    %hr
+
 %ul.row-fluid.thumbnails.masonry
   - @places.each do |place|
     %li.span3.brick
