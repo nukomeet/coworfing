@@ -5,8 +5,8 @@ Coworfing::Application.routes.draw do
 
   match 'home/location' => 'home#location'
 
-  match 'search/map' => 'home#index', via: :get, as: :map
-  match 'search/list' => 'home#places', via: :get, as: :list
+  match 'map' => 'home#map', via: :get, as: :map
+  match 'search/places' => 'home#places', via: [:get, :post], as: :list
 
   match 'profile/:username' => 'users#show', via: :get, as: :profile
   match 'people' => 'users#index', via: :get, as: :people
@@ -34,7 +34,7 @@ Coworfing::Application.routes.draw do
     get 'sent', on: :collection
   end
 
-  root :to => "home#index"
+  root :to => "home#map"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
