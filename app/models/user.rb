@@ -67,8 +67,11 @@ class User
 
   field :public, type: Boolean
 
-  validates_presence_of :name, :email, :username
+  validates_presence_of :name, :email
   validates_uniqueness_of :name, :email, :username, :case_sensitive => false
+
+  validates :username, format: { with: /\A[a-z]+\Z/i }, length: { in: 2..12 }, presence: true, uniqueness: true
+
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :bio, :photo, :website, :twitter, :public
 
   has_many :places
