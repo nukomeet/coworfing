@@ -2,7 +2,7 @@
 
 
 $(function() { 
-    if ($('body.home_map').length > 0) {
+    if ($('body.home_map').length > 0 || $('body.home_index').length > 0) {
         var user_location = "";
 
         user_location = $.parseJSON(
