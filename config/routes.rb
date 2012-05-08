@@ -34,7 +34,7 @@ Coworfing::Application.routes.draw do
     get 'sent', on: :collection
   end
 
-  root :to => "home#map"
+  root :to => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
