@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    render :map
   end
 
   def map
