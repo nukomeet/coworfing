@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
   def index
-    render :map
+    @user_count = User.all.count
+    @place_count = Place.all.count
+    @place_req_count = PlaceRequest.all.count
   end
 
   def map
