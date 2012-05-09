@@ -66,6 +66,7 @@ class User
   field :photo
 
   field :public, type: Boolean
+  field :is_cow, type: Boolean, default: false
 
   validates_presence_of :name, :email
   validates_uniqueness_of :name, :email, :username, :case_sensitive => false

@@ -38,7 +38,8 @@ class Place
   validates :country, presence: true
 
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
-
+  after_save :become_cow, if: lambda { |o| o.user.places.count > 2}
+  
   class << self
     def city(cities)
       if cities
@@ -58,4 +59,9 @@ class Place
   end
 
   has_many :comments
+
+  private
+  def become_cow
+    self.user.is_cow = true
+  end
 end
