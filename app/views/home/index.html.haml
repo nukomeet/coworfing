@@ -1,0 +1,27 @@
+.page-header
+  .subhead.jumbotron
+    %h1.centered.upcase Coworking Everywhere 
+    %hr
+.row-fluid
+  .span5
+    .stats
+      %h1 
+        = @user_count 
+        %small Happy worfers
+      %h1 
+        = @place_count 
+        %small Amazing places
+      %h1 
+        = @place_req_count
+        %small Requests made so far
+  .span7
+    %p.shit We are a network of teleworkers, freelancers and entrepreneurs. We put in common our workplaces and home offices. 
+    %p.shit Find places to work anywhere and stop working alone. 
+
+    %hr
+
+    %h2 Ask for an invitation
+    = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
+      = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...' }
+      = f.submit 'Invite me', class: 'btn btn-large'
+
