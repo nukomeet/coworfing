@@ -1,7 +1,7 @@
 .page-header
   %h1= @place.name
   %p 
-    Added by
+    = t('place.added_by')
     = link_to @place.user.username, profile_path(@place.user.username) 
 
 .row-fluid
@@ -21,16 +21,16 @@
         %p= @place.address
         - unless @place.owned_by(current_user)
           - if @place.public
-            %span.label.label-info.upcase public
-            %p
-            %p This is a public place, no need to make a request.
+            %span.label.label-info.upcase 
+              = t('place.public')
           - else
             %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
               %i.icon-white.icon-lock
-              Make a demand 
+              = t('place.demand')
 
       .span3
-        %h3 Description
+        %h3 
+          = t('description')
         %p= @place.desc
         %p.icon-signal
         %p= @place.wifi
@@ -38,35 +38,42 @@
         %p= @place.transport
         - if @place.music
           %span.icon-music
-          %p Music in the air
+          %p 
+            = t('place.music') 
         - else
           %span.icon-headphones
-          %p This is a quiet place
+          %p 
+            = t('place.quiet')
         - if @place.smoke
           %span.icon-ok-circle
-          %p Smoking is allowed
+          %p 
+            = t('place.smoking')
         - else
           %span.icon-ban-circle
-          %p Smoking is not allowed
+          %p 
+            = t('place.no-smoking')
         - if @place.discussion
           %span.icon-comment
-          %p Discussion is welcome
+          %p 
+            = t('place.discussion')
         - else
           %span.icon-remove-circle
-          %p No blabla please
+          %p 
+            = t('place.blabla')
     - if can? :update, @place 
       %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
       
 %hr
 - if @place.comments.size > 0
-  %h2 Comments
+  %h2 
+    = t('place.comments')
   - for comment in @place.comments
     %h4
       = link_to comment.user.username, profile_path(comment.user.username) 
-      's opinion
     %p= comment.content
     %hr
-%h2 Tell us what you think about this place 
+%h2 
+  = t('place.tell_us')
 = form_for [@place, Comment.new] do |f|
   %p
   %p= f.text_area :content, :rows => 10, class: 'span6'
@@ -74,7 +81,8 @@
 
 
 %hr
-%h2 Near by
+%h2 
+  = t('place.near_by')
 %ul.thumbnails.row-fluid
   - @place.nearbys(0.5, {:units => :km}).each do |place|
     .span2
