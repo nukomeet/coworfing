@@ -63,5 +63,6 @@ class Place
   private
   def become_cow
     self.user.is_cow = true
+    self.user.save
   end
 end

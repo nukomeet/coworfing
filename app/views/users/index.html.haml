@@ -9,6 +9,11 @@
         .caption
           %h5
             = user.name
+            - if user.is_cow
+              = image_tag('http://openclipart.org/image/800px/svg_to_png/169174/1332946695.png', :width => '20px', :height => '20px', :style => "float:left; margin-right: 20px;")
+            - else
+              = image_tag('http://openclipart.org/image/800px/svg_to_png/133591/baby-tux-vache-no-logo.png', :width => '20px', :height => '20px', :style => "float:left; margin-right: 20px;")
+
           %p
             .btn-toolbar
               .btn-group
