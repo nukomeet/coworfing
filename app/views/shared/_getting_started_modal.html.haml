@@ -19,4 +19,8 @@
       %h3{:style => "text-align:left"}
         = t('modal.account?')
       = link_to t('login'), new_user_session_path, class: 'btn btn-info btn-large pull-right'
-    %p &nbsp;
+    %p{:style => "text-align:center;"}
+      &nbsp;
+      = link_to_unless_current "English", locale: "en"
+      |
+      = link_to_unless_current "Français", locale: "fr"
