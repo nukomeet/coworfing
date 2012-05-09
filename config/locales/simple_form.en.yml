@@ -17,16 +17,16 @@ en:
         desc: 'Description'
         wifi: 'WIFI Access Code'
         address_line1: 'Address'
-        public: Public?
-        smoke: Smoke?
-        music: Music?
-        discussion: Discussion? 
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
+        public:  
+        smoke: 
+        music: 
+        discussion:  
+        password: 'Password'
+        user:
+        # new:
+        #  email: 'E-mail'
+        # edit:
+        #  email: 'E-mail'
     hints:
       place:
         name: 'Name should be between 5 to 45 characters long'
