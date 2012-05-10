@@ -237,7 +237,7 @@ fr:
   modal:
     motto: 'Nous mettons en commun nos lieux de travail'
     invite: 'Demander une invitation'
-    description: 'Nous sommes un réseaux de travailleurs indépendants, entrepreneurs et télétravailleurs. Nous mettons en communs nos lieux de travail. Trouvez des lieux pour travailler partout et cessez de travailler seul.' 
+    description: 'Nous sommes télétravailleurs, indépendants, entrepreneurs, chômeurs, étudiants... Nous mettons en communs nos lieux de travail. Travaillez partout et cessez de travailler seul.' 
     account?: 'Déjà inscrit?'
   login: 'Se connecter'
   invite_me: 'Invitez moi!'

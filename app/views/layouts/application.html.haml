@@ -108,13 +108,18 @@
 
     %footer
       %hr
-      = link_to_unless_current "English", locale: "en"
-      |
-      = link_to_unless_current "Français", locale: "fr"
-      .pull-right
-        %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
-        :javascript
-            (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
-        &nbsp;
-        &nbsp;
-        &nbsp;
+      .row
+        .span4
+          = link_to_unless_current "English", locale: "en"
+          | 
+          = link_to_unless_current "Français", locale: "fr"
+        .span10{:style => "text-align:center;"}
+          %a{:href => "mailto:coworfing@gmail.com"}Write to Coworfing's team
+          |
+          %a{:href => "http://www.facebook.com/coworfing"}Find us on Facebook
+          |
+          %a{:href => "http://www.twitter.com/coworfing"}Follow us on Twitter
+        .span4.pull-right
+          %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
+          :javascript
+              (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
