@@ -237,7 +237,7 @@ fr:
   modal:
     motto: 'Nous mettons en commun nos lieux de travail'
     invite: 'Demander une invitation'
-    description: 'Nous sommes un réseaux de travailleurs indépendants, entrepreneurs et télétravailleurs. Nous mettons en communs nos lieux de travail. Trouvez des lieux pour travailler partout et cessez de travailler seul.' 
+    description: 'Nous sommes télétravailleurs, indépendants, entrepreneurs, chômeurs, étudiants... Nous mettons en communs nos lieux de travail. Travaillez partout et cessez de travailler seul.' 
     account?: 'Déjà inscrit?'
   login: 'Se connecter'
   invite_me: 'Invitez moi!'
@@ -248,6 +248,9 @@ fr:
   details: 'En savoir plus'
   home:
     explanation: 'Trouvez un lieu qui vous convient et faites une demande' 
+    worfers: 'Joyeux worfers'
+    places: 'Lieux insolites'
+    requests: 'Demandes de coworking'
   place:
     added_by: 'Ajouté par'
     public: 'Ceci est un lieu public, inutile de faire une demande'
