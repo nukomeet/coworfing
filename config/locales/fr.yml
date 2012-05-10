@@ -248,6 +248,9 @@ fr:
   details: 'En savoir plus'
   home:
     explanation: 'Trouvez un lieu qui vous convient et faites une demande' 
+    worfers: 'Joyeux worfers'
+    places: 'Lieux insolites'
+    requests: 'Demandes de coworking'
   place:
     added_by: 'Ajouté par'
     public: 'Ceci est un lieu public, inutile de faire une demande'
