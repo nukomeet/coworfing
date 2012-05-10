@@ -1,0 +1,16 @@
+= simple_form_for([@place, PlaceRequest.comment], html: { class: 'form-horizontal' }) do |f|
+  = f.error_notification
+
+  .modal-
+    %a.close{href:'#', :'data-dismiss' => 'modal'} x
+    %h3 Make a comment on this place request 
+  .modal-body
+    %fieldset
+      %h3
+        = t('answer_request.comments')
+        = f.input :body, as: :text, input_html: { rows: 4, class: 'span4' }
+
+  .modal-footer
+    .btn-toolbar.pull-right
+      .btn-group
+        = f.button :submit, class: 'button' 
