@@ -18,7 +18,7 @@ class Ability
       can :see, :places
 
       can :update, User, :user_id => user.id 
-      can :show, User
+      can :read, User
 
       can :read, PlaceRequest, booker_id: user.id 
       can :read, PlaceRequest, receiver_id: user.id 
@@ -27,6 +27,7 @@ class Ability
     end
 
     can :create, Demand 
+    can :read, User, public: true
 
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are
