@@ -49,7 +49,13 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
+        format.html {redirect_to @place}
+        if current_user.places.count == 3
+          Notification.become_cow_email(current_user).deliver
+          flash[:notice] = 'MEEEEEEEEEEEH! You just became a Cow. Now you have access private places!'
+        else
+          flash[:notice] =  'Great, your place was successfully created.' 
+        end
         format.json { render json: @place, status: :created, location: @place }
       else
         format.html { render action: "new" }
