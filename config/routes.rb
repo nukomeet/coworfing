@@ -94,4 +94,6 @@ Coworfing::Application.routes.draw do
     # Note: This route will make all actions in every controller accessible via GET requests.
     # match ':controller(/:action(/:id))(.:format)'
   end
+  match '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
+  match '', to: redirect("/#{I18n.default_locale}")
 end
