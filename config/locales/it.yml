@@ -220,7 +220,7 @@ it:
   modal:
     motto: 'Le nostre case sono spazi di coworking'
     invite: 'Chiedere un invito'
-    description: 'Siamo telelavorator, imrenditori, studenti e disoccupati. Condividiamo i nostri luoghi per lavorare insieme. Ricerca luoghi per lavorare e smette di lavorare da solo.' 
+    description: 'Siamo telelavoratori, imprenditori, studenti e disoccupati. Condividiamo i nostri luoghi per lavorare insieme. Ricerca luoghi per lavorare e smette di lavorare da solo.' 
     account?: 'Ha già un profilo?'
   login: 'Login'
   invite_me: 'Me invita'
