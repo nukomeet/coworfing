@@ -12,5 +12,9 @@ class Notification < ActionMailer::Base
   def comment_email(user)
     mail to: user.email, subject: "There is a new comment on your place"
   end
+
+  def become_cow_email(user)
+    mail to: user.email, subject: "Congratulations, you just reached the Cow status!"
+  end
 end
 
