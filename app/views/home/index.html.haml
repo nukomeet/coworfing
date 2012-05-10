@@ -7,21 +7,28 @@
     .stats
       %h1 
         = @user_count 
-        %small Happy worfers
+        %small
+          = t('home.worfers')
       %h1 
         = @place_count 
-        %small Amazing places
+        %small
+          = t('home.places')
       %h1 
         = @place_req_count
-        %small Requests made so far
+        %small
+          =t('home.requests')
   .span7
     %p.shit 
       = t('modal.description')
 
-    %hr
+    %hr.margin
 
-    %h2 Ask for an invitation
-    = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
-      = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...' }
-      = f.submit 'Invite me', class: 'btn btn-large'
+    %h2 
+      .row
+        .span4
+          = t('modal.invite')
+        .span4
+          = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
+            = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...' }
+            = f.submit 'Invite me', class: 'btn btn-danger btn-large'
 
