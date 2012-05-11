@@ -1,8 +1,9 @@
-<p>Hello <%= @resource.email %>!</p>
+<p>Hey hey hey! <%= @resource.email %>!</p>
 
-<p>Someone has invited you to <%= root_url %>, you can accept it through the link below.</p>
+<p>Today is a great day: someone just invited you to <%= root_url %>, you can accept by clicking on "Get started" below.</p>
 
-<p><%= link_to 'Accept invitation', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
-
+<p>You can access to the public places that our selected users have decided to share. After sharing three places, you will also have access to our network of <em>private</em> places...
+<p><%= link_to 'Get started!', accept_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
+<hr/>
 <p>If you don't want to accept the invitation, please ignore this email.<br />
 Your account won't be created until you access the link above and set your password.</p>
