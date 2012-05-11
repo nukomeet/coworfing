@@ -8,6 +8,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.accessible_by(current_ability)
+    @users = User.accessible_by(current_ability).excludes(username: nil)
   end
 end

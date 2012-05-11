@@ -17,7 +17,7 @@
           %p
             .btn-toolbar
               .btn-group
-                = link_to profile_path(user.username), { class: 'btn' } do
+                = link_to profile_path(user.username || 'nil'), { class: 'btn' } do
                   %i.icon-info-sign
                   = t('details')
                   »
