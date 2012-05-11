@@ -1,4 +1,6 @@
 class Users::InvitationsController < Devise::InvitationsController
+  helper_method :after_invite_path_for
+
    def new
      if cannot?( :invite, User )
        raise CanCan::AccessDenied
@@ -28,4 +30,9 @@ class Users::InvitationsController < Devise::InvitationsController
       respond_with_navigational(resource){ render :edit }
     end
   end
+
+  def after_invite_path_for(resource)
+    root_path(locale: 'en')
+  end
+
 end
