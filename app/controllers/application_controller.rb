@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
+
   private
 
   def set_locale
