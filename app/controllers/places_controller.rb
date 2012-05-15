@@ -1,12 +1,15 @@
 class PlacesController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index]
+
+  def submitted
+    render 'places'
+  end
 
   # GET /places
   # GET /places.json
   def index
-    @places = current_user.places
-
+    @places = @places.city(params[:cities])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @places }
