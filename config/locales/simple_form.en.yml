@@ -38,5 +38,7 @@ en:
         photo: 'A picture is worth a thousand words'
       user:
         public: 'Mark this, if you want to publicize your profile to other users'
+        name: 'Enter your full name'
+        username: 'Enter your Coworfing username'
 
 
