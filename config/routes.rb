@@ -25,7 +25,7 @@ Coworfing::Application.routes.draw do
     resources :places do 
       resources :comments
 
-      get 'submitted', on: :collection, as: :submitted_places
+      get 'submitted', on: :collection, as: :submitted
     end
 
     resources :demands
