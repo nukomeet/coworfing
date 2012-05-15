@@ -56,7 +56,7 @@ class User
   index :invitation_token
 
   field :name
-  field :role
+  field :role, default: 'guest'
   field :username
   
   field :bio
@@ -88,6 +88,10 @@ class User
 
   def regular?
     role == "regular"
+  end
+
+  def guest?
+    role == "guest"
   end
   
 end
