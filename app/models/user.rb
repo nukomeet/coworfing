@@ -68,7 +68,7 @@ class User
   field :public, type: Boolean
   field :is_cow, type: Boolean, default: false
 
-  validates_presence_of :name, :email
+  validates_presence_of :email
   validates_uniqueness_of :name, :email, :username, :case_sensitive => false
 
   validates :username, format: { with: /\A\w+\Z/i }, length: { in: 2..12 }, presence: true, uniqueness: true

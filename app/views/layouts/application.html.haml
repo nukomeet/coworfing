@@ -52,14 +52,16 @@
                   = t('navbar.places') 
               %li
                 = link_to people_path do
-                  %i.icon-leaf.icon-white
+                  %i.icon-user.icon-white
                   = t('navbar.people') 
               %li.divider-vertical
               %li
                 = link_to about_path do
+                  %i.icon-heart.icon-white
                   = t('navbar.about_us')
               %li
                 = link_to('http://coworfing.tumblr.com') do
+                  %i.icon-pencil.icon-white
                   = t('navbar.blog')
 
 
@@ -68,6 +70,10 @@
                 %li= link_to t('login'), new_user_session_path
             - else
               %ul.nav.pull-right
+                %li
+                  %a{:href => "mailto:coworfing@gmail.com"}
+                    %i.icon-envelope.icon-white
+                    Bug report
                 %li.dropdown
                   %a.dropdown-toggle{:'data-toggle' => "dropdown"}
                     %i.icon-question-sign.icon-white
@@ -109,23 +115,24 @@
     %footer
       %hr
       .row
-        .span4
-          = link_to_unless_current "English", locale: "en"
+        .span.languages.left
+          = link_to_unless_current image_tag("flags/gb.png"), locale: "en"
           | 
-          = link_to_unless_current "Français", locale: "fr"
+          = link_to_unless_current image_tag("flags/fr.png"), locale: "fr"
           |
-          = link_to_unless_current "Español", locale: "es"
+          = link_to_unless_current image_tag("flags/es.png"), locale: "es"
           |
-          = link_to_unless_current "Português", locale: "pt-BR"
+          = link_to_unless_current image_tag("flags/br.png"), locale: "pt-BR"
           |
-          = link_to_unless_current "Italiano", locale: "it"
-        .span10{:style => "text-align:center;"}
-          %a{:href => "mailto:coworfing@gmail.com"}Write to Coworfing's team
-          |
-          %a{:href => "http://www.facebook.com/coworfing"}Find us on Facebook
-          |
-          %a{:href => "http://www.twitter.com/coworfing"}Follow us on Twitter
-        .span4.pull-right
+          = link_to_unless_current image_tag("flags/it.png"), locale: "it"
+        .span.right
           %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
           :javascript
               (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
+                      
+      .row.center
+        %a{:href => "mailto:coworfing@gmail.com"}Write to Coworfing's team
+        |
+        %a{:href => "http://www.facebook.com/coworfing"}Find us on Facebook
+        |
+        %a{:href => "http://www.twitter.com/coworfing"}Follow us on Twitter

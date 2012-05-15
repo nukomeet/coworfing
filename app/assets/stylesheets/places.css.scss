@@ -19,9 +19,17 @@
 }
 
 .help-block {
+  font-style: italic;
+  font-size: smaller;
+  margin-top: 4px;
+  margin-left: 5px;
   clear: both;
 }
 
 .facets {
   font-size: 18px;
+}
+
+.help-inline {
+  font-style: italic;
 }
