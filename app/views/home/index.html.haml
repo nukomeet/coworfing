@@ -18,17 +18,28 @@
         %small
           =t('home.requests')
   .span7
-    %p.shit 
-      = t('modal.description')
+    .shit 
+      %h2
+        = t('description.title1')
+        %p &nbsp;
+      %p
+        = t('description.par1')
+        %p &nbsp;
+      %h2
+        = t('description.title2')
+        %p &nbsp;
+      %p
+        = t('description.par2')
 
     %hr.margin
 
     %h2 
-      .row
-        .span4
-          = t('modal.invite')
-        .span4
-          = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
-            = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...' }
-            = f.submit 'Invite me', class: 'btn btn-danger btn-large'
+      = t('description.title3')
+    %h2
+      = t('description.invite')
+      %p
+        &nbsp;
+        = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
+          = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...' }
+          = f.submit 'Invite me', class: 'btn btn-danger btn-large' 
 
