@@ -7,7 +7,6 @@ Coworfing::Application.routes.draw do
     match 'home/location' => 'home#location'
 
     match 'map' => 'home#map', via: :get, as: :map
-    match 'search/places' => 'home#places', via: [:get, :post], as: :list
 
     match 'profile/:username' => 'users#show', via: :get, as: :profile
     match 'people' => 'users#index', via: :get, as: :people
@@ -25,6 +24,8 @@ Coworfing::Application.routes.draw do
 
     resources :places do 
       resources :comments
+
+      get 'submitted', on: :collection, as: :submitted_places
     end
 
     resources :demands
