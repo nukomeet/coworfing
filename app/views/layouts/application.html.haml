@@ -68,6 +68,8 @@
                 %li= link_to t('login'), new_user_session_path
             - else
               %ul.nav.pull-right
+                %li
+                  %a{:href => "mailto:coworfing@gmail.com"}Bug report
                 %li.dropdown
                   %a.dropdown-toggle{:'data-toggle' => "dropdown"}
                     %i.icon-question-sign.icon-white
