@@ -47,7 +47,7 @@
                   %i.icon-pushpin.icon-white
                   = t('navbar.map') 
               %li
-                = link_to list_path do
+                = link_to places_path do
                   %i.icon-th.icon-white
                   = t('navbar.places') 
               %li
@@ -91,7 +91,7 @@
                     %b.caret
                   %ul.dropdown-menu
                     %li
-                      = link_to places_path do
+                      = link_to submitted_places_path do
                         %i.icon-home.icon-white
                         = t('navbar.your_places') 
                     %li= link_to t('navbar.your_profile'), edit_user_registration_path
