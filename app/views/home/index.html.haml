@@ -3,8 +3,32 @@
     %h1.centered.upcase Coworking Everywhere 
     %hr.margin
 .row-fluid.home
-  .span5
-    .stats
+  .span6
+    .shit 
+      %h2
+        = t('description.title1')
+        %p &nbsp;
+      %p
+        %strong= t('description.par1')
+        = t('description.par2')
+        %strong= t('description.par3')
+        = t('description.par4')
+      %p
+        %strong= t('description.title2')
+        = t('description.par5')
+
+    %hr.margin
+
+    %h2
+      = t('description.invite')
+      %p
+        &nbsp;
+        = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
+          = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...', :style => "float:left;" }
+          = f.submit 'Invite me', class: 'btn btn-danger btn-large' 
+
+  .span5.offset2
+    .stats.well{:style => " text-align: center;"}
       %h1 
         = @user_count 
         %small
@@ -17,29 +41,3 @@
         = @place_req_count
         %small
           =t('home.requests')
-  .span7
-    .shit 
-      %h2
-        = t('description.title1')
-        %p &nbsp;
-      %p
-        = t('description.par1')
-        %p &nbsp;
-      %h2
-        = t('description.title2')
-        %p &nbsp;
-      %p
-        = t('description.par2')
-
-    %hr.margin
-
-    %h2 
-      = t('description.title3')
-    %h2
-      = t('description.invite')
-      %p
-        &nbsp;
-        = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
-          = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...' }
-          = f.submit 'Invite me', class: 'btn btn-danger btn-large' 
-

@@ -236,9 +236,17 @@ fr:
     log_out: 'Se déconnecter'
   modal:
     motto: 'Nous mettons en commun nos lieux de travail'
-    invite: 'Demander une invitation'
-    description: 'Nous sommes télétravailleurs, indépendants, entrepreneurs, chômeurs, étudiants... Nous mettons en communs nos lieux de travail. Travaillez partout et cessez de travailler seul.' 
     account?: 'Déjà inscrit?'
+  description:
+    title1: 'Pas de bureau?' 
+    par1: 'Ceci est une opportunité.'
+    par2: 'Pour nous, les bureaux appartiennent au passé. Nous sommes des travailleurs nomades (freelances, entrepreneurs, étudiants, en télétravail), ce qui nous donne la liberté de travailler où nous le souhaitons.' 
+    par3: 'Nous identifions et partageons les meilleurs lieux pour travailler.' 
+    par4: 'Bars, espaces de coworking, bibliothèques, aéroports, parcs, et même chez nous.'
+    title2: 'A côté de qui aimeriez-vous travailler?'
+    par5: 'Nous nous rencontrons pour travailler ensemble.'
+    title3: 'Free to work where you want, with the people you want ?' 
+    invite: 'Rejoins notre tribu de joyeux nomades'
   login: 'Se connecter'
   invite_me: 'Invitez moi!'
   explain: 'Je ne comprend pas'
@@ -249,7 +257,7 @@ fr:
   home:
     explanation: 'Trouvez un lieu qui vous convient et faites une demande' 
     worfers: 'Joyeux worfers'
-    places: 'Lieux insolites'
+    places: 'Lieux adaptés'
     requests: 'Demandes de coworking'
   place:
     added_by: 'Ajouté par'
