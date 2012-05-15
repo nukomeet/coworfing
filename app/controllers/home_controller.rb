@@ -19,13 +19,8 @@ class HomeController < ApplicationController
 
   def places
     logger.info "Query was #{params[:cities]}"
-    @places = []
-    authorize! :see, :places
-    if current_user.is_cow 
-      @places = Place.all.city(params[:cities])
-    else
-      @places = Place.where(public:true).city(params[:cities])
-    end
+
+    @places = Place.all.city(params[:cities])
 
     respond_to do |format|
       format.html 
