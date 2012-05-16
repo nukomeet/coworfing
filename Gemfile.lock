@@ -155,6 +155,7 @@ GEM
       rubyzip
     highline (1.6.11)
     hike (1.2.1)
+    hominid (3.0.4)
     httparty (0.8.3)
       multi_json (~> 1.0)
       multi_xml
@@ -323,6 +324,7 @@ DEPENDENCIES
   haml (>= 3.1.4)
   haml-rails (>= 0.3.4)
   heroku
+  hominid
   jquery-rails
   jquery-ui-themes
   launchy (>= 2.0.5)
