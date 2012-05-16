@@ -1,5 +1,5 @@
 class DemandsController < ApplicationController
-  load_and_authorize_resource
+ load_and_authorize_resource
   before_filter :authenticate_user!, except: [:create]
 
   def index
@@ -7,7 +7,7 @@ class DemandsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @places }
+      format.json { render json: @demands }
     end
   end
 
