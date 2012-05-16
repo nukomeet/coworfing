@@ -14,7 +14,7 @@
 
     %hr
 
-%ul.row-fluid.thumbnails.masonry
+%ul.row-fluid.thumbnails
   - @places.each do |place|
     %li.span3.brick
       .thumbnail
@@ -50,3 +50,6 @@
                   %i.icon-info-sign
                   = t('details')
                   »
+.row-fluid
+  .span12
+    = paginate @places, theme: 'bootstrap'

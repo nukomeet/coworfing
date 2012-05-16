@@ -5,14 +5,14 @@
 
     %hr
 
-%ul.row-fluid.thumbnails
+%ul.row-fluid.span14.thumbnails
   - @places.each do |place|
-    %li.span4
+    %li.span3
       .thumbnail
         - if place.photo?
-          = image_tag(place.photo_url)
+          = image_tag(place.photo_url(:medium))
         - else
-          %img{src: 'http://placehold.it/420x340'}
+          %img{src: 'http://placehold.it/320x240'}
         .caption
           %h5= place.name
           %p= place.desc
@@ -24,3 +24,5 @@
               .btn-group
                 = link_to 'Edit', edit_place_path(place), { class: 'btn' }
                 = link_to 'Destroy', place, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger'
+
+  = paginate @places
