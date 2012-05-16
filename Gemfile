@@ -51,3 +51,4 @@ gem 'fog'
 gem "symbolize", :require => "symbolize/mongoid"
 gem 'chosen-rails'
 gem 'kaminari'
+gem 'bootstrap_kaminari', :git => 'git://github.com/dleavitt/bootstrap_kaminari.git'
