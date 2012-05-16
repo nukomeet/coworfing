@@ -64,20 +64,21 @@
       %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
       
 %hr
-- if @place.comments.size > 0
+- if @place.comments.size > 0 
   %h2 
     = t('place.comments')
   - for comment in @place.comments
     %h4
       = link_to comment.user.username, profile_path(comment.user.username) 
     %p= comment.content
-    %hr
-%h2 
-  = t('place.tell_us')
-= form_for [@place, Comment.new] do |f|
-  %p
-  %p= f.text_area :content, :rows => 10, class: 'span6'
-  = f.button :submit, class: 'btn-success btn-large'
+- if user_signed_in?
+  %hr
+  %h2 
+    = t('place.tell_us')
+  = form_for [@place, Comment.new] do |f|
+    %p
+    %p= f.text_area :content, :rows => 10, class: 'span6'
+    = f.button :submit, class: 'btn-success btn-large'
 
 
 %hr
