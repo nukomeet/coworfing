@@ -166,6 +166,10 @@ GEM
     jquery-ui-themes (0.0.5)
       httparty
     json (1.7.1)
+    kaminari (0.13.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      railties (>= 3.0.0)
     launchy (2.1.0)
       addressable (~> 2.2.6)
     libv8 (3.3.10.4)
@@ -325,6 +329,7 @@ DEPENDENCIES
   heroku
   jquery-rails
   jquery-ui-themes
+  kaminari
   launchy (>= 2.0.5)
   machinist
   mini_magick
