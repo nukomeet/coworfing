@@ -17,16 +17,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def places
-    logger.info "Query was #{params[:cities]}"
-
-    @places = Place.all.city(params[:cities])
-
-    respond_to do |format|
-      format.html 
-    end
-  end
-
   def location
     @location = { 'city' => request.location.city, 'country' => request.location.country }
     respond_to do |format|

@@ -26,6 +26,7 @@ Coworfing::Application.routes.draw do
       resources :comments
 
       get 'submitted', on: :collection, as: :submitted
+      get 'page/:page', action: :index, on: :collection
     end
 
     resources :demands
