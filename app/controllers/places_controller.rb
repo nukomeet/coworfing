@@ -1,6 +1,6 @@
 class PlacesController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate_user!, except: [:index]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   def submitted
     @places = @places.order(:created_at).page params[:page] 
@@ -20,8 +20,6 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
-    @place = Place.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }
