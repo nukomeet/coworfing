@@ -90,9 +90,10 @@
         - if place.photo?
           = image_tag(place.photo_url(:thumb))
         - else
-          %img{src: 'http://placehold.it/300x200'}
+          %img{src: 'http://placehold.it/240x180'}
         .caption
-          %h5= place.name
+          %h5
+            = link_to place.name, place_path(place)
           %p= place.address
 
 = render partial: 'shared/demand_modal' 
