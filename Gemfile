@@ -50,3 +50,4 @@ gem 'heroku'
 gem 'fog'
 gem "symbolize", :require => "symbolize/mongoid"
 gem 'chosen-rails'
+gem 'hominid'
