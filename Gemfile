@@ -1,12 +1,17 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 gem 'therubyracer'
-gem 'foreman'
-gem 'thin'
-gem 'capistrano'
+
+gem 'foreman', group: :development
+gem 'thin', group: :development
+gem 'unicorn', group: :production
+
 gem 'simple_form'
 gem 'country_select'
 gem 'geocoder'
+
+gem 'capistrano'
+gem 'rvm-capistrano'
 
 
 group :assets do
@@ -53,3 +58,4 @@ gem 'chosen-rails'
 gem 'kaminari'
 gem 'bootstrap_kaminari', :git => 'git://github.com/dleavitt/bootstrap_kaminari.git'
 gem 'hominid'
+gem 'hipchat'
