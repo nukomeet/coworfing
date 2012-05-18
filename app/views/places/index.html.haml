@@ -1,7 +1,7 @@
 .row-fluid
   .span12
     .notification
-      - if current_user.is_cow and user_signed_in? 
+      - if user_signed_in? && current_user.is_cow
         %h3
           = image_tag('http://openclipart.org/image/800px/svg_to_png/169174/1332946695.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
           You are a Cow 
