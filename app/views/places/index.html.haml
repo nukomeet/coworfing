@@ -1,5 +1,5 @@
 .row-fluid
-  .span12
+  .span4
     .notification
       - if user_signed_in? && current_user.is_cow
         %h3
@@ -12,8 +12,11 @@
         %h3
           = image_tag('http://openclipart.org/image/800px/svg_to_png/133591/baby-tux-vache-no-logo.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
           You are a Veal 
-          Veal users can only access to public places, to become a Cow User you need to add three places. 
-    %p.list-place.centered{:style => "margin-right:650px; margin-top: 20px;"}
+          %p
+            Veal users can only access to public places. 
+            Add three places and you will gain access to private places! 
+  .span6         
+    %p.list-place{:style => "margin-left:50px; margin-top: 30px;"}
       = link_to new_place_path, { class: 'btn btn-danger btn-large' } do
         %i.icon-map-marker.icon-white
         &nbsp;
