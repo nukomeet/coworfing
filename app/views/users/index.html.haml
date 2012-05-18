@@ -24,7 +24,7 @@
           = image_tag('http://cambelt.co/icon/avatar/320x240')
         .caption
           %h5
-            = link_to truncate(user.name, :length => 18),  profile_path(user || 'nil')
+            = link_to truncate(user.name, :length => 18),  profile_path(user.username || 'nil')
             - if user.is_cow
               = image_tag('http://openclipart.org/image/800px/svg_to_png/169174/1332946695.png', :width => '20px', :height => '20px', :style => "float:left; margin-right: 20px;")
             - else
