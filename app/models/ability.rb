@@ -28,6 +28,7 @@ class Ability
     if user.guest?
       can :create, Demand 
       can :read, Place, public: true
+      can :read, User, public: true
     end
 
     # The first argument to `can` is the action you are giving the user permission to do.
