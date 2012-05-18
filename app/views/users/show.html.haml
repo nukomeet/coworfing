@@ -25,6 +25,9 @@
         %tr
           %th Twitter 
           %td= link_to "@#{@user.twitter}", "http://twitter.com/#{@user.twitter}"
+          %a.twitter-follow-button{"data-show-count" => "false", "data-size" => "large", :href => "https://twitter.com/#{@user.twitter}"} Follow 
+          :javascript
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     %hr      
     - if @user.is_cow
       %h3
