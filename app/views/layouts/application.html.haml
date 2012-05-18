@@ -42,10 +42,11 @@
           = link_to 'Coworfing', root_url, class: 'brand'
           .nav-collapse
             %ul.nav
-              %li
-                = link_to map_path do
-                  %i.icon-pushpin.icon-white
-                  = t('navbar.map') 
+              -if user_signed_in?
+                %li
+                  = link_to map_path do
+                    %i.icon-pushpin.icon-white
+                    = t('navbar.map') 
               %li
                 = link_to places_path do
                   %i.icon-th.icon-white
