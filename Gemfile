@@ -3,8 +3,8 @@ gem 'rails', '3.2.1'
 gem 'therubyracer'
 
 gem 'foreman', group: :development
-gem 'thin', group: :development
-gem 'unicorn', group: :production
+gem 'thin'#, group: :development
+#gem 'unicorn', group: :production
 
 gem 'simple_form'
 gem 'country_select'
