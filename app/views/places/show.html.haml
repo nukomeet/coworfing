@@ -16,6 +16,8 @@
           %img{src: 'http://placehold.it/240x160&text=Add+Your+Photo'}
         %p
         %p
+          / Foursquare button
+          %a.fourSq-widget{"data-variant" => "wide", :href => "https://foursquare.com/intent/venue.html"} Save to foursquare
         %p
         %p.icon-map-marker
         %p= @place.address
@@ -98,3 +100,14 @@
           %p= place.address
 
 = render partial: 'shared/demand_modal' 
+/ Script for foursquare button
+:javascript
+  (function() {
+    window.___fourSq = {};
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.src = 'http://platform.foursquare.com/js/widgets.js';
+    s.async = true;
+    var ph = document.getElementsByTagName('script')[0];
+    ph.parentNode.insertBefore(s, ph);
+  })();
