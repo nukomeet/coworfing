@@ -1,18 +1,34 @@
 .row-fluid
-  .span12
-    %p.list-place.centered
-      = link_to new_place_path, { class: 'btn btn-info btn-large' } do
+  .span4
+    .notification
+      - if user_signed_in? && current_user.is_cow
+        %h3
+          = image_tag('http://openclipart.org/image/800px/svg_to_png/169174/1332946695.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
+          You are a Cow 
+          %p 
+            You can see private places and ask to cowork there. 
+            Add more places to increase your karma!
+      - else
+        %h3
+          = image_tag('http://openclipart.org/image/800px/svg_to_png/133591/baby-tux-vache-no-logo.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
+          You are a Veal 
+          %p
+            Veal users can only access to public places. 
+            Add three places and you will gain access to private places! 
+  .span6         
+    %p.list-place{:style => "margin-left:50px; margin-top: 30px;"}
+      = link_to new_place_path, { class: 'btn btn-danger btn-large' } do
         %i.icon-map-marker.icon-white
         &nbsp;
         = t('add')
 
-    %hr
+%hr
 
-    = form_tag places_path, method: :get, class: 'form-inline'  do
-      = select_tag "cities", options_for_select(Place.all.distinct(:city)), multiple: true, class: 'span6 chzn-select', :style => "float:left;"
-      = submit_tag t('search'), class: 'btn btn-warning', :style => "margin-top : -25px;"
+= form_tag places_path, method: :get, class: 'form-inline'  do
+  = select_tag "cities", options_for_select(Place.all.distinct(:city)), multiple: true, class: 'span6 chzn-select', :style => "float:left;"
+  = submit_tag t('search'), class: 'btn btn-danger', :style => "margin-top : -25px;"
 
-    %hr
+%hr
 
 %ul.row-fluid.thumbnails
   - @places.each do |place|
