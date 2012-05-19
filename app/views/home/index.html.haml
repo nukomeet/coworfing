@@ -28,12 +28,6 @@
           = f.submit 'Invite me', class: 'btn btn-danger btn-large' 
         &nbsp;
 
-      %p
-        &nbsp;
-        or just browse the public places
-        = form_tag places_path, method: :get, class: 'form-inline'  do
-          = select_tag "cities", options_for_select(Place.all.distinct(:city)), multiple: true, class: 'span5 chzn-select', :style => "float:left;"
-          = submit_tag t('search'), class: 'btn btn-danger', :style => "margin-top : -19px; margin-left: -6px;"
   .span5.offset2
     .stats.well{:style => " text-align: center;"}
       %h1 
