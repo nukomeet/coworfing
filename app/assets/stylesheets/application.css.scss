@@ -23,6 +23,13 @@
 body {
   padding-top: 90px; /* 60px to make the container go all the way to the bottom of the topbar */
   background-color: #EFEFEF;
+  p {
+    color: #625E5E;
+  }
+  h2 {
+    color: #625E5E;
+  }
+
 }
 
 hr {
@@ -86,16 +93,20 @@ margin-left: 0px; margin-bottom: 0; }
 
 
 .navbar .nav > li > a {
-  color: #EFEFEF;
   font-size: 1.2em;
+
 }
 
-.navbar .brand {
-  color: #4DBCE9;
-  font-family: 'Lobster';
-  letter-spacing: 2px;
-  
+.navbar .nav > li >  a:hover{
+  color: black;
 }
+
+
+.navbar .brand {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
 
 .languages {
   padding-left: 20px;
