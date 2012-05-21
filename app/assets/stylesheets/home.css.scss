@@ -64,18 +64,21 @@
   font-size: 22px;
   font-weight: 300;
   line-height: 28px; 
+  p {
+  letter-spacing: 1px;
+}
 }
 
 form.huge {
   input[type=text] {
     font-size: 22px;
-    padding: 12px;
+    padding: 21px;
+    border-radius: 5px;
   }
 
 }
 
 .stats {
-  margin-left: 16px;
   h1 {
     font-size: 64px;
     margin-bottom: 24px;
