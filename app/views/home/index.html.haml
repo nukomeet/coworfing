@@ -1,13 +1,29 @@
 .page-header
-  .subhead.jumbotron
-    %h1.centered.upcase Coworking Everywhere 
-    %hr.margin
 .row-fluid.home
-  .span6
-    .shit 
+  .span1
+  .span4.video
+    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/C6c2su5_v6I", :width => "472"}
+    .stats.well{:style => "text-align:center; margin-top: 12px;"}
+      %h2 
+        = @user_count 
+        %small
+          = t('home.worfers')
+      %h2 
+        = @place_count 
+        %small
+          = t('home.places')
+      %h2 
+        = @place_req_count
+        %small
+          =t('home.requests')
+
+
+
+  .span5{:style => "margin-left: 100px;"}
+    %hr{:style => "margin-top: -1px;"}
+    .shit{:style => "text-align: justify"} 
       %h2
         = t('description.title1')
-        %p &nbsp;
       %p
         %strong= t('description.par1')
         = t('description.par2')
@@ -16,29 +32,13 @@
       %p
         %strong= t('description.title2')
         = t('description.par5')
-
-    %hr.margin
-
+      %p &nbsp;  
+    %hr
     %h2
       = t('description.invite')
-      %p
-        &nbsp;
-        = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
-          = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...', :style => "float:left;" }
-          = f.submit 'Invite me', class: 'btn btn-danger btn-large' 
-        &nbsp;
-
-  .span5.offset2
-    .stats.well{:style => " text-align: center;"}
-      %h1 
-        = @user_count 
-        %small
-          = t('home.worfers')
-      %h1 
-        = @place_count 
-        %small
-          = t('home.places')
-      %h1 
-        = @place_req_count
-        %small
-          =t('home.requests')
+    %p
+      &nbsp;
+      = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
+        = f.input :email, label: false, input_html: { class: 'span6', placeholder: 'Enter your email address...', :style => "float:left;" }
+        = f.submit 'Invite me', class: 'btn btn-danger btn-large' 
+      &nbsp;
