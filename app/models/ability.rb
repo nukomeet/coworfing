@@ -23,6 +23,8 @@ class Ability
       can :read, PlaceRequest, receiver_id: user.id 
       can :update, PlaceRequest, status: :pending, receiver_id: user.id
       can :create, PlaceRequest 
+
+      can :see, :places
     end
 
     if user.guest?
