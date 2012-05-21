@@ -1,7 +1,8 @@
 !!!
 %html
   %head
-    %title Coworfing 
+    %h1
+      %title Coworfing 
     %meta{:charset => "utf-8"}
     %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
@@ -126,7 +127,7 @@
           = link_to_unless_current image_tag("flags/br.png"), locale: "pt-BR"
           |
           = link_to_unless_current image_tag("flags/it.png"), locale: "it"
-        .span.right
+        .span.pull-right
           %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
           :javascript
               (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
