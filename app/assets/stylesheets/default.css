@@ -1,0 +1,12 @@
+body {
+  background: #FCFCFC url("background.png") top left repeat-x;
+  padding: 40px 0 0;
+  border-top: 3px solid #DDD;
+
+}
+
+.navbar .navbar-inner{
+  background: transparent;
+  box-shadow: none;
+  filter: none;
+}
