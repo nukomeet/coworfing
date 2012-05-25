@@ -37,9 +37,9 @@
           }(document, 'script', 'facebook-jssdk'));
 
   %body{class: "#{params[:controller]}_#{params[:action]}"}
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container-fluid
+    .container
+      .navbar
+        .navbar-inner
           = link_to 'Coworfing', root_url, class: 'brand'
           .nav-collapse
             %ul.nav
@@ -55,16 +55,7 @@
               %li
                 = link_to people_path do
                   %i.icon-user.icon-white
-                  = t('navbar.people') 
-              %li.divider-vertical
-              %li
-                = link_to about_path do
-                  %i.icon-heart.icon-white
-                  = t('navbar.about_us')
-              %li
-                = link_to('http://coworfing.tumblr.com') do
-                  %i.icon-pencil.icon-white
-                  = t('navbar.blog')
+                  = t('navbar.people')
 
 
             - unless user_signed_in?
@@ -72,10 +63,6 @@
                 %li= link_to t('login'), new_user_session_path
             - else
               %ul.nav.pull-right
-                %li
-                  %a{:href => "https://docs.google.com/spreadsheet/viewform?formkey=dFlnNkJkOEVvOVR1N2RWaGtUaGM3RUE6MQ"}
-                    %i.icon-envelope.icon-white
-                    Bug report
                 %li.dropdown
                   %a.dropdown-toggle{:'data-toggle' => "dropdown"}
                     %i.icon-question-sign.icon-white
@@ -89,8 +76,7 @@
                     %li
                       = link_to sent_place_requests_path do
                         %i.icon-share.icon-white
-                        = t('navbar.sent') 
-                %li.divider-vertical
+                        = t('navbar.sent')
                 %li.dropdown
                   %a.dropdown-toggle{:'data-toggle' => "dropdown"}
                     %i.icon-user.icon-white
@@ -138,3 +124,9 @@
         %a{:href => "http://www.facebook.com/coworfing"}Find us on Facebook
         |
         %a{:href => "http://www.twitter.com/coworfing"}Follow us on Twitter
+        |
+        = link_to t('navbar.about_us'), about_path
+        |
+        = link_to t('navbar.blog'), 'http://coworfing.tumblr.com'
+        |
+        %a{:href => "https://docs.google.com/spreadsheet/viewform?formkey=dFlnNkJkOEVvOVR1N2RWaGtUaGM3RUE6MQ"}Bug report
