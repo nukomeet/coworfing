@@ -1,42 +1,28 @@
-.page-header
-.row-fluid.home
-  .span1
-  .span4.video
-    %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/C6c2su5_v6I", :width => "472"}
-    .stats.well{:style => "text-align:center; margin-top: 12px;"}
-      %h2 
-        = @user_count 
-        %small
-          = t('home.worfers')
-      %h2 
-        = @place_count 
-        %small
-          = t('home.places')
-      %h2 
-        = @place_req_count
-        %small
-          =t('home.requests')
-
-
-
-  .span5{:style => "margin-left: 100px;"}
-    %hr{:style => "margin-top: -1px;"}
-    .shit{:style => "text-align: justify"} 
-      %h2
-        = t('description.title1')
-      %p 
-        %p &nbsp;
+.row.home
+  %h1.callout=raw t('description.title1')
+  %h3.hand.head  
+    = @user_count 
+    = "#{t('home.worfers')}. "
+    = @place_count 
+    = "#{t('home.places')}. "
+    = @place_req_count
+    = "#{t('home.requests')}. "
+  
+  #hero
+    #video.span6
+      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/C6c2su5_v6I", :width => "472"}
+          
+    #search.span6
+      %h3
+        = t('description.invite')
+      %p
         = t('description.par1')
         %strong= t('description.par2')
         = t('description.par3')
         %strong= t('description.par4')
-      %p &nbsp;  
-    %hr
-    %h2
-      = t('description.invite')
-    %p
-      &nbsp;
-      = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
-        = f.input :email, label: false, input_html: { class: 'span6', placeholder: 'Enter your email address...', :style => "float:left;" }
-        = f.submit 'Invite me', class: 'btn btn-danger btn-large' 
-      &nbsp;
+      = form_for Demand.new do |f|
+        %fieldset
+          .controls
+            .input-append
+              = f.text_field :email, {class: "span4 large", placeholder: 'Enter your email address...'}
+              = f.submit 'Invite me', class: 'btn btn-success btn-large'

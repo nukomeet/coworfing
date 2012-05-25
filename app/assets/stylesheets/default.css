@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Delius Swash Caps';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Delius Swash Caps'), local('DeliusSwashCaps-Regular'), url('http://themes.googleusercontent.com/static/fonts/deliusswashcaps/v5/uXyrEUnoWApxIOICunRq7-HbywbERJ_YcOpO6Co4fHY.woff') format('woff');
+}
+
 body {
   background: #FCFCFC url("background.png") top left repeat-x;
   padding: 40px 0 0;
@@ -9,4 +16,78 @@ body {
   background: transparent;
   box-shadow: none;
   filter: none;
+}
+
+h1.callout{
+  text-align: center;
+  /*font-size: 36px;*/
+  font-size: 48px;
+  line-height: 56px;
+  margin: 15px 0;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+h3{
+  text-align: center;
+  font-size: 32px;
+  line-height: 40px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  margin: 0 0 15px;
+}
+
+h3.hand{
+  font-family: 'Delius Swash Caps', sans-serif;
+  font-weight: 400;
+  color: #4FB6E9;
+  font-size: 24px;
+}
+
+#search{
+  text-align:center;
+}
+
+#search h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+#search h2{
+  text-align: center;
+  line-height: 10px;
+}
+
+#search h2 a:link {
+  color: #4FB6E9;
+}
+
+#search h2 a {
+  font-weight: normal;
+  font-size: 0.6em;
+  color: #4FB6E9;
+  text-decoration: none;
+}
+
+#hero{
+  float:left;
+  margin: 30px 0 0;
+}
+
+#search form{
+  margin: 50px 0 0 0;
+  text-align: left;
+  margin-left: 28px;
+}
+
+#search input.large {
+  padding: 10px 14px 12px 14px;
+  font-size: 17px;
+  line-height: 24px;
+}
+
+#search btn-large {
+  font-weight: bold;
 }
