@@ -12,10 +12,13 @@ body {
 
 }
 
+.navbar .navbar-inner{}
+
 .navbar .navbar-inner{
   background: transparent;
   box-shadow: none;
   filter: none;
+  border-top: none;
 }
 
 h1.callout{

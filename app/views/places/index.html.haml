@@ -30,42 +30,39 @@
 
 %hr
 
-%ul.row-fluid.thumbnails
+%ul.span14.thumbnails
   - @places.each do |place|
-    %li.span3.brick
+    %li.span3
       .thumbnail
         - if place.photo?
-          = image_tag(place.photo_url(:medium))
+          = link_to image_tag(place.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
         - else
-          = image_tag('home.jpg')
+          = link_to image_tag('home.jpg'), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
         .caption
           %h5
-            = place.name
+            = link_to truncate(place.name, length: 20), place
             - if place.public
-              %span.label.label-info.pull-right.upcase public
+              %span.label.label-info.pull-right.upcase 
+                public
             - else
-              %span.label.label-warning.pull-right.upcase private
-          %p= truncate(place.desc, length: 30)
-          .facets
-            - if place.music
-              %span.icon-music
-            - else
-              %span.icon-headphones
-            - if place.smoke
-              %span.icon-ok-circle
-            - else
-              %span.icon-ban-circle
-            - if place.discussion
-              %span.icon-comment
-            - else
-              %span.icon-remove-circle
-          %p
-            .btn-toolbar
-              .btn-group
-                = link_to place, { class: 'btn' } do
-                  %i.icon-info-sign
-                  = t('details')
-                  »
-.row-fluid
+              %span.label.label-warning.pull-right.upcase 
+                private
+          .place_row
+            = truncate(place.desc, length: 20)
+            .facets.pull-right
+              - if place.music
+                %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
+              - else
+                %span.icon-headphones
+              - if place.smoke
+                %span.icon-ok-circle
+              - else
+                %span.icon-ban-circle
+              - if place.discussion
+                %span.icon-comment
+              - else
+                %span.icon-remove-circle
+          
+.row
   .span12
     = paginate @places, theme: 'bootstrap'

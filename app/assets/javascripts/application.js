@@ -18,5 +18,7 @@
 //= require jquery-ui-timepicker-addon
 //= require jquery.masonry.min
 //= require chosen-jquery
+//= require bootstrap-tooltip
+//= require bootstrap-popover
 //= require_tree .
 

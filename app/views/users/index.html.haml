@@ -1,4 +1,4 @@
-%ul.fluid.span14.thumbnails
+%ul.span14.thumbnails
   - @featured.each do |user|
     %li.span3
       .thumbnail
@@ -14,14 +14,14 @@
             - else
               = image_tag('http://openclipart.org/image/800px/svg_to_png/133591/baby-tux-vache-no-logo.png', :width => '20px', :height => '20px', :style => "float:left; margin-right: 20px;")
               
-%ul.fluid.span14.thumbnails
+%ul.span14.thumbnails
   - @users.each do |user|
     %li.span3
       .thumbnail
         - if user.photo?
-          = image_tag(user.photo_url(:medium))
+          = link_to image_tag(user.photo_url(:medium)), profile_path(user.username || 'nil')
         - else
-          = image_tag('http://cambelt.co/icon/avatar/320x240')
+          = link_to image_tag('http://cambelt.co/icon/avatar/320x240'), profile_path(user.username || 'nil')
         .caption
           %h5
             = link_to truncate(user.name, :length => 18),  profile_path(user.username || 'nil')

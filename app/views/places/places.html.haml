@@ -1,11 +1,11 @@
-.row-fluid
+.row
   .span12
     %p.list-place.centered
       = link_to ' Add A Place ', new_place_path, { class: 'btn btn-info btn-large' } 
 
     %hr
 
-%ul.row-fluid.span14.thumbnails
+%ul.row.span14.thumbnails
   - @places.each do |place|
     %li.span3
       .thumbnail
