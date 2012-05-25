@@ -94,7 +94,7 @@
                     %li= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete
 
 
-    #container.container-fluid
+    #container.container
       = render :partial => "shared/flash_messages", :locals => {:flash => flash}
 
       #main{:role => "main"}
