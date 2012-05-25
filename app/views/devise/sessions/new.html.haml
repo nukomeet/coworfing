@@ -17,6 +17,9 @@
   %hr
     %h3{:style => "float:left;"} 
       Not registered yet? Ask for an invite 
-    = simple_form_for(Demand.new, html: { class: 'huge form-inline' }) do |f|
-      = f.input :email, label: false, input_html: { class: 'span5', placeholder: 'Enter your email address...', :style => "float:left; margin: 0px 0px 5px 10px;" }
-      = f.submit 'Invite me', class: 'btn btn-danger', :style => "margin: -94px 0px 0px 700px;" 
+    = form_for Demand.new do |f|
+      %fieldset
+        .controls
+          .input-append
+            = f.text_field :email, {class: "span4", placeholder: 'Enter your email address...'}
+            = f.submit 'Invite me', class: 'btn btn-success'
