@@ -4,7 +4,7 @@
     = t('place.added_by')
     = link_to @place.user.username, profile_path(@place.user.username) 
 
-.row-fluid
+.row
   .span5
     = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.coordinates[1]}%2C#{@place.coordinates[0]}"
   .span7
@@ -86,7 +86,7 @@
 %hr
 %h2 
   = t('place.near_by')
-%ul.thumbnails.row-fluid
+%ul.thumbnails.row
   - @place.nearbys(0.5, {:units => :km}).each do |place|
     .span2
       .thumbnail
