@@ -225,7 +225,7 @@ en:
     invite: 'Ask for an invitation'
     account?: 'Already have an account?'
   description:
-    title1: 'Find the best places to work' 
+    title1: 'Find the best places to <strong>work</strong>.' 
     par1: 'As nomads - freelancers, entrepreneurs, students and teleworkers -' 
     par2: 'we share the places where we like to work:' 
     par3: 'Cafés, bars, coworking spaces, librairies, airports, parks,' 
