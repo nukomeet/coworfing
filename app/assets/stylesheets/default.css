@@ -51,7 +51,7 @@ h3.hand{
   text-align:center;
 }
 
-#search h3 {
+#search h3, .notification h3 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   font-size: 24px;
@@ -93,4 +93,28 @@ h3.hand{
 
 #search btn-large {
   font-weight: bold;
+}
+
+.form-actions {
+  background-color: inherit;
+  border-top: none;
+}
+
+.alert .close {
+  right: 40px;
+}
+
+.alert-block {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.graded {
+  padding-bottom: 100px;
+  background: url("graded2.png") bottom center repeat-x;
+}
+
+.center{
+  text-align: center;
 }

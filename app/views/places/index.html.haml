@@ -1,23 +1,27 @@
-.row-fluid
-  .span4
+.row
+  .span7
     .notification
-      - if user_signed_in? && current_user.is_cow
-        %h3
-          = image_tag('http://openclipart.org/image/800px/svg_to_png/169174/1332946695.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
-          You are a Cow 
-          %p 
+      - if user_signed_in? && current_user.is_cow        
+        .span1
+          = image_tag('tux-vache.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
+        .span5
+          %h3
+            You are a Cow 
+          %p.center
             You can see private places and ask to cowork there. 
             Add more places to increase your karma!
       - else
-        %h3
-          = image_tag('http://openclipart.org/image/800px/svg_to_png/133591/baby-tux-vache-no-logo.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
-          You are a Veal 
-          %p
+        .span1
+          = image_tag('baby-tux-vache-no-logo.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
+        .span5
+          %h3           
+            You are a Veal 
+          %p.center
             Veal users can only access to public places. 
             Add 3 places and you will gain access to private places! 
-  .span6         
+  .span5
     %p.list-place{:style => "margin-left:50px; margin-top: 30px;"}
-      = link_to new_place_path, { class: 'btn btn-danger btn-large' } do
+      = link_to new_place_path, { class: 'btn btn-info btn-large' } do
         %i.icon-map-marker.icon-white
         &nbsp;
         = t('add')
@@ -26,7 +30,7 @@
 
 = form_tag places_path, method: :get, class: 'form-inline'  do
   = select_tag "cities", options_for_select(Place.all.distinct(:city)), multiple: true, class: 'span6 chzn-select', :style => "float:left;"
-  = submit_tag t('search'), class: 'btn btn-danger', :style => "margin-top : -25px;"
+  = submit_tag t('search'), class: 'btn btn-info', :style => "margin-top : -25px;"
 
 %hr
 
@@ -53,15 +57,15 @@
               - if place.music
                 %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
               - else
-                %span.icon-headphones
+                %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
               - if place.smoke
-                %span.icon-ok-circle
+                %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
               - else
-                %span.icon-ban-circle
+                %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
               - if place.discussion
-                %span.icon-comment
+                %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
               - else
-                %span.icon-remove-circle
+                %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
           
 .row
   .span12

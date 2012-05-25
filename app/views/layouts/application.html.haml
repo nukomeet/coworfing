@@ -36,6 +36,7 @@
           }(document, 'script', 'facebook-jssdk'));
 
   %body{class: "#{params[:controller]}_#{params[:action]}"}
+    = render :partial => "shared/flash_messages", :locals => {:flash => flash}
     .container
       .navbar
         .navbar-inner
@@ -94,40 +95,38 @@
 
 
     #container.container
-      = render :partial => "shared/flash_messages", :locals => {:flash => flash}
-
       #main{:role => "main"}
         = yield
 
-    %footer
-      %hr
-      .row
-        .span.languages.left
-          = link_to_unless_current image_tag("flags/gb.png"), locale: "en"
-          | 
-          = link_to_unless_current image_tag("flags/fr.png"), locale: "fr"
+    .container
+      %footer
+        %hr
+        .row
+          .span.languages.left
+            = link_to_unless_current image_tag("flags/gb.png"), locale: "en"
+            | 
+            = link_to_unless_current image_tag("flags/fr.png"), locale: "fr"
+            |
+            = link_to_unless_current image_tag("flags/es.png"), locale: "es"
+            |
+            = link_to_unless_current image_tag("flags/br.png"), locale: "pt-BR"
+            |
+            = link_to_unless_current image_tag("flags/it.png"), locale: "it"
+          .span.pull-right
+            %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
+            :javascript
+                (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
+                        
+        .row.center.links
+          %a{:href => "mailto:coworfing@gmail.com"}Write to Coworfing's team
           |
-          = link_to_unless_current image_tag("flags/es.png"), locale: "es"
+          %a{:href => "http://www.facebook.com/coworfing"}Find us on Facebook
           |
-          = link_to_unless_current image_tag("flags/br.png"), locale: "pt-BR"
+          %a{:href => "http://www.twitter.com/coworfing"}Follow us on Twitter
           |
-          = link_to_unless_current image_tag("flags/it.png"), locale: "it"
-        .span.pull-right
-          %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
-          :javascript
-              (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
-                      
-      .row.center
-        %a{:href => "mailto:coworfing@gmail.com"}Write to Coworfing's team
-        |
-        %a{:href => "http://www.facebook.com/coworfing"}Find us on Facebook
-        |
-        %a{:href => "http://www.twitter.com/coworfing"}Follow us on Twitter
-        |
-        = link_to t('navbar.about_us'), about_path
-        |
-        = link_to t('navbar.blog'), 'http://coworfing.tumblr.com'
-        |
-        %a{:href => "https://docs.google.com/spreadsheet/viewform?formkey=dFlnNkJkOEVvOVR1N2RWaGtUaGM3RUE6MQ"}Bug report
+          = link_to t('navbar.about_us'), about_path
+          |
+          = link_to t('navbar.blog'), 'http://coworfing.tumblr.com'
+          |
+          %a{:href => "https://docs.google.com/spreadsheet/viewform?formkey=dFlnNkJkOEVvOVR1N2RWaGtUaGM3RUE6MQ"}Bug report
     = javascript_include_tag :application
->>>>>>> added hero slider
