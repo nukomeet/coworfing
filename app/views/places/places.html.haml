@@ -10,17 +10,17 @@
     %li.span3
       .thumbnail
         - if place.photo?
-          = image_tag(place.photo_url(:medium))
+          = link_to image_tag(place.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
         - else
-          %img{src: 'http://placehold.it/320x240'}
+          = link_to image_tag('home.jpg'), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
         .caption
-          %h5= place.name
-          %p= place.desc
-          %p= place.address_line1
+          %h5= truncate(place.name) 
+          %p= truncate(place.desc, :length => 25)
+          %p= truncate(place.address_line1, :length => 25)
           %p
             .btn-toolbar
               .btn-group
-                = link_to 'Show', place, { class: 'btn' }
+                = link_to 'Show', place, { class: 'btn btn-info' }
               .btn-group
                 = link_to 'Edit', edit_place_path(place), { class: 'btn' }
                 = link_to 'Destroy', place, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger'
