@@ -21,7 +21,7 @@ body {
   border-top: none;
 }
 
-h1.callout{
+h1{
   text-align: center;
   /*font-size: 36px;*/
   font-size: 48px;
@@ -45,6 +45,56 @@ h3.hand{
   font-weight: 400;
   color: #4FB6E9;
   font-size: 24px;
+}
+
+.drop-shadow {
+  position: relative;
+}
+
+.drop-shadow:before,
+.drop-shadow:after {
+   content:"";
+   position:absolute;
+   z-index:-1;
+    bottom:15px;
+   left:10px;
+   width:50%;
+   height:20%;
+   -webkit-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+   -moz-box-shadow:0 15px 10px rgba(0, 0, 0, 0.7);
+   box-shadow:0 15px 15px rgba(0, 0, 0, 0.7);
+   -webkit-transform:rotate(-2deg);
+   -moz-transform:rotate(-2deg);
+   -o-transform:rotate(-2deg);
+   transform:rotate(-2deg);
+}
+
+.drop-shadow:after{
+   right:10px;
+   left:auto;
+   -webkit-transform:rotate(2deg);
+   -moz-transform:rotate(2deg);
+   -o-transform:rotate(2deg);
+   transform:rotate(2deg);
+}
+
+.box {
+  background: white;
+  box-shadow: none;
+  border: 1px solid #DDD;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: 60px 0;
+  margin-top: 15px;
+  margin-bottom: 60px;
+}
+
+.box h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-align: left;
 }
 
 #search{
