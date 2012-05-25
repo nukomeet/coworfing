@@ -10,6 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require froogaloop
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
@@ -20,5 +21,9 @@
 //= require chosen-jquery
 //= require bootstrap-tooltip
 //= require bootstrap-popover
+//= require jquery.batchImageLoad
+//= require jquery.cycle
+//= require jquery.nivo.slider.pack
+//= require hero
 //= require_tree .
 

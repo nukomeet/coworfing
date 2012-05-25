@@ -10,7 +10,16 @@
   
   #hero
     #video.span6
-      %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/C6c2su5_v6I", :width => "472"}
+      #slider{:style=>"display:none; height:369px", :class=>"nivoSlider"}
+        =image_tag("img1.jpg", :size => "460x369") 
+        =image_tag("img2.jpg", :size => "460x369")
+        =image_tag("img3.jpg", :size => "460x369")
+        =image_tag("img4.jpg", :size => "460x369")       
+      #play-demo
+        %span &nbsp;
+        Play &nbsp;Demo
+    
+      %iframe{:id=>"coworfingMovie", :style=>"display:none; width:460px; border:0px;", :src=>"http://player.vimeo.com/video/42543508?show_portrait=0&amp;show_byline=0&amp;on_screen_info=0&amp;show_title=0&amp;js_api=1&amp;js_swf_id=coworfingMovie"}
           
     #search.span6
       %h3

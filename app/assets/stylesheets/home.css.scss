@@ -91,3 +91,81 @@ form.huge {
 
 }
 */
+
+#video iframe {
+  height: 369px;
+	width: 100%;
+}
+
+#slider {
+  position:relative;
+	/* background:url(/images/nivo-slider/loading.gif) no-repeat 50% 50%; */
+}
+
+#slider img {
+  position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#video {
+  position: relative;
+  text-align: center; 
+  margin: 0 auto; 
+  /*width: 640px;*/ 
+  height: 369px;
+  border: 3px solid #eee;
+ /*
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fcfcfc;
+
+  border: 1px solid #eee;
+ 
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  
+  -webkit-box-shadow: 0px 0px 20px #888;
+  -moz-box-shadow:0px 0px 20px #888;
+  box-shadow:0px 0px 20px #888;
+*/
+}
+
+#play-demo {
+  background: #444;
+  color: #f7f5f3;
+  padding: 10px;
+  z-index:100;
+  width:85px;
+  position: absolute;
+  /*margin: -50px 0px 20px 10px;*/
+  font-size: 0.8em;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  filter:alpha(opacity=80);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+	left:10px;
+  bottom: 20px;
+}
+
+#coworfingMovie {
+  -webkit-box-shadow: 0px 0px 20px #888;
+  -moz-box-shadow:0px 0px 20px #888;
+  box-shadow:0px 0px 20px #888;
+}
+
+#play-demo:hover {
+  background: #000;
+  cursor: pointer;
+}
+
+#play-demo span {
+  display:block;
+  background: url('play.png') no-repeat left center;
+  width: 20px;
+  float: left;
+}
