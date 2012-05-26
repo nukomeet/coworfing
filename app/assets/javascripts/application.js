@@ -23,7 +23,6 @@
 //= require bootstrap-popover
 //= require jquery.batchImageLoad
 //= require jquery.cycle
-//= require jquery.nivo.slider.pack
 //= require hero
 //= require_tree .
 
