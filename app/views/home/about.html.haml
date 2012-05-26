@@ -39,22 +39,20 @@
           Need a place to work? Browse the map, find a nice place, and request for a coworfing!
         %p
           Feeling alone? Upload your place and welcome people.
+        %hr
     .row
-      .span10.offset1
-        %p &nbsp;
-        = simple_form_for(Demand.new) do |f|
-          .input-append
-            %p &nbsp;
-            = f.input :email, label: false, input_html: {placeholder: 'Enter your email address...' }
-            &nbsp;
-            &nbsp;
-            = f.submit 'Invite me', class: 'btn', :style => "text-align:center"
-          %p &nbsp;
-          %hr/
-          %p &nbsp;
-          %p.pull-right{:style => "margin-top:10px"}
-            :javascript
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-            .fb-like{"data-colorscheme" => "dark", "data-font" => "verdana", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
-            %p &nbsp;  
-            %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/coworfing"} Follow @coworfing
+      .span7.offset1
+        = form_for Demand.new do |f|
+          %fieldset
+            .controls
+              .input-append
+                = f.text_field :email, {class: "span4", placeholder: 'Enter your email address...'}
+                = f.submit 'Invite me', class: 'btn'
+                        
+      .span3
+        %p.pull-right{:style => "margin-top:10px"}
+          :javascript
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+          .fb-like{"data-colorscheme" => "dark", "data-font" => "verdana", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false"}
+           
+          %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/coworfing"} Follow @coworfing
