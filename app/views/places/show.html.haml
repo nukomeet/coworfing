@@ -31,7 +31,7 @@
               = t('place.demand')
 
       .span3
-        %h3 
+        %h4 
           = t('place.description')
         %p= @place.desc
         %p.icon-signal
@@ -65,8 +65,8 @@
     - if can? :update, @place 
       %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
       
-%hr
 - if @place.comments.size > 0 
+  %hr
   %h2 
     = t('place.comments')
   - for comment in @place.comments
