@@ -1,8 +1,7 @@
 !!!
 %html
   %head
-    %h1
-      %title Coworfing 
+    %title Coworfing 
     %meta{:charset => "utf-8"}
     %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
@@ -117,16 +116,20 @@
             :javascript
                 (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
                         
-        .row.center.links
-          %a{:href => "mailto:coworfing@gmail.com"}Write to Coworfing's team
-          |
-          %a{:href => "http://www.facebook.com/coworfing"}Find us on Facebook
-          |
-          %a{:href => "http://www.twitter.com/coworfing"}Follow us on Twitter
-          |
-          = link_to t('navbar.about_us'), about_path
-          |
-          = link_to t('navbar.blog'), 'http://coworfing.tumblr.com'
-          |
-          %a{:href => "https://docs.google.com/spreadsheet/viewform?formkey=dFlnNkJkOEVvOVR1N2RWaGtUaGM3RUE6MQ"}Bug report
+        .row.footer
+          .span12
+            %ul.links
+              %li
+                =link_to(image_tag("facebook.png"), "http://www.facebook.com/coworfing")
+                
+              %li
+                =link_to(image_tag("twitter.png"), "http://www.twitter.com/coworfing")
+              %li
+                %a{:href => "mailto:coworfing@gmail.com"}Write to Coworfing's team
+              %li
+                = link_to t('navbar.about_us'), about_path
+              %li
+                = link_to t('navbar.blog'), 'http://coworfing.tumblr.com'
+              %li
+                %a{:href => "https://docs.google.com/spreadsheet/viewform?formkey=dFlnNkJkOEVvOVR1N2RWaGtUaGM3RUE6MQ"}Bug report
     = javascript_include_tag :application
