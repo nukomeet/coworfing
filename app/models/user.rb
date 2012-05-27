@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Symbolize
 
   mount_uploader :photo, PhotoUploader
 
@@ -68,6 +69,9 @@ class User
   field :public, type: Boolean
   field :is_cow, type: Boolean, default: false
 
+  symbolize :rank, in: [:veal, :cow], 
+    default: :veal, scope: true, methods: true
+
   validates_presence_of :email
   validates_uniqueness_of :name, :email, :username, :case_sensitive => false
 
@@ -81,7 +85,7 @@ class User
   has_many :place_requests_sent, class_name: 'PlaceRequest', inverse_of: :booker
   has_many :comments
  
-  #defining roles 
+  # defining roles 
   def admin?
     role == "admin"
   end
@@ -93,6 +97,5 @@ class User
   def guest?
     role == "guest"
   end
-  
 end
 

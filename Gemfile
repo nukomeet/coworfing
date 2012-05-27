@@ -59,3 +59,5 @@ gem 'kaminari'
 gem 'bootstrap_kaminari', :git => 'git://github.com/dleavitt/bootstrap_kaminari.git'
 gem 'hominid'
 gem 'hipchat'
+
+gem "symbolize", :require => "symbolize/mongoid"
