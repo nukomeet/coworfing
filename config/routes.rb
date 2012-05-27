@@ -1,5 +1,7 @@
 Coworfing::Application.routes.draw do
   
+
+
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
 
     match 'about' => 'home#about', via: :get, as: :about
