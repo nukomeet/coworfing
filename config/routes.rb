@@ -15,14 +15,18 @@ Coworfing::Application.routes.draw do
 
     devise_for :users, skip: [:sessions], controllers: { invitations: 'users/invitations', registrations: 'registrations' }
     as :user do
-      get 'login' => 'devise/sessions#new', :as => :new_user_session
-      post 'login' => 'devise/sessions#create', :as => :user_session
-      delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+      get 'login' => 'devise/sessions#new', as: :new_user_session
+      post 'login' => 'devise/sessions#create', as: :user_session
+      delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
+
+      # TODO: Why I cannot use get/put here ? :locale error
+      match 'settings/edit' => 'settings#edit', via: :get, as: :user_settings_edit
+      match 'settings' => 'settings#update', via: :put, as: :user_settings_update
+
+      match "password/edit" => 'settings/password#edit', as: :user_password_edit
+      match "password" => 'settings/password#update', via: :put, as: :user_password_update
     end
     
-    devise_for :users do
-      match "/users/password/edit" => "devise_passwords#edit" 
-    end
 
     resources :places do 
       resources :comments

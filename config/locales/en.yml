@@ -218,6 +218,7 @@ en:
     logged_as: 'Logged as'
     your_places: 'Your places'
     your_profile: 'Your profile'
+    your_password: 'Change password'
     help: 'Help'
     log_out: 'Log out'
   modal:
