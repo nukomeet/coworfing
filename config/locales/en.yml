@@ -218,6 +218,7 @@ en:
     logged_as: 'Logged as'
     your_places: 'Your places'
     your_profile: 'Your profile'
+    your_password: 'Change password'
     help: 'Help'
     log_out: 'Log out'
   modal:
@@ -235,6 +236,7 @@ en:
     title3: 'Free to work where you want, with the people you want ?' 
     invite: 'Join our tribe of happy nomads'
   login: 'Login'
+  login_to_add: 'Sign in to start adding places'
   invite_me: 'Invite me'
   explain: 'Explain to me'
   mail_input: 'Enter your email address...'
