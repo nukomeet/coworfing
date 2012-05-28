@@ -1,30 +1,35 @@
 .row
-  .span7
-    .notification
-      - if user_signed_in? && current_user.is_cow        
-        .span1
-          = image_tag('tux-vache.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
-        .span5
-          %h3
-            You are a Cow 
-          %p.center
-            You can see private places and ask to cowork there. 
-            Add more places to increase your karma!
-      - else
-        .span1
-          = image_tag('baby-tux-vache-no-logo.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
-        .span5
-          %h3           
-            You are a Veal 
-          %p.center
-            Veal users can only access to public places. 
-            Add 3 places and you will gain access to private places! 
-  .span5
-    %p.list-place{:style => "margin-left:50px; margin-top: 30px;"}
-      = link_to new_place_path, { class: 'btn btn-info btn-large' } do
-        %i.icon-map-marker.icon-white
-        &nbsp;
-        = t('add')
+  - if user_signed_in? 
+    .span7
+      .row
+        - if current_user.is_cow        
+          .span2
+            = image_tag('tux-vache.png', :width => '70px', :height => '70px', :style => "margin-right: 20px;")
+          .span5.notification
+            %h4
+              You are a Cow 
+            %p
+              You can see private places and ask to cowork there. Add more places to increase your karma!
+        - else
+          .span2
+            = image_tag('baby-tux-vache-no-logo.png', :width => '70px', :height => '70px', :style => "float:left; margin-right: 20px;")
+          .span5
+            %h3           
+              You are a Veal 
+            %p.center
+              Veal users can only access to public places. 
+              Add 3 places and you will gain access to private places! 
+    .span4
+      %p.list-place{:style => "margin-left:50px; margin-top: 30px;"}
+        = link_to new_place_path, { class: 'btn btn-info btn-large' } do
+          %i.icon-map-marker.icon-white
+          &nbsp;
+          = t('add')
+  - else
+    .span12
+      .login.center
+        = link_to new_user_session_path, { class: 'btn btn-info btn-large' } do
+          = t('login_to_add')
 
 %hr
 
@@ -45,12 +50,13 @@
         .caption
           %h5
             = link_to truncate(place.name, length: 20), place
-            - if place.public
-              %span.label.label-info.pull-right.upcase 
-                public
-            - else
-              %span.label.label-warning.pull-right.upcase 
-                private
+            - if user_signed_in?
+              - if place.public
+                %span.label.label-info.pull-right.upcase 
+                  public
+              - else
+                %span.label.label-warning.pull-right.upcase 
+                  private
           .place_row
             = truncate(place.desc, length: 20)
             .facets.pull-right

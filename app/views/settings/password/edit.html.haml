@@ -1,0 +1,11 @@
+= simple_form_for(@user, url: user_password_update_path, html: { method: :put, class: 'form-horizontal' }) do |f|
+
+  %fieldset
+    %legend Change Your Password 
+
+    = f.input :current_password
+    = f.input :password
+    = f.input :password_confirmation
+
+  .form-actions
+    = f.submit "Change my password", class: 'btn'
