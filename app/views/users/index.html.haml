@@ -3,9 +3,9 @@
     %li.span3
       .thumbnail
         - if user.photo?
-          = image_tag(user.photo_url(:medium))
+          = link_to image_tag(user.photo_url(:medium)), profile_path(user.username || 'nil')
         - else
-          = image_tag('http://cambelt.co/icon/avatar/320x240')
+          = link_to image_tag('http://cambelt.co/icon/avatar/320x240'), profile_path(user.username || 'nil')
         .caption
           %h5
             = link_to truncate(user.name, :length => 18),  profile_path(user.username || 'nil')
