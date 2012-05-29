@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $(".chzn-select").chosen();
-  
-  $(".place_photo").popover();
-  
+  $(".span14.thumbnails > :nth-child(4n+4)").find(".place_photo").removeClass().addClass("place_photo_last_right")
+  $(".place_photo").popover()
+  $(".place_photo_last_right").popover({placement : 'left'})
   $(".icon_tooltip").tooltip();
