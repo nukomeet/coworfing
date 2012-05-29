@@ -1,4 +1,4 @@
-en:
+fr:
   simple_form:
     "yes": 'Oui'
     "no": 'Non'
@@ -13,15 +13,19 @@ en:
     # Labels and hints examples
     labels:
       place: 
-        adress_line1: 'Adresse'
+        name: "Nom"
+        photo: "Photo"
+        city: "Ville"
+        country: "Pays"
+        address_line1: 'Adresse'
         desc: 'Description'
         wifi: 'Code wi-fi'
-        address_line1: 'Addresse'
         public: Public?
         smoke: Cigarette?
         music: Musique?
         discussion: Discussion? 
         password: 'mot de passe'
+        reward: 'Récompense'
         user:
         # new:
         #  email: 'E-mail'
