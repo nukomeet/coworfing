@@ -27,6 +27,10 @@ Coworfing::Application.routes.draw do
       match "password" => 'settings/password#update', via: :put, as: :user_password_update
     end
     
+    authenticated :user do
+        root to: 'places#index'
+    end
+
 
     resources :places do 
       resources :comments
