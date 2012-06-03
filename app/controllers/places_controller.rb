@@ -54,7 +54,7 @@ class PlacesController < ApplicationController
         format.html {redirect_to @place}
         if current_user.places.count == 3
           Notification.become_cow_email(current_user).deliver
-          flash[:notice] = 'MEEEEEEEEEEEH! You just became a Cow. Now you have access private places!'
+          flash[:notice] = 'Congratulations! You just shared a place. Now you have access private places!'
         else
           flash[:notice] =  'Great, your place was successfully created.' 
         end
