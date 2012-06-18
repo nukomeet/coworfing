@@ -20,6 +20,7 @@
           / Foursquare button
           %a.fourSq-widget{"data-variant" => "wide", :href => "https://foursquare.com/intent/venue.html"} Save to foursquare
         %p
+          %INPUT{:class => "btn btn-info span3 btn-large", :TYPE => "button", :VALUE => "Invite friends there", :onClick => "parent.location='mailto:Friends email here?subject=Invitation to cowork&Body=I found this awesome place to work. Would you join me there? Check it out: http://#{request.host+request.fullpath}'"} 
         %p.icon-map-marker
         - unless @place.owned_by(current_user)
           - if @place.public
