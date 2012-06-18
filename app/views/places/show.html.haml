@@ -15,12 +15,12 @@
         - else
           %img{src: 'http://placehold.it/240x160&text=Add+Your+Photo'}
         %p
+          =  link_to @place.website, "#{@place.website}" 
         %p
           / Foursquare button
           %a.fourSq-widget{"data-variant" => "wide", :href => "https://foursquare.com/intent/venue.html"} Save to foursquare
         %p
         %p.icon-map-marker
-        %p= @place.address
         - unless @place.owned_by(current_user)
           - if @place.public
             %span.label.label-info.upcase 
