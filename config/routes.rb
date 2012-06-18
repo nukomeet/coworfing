@@ -28,7 +28,7 @@ Coworfing::Application.routes.draw do
     end
     
     authenticated :user do
-        root to: 'places#index'
+        root to: 'home#map'
     end
 
 

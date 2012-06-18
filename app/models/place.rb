@@ -7,6 +7,7 @@ class Place
 
   field :name
   field :desc
+  field :website
   field :wifi
   field :transport
   field :price, type:  Integer
