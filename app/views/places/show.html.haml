@@ -1,70 +1,72 @@
-.page-header
-  %h1= @place.name
-  %p 
-    = t('place.added_by')
-    = link_to @place.user.username, profile_path(@place.user.username) 
-
+%hr
 .row
+  .span7
+    - if @place.photo?
+      = image_tag(@place.photo_url(:big))
+    - else
+      %img{src: 'http://placehold.it/240x160&text=Add+Your+Photo'}
+  .span3.infos{:style => "font-size:1.2em"}
+
+    %p
+      .icon-signal
+      = @place.wifi
+    %p
+      .icon-plane
+      = @place.transport
+    - if @place.music
+      %p
+        .icon-music
+        = t('place.music') 
+    - else
+      %p
+        .icon-headphones
+        = t('place.quiet')
+    - if @place.smoke
+      %p
+        .icon-ok-circle
+        = t('place.smoking')
+    - else
+      %p
+        .icon-ban-circle
+        = t('place.no-smoking')
+    - if @place.discussion
+      %p
+        .icon-comment 
+        = t('place.discussion')
+    - else
+      %p
+        .icon-remove-circle
+        = t('place.blabla')
+%hr
+.row
+  .span7
+    %h3{:style => "text-align:left"}
+      = @place.name
+    %p{:style => "text-align:justify"}
+      = @place.desc
+      =  link_to @place.website, "#{@place.website}" 
+    %p
+      .icon-map-marker
+      = @place.address  
+    %p
+      %INPUT{:class => "btn btn-info span3 btn-large", :TYPE => "button", :VALUE => "Invite friends there", :onClick => "parent.location='mailto:Friends email here?subject=Invitation to cowork&Body=I found this awesome place to work. Would you join me there? Check it out: http://#{request.host+request.fullpath}'"} 
+    %p
+    - unless @place.owned_by(current_user)
+      - if @place.public
+        %span.label.label-info.upcase 
+          = t('place.public')
+      - else
+        %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
+          %i.icon-white.icon-lock
+          = t('place.demand')
+
   .span5
     = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.coordinates[1]}%2C#{@place.coordinates[0]}"
-  .span7
-    .row
-      .span4
-        - if @place.photo?
-          = image_tag(@place.photo_url(:thumb))
-        - else
-          %img{src: 'http://placehold.it/240x160&text=Add+Your+Photo'}
-        %p
-          =  link_to @place.website, "#{@place.website}" 
-        %p
-          / Foursquare button
-          %a.fourSq-widget{"data-variant" => "wide", :href => "https://foursquare.com/intent/venue.html"} Save to foursquare
-        %p
-          %INPUT{:class => "btn btn-info span3 btn-large", :TYPE => "button", :VALUE => "Invite friends there", :onClick => "parent.location='mailto:Friends email here?subject=Invitation to cowork&Body=I found this awesome place to work. Would you join me there? Check it out: http://#{request.host+request.fullpath}'"} 
-        %p.icon-map-marker
-        - unless @place.owned_by(current_user)
-          - if @place.public
-            %span.label.label-info.upcase 
-              = t('place.public')
-          - else
-            %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
-              %i.icon-white.icon-lock
-              = t('place.demand')
-
-      .span3
-        %h4 
-          = t('place.description')
-        %p= @place.desc
-        %p.icon-signal
-        %p= @place.wifi
-        %p.icon-plane
-        %p= @place.transport
-        - if @place.music
-          %span.icon-music
-          %p 
-            = t('place.music') 
-        - else
-          %span.icon-headphones
-          %p 
-            = t('place.quiet')
-        - if @place.smoke
-          %span.icon-ok-circle
-          %p 
-            = t('place.smoking')
-        - else
-          %span.icon-ban-circle
-          %p 
-            = t('place.no-smoking')
-        - if @place.discussion
-          %span.icon-comment
-          %p 
-            = t('place.discussion')
-        - else
-          %span.icon-remove-circle
-          %p 
-            = t('place.blabla')
-    - if can? :update, @place 
-      %p= link_to 'Edit', edit_place_path(@place), { class: 'btn' }
+    %p
+      = t('place.added_by')
+      = link_to @place.user.username, profile_path(@place.user.username) 
+      - if can? :update, @place 
+        = link_to 'Edit', edit_place_path(@place), { class: 'btn' }
       
 - if @place.comments.size > 0 
   %hr
