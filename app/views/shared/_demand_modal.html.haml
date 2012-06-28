@@ -3,7 +3,8 @@
     = f.input :place, as: :hidden, input_html: { value: @place.id }
     .modal-header
       %a.close{href:'#', :'data-dismiss' => 'modal'} x
-      %h3 Make a place request 
+      %h3 Ask to cowork there 
+      %p Tell when you would like to come, a bit about yourself, and how you would like to be contacted back (phone, mail...)
     .modal-body
       %fieldset
         = f.input :date, input_html: { rows: 4, class: 'span4 date_picker' }
