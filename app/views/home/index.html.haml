@@ -8,6 +8,7 @@
       = "#{t('home.places')}. "
       = @place_req_count
       = "#{t('home.requests')}. "
+
     
     #hero
       #video.span6
@@ -36,5 +37,9 @@
               .input-append
                 = f.text_field :email, {class: "span4 large", placeholder: 'Enter your email address...'}
                 = f.submit 'Invite me', class: 'btn btn-success btn-large'
+        %p.pull-right{:style => "margin-top:130px;"}
+          =link_to(image_tag("facebook.png"), "http://www.facebook.com/coworfing")
+          =link_to(image_tag("twitter.png"), "http://www.twitter.com/coworfing")
+          =link_to(image_tag("tumblr.jpg"), "http://www.coworfing.tumblr.com")
   .row
     .span12.graded
