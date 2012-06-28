@@ -6,7 +6,7 @@ Coworfing::Application.routes.draw do
 
     match 'about' => 'home#about', via: :get, as: :about
     
-    match 'contribute' => 'home#contribute', via: :get, as: :location
+    match 'contribute' => 'home#contribute', via: :get, as: :contribute
 
     match 'home/location' => 'home#location'
 
