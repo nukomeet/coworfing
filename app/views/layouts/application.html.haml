@@ -126,3 +126,12 @@
               %li
                 = link_to 'Contribute', contribute_path
     = javascript_include_tag :application
+
+#- uservoice script
+:javascript
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/jwQvOVpwKwuGgphhgfTbVw.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
