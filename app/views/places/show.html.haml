@@ -20,8 +20,7 @@
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
     - else
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
-    .icon-signal
-    = @place.wifi
+    %span{'rel' => 'tooltip', 'data-original-title' => 'Wifi', :class => 'icon-signal icon_tooltip'}              
     %p{:style => "text-align:justify"}
       = @place.desc
       =  link_to @place.website, "#{@place.website}" 
