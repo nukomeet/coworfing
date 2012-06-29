@@ -126,6 +126,10 @@ h3.hand{
   text-decoration: underline;
 }
 
+.footer .links li.privacy{
+  margin-left: 455px;
+}
+
 #search{
   text-align:justify;
 }
