@@ -26,7 +26,6 @@
 
     .span6
       %legend Provide some details
-      = f.input :reward, input_html: { class: 'span3' }
       = f.input :public, as: :boolean, :inline_label => t('simple_form.hints.place.public'), :label => false, :hint => false
       = f.input :smoke, as: :boolean, :inline_label => t('simple_form.hints.place.smoke'), :hint => false, :label_html => {:class => 'icon-ok-circle'}, :label => "."
       = f.input :music, as: :boolean, :inline_label => t('simple_form.hints.place.music'), :label => ".", :hint => false, :label_html => {:class => 'icon-music'}
