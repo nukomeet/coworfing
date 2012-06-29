@@ -1,0 +1,12 @@
+#demand.modal.hide.fade.in 
+  = simple_form_for(@place_request.comment, html: { class: 'form-horizontal' }) do |f|
+    = f.input :place, as: :hidden, input_html: { value: @place_request.id }
+    .modal-header
+      %a.close{href:'#', :'data-dismiss' => 'modal'} x
+      %h3 Comment this place request 
+    .modal-body
+      %fieldset
+        = f.input :body, as: :text, input_html: { rows: 4, class: 'span4' }
+
+    .modal-footer
+      = f.button :submit, class: 'btn btn-success btn-large'

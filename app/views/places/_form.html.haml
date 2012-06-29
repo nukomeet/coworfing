@@ -2,23 +2,10 @@
   = f.error_notification
 
   %fieldset
-    .span9
+    .span8
       %legend List Your Place
 
       = f.input :name, input_html: { class: 'span5' }
-      = f.input :desc, as: :text, input_html: { rows: 4, class: 'span5' }
-      = f.input :wifi, input_html: { class: 'span5' }
-      = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
-      = f.input :address_line1, input_html: { class: 'span5' }
-
-    .span6
-      %legend Provide some details
-      = f.input :reward, input_html: { class: 'span5' }
-      = f.input :public, as: :boolean
-      = f.input :smoke, as: :boolean
-      = f.input :music, as: :boolean
-      = f.input :discussion, as: :boolean
-
       - unless @place.photo?
         = f.input :photo, as: :file
         = f.input :photo_cache, as: :hidden
@@ -28,7 +15,21 @@
           .control-label Image
           .controls
             %ul.thumbnails
-              %li.thumbnail= image_tag(@place.photo_url) 
+              %li.thumbnail= image_tag(@place.photo_url(:thumb)) 
+      = f.input :address_line1, input_html: { class: 'span5' }
+      = f.input :city, input_html: { class: 'span3' }
+      = f.input :country, input_html: { class: 'span3 chzn-select' }
+      = f.input :desc, as: :text, input_html: { rows: 4, class: 'span5' }
+      = f.input :website, input_html: { class: 'span3' }
+      = f.input :wifi, input_html: { class: 'span5' }
+      = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
+
+    .span6
+      %legend Provide some details
+      = f.input :public, as: :boolean, :inline_label => t('simple_form.hints.place.public'), :label => false, :hint => false
+      = f.input :smoke, as: :boolean, :inline_label => t('simple_form.hints.place.smoke'), :hint => false, :label_html => {:class => 'icon-ok-circle'}, :label => "."
+      = f.input :music, as: :boolean, :inline_label => t('simple_form.hints.place.music'), :label => ".", :hint => false, :label_html => {:class => 'icon-music'}
+      = f.input :discussion, as: :boolean, :inline_label => t('simple_form.hints.place.discussion'), :label => ".", :hint => false , :label_html =>  {:class => 'icon-comment'}
 
   .form-actions
-    = f.button :submit, class: 'btn-success btn-large'
+    = f.button :submit, class: 'btn-info btn-large'

@@ -10,6 +10,16 @@
       = f.input :remember_me, as: :boolean
 
     .form-actions
-      = f.submit "Sign in", class: 'btn btn-primary'
+      = f.submit "Sign in", class: 'btn btn-info'
       - if devise_mapping.recoverable? && controller_name != 'passwords'
         = link_to "Forgot your password?", new_password_path(resource_name), class: 'btn'
+
+  %hr
+    %h3{:style => "float:left;"} 
+      Not registered yet? Ask for an invite 
+    = form_for Demand.new do |f|
+      %fieldset
+        .controls
+          .input-append
+            = f.text_field :email, {class: "span4", placeholder: 'Enter your email address...'}
+            = f.submit 'Invite me', class: 'btn btn-success'

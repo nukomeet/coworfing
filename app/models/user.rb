@@ -1,6 +1,7 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Symbolize
 
   mount_uploader :photo, PhotoUploader
 
@@ -56,16 +57,27 @@ class User
   index :invitation_token
 
   field :name
-  field :role
+  field :role, default: 'guest'
   field :username
   
   field :bio
+  field :website
+  field :twitter
 
   field :photo
 
-  validates_presence_of :name, :email, :username
+  field :public, type: Boolean
+  field :is_cow, type: Boolean, default: false
+
+  symbolize :rank, in: [:veal, :cow], 
+    default: :veal, scope: true, methods: true
+
+  validates_presence_of :email
   validates_uniqueness_of :name, :email, :username, :case_sensitive => false
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :bio, :photo
+
+  validates :username, format: { with: /\A\w+\Z/i }, length: { in: 2..12 }, presence: true, uniqueness: true
+
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username, :bio, :photo, :website, :twitter, :public
 
   has_many :places
   has_many :invitations, class_name: 'User', as:  :invited_by
@@ -73,7 +85,7 @@ class User
   has_many :place_requests_sent, class_name: 'PlaceRequest', inverse_of: :booker
   has_many :comments
  
-  #defining roles 
+  # defining roles 
   def admin?
     role == "admin"
   end
@@ -81,6 +93,9 @@ class User
   def regular?
     role == "regular"
   end
-  
+
+  def guest?
+    role == "guest"
+  end
 end
 

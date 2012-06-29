@@ -1,0 +1,46 @@
+fr:
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+    required:
+      text: 'obligatoire'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Erreur, veuillez vérifier vos réponses:"
+    # Labels and hints examples
+    labels:
+      place: 
+        name: "Nom"
+        photo: "Photo"
+        city: "Ville"
+        country: "Pays"
+        address_line1: 'Adresse'
+        desc: 'Description'
+        wifi: 'Code wi-fi'
+        public: Public?
+        smoke: Cigarette?
+        music: Musique?
+        discussion: Discussion? 
+        password: 'mot de passe'
+        reward: 'Récompense'
+        user:
+        # new:
+        #  email: 'E-mail'
+        # edit:
+        #  email: 'E-mail'
+    hints:
+      place:
+        name: 'Votre nom doit contenir 5 à 45 caractères'
+        desc: 'Votre description doit contenir 5 à 500 caractères'
+        public: 'Cocher la case si le lieu est public'
+        smoke: 'Cocher la case si le lieu est fumeur'
+        music: 'Cocher la case si le lieu accepte la musique'
+        discussion: 'Cocher la case si le lieu accepte les conversations'
+        photo: 'Une image vaut mille discours'
+      user:
+        public: 'Cochez la case si vous voulez rendre votre profil public'
+
+

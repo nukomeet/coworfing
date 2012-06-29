@@ -1,0 +1,22 @@
+= simple_form_for(@user, url: user_settings_update_path, html: { method: :put, class: 'form-horizontal' }) do |f|
+
+  %fieldset
+    %legend Your Profile
+
+    = f.input :name
+    = f.input :username
+    = f.input :email
+    = f.input :bio, as: :text, input_html: {rows: 4}
+    = f.input :website
+    = f.input :twitter
+    = f.input :public, as: :boolean
+
+    = f.input :photo, as: :file
+    = f.input :photo_cache, as: :hidden
+
+    .form-actions
+      = f.button :submit, class: 'btn-success btn-large'
+    %p
+      Unhappy? #{link_to "Cancel my account", registration_path(@user), :confirm => "Are you sure?", :method => :delete}.
+
+= link_to "< Back", :back, class: 'btn'

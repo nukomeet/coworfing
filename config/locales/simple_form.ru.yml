@@ -1,0 +1,42 @@
+ru:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      # html: '<abbr title="required">*</abbr>'
+    error_notification:
+      default_message: "Some errors were found, please take a look:"
+    # Labels and hints examples
+    labels:
+      place: 
+        adress_line1: 'Adress'
+        desc: 'Description'
+        wifi: 'WIFI Access Code'
+        address_line1: 'Address'
+        public:  
+        smoke: 
+        music: 
+        discussion:  
+        password: 'Password'
+        user:
+        # new:
+        #  email: 'E-mail'
+        # edit:
+        #  email: 'E-mail'
+    hints:
+      place:
+        name: 'Name should be between 5 to 45 characters long'
+        desc: 'Description should be between 5 to 500 characters long'
+        public: 'Check the box if the place is considered public'
+        smoke: 'Check the box if people can smoke in this place'
+        music: 'Check the box if the owner of in this place likes to put music'
+        discussion: 'Check the box if there is a lot of chatting going on in this place'
+        photo: 'A picture is worth a thousand words'
+      user:
+        public: 'Mark this, if you want to publicize your profile to other users'
+
+

@@ -1,53 +1,102 @@
-.container
-  .row
-    .span6{:style => "text-align:justify"}
-      %h2
-        About us
-      %p 
-        We are a team of two developers (
-        %a{:href  => "http://www.twitter.com/zaiste"}@zaiste
-        &
-        %a{:href => "http://www..twitter.com/albanlv"}@albanlv
-        from 
-        %a{:href => "http://www.nukomeet.com"}Nukomeet company
-        ) and a teacher (
-        %a{:href => "http://www.twitter.com/ecolepublique"}@ecolepublique 
-        ). We work from home, coworking spaces, cafés, airports... wherever you can find a decent wi-fi. We are nomads who like to work in different places. It helps us boost our creativity, meet new people, and to get a fresh view point on our problems. We enjoy to work to have as well as working in group and connect with like-minded individuals.  
-      %h2
-        Our story
-      %p 
-        Because we were always hunting for new places to work, we started with a simple idea (that came from our friend 
-        %a{:href => "http://www.twitter.com/ecolepublique"} @ecolepublique
-        ) we just gathered adresses of cool cafés in Paris, were the wi-fi is decent and waiters are not assholes (both conditions are hard to find in the same place). Then, the idea came to us: why not open our own homes to other free-lancers/independent/entrepreneurs/squirrels and go to their places? That's how the legend was born. 
-      %h2
-        Where we stand now
-      %p
-        The app is not polished, it is not perfect, and we could add a lot of features, but it does what we wanted to : display a map with the open workplaces and the contact to get there.
-      %p
-        We wanted to connect the app to couchsurfing, so you can automatically fill a profile and display your level of trust (number of recommendations), but unfortunately there is no proper API to do that.
-      %p
-        We think there is a lot of potential in this idea, we believe in a world in which people will enjoy their work, work anywhere and use it to connect to other people and have fun. 
-      %h2
-        How to use this app
-      %p
-        Need a place to work? Browse the map, find a nice place, and request for a coworfing!
-      %p
-        Feeling alone? Upload your place and welcome people.
-    .span5.offset1
-      %p &nbsp;
-      = simple_form_for(Demand.new) do |f|
-        .input-append
-          %p &nbsp;
-          = f.input :email, label: false, input_html: {placeholder: 'Enter your email address...' }
-          &nbsp;
-          &nbsp;
-          = f.submit 'Invite me', class: 'btn', :style => "text-align:center"
-        %p &nbsp;
-        %hr/
-        %p &nbsp;
+%h1 About us
+.row
+  .span12.box.drop-shadow
+    .row{:style => "text-align:justify"}  
+      .span10.offset1
+        %h3 Us
+        %p 
+          We are a team of developers (
+          %a{:href  => "http://www.twitter.com/zaiste"}@zaiste
+          ,
+          %a{:href => "http://www..twitter.com/albanlv"}@albanlv
+          ,
+          %a{:href => "http://www.twitter.com/tomkuk"}@tomkuk
+          ,
+          %a{:href => "http://www.twitter.com/tukan2can"}@tukan2can
+          &
+          %a{:href => "http://www.twitter.com/ofca89"}@ofca89
+          from 
+          %a{:href => "http://www.nukomeet.com"}Nukomeet company
+          ) and a teacher (
+          %a{:href => "http://www.twitter.com/ecolepublique"}@ecolepublique 
+          ). 
+        %p
+          We work from home, coworking spaces, cafés, airports... wherever you can find a decent wi-fi. We are nomads who like to work in different places. 
+        %p 
+          We believe that having no office is an opportunity. It allows to change places, which helps us boost our creativity, meet new people, and to get a fresh view point on our problems. 
+    .row{:style => "text-align:justify"}  
+      .span10.offset1
+        %h3
+          Our story
+        %p 
+          Because we were always hunting for new places to work, we started with a simple idea (that came from our friend 
+          %a{:href => "http://www.twitter.com/ecolepublique"} @ecolepublique
+          ) we just gathered adresses of cool cafés in Paris, were the wi-fi is decent and waiters are not assholes (both conditions are hard to find in the same place) and made a simple map with it. 
+        %p
+          Then, the idea came to us to open our own homes to each other to cowork. 
+        %p
+          We found it so cool that we decided to make an app for that and to open it to (selected) people.
+    .row{:style => "text-align:justify"} 
+      .span10.offset1
+        %h3
+          Where we stand now
+        %p
+          The app is still under development, but it already does what we wanted to : display a map with the open workplaces and the contact to get there.
+        %p
+          Don't be surprised if you see some bugs, just 
+          %a{:href => "https://docs.google.com/spreadsheet/viewform?formkey=dFlnNkJkOEVvOVR1N2RWaGtUaGM3RUE6MQ"}let us know.
+        %p
+          New features and mobile apps are coming soon, to stay in touch, you can subscribe to 
+          %a{:href => "http://coworfing.tumblr.com"}our blog
+          ,
+          %a{:href => "http://www.twitter.com/coworfing"} our Twitter 
+          &
+          %a{:href => "http://www.facebook.com/coworfing"} our Facebook Page.
+    .row   
+      .span10.offset1
+        %h3
+          How to use this app
+        %p
+          The app is by invitation only. To get started, put your mail adress below to be invited. 
+        %p 
+          Once you are accepted in the network, you will be able to browse places (in map or list view) to find cool spots to work.
+        %p
+          You will also be able to add places that you like, or your own place, if you would like to welcome people.
+        %p 
+          Once you'll have added three places you will be allowed to see the private places that are on the network (our homes!) and ask to come and cowork with us.
+        %hr
+    .row
+      .span7.offset1
+        = form_for Demand.new do |f|
+          %fieldset
+            .controls
+              .input-append
+                = f.text_field :email, {class: "span4", placeholder: 'Enter your email address...'}
+                = f.submit 'Invite me', class: 'btn'
+                        
+      .span3
         %p.pull-right{:style => "margin-top:10px"}
           :javascript
               !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-          .fb-like{"data-colorscheme" => "dark", "data-font" => "verdana", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
-          %p &nbsp;  
+          .fb-like{"data-colorscheme" => "dark", "data-font" => "verdana", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false"}
+           
           %a.twitter-follow-button{"data-show-count" => "false", "data-show-screen-name" => "false", :href => "https://twitter.com/coworfing"} Follow @coworfing
+
+    .row   
+      .span10.offset1
+        %h3
+          What we believe in
+        %p
+          We believe that offices were justified by the scarcity of tools and the will to control employees. Most of the time our tools are our brains, hands, computers, phones and books, we don't need offices any more.
+        %p
+          We believe that we are at a time where can reinvent the notion of a proper place to work. Why not parks? Swimming pools? Trains? The comfortable home of a stranger? We can travel, switch places and be in a nice environment. It does not go against our productivity, on the contrary.
+        %p
+          We believe that the need of a "serious environment" to do "serious work" is corporate bullshit that creates unhappy, non creative, and unproductive people. 
+        %p
+          We believe that having no office doesn't mean working alone. On the contrary, it's an opportunity to work with plenty of other people, with different background and activities.
+        %p
+          We believe that coworking is connecting together free and like-minded individuals that have complementary skills. From this emerges collaboration, solidarity, creativity, projects, companies, and more. 
+        %p  
+          We believe in a world of creative and independent individuals helping each other in order to stay free and sustainable without needing corporations. 
+        %p 
+          Maybe we're wrong, but if you also believe this, ask to join us. 

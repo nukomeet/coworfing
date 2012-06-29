@@ -1,8 +1,11 @@
 class HomeController < ApplicationController
   def index
+    @user_count = User.all.count
+    @place_count = Place.all.count
+    @place_req_count = PlaceRequest.all.count
   end
 
-  def places
+  def map
     @places = []
     authorize! :see, :places
 

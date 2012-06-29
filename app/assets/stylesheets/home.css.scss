@@ -1,12 +1,13 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+/*
 .lead {
   font-size: 55px;
   letter-spacing: 1px;
 }
 
+*/
 #mapino label { width: auto; display:inline; }
 #mapino img { max-width: none; }
 
@@ -14,6 +15,7 @@
   height: 500px;
 }
 
+/*
 #getting-started {
   .input-append {
   }
@@ -58,4 +60,129 @@
     font: 50px/58px 'Lobster13Regular', Arial, sans-serif;letter-spacing: 0;
     color: #3C7AA3;
     text-align: center;
+}
+
+.shit {
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 28px; 
+  p {
+  letter-spacing: 1px;
+}
+}
+
+form.huge {
+  input[type=text] {
+    font-size: 22px;
+    padding: 21px;
+    border-radius: 5px;
+  }
+
+}
+
+.stats {
+  h1 {
+    font-size: 64px;
+    margin-bottom: 24px;
+
+    small { 
+      font-size: 32px;
+    }
+  }
+
+
+}
+*/
+
+#video iframe {
+  height: 369px;
+	width: 100%;
+}
+
+#slider {
+  position:relative;
+	/* background:url(/images/nivo-slider/loading.gif) no-repeat 50% 50%; */
+}
+
+#slider img {
+  position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#video {
+  position: relative;
+  text-align: center; 
+  margin: 0 auto; 
+  /*width: 640px;*/ 
+  height: 369px;
+  border: 3px solid #eee;
+ /*
+  font-family: Helvetica, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #fcfcfc;
+
+  border: 1px solid #eee;
+ 
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  
+  -webkit-box-shadow: 0px 0px 20px #888;
+  -moz-box-shadow:0px 0px 20px #888;
+  box-shadow:0px 0px 20px #888;
+*/
+}
+
+#play-demo {
+  background: #444;
+  color: #f7f5f3;
+  padding: 10px;
+  z-index:100;
+  width:85px;
+  position: absolute;
+  /*margin: -50px 0px 20px 10px;*/
+  font-size: 0.8em;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+
+  filter:alpha(opacity=80);
+	-moz-opacity:0.8;
+	-khtml-opacity: 0.8;
+	opacity: 0.8;
+	left:10px;
+  bottom: 20px;
+}
+
+#coworfingMovie {
+  -webkit-box-shadow: 0px 0px 20px #888;
+  -moz-box-shadow:0px 0px 20px #888;
+  box-shadow:0px 0px 20px #888;
+}
+
+#play-demo:hover {
+  background: #000;
+  cursor: pointer;
+}
+
+#play-demo span {
+  display:block;
+  background: url('play.png') no-repeat left center;
+  width: 20px;
+  float: left;
+}
+
+.links {
+  padding-top: 30px;
+  padding-bottom: 30px  
+    
+}
+
+.links a:link, .links a:visited {
+  color: #338BB8;
+  text-decoration: none;
+}
+.links a {
+  color: #08C;
+  text-decoration: none;
 }

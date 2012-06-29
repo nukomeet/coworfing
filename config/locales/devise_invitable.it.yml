@@ -1,0 +1,10 @@
+it:
+  devise:
+    invitations:
+      send_instructions: 'A mail di invito è stata inviata a %{email}.'
+      invitation_token_invalid: 'Il codigo di invito fornito non è valido!' 
+      updated: ' La password è stata impostata correttamente. Ora si è firmato dentro' 
+      no_invitations_remaining: "Nessun inviti rimanenti"
+    mailer:
+      invitation_instructions:
+        subject: 'Lei e stato invitato a Coworfing.com'

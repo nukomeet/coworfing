@@ -1,13 +1,45 @@
-.row-fluid
-  .span8
-    %h1
-      Find a nice place and make a request
+.span12
+  .row.home
+    %h1.callout=raw t('description.title1')
+    %h3.hand.head  
+      = @user_count 
+      = "#{t('home.worfers')}. "
+      = @place_count 
+      = "#{t('home.places')}. "
+      = @place_req_count
+      = "#{t('home.requests')}. "
 
-%hr
-
-%ul.thumbnails.row-fluid
-  %li.span12
-    #mapino.thumbnail
-
-- unless user_signed_in?
-  = render partial: 'shared/getting_started_modal' 
+    
+    #hero
+      #video.span6
+        #slider{:style=>"display:none; height:369px", :class=>"nivoSlider"}
+          = image_tag("img1.jpg", :size => "460x369") 
+          = image_tag("img2.jpg", :size => "460x369")
+          = image_tag("img3.jpg", :size => "460x369")
+          = image_tag("img4.jpg", :size => "460x369")       
+        #play-demo
+          %span &nbsp;
+          Play &nbsp;Demo
+      
+        %iframe{:id=>"coworfingMovie", :style=>"display:none; width:460px; border:0px;", :src=>"http://player.vimeo.com/video/42543508?show_portrait=0&amp;show_byline=0&amp;on_screen_info=0&amp;show_title=0&amp;js_api=1&amp;js_swf_id=coworfingMovie"}
+            
+      #search.span6
+        %h3
+          = t('description.invite')
+        %p
+          = t('description.par1')
+          %strong= t('description.par2')
+          = t('description.par3')
+          %strong= t('description.par4')
+        = form_for Demand.new do |f|
+          %fieldset
+            .controls
+              .input-append
+                = f.text_field :email, {class: "span4 large", placeholder: 'Enter your email address...'}
+                = f.submit 'Invite me', class: 'btn btn-success btn-large'
+        %p.pull-right{:style => "margin-top:130px;"}
+          =link_to(image_tag("facebook.png"), "http://www.facebook.com/coworfing")
+          =link_to(image_tag("twitter.png"), "http://www.twitter.com/coworfing")
+          =link_to(image_tag("tumblr.jpg"), "http://www.coworfing.tumblr.com")
+  .row
+    .span12.graded

@@ -3,17 +3,24 @@
     .modal-header
       %p &nbsp;
       %h1 Coworfing
-      %p Our homes are coworking spaces
+      %p 
+        = t('modal.motto')
     .modal-body
-      %h3 Ask for an invitation
-      %p We are a network of teleworkers, freelancers and entrepreneurs. We put in common our workplaces and home offices. 
-      %p Find places to work anywhere and stop working alone. 
+      %h3 
+        = t('modal.invite')
+      %p 
+        = t('modal.description')
       .input-append
         %p &nbsp;
-        = f.input :email, label: false, input_html: { class: 'span4', placeholder: 'Enter your email address...' }
-        = f.submit 'Invite me', class: 'btn btn-large'
-        = link_to 'Explain to me', about_path, class: 'btn btn-danger btn-large'
+        = f.input :email, label: false, input_html: { class: 'span4', placeholder: t('mail_input') }
+        = f.submit t('invite_me'), class: 'btn btn-danger btn-large'
+        = link_to t('explain'), about_path, class: 'btn btn-large'
     .modal-footer
-      %h3 Already have an account? 
-      = link_to 'Login', new_user_session_path, class: 'btn btn-info btn-large'
-    %p &nbsp;
+      %h3{:style => "text-align:left"}
+        = t('modal.account?')
+      = link_to t('login'), new_user_session_path, class: 'btn btn-info btn-large pull-right'
+    %p{:style => "text-align:center;"}
+      &nbsp;
+      = link_to_unless_current "English", locale: "en"
+      |
+      = link_to_unless_current "Français", locale: "fr"

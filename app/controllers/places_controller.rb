@@ -1,12 +1,16 @@
 class PlacesController < ApplicationController
   load_and_authorize_resource
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:index, :show]
+
+  def submitted
+    @places = @places.order(:created_at).page params[:page] 
+    render 'places'
+  end
 
   # GET /places
   # GET /places.json
   def index
-    @places = current_user.places
-
+    @places = @places.city(params[:cities]).order(:created_at).page params[:page]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @places }
@@ -16,8 +20,6 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show
-    @place = Place.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }
@@ -49,7 +51,13 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to @place, notice: 'Place was successfully created.' }
+        format.html {redirect_to @place}
+        if current_user.places.count == 3
+          Notification.become_cow_email(current_user).deliver
+          flash[:notice] = 'Congratulations! You just shared a place. Now you have access private places!'
+        else
+          flash[:notice] =  'Great, your place was successfully created.' 
+        end
         format.json { render json: @place, status: :created, location: @place }
       else
         format.html { render action: "new" }

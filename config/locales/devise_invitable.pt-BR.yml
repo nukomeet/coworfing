@@ -1,0 +1,10 @@
+pt-BR:
+  devise:
+    invitations:
+      send_instructions: 'Invitação foi enviada a %{email}.'
+      invitation_token_invalid: 'O codigo de invitação não é vàlido!'
+      updated: 'A senha foi criada. Você é conectado.'
+      no_invitations_remaining: "Não fica mais invitaçoes"
+    mailer:
+      invitation_instructions:
+        subject: 'Invitação para Coworfing'

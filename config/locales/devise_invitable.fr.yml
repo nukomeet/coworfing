@@ -1,0 +1,10 @@
+fr:
+  devise:
+    invitations:
+      send_instructions: 'Une invitation a été envoyée à %{email}.'
+      invitation_token_invalid: 'Code non valide.'
+      updated: 'Votre mot de passe a bien été enregistré. Vous êtes maintenant connecté.'
+      no_invitations_remaining: "Il ne reste plus d'invitations."
+    mailer:
+      invitation_instructions:
+        subject: 'Votre invitation'

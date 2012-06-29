@@ -6,10 +6,11 @@
     %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
 
+    %link{href: 'http://fonts.googleapis.com/css?family=Lobster', rel:'stylesheet', type:'text/css'}
+
     %script{:src => "//maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
 
     = stylesheet_link_tag :application, :media => "all"
-    = javascript_include_tag :application
     = csrf_meta_tags
   
     :javascript
@@ -33,92 +34,102 @@
         fjs.parentNode.insertBefore(js, fjs);
           }(document, 'script', 'facebook-jssdk'));
 
-  %body{:class => params[:controller]}
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container-fluid
-          = link_to 'Coworfing', root_path, class: 'brand'
+  %body{class: "#{params[:controller]}_#{params[:action]}"}
+    = render :partial => "shared/flash_messages", :locals => {:flash => flash}
+    .container
+      .navbar
+        .navbar-inner
+          = link_to 'Coworfing', root_url, class: 'brand'
           .nav-collapse
             %ul.nav
-              %li.navbtn.dropdown{:style => "margin-left: 100px;"}  
-                %a.dropdown-toggle{:'data-toggle' => "dropdown"}
-                  %i.icon-home.icon-white
-                  Places
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    = link_to map_path do
-                      %i.icon-map-marker.icon-white
-                      Browse the map
-                  %li
-                    = link_to list_path do
-                      %i.icon-th-list.icon-white
-                      Browse the list 
-                  %li
-                    = link_to places_path do
-                      %i.icon-home.icon-white
-                      Your places 
-                  %li
-                    = link_to new_place_path do
-                      %i.icon-plus.icon-white
-                      Add a place 
-              %li.navbtn.dropdown
-                %a.dropdown-toggle{:'data-toggle' => "dropdown"}
-                  %i.icon-question-sign.icon-white
-                  Requests
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    = link_to received_place_requests_path do
-                      %i.icon-inbox.icon-white
-                      Received 
-                  %li
-                    = link_to sent_place_requests_path do
-                      %i.icon-share.icon-white
-                      Sent 
-              %li.navbtn.dropdown
-                %a.dropdown-toggle{:'data-toggle' => "dropdown "}
-                  %i.icon-info-sign.icon-white
-                  About
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    = link_to about_path do
-                      %i.icon-info-sign.icon-white
-                      About us
-                  %li
-                    = link_to('http://coworfing.tumblr.com') do
-                      %i.icon-heart.icon-white
-                      Blog
+              -if user_signed_in?
+                %li
+                  = link_to map_path do
+                    %i.icon-pushpin.icon-white
+                    = t('navbar.map') 
+              %li
+                = link_to places_path do
+                  %i.icon-th.icon-white
+                  = t('navbar.places') 
+              %li
+                = link_to people_path do
+                  %i.icon-user.icon-white
+                  = t('navbar.people')
+
 
             - unless user_signed_in?
               %ul.nav.pull-right
-                %li= link_to 'Login', new_user_session_path
+                %li= link_to t('login'), new_user_session_path
             - else
               %ul.nav.pull-right
                 %li.dropdown
-                  %a.dropdown-toggle{:'data-toggle' => "dropdown", :style => "margin-top: 20px; margin-right: 20px;"} 
+                  %a.dropdown-toggle{:'data-toggle' => "dropdown"}
+                    %i.icon-question-sign.icon-white
+                    = t('navbar.requests')
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li
+                      = link_to received_place_requests_path do
+                        %i.icon-inbox.icon-white
+                        = t('navbar.received') 
+                    %li
+                      = link_to sent_place_requests_path do
+                        %i.icon-share.icon-white
+                        = t('navbar.sent')
+                %li.dropdown
+                  %a.dropdown-toggle{:'data-toggle' => "dropdown"}
                     %i.icon-user.icon-white
-                    Logged as
+                    = t('navbar.logged_as')
                     = current_user.name
                     %b.caret
                   %ul.dropdown-menu
+                    %li
+                      = link_to submitted_places_path do
+                        %i.icon-home.icon-white
+                        = t('navbar.your_places') 
+                    %li= link_to t('navbar.your_profile'), user_settings_edit_path 
+                    %li= link_to t('navbar.your_password'), user_password_edit_path 
                     %li.divider
-                    %li= link_to 'Help', destroy_user_session_path, method: :delete
-                    %li= link_to 'Log out', destroy_user_session_path, method: :delete
+                    =#%li= link_to t('navbar.help'), destroy_user_session_path, method: :delete
+                    %li= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete
 
 
-    #container.container-fluid
-      = render :partial => "shared/flash_messages", :locals => {:flash => flash}
-
+    #container.container
       #main{:role => "main"}
         = yield
 
-    %footer
-      .pull-right
-        %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
-        :javascript
-            (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
-        &nbsp;
-        &nbsp;
-        &nbsp;
+    .container
+      %footer
+        %hr
+        .row
+                        
+        .row.footer
+          .span12
+            %ul.links
+              %li
+                =link_to(image_tag("facebook.png"), "http://www.facebook.com/coworfing")
+                
+              %li
+                =link_to(image_tag("twitter.png"), "http://www.twitter.com/coworfing")
+              %li
+                = link_to(image_tag('tumblr.jpg'), 'http://coworfing.tumblr.com')
+              %li
+                = link_to(image_tag('gmail.png'),"mailto:coworfing@gmail.com")
+              %li
+                = link_to t('navbar.about_us'), about_path
+              %li
+                = link_to 'Contribute', contribute_path
+              %li.privacy
+                %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
+                :javascript
+                    (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
+    = javascript_include_tag :application
+
+#- uservoice script
+:javascript
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/jwQvOVpwKwuGgphhgfTbVw.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();

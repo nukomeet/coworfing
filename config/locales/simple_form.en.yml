@@ -17,16 +17,16 @@ en:
         desc: 'Description'
         wifi: 'WIFI Access Code'
         address_line1: 'Address'
-        public: Public?
-        smoke: Smoke?
-        music: Music?
-        discussion: Discussion? 
-    #   password: 'Password'
-    #   user:
-    #     new:
-    #       email: 'E-mail para efetuar o sign in.'
-    #     edit:
-    #       email: 'E-mail.'
+        public:  
+        smoke: 
+        music: 
+        discussion:  
+        password: 'Password'
+        user:
+        # new:
+        #  email: 'E-mail'
+        # edit:
+        #  email: 'E-mail'
     hints:
       place:
         name: 'Name should be between 5 to 45 characters long'
@@ -36,5 +36,9 @@ en:
         music: 'Check the box if the owner of in this place likes to put music'
         discussion: 'Check the box if there is a lot of chatting going on in this place'
         photo: 'A picture is worth a thousand words'
+      user:
+        public: 'Mark this, if you want to publicize your profile to other users'
+        name: 'Enter your full name'
+        username: 'Enter your Coworfing username'
 
 
