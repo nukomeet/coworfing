@@ -16,6 +16,8 @@ class Ability
       can :read, Place
       can :submitted, Place, user_id: user.id
 
+      can :invite, User
+
       can :update, User, :user_id => user.id 
       can :read, User
 
