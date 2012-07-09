@@ -87,6 +87,7 @@
                       = link_to submitted_places_path do
                         %i.icon-home.icon-white
                         = t('navbar.your_places') 
+                    %li= link_to t('navbar.invite'), new_user_invitation_path
                     %li= link_to t('navbar.your_profile'), user_settings_edit_path 
                     %li= link_to t('navbar.your_password'), user_password_edit_path 
                     %li.divider
