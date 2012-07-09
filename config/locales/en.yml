@@ -207,6 +207,7 @@ en:
     errors:
       <<: *errors
   navbar:
+    invite: 'Invite people'
     map: 'Map'
     places: 'Places'
     people: 'People'
