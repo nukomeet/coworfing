@@ -1,14 +1,28 @@
-<h2>Send invitation</h2>
+<h2>Invite some friends</h2>
+<hr/>
+<p>As the application is still under development, please</p>
+<p>- do not invite people you don't know</p>
+<p>- do not invite people you don't trust</p>
+<p>- do not invite people who cannot understand that the app is under development and may change or suffer from bugs.</p>
+<p>Apart from that, your friends are welcome!</p>
+<hr/>
+<div class="row">
+  <div class="span4 invite">
+    <h3>Go ahead, <br/> invite them! </h3>
+  </div>
+  <div class="span4 invite">
+    <%= after_invite_path_for(resource) %>
 
-<%= after_invite_path_for(resource) %>
+    <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
-  <%= devise_error_messages! %>
+      <p><%= f.label :email %><br />
+      <%= f.text_field :email %></p>
 
-  <p><%= f.label :email %><br />
-  <%= f.text_field :email %></p>
-
-  <p><%= f.submit "Send an invitation" %></p>
-<% end %>
-
-<%= link_to "Home", after_sign_in_path_for(resource_name) %><br />
+      <p><%= f.submit "Send an invitation", :class => "btn btn-large btn-info" %></p>
+    <% end %>
+  </div>
+  <div class="span4">
+    <%= image_tag("logo_coworfing.png") %>
+  </div>
+</div>
