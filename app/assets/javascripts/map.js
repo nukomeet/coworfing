@@ -42,7 +42,7 @@ $(function () {
         });
 
 
-    $.getJSON("/search/list", { limit: 50 }, function (json) {
+    $.getJSON("/map", { limit: 150 }, function (json) {
         if (json.length > 0) {
             for (i = 0; i < json.length; i++) {
                 var place = json[i];
