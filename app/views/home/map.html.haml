@@ -1,7 +1,7 @@
 %hr
 .span7
   = form_tag places_path, method: :get, class: 'form-inline'  do
-    = select_tag "cities", options_for_select(Place.all.distinct(:city)), multiple: true, :onchange => "this.form.submit()", class: 'span6 chzn-select', :style => "float:left;"
+    = select_tag "cities", options_for_select(Place.select(:city).uniq), multiple: true, :onchange => "this.form.submit()", class: 'span6 chzn-select', :style => "float:left;"
     = submit_tag t('search'), class: 'btn btn-info', :style => "margin-top : -25px;"
 .span4.pull-right
   = link_to new_place_path, { class: 'btn btn-info' } do

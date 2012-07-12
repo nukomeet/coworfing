@@ -2,18 +2,11 @@
   - if user_signed_in? 
     .span7
       .row
-        - if current_user.is_cow        
-          .span5.notification
-            %h4
-              You can now see private places. 
-            %p
-              Did you ever imagine to cowork at someone's place? Now is the time.
-        - else
-          .span5
-            %h4           
-              You can only see public places 
-            %p.center
-              Add a place and you will gain access to private places! 
+        .span5
+          %h4           
+            You can only see public places 
+          %p.center
+            Add a place and you will gain access to private places! 
     .span4
       %p.list-place{:style => "margin-left:30px; margin-top: 20px;"}
         = link_to new_place_path, { class: 'btn btn-info btn-large' } do
@@ -29,7 +22,7 @@
 %hr
 
 = form_tag places_path, method: :get, class: 'form-inline'  do
-  = select_tag "cities", options_for_select(Place.all.distinct(:city)), multiple: true, :onchange => "this.form.submit()", class: 'span6 chzn-select', :style => "float:left;"
+  = select_tag "cities", options_for_select(Place.select(:city).uniq), multiple: true, :onchange => "this.form.submit()", class: 'span6 chzn-select', :style => "float:left;"
   = submit_tag t('search'), class: 'btn btn-info', :style => "margin-top : -25px;"
 
 %hr
@@ -70,4 +63,5 @@
           
 .row
   .span12
-    = paginate @places, theme: 'bootstrap'
+    -#
+      = paginate @places, theme: 'bootstrap'
