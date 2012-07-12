@@ -8,7 +8,7 @@ $(function() {
         user_location = $.parseJSON(
             $.ajax({
                   type: 'GET',
-                  url: '/home/location',
+                  url: '/home/location'.text(),
                   dataType: 'json',
                   success: function() { },
                   data: {},
