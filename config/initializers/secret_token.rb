@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Coworfing::Application.config.secret_token = 'cac9a8ff6e917204ee6e7706f9f596cbc2fd28e6e056947c9115e391322d91b4ac6845d683cf59f05d89e353af853af8ae727254b3b0abdb737ee2e90a666e09'
+Coworfing::Application.config.secret_token = '625da242c5021a36780e9657a31299ec6c84a621c7f9140a5bb5f02fbe316b6fadbdbfc296f0a985aeff08d4db0f410d08eaf64e7f0f5e468579118c7120776c'

@@ -4,19 +4,16 @@ Devise.setup do |config|
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
-  config.mailer_sender = "coworfing@gmail.com"
+  config.mailer_sender = "bonjour@coworfing.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
-
-  # Automatically apply schema changes in tableless databases
-  config.apply_schema = false
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/mongoid'
+  require 'devise/orm/active_record'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -85,7 +82,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "ad76dfcd26036aa4a1299aaeefe986285d6c16319272ccf13b540d06dcaf8ffc903da6e613f98b1f40db5be63d4aab1a32f4a32d79329ffdd84502937f3b42fd"
+  # config.pepper = "9a7827b5ca5caf0fd6b634a18e53648bfd5d59292a582d0a223f5c2c7640b5b6e4a51b63da4d197dc5738c5ffed0f3c7e7af87d51d59fa12b14f5bb7d8ca0d0c"
 
   # ==> Configuration for :invitable
   # The period the generated invitation token is valid, after
@@ -98,10 +95,12 @@ Devise.setup do |config|
   # If invitation_limit is 0, users can't send invitations.
   # If invitation_limit n > 0, users can send n invitations.
   # Default: nil
-  config.invitation_limit = nil 
+  config.invitation_limit = nil
   
   # The key to be used to check existing users when sending an invitation
-  # config.invite_key = :email
+  # and the regexp used to test it when validate_on_invite is not set.
+  # config.invite_key = {:email => /A[^@]+@[^@]+z/}
+  # config.invite_key = {:email => /A[^@]+@[^@]+z/, :username => nil}
   
   # Flag that force a record to be valid before being actually invited 
   # Default: false
@@ -115,7 +114,7 @@ Devise.setup do |config|
   # the user cannot access the website without confirming his account.
   # config.allow_unconfirmed_access_for = 2.days
 
-  # If true, requires any email changes to be confirmed (exctly the same way as
+  # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed new email is stored in
   # unconfirmed email column, and copied to email column on successful confirmation.
@@ -131,13 +130,9 @@ Devise.setup do |config|
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
 
-  # If true, uses the password salt as remember token. This should be turned
-  # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = true
-
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
-  # config.cookie_options = {}
+  # config.rememberable_options = {}
 
   # ==> Configuration for :validatable
   # Range for password length. Default is 6..128.
@@ -152,6 +147,9 @@ Devise.setup do |config|
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
   # config.timeout_in = 30.minutes
+  
+  # If true, expires auth token on session timeout.
+  # config.expire_auth_token_on_timeout = false
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -208,9 +206,8 @@ Devise.setup do |config|
   # devise role declared in your routes (usually :user).
   # config.default_scope = :user
 
-  # Configure sign_out behavior.
-  # Sign_out action can be scoped (i.e. /users/sign_out affects only :user scope).
-  # The default is true, which means any logout action will sign out all active scopes.
+  # Set this configuration to false if you want /users/sign_out to sign out
+  # only the current scope. By default, Devise signs out all scopes.
   # config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
@@ -225,7 +222,7 @@ Devise.setup do |config|
   # config.navigational_formats = ["*/*", :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = Rails.env.test? ? :get : :delete
+  config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
@@ -240,4 +237,18 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+
+  # ==> Mountable engine configurations
+  # When using Devise inside an engine, let's call it `MyEngine`, and this engine
+  # is mountable, there are some extra configurations to be taken into account.
+  # The following options are available, assuming the engine is mounted as:
+  #
+  #     mount MyEngine, at: "/my_engine"
+  #
+  # The router that invoked `devise_for`, in the example above, would be:
+  # config.router_name = :my_engine
+  #
+  # When using omniauth, Devise cannot automatically set Omniauth path,
+  # so you need to do it manually. For the users scope, it would be:
+  # config.omniauth_path_prefix = "/my_engine/users/auth"
 end
