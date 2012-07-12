@@ -3,14 +3,14 @@ class PlacesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def submitted
-    @places = @places.order(:created_at).page params[:page] 
+    @places = Place.order(:created_at).page params[:page] 
     render 'places'
   end
 
   # GET /places
   # GET /places.json
   def index
-    @places = @places.city(params[:cities]).order(:created_at).page params[:page]
+    @places = Place.order(:created_at).page(params[:page]).city(params[:cities])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @places }
