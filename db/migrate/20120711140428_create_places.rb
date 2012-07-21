@@ -5,7 +5,7 @@ class CreatePlaces < ActiveRecord::Migration
       t.text :desc
       t.string :website
       t.string :wifi
-      t.string :transport
+      t.text :transport
       t.string :address_line1
       t.string :address_line2
       t.string :city
