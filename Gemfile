@@ -4,8 +4,9 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.6'
+gem 'rails' 
 gem 'pg'
+gem 'oj'
 
 group :assets do
   gem 'sass-rails'
@@ -58,3 +59,5 @@ gem 'hominid'
 gem 'hipchat'
 gem 'carrierwave'
 gem 'geocoder'
+gem 'bitmask_attributes'
+gem 'country_select'
