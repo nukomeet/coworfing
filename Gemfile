@@ -6,6 +6,8 @@ ruby '1.9.3'
 
 gem 'rails' 
 gem 'pg'
+gem 'thin'
+
 gem 'oj'
 
 group :assets do
