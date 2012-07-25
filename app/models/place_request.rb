@@ -1,6 +1,8 @@
 class PlaceRequest < ActiveRecord::Base
   attr_accessible :active, :body, :requested_on
 
+  #attr_accessible :created_at, :status, :updated_at
+
   belongs_to :place
   belongs_to :booker, class_name: 'User', inverse_of: :place_requests_sent
   belongs_to :receiver, class_name: 'User', inverse_of: :place_requests_received

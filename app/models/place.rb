@@ -1,7 +1,14 @@
 class Place < ActiveRecord::Base
+
   attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode
 
+  #attr_accessible :created_at, :photo, :updated_at, :user_id
+
   geocoded_by :address 
+
+  # only add at the end
+  bitmask :features, as: [:discussion, :music, :smoke]
+  symbolize :kind, in: [:private, :public, :business], scopes: true, methods: true
 
   mount_uploader :photo, PhotoUploader
 
@@ -21,7 +28,7 @@ class Place < ActiveRecord::Base
   class << self
     def city(cities)
       if cities
-        where(:city.in => cities)
+        where(city: cities)
       else
         all
       end

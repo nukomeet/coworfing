@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  rolify
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -7,9 +6,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public
+  #attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public
+  #attr_accessible :confirmation_sent_at, :confirmation_token, :created_at, :current_sign_in_at, :current_sign_in_ip, :encrypted_password, :last_sign_in_at, :last_sign_in_ip, :photo, :remember_created_at, :role, :sign_in_count, :updated_at, :invitation_accepted_at, :invitation_sent_at, :invitation_token, :invited_by_id, :invited_by_type, :reset_password_sent_at, :reset_password_token
 
   mount_uploader :photo, PhotoUploader
+
+  ROLES = %w(admin regular guest)
 
   validates_presence_of :email
   validates_uniqueness_of :name, :email, :username, case_sensitive: false
@@ -24,15 +26,15 @@ class User < ActiveRecord::Base
 
   # defining roles 
   def admin?
-    self.has_role? "admin"
+    self.role == "admin"
   end
 
   def regular?
-    self.has_role? "regular"
+    self.role == "regular"
   end
 
   def guest?
-    self.has_role? "guest"
+    self.role == "guest"
   end
   
 end
