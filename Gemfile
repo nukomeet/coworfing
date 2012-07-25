@@ -61,3 +61,8 @@ gem 'carrierwave'
 gem 'geocoder'
 gem 'bitmask_attributes'
 gem 'country_select'
+
+group :development do
+  gem 'taps', require: false
+  gem 'sqlite3'
+end
