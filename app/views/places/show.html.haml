@@ -8,15 +8,15 @@
   .span5.infos
     %h3{:style => "text-align:left"}
       = @place.name
-    - if @place.music
+    - if @place.features?(:music)
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
     - else
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
-    - if @place.smoke
+    - if @place.features?(:smoke)
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
     - else
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
-    - if @place.discussion
+    - if @place.features?(:discussion)
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
     - else
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
@@ -33,15 +33,15 @@
     %p
       %INPUT{:class => "btn btn-info span3 btn-large", :TYPE => "button", :VALUE => "Invite friends there", :onClick => "parent.location='mailto:Friends email here?subject=Invitation to cowork&Body=I found this awesome place to work. Would you join me there? Check it out: http://#{request.host+request.fullpath}'"} 
       %span.pull-right
-        - unless @place.owned_by(current_user)
-          - if @place.public
+        - unless @place.user == current_user
+          - if @place.public?
             %span.label.label-info.upcase 
               = t('place.public')
           - else
             %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
               %i.icon-white.icon-lock
               = t('place.demand')
-    = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.coordinates[1]}%2C#{@place.coordinates[0]}"
+    = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"
     %p
       = t('place.added_by')
       = link_to @place.user.username, profile_path(@place.user.username) 

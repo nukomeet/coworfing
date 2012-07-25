@@ -39,7 +39,7 @@
           %h5
             = link_to truncate(place.name, length: 20), place
             - if user_signed_in?
-              - if place.public
+              - if place.public?
                 %span.label.label-info.pull-right.upcase 
                   public
               - else
@@ -48,15 +48,15 @@
           .place_row
             = truncate(place.desc, length: 20)
             .facets.pull-right
-              - if place.music
+              - if place.features?(:music)
                 %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
               - else
                 %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
-              - if place.smoke
+              - if place.features?(:smoke)
                 %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
               - else
                 %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
-              - if place.discussion
+              - if place.features?(:discussion)
                 %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
               - else
                 %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
