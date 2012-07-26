@@ -4,23 +4,19 @@
 }
 
 @font-face {
-  font-family: 'Delius Swash Caps';
   font-style: normal;
   font-weight: 400;
   src: local('Delius Swash Caps'), local('DeliusSwashCaps-Regular'), url('http://themes.googleusercontent.com/static/fonts/deliusswashcaps/v5/uXyrEUnoWApxIOICunRq7-HbywbERJ_YcOpO6Co4fHY.woff') format('woff');
 }
 
 body {
-  background: #FCFCFC url("background.png") top left repeat-x;
-  /*padding: 40px 0 0;*/
+  background-color: #ECECEC 
   border-top: 3px solid #DDD;
-
 }
 
-.navbar .navbar-inner{}
 
 .navbar .navbar-inner{
-  background: transparent;
+  background: #DFDFDF;
   box-shadow: none;
   filter: none;
   border-top: none;
@@ -53,11 +49,11 @@ h3.hand{
 }
 
 .navbar .nav-collapse .nav li > a {
-  color:#666;
+  color:#333;
 }
 
 .navbar .nav-collapse .nav li > a:hover{
-  color: #222;
+  color: #111;
 }
 
 .drop-shadow {
