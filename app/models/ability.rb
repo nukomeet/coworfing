@@ -10,7 +10,7 @@ class Ability
     end
 
     if user.regular? 
-      can :manage, Place, :user_id => user.id
+      can :manage, Place, user_id: user.id
       can :create, Place
       can :read, Place
       can :submitted, Place, user_id: user.id
