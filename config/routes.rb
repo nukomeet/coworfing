@@ -44,13 +44,6 @@ Coworfing::Application.routes.draw do
       get 'sent', on: :collection
     end
 
-    match '/:locale' => 'home#index' 
-
     root :to => "home#index"
-
-  end
-  match '*path', to: redirect("/#{I18n.default_locale}/%{path}"), constraints: lambda { |req| !req.path.starts_with? "/#{I18n.default_locale}/" }
-  match '', to: redirect("/#{I18n.default_locale}")
 end
 
-Rails.application.routes.default_url_options[:locale] = I18n.locale 
