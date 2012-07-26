@@ -206,6 +206,12 @@ en:
   activerecord:
     errors:
       <<: *errors
+    symbolizes: 
+      place:
+        kind:
+          private: Private
+          public: Public
+          business: Business
   navbar:
     invite: 'Invite people'
     map: 'Map'
