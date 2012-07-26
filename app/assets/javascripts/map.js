@@ -7,8 +7,9 @@ $(function() {
 
         user_location = $.parseJSON(
             $.ajax({
+                  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                   type: 'GET',
-                  url: '/home/location',
+                  url: "/home/location",
                   dataType: 'json',
                   success: function() { },
                   data: {},
