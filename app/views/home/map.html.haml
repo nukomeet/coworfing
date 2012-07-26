@@ -1,13 +1,15 @@
-%hr
-.span7
-  = form_tag places_path, method: :get, class: 'form-inline'  do
-    = select_tag "cities", options_for_select(Place.uniq.pluck(:city)), multiple: true, class: 'span6 chzn-select'
-    = submit_tag t('search'), class: 'btn btn-info', :style => "margin-top : -25px;"
-.span4.pull-right
-  = link_to new_place_path, { class: 'btn btn-info' } do
-    %i.icon-map-marker.icon-white
-    &nbsp;
-    = t('add')
+.row
+  .span8
+    = form_tag places_path, method: :get, class: 'form-inline'  do
+      .controls
+        .input-append
+          = select_tag "cities", options_for_select(Place.uniq.pluck(:city)), multiple: true, class: 'span7 chzn-select'
+          = submit_tag t('search'), class: 'btn'
+  .span4.last
+    = link_to new_place_path, { class: 'btn btn-info' } do
+      %i.icon-map-marker.icon-white
+      &nbsp;
+      = t('add')
 
 %ul.thumbnails
   %li.span12
