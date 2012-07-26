@@ -3,10 +3,13 @@
     - if @place.photo?
       = image_tag(@place.photo_url(:big))
     - else
-      %img{src: 'http://placehold.it/240x160&text=Add+Your+Photo'}
+      = image_tag('http://cambelt.co/540x540/Add+Your+Photo')
   .span5.infos
-    %h3
+    %h2
       = @place.name
+    %p
+      = t('place.added_by')
+      = link_to @place.user.name, profile_path(@place.user.username) 
     - if @place.features?(:music)
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
     - else
@@ -40,11 +43,6 @@
               %i.icon-white.icon-lock
               = t('place.demand')
     = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"
-    %p
-      = t('place.added_by')
-      = link_to @place.user.username, profile_path(@place.user.username) 
-      - if can? :update, @place 
-        = link_to 'Edit', edit_place_path(@place), { class: 'btn' }
       
 - if @place.comments.size > 0 
   %hr
