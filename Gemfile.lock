@@ -271,7 +271,7 @@ PLATFORMS
 
 DEPENDENCIES
   bitmask_attributes
-  bootstrap-sass (>= 2.0.3)
+  bootstrap-sass
   bootstrap_kaminari!
   cancan (>= 1.6.7)
   carrierwave

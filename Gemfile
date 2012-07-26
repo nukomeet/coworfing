@@ -12,6 +12,7 @@ gem 'oj'
 
 group :assets do
   gem 'sass-rails'
+  gem "bootstrap-sass"
   gem 'coffee-rails'
   gem 'uglifier'
   gem 'font-awesome-sass-rails'
@@ -33,7 +34,6 @@ gem "devise", ">= 2.1.0"
 gem "devise_invitable", ">= 1.0.2"
 gem "cancan", ">= 1.6.7"
 gem "rolify", ">= 3.1.0"
-gem "bootstrap-sass", ">= 2.0.3"
 gem "simple_form"
 gem "therubyracer", :group => :assets, :platform => :ruby
 gem 'mini_magick'
