@@ -6,12 +6,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   process :set_content_type
 
-  # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
-  # include Sprockets::Helpers::RailsHelper
-  # include Sprockets::Helpers::IsolatedHelper
-
-  # Choose what kind of storage to use for this uploader:
-  storage :fog
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
 
   process :resize_to_fill => [800, 600]
 
@@ -40,7 +36,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [50, 50]
   # end
-  version :petit do
+  version :small do
     process :resize_to_fill => [120, 90]
   end
 
