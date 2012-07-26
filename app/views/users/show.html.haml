@@ -3,7 +3,7 @@
     - if @user.photo?
       = image_tag(@user.photo_url(:profile))
     - else 
-      = image_tag('http://placekitten.com/300/350')
+      = image_tag('http://cambelt.co/icon/avatar/320x240')
   .span9
     %h1= "#{@user.username}"
     %hr
@@ -25,14 +25,3 @@
         %tr
           %th Twitter 
           %td
-            %a.twitter-follow-button{"data-show-count" => "false", :href => "https://twitter.com/#{@user.twitter}"} Follow 
-            :javascript
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-    %hr      
-    - if @user.is_cow
-      %p
-
-    - else
-      %p
-      This user did not share any place yet.
-%hr

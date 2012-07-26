@@ -65,8 +65,6 @@
     %p= f.text_area :content, :rows => 10, class: 'span6'
     = f.button :submit, class: 'btn-info btn-large'
 
-
-%hr
 %h2 
   = t('place.near_by')
 %ul.thumbnails.row
@@ -83,14 +81,3 @@
           %p= place.address
 
 = render partial: 'shared/demand_modal' 
-/ Script for foursquare button
-:javascript
-  (function() {
-    window.___fourSq = {};
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.src = 'http://platform.foursquare.com/js/widgets.js';
-    s.async = true;
-    var ph = document.getElementsByTagName('script')[0];
-    ph.parentNode.insertBefore(s, ph);
-  })();

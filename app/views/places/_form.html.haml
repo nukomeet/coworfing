@@ -8,7 +8,6 @@
       = f.input :name, input_html: { class: 'span5' }
       - unless @place.photo?
         = f.input :photo, as: :file
-        = f.input :photo_cache, as: :hidden
       - else
         = f.input :remove_photo, as: :boolean
         .control-group

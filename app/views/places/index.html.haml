@@ -42,6 +42,9 @@
               - if place.public?
                 %span.label.label-info.pull-right.upcase 
                   public
+              - elsif place.business?
+                %span.label.label-info.pull-right.upcase 
+                  business
               - else
                 %span.label.label-warning.pull-right.upcase 
                   private
