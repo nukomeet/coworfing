@@ -17,3 +17,18 @@
  *= require default
 */
 
+@import "bootstrap";
+@import 'font-awesome';
+
+/* GLOBAL */
+
+.thumbnail, .label {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+
+#container {
+  margin-top: 64px;
+}
