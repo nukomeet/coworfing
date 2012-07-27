@@ -211,7 +211,7 @@ en:
         kind:
           private: Private
           public: Public
-          business: Business
+          business: Pro 
   navbar:
     invite: 'Invite people'
     map: 'Map'
