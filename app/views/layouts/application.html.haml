@@ -20,57 +20,7 @@
       %nav.navbar-inner
         .container
           = link_to 'Coworfing', root_url, class: 'brand'
-          .nav-collapse
-            %ul.nav
-              -if user_signed_in?
-                %li
-                  = link_to map_path do
-                    %i.icon-pushpin.icon-white
-                    = t('navbar.map') 
-              %li
-                = link_to places_path do
-                  %i.icon-th.icon-white
-                  = t('navbar.places') 
-              %li
-                = link_to people_path do
-                  %i.icon-user.icon-white
-                  = t('navbar.people')
-
-            - unless user_signed_in?
-              %ul.nav.pull-right
-                %li= link_to t('login'), new_user_session_path
-            - else
-              %ul.nav.pull-right
-                %li.dropdown
-                  %a.dropdown-toggle{:'data-toggle' => "dropdown"}
-                    %i.icon-question-sign.icon-white
-                    = t('navbar.requests')
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li
-                      = link_to received_place_requests_path do
-                        %i.icon-inbox.icon-white
-                        = t('navbar.received') 
-                    %li
-                      = link_to sent_place_requests_path do
-                        %i.icon-share.icon-white
-                        = t('navbar.sent')
-                %li.dropdown
-                  %a.dropdown-toggle{:'data-toggle' => "dropdown"}
-                    %i.icon-user.icon-white
-                    = t('navbar.logged_as')
-                    = current_user.name
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li
-                      = link_to submitted_places_path do
-                        %i.icon-home.icon-white
-                        = t('navbar.your_places') 
-                    %li= link_to t('navbar.invite'), new_user_invitation_path
-                    %li= link_to t('navbar.your_profile'), user_settings_edit_path 
-                    %li= link_to t('navbar.your_password'), user_password_edit_path 
-                    %li.divider
-                    %li= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete
+          = render 'layouts/navigation'
 
 
     #container.container
