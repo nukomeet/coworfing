@@ -12,7 +12,7 @@ function include(file)
 }
  
 /* include any js files here */
-include('markerclusterer.js');
+include('/assets/markerclusterer.js');
 
 var markers = [];
 var map = null;
