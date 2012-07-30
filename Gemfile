@@ -56,3 +56,9 @@ group :development do
   gem 'taps', require: false
   gem 'sqlite3'
 end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'launchy'
+end
