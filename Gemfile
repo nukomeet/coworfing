@@ -29,6 +29,12 @@ gem "guard-bundler", ">= 0.1.3", :group => :development
 gem "guard-rails", ">= 0.0.3", :group => :development
 gem "guard-livereload", ">= 0.3.0", :group => :development
 gem "guard-rspec", ">= 0.4.3", :group => :development
+gem "database_cleaner", ">= 0.7.2", :group => :test
+gem 'quiet_assets', :group => :development
+gem 'spork', '~> 0.9.0.rc', :group => :test
+gem 'guard-spork', '0.3.2', :group => :test
+gem 'shoulda', '>= 3.0.0.beta', :group => :test
+gem 'faker', '>= 1.0.1', :group => :test
 gem "hominid"
 gem "devise", ">= 2.1.0"
 gem "devise_invitable", ">= 1.0.2"
@@ -51,6 +57,7 @@ gem 'carrierwave'
 gem 'geocoder'
 gem 'bitmask_attributes'
 gem 'country_select'
+gem 'rb-readline'
 
 group :development do
   gem 'taps', require: false
