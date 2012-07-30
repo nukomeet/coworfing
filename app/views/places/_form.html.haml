@@ -8,7 +8,6 @@
       = f.input :name, input_html: { class: 'span5' }
       - unless @place.photo?
         = f.input :photo, as: :file
-        = f.input :photo_cache, as: :hidden
       - else
         = f.input :remove_photo, as: :boolean
         .control-group
@@ -26,10 +25,10 @@
 
     .span6
       %legend Provide some details
-      = f.input :public, as: :boolean, :inline_label => t('simple_form.hints.place.public'), :label => false, :hint => false
-      = f.input :smoke, as: :boolean, :inline_label => t('simple_form.hints.place.smoke'), :hint => false, :label_html => {:class => 'icon-ok-circle'}, :label => "."
-      = f.input :music, as: :boolean, :inline_label => t('simple_form.hints.place.music'), :label => ".", :hint => false, :label_html => {:class => 'icon-music'}
-      = f.input :discussion, as: :boolean, :inline_label => t('simple_form.hints.place.discussion'), :label => ".", :hint => false , :label_html =>  {:class => 'icon-comment'}
+      = f.input :kind, required: true, collection: Place.get_kind_values, input_html: { class: 'chzn-select span2' }
+
+      = f.input :features, label: 'Smoke' do
+        = check_box_tag 'place[features][]', 'smoke' 
 
   .form-actions
     = f.button :submit, class: 'btn-info btn-large'

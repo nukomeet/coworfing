@@ -19,8 +19,6 @@
 //= require jquery-ui-timepicker-addon
 //= require jquery.masonry.min
 //= require chosen-jquery
-//= require bootstrap-tooltip
-//= require bootstrap-popover
 //= require jquery.batchImageLoad
 //= require jquery.cycle
 //= require hero

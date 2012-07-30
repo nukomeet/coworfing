@@ -1,63 +1,58 @@
+require 'rbconfig'
+HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
-gem 'rails', '3.2.1'
-gem 'therubyracer'
 
-gem 'foreman', group: :development
-gem 'thin'#, group: :development
-#gem 'unicorn', group: :production
+ruby '1.9.3'
 
-gem 'simple_form'
-gem 'country_select'
-gem 'geocoder'
+gem 'rails' 
+gem 'pg'
+gem 'thin'
 
-gem 'capistrano'
-gem 'rvm-capistrano'
-
+gem 'oj'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem "bootstrap-sass"
+  gem 'coffee-rails'
+  gem 'uglifier'
   gem 'font-awesome-sass-rails'
 end
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
-gem 'font-awesome-rails'
-gem "haml", ">= 3.1.4"
+gem "haml", ">= 3.1.6"
 gem "haml-rails", ">= 0.3.4", :group => :development
-gem "rspec-rails", ">= 2.8.1", :group => [:development, :test]
-gem "database_cleaner", ">= 0.7.1", :group => :test
-gem "mongoid-rspec", ">= 1.4.4", :group => :test
-gem "machinist", :group => :test
-gem "factory_girl_rails", ">= 1.6.0", :group => :test
-gem "cucumber-rails", ">= 1.2.1", :group => :test
-gem "capybara", ">= 1.1.2", :group => :test
-gem "launchy", ">= 2.0.5", :group => :test
+gem "rspec-rails", ">= 2.10.1", :group => [:development, :test]
+gem "factory_girl_rails", ">= 3.3.0", :group => [:development, :test]
+gem "email_spec", ">= 1.2.1", :group => :test
 gem "guard", ">= 0.6.2", :group => :development  
 gem "guard-bundler", ">= 0.1.3", :group => :development
 gem "guard-rails", ">= 0.0.3", :group => :development
 gem "guard-livereload", ">= 0.3.0", :group => :development
 gem "guard-rspec", ">= 0.4.3", :group => :development
-gem "guard-cucumber", ">= 0.6.1", :group => :development
-gem "bson_ext", ">= 1.3.1"
-gem "mongoid", ">= 2.4.3"
-gem "devise", ">= 2.0.0"
-gem "bootstrap-sass"
-gem "rails-footnotes", ">= 3.7", :group => :development
-gem "cancan"
-gem 'carrierwave'
-gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem "hominid"
+gem "devise", ">= 2.1.0"
+gem "devise_invitable", ">= 1.0.2"
+gem "cancan", ">= 1.6.7"
+gem "rolify", ">= 3.1.0"
+gem "simple_form"
+gem "therubyracer", :group => :assets, :platform => :ruby
 gem 'mini_magick'
 gem 'rabl'
 gem 'yajl-ruby'
-gem 'devise_invitable'
 gem 'heroku'
 gem 'fog'
-gem "symbolize", :require => "symbolize/mongoid"
+gem "symbolize", :require => "symbolize/active_record"
 gem 'chosen-rails'
 gem 'kaminari'
 gem 'bootstrap_kaminari', :git => 'git://github.com/dleavitt/bootstrap_kaminari.git'
 gem 'hominid'
 gem 'hipchat'
+gem 'carrierwave'
+gem 'geocoder'
+gem 'bitmask_attributes'
+gem 'country_select'
 
-gem "symbolize", :require => "symbolize/mongoid"
+group :development do
+  gem 'taps', require: false
+  gem 'sqlite3'
+end

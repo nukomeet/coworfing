@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  before_filter :authenticate_user!, except: [:index, :show]
-  load_and_authorize_resource
+  #before_filter :authenticate_user!, except: [:index, :show]
+  #load_and_authorize_resource
 
   def show
     # TODO security problem: fix when not logged, and user knows username of
@@ -9,9 +9,13 @@ class UsersController < ApplicationController
     @user = User.first(conditions: { username: params[:username] })
   end
 
+  def edit 
+    @user = User.find(params[:id])
+  end
+
   def index
-    @featured = User.accessible_by(current_ability).excludes(username: nil).excludes(photo: nil)
-    @users = User.accessible_by(current_ability).excludes(username: nil) - @featured
+    @featured = User.where("username IS NOT NULL and photo IS NOT NULL")
+    @users = User.where("username IS NOT NULL") - @featured
 
     respond_to do |format|
       format.html # index.html.erb

@@ -206,6 +206,12 @@ en:
   activerecord:
     errors:
       <<: *errors
+    symbolizes: 
+      place:
+        kind:
+          private: Private
+          public: Public
+          business: Pro 
   navbar:
     invite: 'Invite people'
     map: 'Map'
@@ -246,9 +252,9 @@ en:
   details: 'View details'
   home:
     explanation: 'Find a nice place and make a request' 
-    worfers: 'Happy worfers'
-    places: 'Amazing places'
-    requests: 'Requests made so far'
+    worfers: 'happy worfers.'
+    places: 'amazing places.'
+    requests: 'requests made so far.'
   place:
     added_by: 'Added by'
     public: 'This is a public place, no need to make a request'

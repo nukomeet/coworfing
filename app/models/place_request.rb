@@ -1,8 +1,7 @@
-class PlaceRequest
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Symbolize
-  include Mongoid::MultiParameterAttributes
+class PlaceRequest < ActiveRecord::Base
+  attr_accessible :active, :body, :requested_on
+
+  #attr_accessible :created_at, :status, :updated_at
 
   belongs_to :place
   belongs_to :booker, class_name: 'User', inverse_of: :place_requests_sent
@@ -12,11 +11,7 @@ class PlaceRequest
   delegate :name, to: :booker, allow_nil: true, prefix: true # .booker_name
   delegate :username, to: :booker, allow_nil: true, prefix: true # .booker_username
 
-  field :active
-  field :date, type: DateTime
-  field :body
-
   symbolize :status, in: [:pending, :approved, :rejected], default: :pending, scopes: true, methods: true
 
-  validates :date, :body, presence: true
+  validates :requested_on, :body, presence: true
 end

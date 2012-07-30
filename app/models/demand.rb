@@ -1,7 +1,3 @@
-class Demand 
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::MultiParameterAttributes
-
-  field :email
+class Demand < ActiveRecord::Base
+  attr_accessible :email
 end

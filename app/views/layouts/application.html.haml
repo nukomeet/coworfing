@@ -6,104 +6,28 @@
     %meta{"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
 
-    %link{href: 'http://fonts.googleapis.com/css?family=Lobster', rel:'stylesheet', type:'text/css'}
-
     %script{:src => "//maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
 
     = stylesheet_link_tag :application, :media => "all"
     = csrf_meta_tags
-  
-    :javascript
-      var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-30309045-1']);
-        _gaq.push(['_trackPageview']);
-        (function() {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
 
-    #fb-root
-      :javascript
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=225646797493471";
-        fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'facebook-jssdk'));
+    = render 'layouts/analytics'
 
   %body{class: "#{params[:controller]}_#{params[:action]}"}
     = render :partial => "shared/flash_messages", :locals => {:flash => flash}
-    .container
-      .navbar
-        .navbar-inner
+
+    %header.navbar.navbar-fixed-top
+      %nav.navbar-inner
+        .container
           = link_to 'Coworfing', root_url, class: 'brand'
-          .nav-collapse
-            %ul.nav
-              -if user_signed_in?
-                %li
-                  = link_to map_path do
-                    %i.icon-pushpin.icon-white
-                    = t('navbar.map') 
-              %li
-                = link_to places_path do
-                  %i.icon-th.icon-white
-                  = t('navbar.places') 
-              %li
-                = link_to people_path do
-                  %i.icon-user.icon-white
-                  = t('navbar.people')
-
-
-            - unless user_signed_in?
-              %ul.nav.pull-right
-                %li= link_to t('login'), new_user_session_path
-            - else
-              %ul.nav.pull-right
-                %li.dropdown
-                  %a.dropdown-toggle{:'data-toggle' => "dropdown"}
-                    %i.icon-question-sign.icon-white
-                    = t('navbar.requests')
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li
-                      = link_to received_place_requests_path do
-                        %i.icon-inbox.icon-white
-                        = t('navbar.received') 
-                    %li
-                      = link_to sent_place_requests_path do
-                        %i.icon-share.icon-white
-                        = t('navbar.sent')
-                %li.dropdown
-                  %a.dropdown-toggle{:'data-toggle' => "dropdown"}
-                    %i.icon-user.icon-white
-                    = t('navbar.logged_as')
-                    = current_user.name
-                    %b.caret
-                  %ul.dropdown-menu
-                    %li
-                      = link_to submitted_places_path do
-                        %i.icon-home.icon-white
-                        = t('navbar.your_places') 
-                    %li= link_to t('navbar.invite'), new_user_invitation_path
-                    %li= link_to t('navbar.your_profile'), user_settings_edit_path 
-                    %li= link_to t('navbar.your_password'), user_password_edit_path 
-                    %li.divider
-                    =#%li= link_to t('navbar.help'), destroy_user_session_path, method: :delete
-                    %li= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete
+          = render 'layouts/navigation'
 
 
     #container.container
       #main{:role => "main"}
         = yield
 
-    .container
       %footer
-        %hr
-        .row
-                        
         .row.footer
           .span12
             %ul.links
@@ -121,15 +45,9 @@
               %li
                 = link_to 'Contribute', contribute_path
               %li.privacy
-                %a#iubenda-embed.iubenda-white{:href => "https://www.iubenda.com/privacy-policy/327733", :title => "Privacy Policy"} Privacy Policy
-                :javascript
-                    (function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src = "https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; w.addEventListener ? w.addEventListener("load", loader, false) : w.attachEvent("onload", loader);})(window, document);
+                = render 'layouts/iubenda'
+
     = javascript_include_tag :application
 
-:javascript
-  var uvOptions = {};
-  (function() {
-    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/jwQvOVpwKwuGgphhgfTbVw.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-  })();
+= render 'layouts/uservoice'
+

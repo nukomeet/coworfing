@@ -3,11 +3,11 @@
     %h1.callout=raw t('description.title1')
     %h3.hand.head  
       = @user_count 
-      = "#{t('home.worfers')}. "
+      = t('home.worfers') 
       = @place_count 
-      = "#{t('home.places')}. "
+      = t('home.places')
       = @place_req_count
-      = "#{t('home.requests')}. "
+      = t('home.requests')
 
     
     #hero
@@ -23,8 +23,8 @@
       
         %iframe{:id=>"coworfingMovie", :style=>"display:none; width:460px; border:0px;", :src=>"http://player.vimeo.com/video/42543508?show_portrait=0&amp;show_byline=0&amp;on_screen_info=0&amp;show_title=0&amp;js_api=1&amp;js_swf_id=coworfingMovie"}
             
-      #search.span6
-        %h3
+      .span6
+        %h4
           = t('description.invite')
         %p
           = t('description.par1')
@@ -32,14 +32,9 @@
           = t('description.par3')
           %strong= t('description.par4')
         = form_for Demand.new do |f|
-          %fieldset
-            .controls
-              .input-append
-                = f.text_field :email, {class: "span4 large", placeholder: 'Enter your email address...'}
-                = f.submit 'Invite me', class: 'btn btn-success btn-large'
-        %p.pull-right{:style => "margin-top:130px;"}
-          =link_to(image_tag("facebook.png"), "http://www.facebook.com/coworfing")
-          =link_to(image_tag("twitter.png"), "http://www.twitter.com/coworfing")
-          =link_to(image_tag("tumblr.jpg"), "http://www.coworfing.tumblr.com")
+          .controls
+            .input-append
+              = f.text_field :email, {class: "span4 large", placeholder: 'Enter your email address...'}
+              = f.submit 'Invite me', class: 'btn btn-success'
   .row
     .span12.graded

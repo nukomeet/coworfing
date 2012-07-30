@@ -1,27 +1,28 @@
-%hr
 .row
   .span7
     - if @place.photo?
       = image_tag(@place.photo_url(:big))
     - else
-      %img{src: 'http://placehold.it/240x160&text=Add+Your+Photo'}
+      = image_tag('http://cambelt.co/540x540/Add+Your+Photo')
   .span5.infos
-    %h3{:style => "text-align:left"}
+    %h2
       = @place.name
-    - if @place.music
+    %p
+      = t('place.added_by')
+      = link_to @place.user.name, profile_path(@place.user.username) 
+    - if @place.features?(:music)
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
     - else
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
-    - if @place.smoke
+    - if @place.features?(:smoke)
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
     - else
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
-    - if @place.discussion
+    - if @place.features?(:discussion)
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
     - else
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
-    %span{'rel' => 'tooltip', 'data-original-title' => 'Wifi', :class => 'icon-signal icon_tooltip'}              
-    %p{:style => "text-align:justify"}
+    %p
       = @place.desc
       =  link_to @place.website, "#{@place.website}" 
     %p
@@ -33,20 +34,15 @@
     %p
       %INPUT{:class => "btn btn-info span3 btn-large", :TYPE => "button", :VALUE => "Invite friends there", :onClick => "parent.location='mailto:Friends email here?subject=Invitation to cowork&Body=I found this awesome place to work. Would you join me there? Check it out: http://#{request.host+request.fullpath}'"} 
       %span.pull-right
-        - unless @place.owned_by(current_user)
-          - if @place.public
+        - unless @place.user == current_user
+          - if @place.public?
             %span.label.label-info.upcase 
               = t('place.public')
           - else
             %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
               %i.icon-white.icon-lock
               = t('place.demand')
-    = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.coordinates[1]}%2C#{@place.coordinates[0]}"
-    %p
-      = t('place.added_by')
-      = link_to @place.user.username, profile_path(@place.user.username) 
-      - if can? :update, @place 
-        = link_to 'Edit', edit_place_path(@place), { class: 'btn' }
+    = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"
       
 - if @place.comments.size > 0 
   %hr
@@ -65,8 +61,6 @@
     %p= f.text_area :content, :rows => 10, class: 'span6'
     = f.button :submit, class: 'btn-info btn-large'
 
-
-%hr
 %h2 
   = t('place.near_by')
 %ul.thumbnails.row
@@ -83,14 +77,3 @@
           %p= place.address
 
 = render partial: 'shared/demand_modal' 
-/ Script for foursquare button
-:javascript
-  (function() {
-    window.___fourSq = {};
-    var s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.src = 'http://platform.foursquare.com/js/widgets.js';
-    s.async = true;
-    var ph = document.getElementsByTagName('script')[0];
-    ph.parentNode.insertBefore(s, ph);
-  })();
