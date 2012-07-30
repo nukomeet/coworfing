@@ -8,7 +8,9 @@ class PlacesController < ApplicationController
   end
 
   def index
-    @places = Place.order(:created_at).page(params[:page]).city(params[:cities])
+    @places = Place.order(:updated_at).page(params[:page]).city(params[:cities])
+    @place_names = Place.uniq.pluck(:city)
+
     respond_to do |format|
       format.html 
       format.json { render json: @places }

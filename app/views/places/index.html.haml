@@ -22,7 +22,7 @@
 %hr
 
 = form_tag places_path, method: :get, class: 'form-inline'  do
-  = select_tag "cities", options_for_select(Place.uniq.pluck(:city)), multiple: true, :onchange => "this.form.submit()", class: 'span6 chzn-select', :style => "float:left;"
+  = select_tag "cities", options_for_select(@place_names), multiple: true, class: 'span6'
   = submit_tag t('search'), class: 'btn btn-info', :style => "margin-top : -25px;"
 
 %hr
