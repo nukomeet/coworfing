@@ -32,7 +32,7 @@ Coworfing::Application.routes.draw do
 
 
     resources :places do 
-      resources :comments
+      resources :comments, :only => :create
 
       get 'submitted', on: :collection, as: :submitted
       get 'page/:page', action: :index, on: :collection
