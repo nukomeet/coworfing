@@ -3,6 +3,7 @@ require 'spec_helper'
 describe PlacesController do
   let(:guest) { FactoryGirl.create(:user, :guest) }
   let(:regular) { FactoryGirl.create(:user, :regular) }
+  let(:bob_regular) { FactoryGirl.create(:user, :regular) }
   
   describe "GET index" do
     before :each do
@@ -70,7 +71,7 @@ describe PlacesController do
         place = regular.places.build
         place.name = "#{regular.name}'s place"
         get :new
-        #assigns(:place).should =~ place
+        assigns(:place).should be
         response.should render_template :new
       end
     end 
@@ -82,110 +83,150 @@ describe PlacesController do
         place = FactoryGirl.create(:place, :private, user: regular)
         sign_in regular
         get :edit, id: place
-        assigns(:place).should =~ place
+        assigns(:place).should be
         response.should render_template :edit
       end
     end
   end
 
   describe "POST create" do
-=begin
-    describe "with valid params" do
-      it "creates a new Place" do
-        expect {
-          post :create, {:place => valid_attributes}, valid_session
-        }.to change(Place, :count).by(1)
+    context "with valid attributes" do
+      it "creates a new place" do
+        sign_in regular
+        expect{
+          post :create, place: FactoryGirl.attributes_for(:place, :public)
+        }.to change(Place,:count).by(1)
       end
-
-      it "assigns a newly created place as @place" do
-        post :create, {:place => valid_attributes}, valid_session
+      
+      it "assigns newly created Place as @place" do
+        sign_in regular
+        post :create, place: FactoryGirl.attributes_for(:place, :public)
         assigns(:place).should be_a(Place)
         assigns(:place).should be_persisted
       end
-
-      it "redirects to the created place" do
-        post :create, {:place => valid_attributes}, valid_session
-        response.should redirect_to(Place.last)
+      
+      it "redirects to the new place" do
+        sign_in regular
+        post :create, place: FactoryGirl.attributes_for(:place, :public)
+        response.should redirect_to Place.last
       end
     end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved place as @place" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Place.any_instance.stub(:save).and_return(false)
-        post :create, {:place => {}}, valid_session
-        assigns(:place).should be_a_new(Place)
+    
+    context "with invalid attributes" do
+      it "does not save the new place" do
+        sign_in regular
+        expect{
+          post :create, place: FactoryGirl.attributes_for(:place, :public, name: nil)
+        }.to_not change(Place,:count)
       end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Place.any_instance.stub(:save).and_return(false)
-        post :create, {:place => {}}, valid_session
-        response.should render_template("new")
+      
+      it "re-render the new method" do
+        sign_in regular
+        post :create, place: FactoryGirl.attributes_for(:place, :public, name: nil)
+        response.should render_template "new"
       end
-    end
+    end 
   end
 
   describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested place" do
-        place = Place.create! valid_attributes
-        # Assuming there are no other places in the database, this
-        # specifies that the Place created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Place.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => place.to_param, :place => {'these' => 'params'}}, valid_session
+    before :each do
+      @place = FactoryGirl.create(:place, :private, user: regular, name: "Bob Place", desc: "Short Bob Place desc")
+    end
+    
+    context "with valid attributes" do
+      it "licated the requested place" do 
+        sign_in regular
+        put :update, id: @place, place: FactoryGirl.attributes_for(:place, :private)
+        assigns(:place).should eq(@place)
       end
-
-      it "assigns the requested place as @place" do
-        place = Place.create! valid_attributes
-        put :update, {:id => place.to_param, :place => valid_attributes}, valid_session
-        assigns(:place).should eq(place)
+      
+      it "changes @place attributes" do
+        sign_in regular
+        put :update, id: @place, place: { name: "Place", desc: "Short Place desc" }
+        @place.reload
+        @place.name.should eq("Place")
+        @place.desc.should eq("Short Place desc")
       end
-
-      it "redirects to the place" do
-        place = Place.create! valid_attributes
-        put :update, {:id => place.to_param, :place => valid_attributes}, valid_session
-        response.should redirect_to(place)
+      
+      it "redirects to the updated place" do
+        sign_in regular
+        put :update, id: @place, place: FactoryGirl.attributes_for(:place, :private)
+        response.should redirect_to @place
+      end
+    end     
+   
+    context "invalid attributes" do
+      it "locates the requested @place" do
+        sign_in regular
+        put :update, id: @place, place: FactoryGirl.attributes_for(:place, :private, name: nil)
+        assigns(:place).should eq(@place)      
+      end
+    
+      it "does not change @place's attributes" do
+        sign_in regular
+        put :update, id: @place, place: FactoryGirl.attributes_for(:place, :private, name: "Josh", desc: nil)
+        @place.reload
+        @place.name.should_not eq("Josh")
+        @place.desc.should eq("Short Bob Place desc")
+      end
+      
+      it "re-renders the edit method" do
+        sign_in regular
+        put :update, id: @place, place: FactoryGirl.attributes_for(:place, :private, name: nil)
+        response.should render_template :edit
       end
     end
-
-    describe "with invalid params" do
-      it "assigns the place as @place" do
-        place = Place.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Place.any_instance.stub(:save).and_return(false)
-        put :update, {:id => place.to_param, :place => {}}, valid_session
-        assigns(:place).should eq(place)
-      end
-
-      it "re-renders the 'edit' template" do
-        place = Place.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Place.any_instance.stub(:save).and_return(false)
-        put :update, {:id => place.to_param, :place => {}}, valid_session
-        response.should render_template("edit")
-      end
-    end
-=end
   end
 
   describe "DELETE destroy" do
-=begin
-    it "destroys the requested place" do
-      place = Place.create! valid_attributes
-      expect {
-        delete :destroy, {:id => place.to_param}, valid_session
-      }.to change(Place, :count).by(-1)
+    before :each do
+      @place = FactoryGirl.create(:place, :private, user: regular)
     end
-
-    it "redirects to the places list" do
-      place = Place.create! valid_attributes
-      delete :destroy, {:id => place.to_param}, valid_session
-      response.should redirect_to(places_url)
+    
+    context "with regular user logged in" do
+      it "deletes the place" do
+        sign_in regular
+        expect{
+          delete :destroy, id: @place        
+        }.to change(Place,:count).by(-1)
+      end
+      
+      it "redirects to places#index" do
+        sign_in regular
+        delete :destroy, id: @place
+        response.should redirect_to places_url
+      end
     end
-=end
+    
+    context "with no logged user" do
+      it "doesn't delete the place" do
+        expect{
+          delete :destroy, id: @place
+        }.to_not change(Place,:count)
+      end
+      
+      it "should redirect to root_url" do
+        delete :destroy, id: @place
+        response.should redirect_to root_url
+      end 
+    end 
   end
-
+  
+  describe "GET submitted" do
+    before :each do
+      @josh_places = FactoryGirl.create_list(:place, 3, :public, user: regular)
+      @bob_places = FactoryGirl.create_list(:place, 5, :public, user: bob_regular)
+    end
+    
+    context "with bob logged in" do
+      it "populates an array of bob places" do
+        sign_in bob_regular
+        get :submitted
+        Place.all.size.should == @bob_places.size + @josh_places.size
+        assigns(:places).size == @bob_places.size
+        response.should render_template  "places"
+      end
+    end
+  end
+  
 end
