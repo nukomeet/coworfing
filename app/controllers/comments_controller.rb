@@ -10,4 +10,3 @@ class CommentsController < ApplicationController
     redirect_to @place, notice: 'Hooray, comment was successfully created.'
   end
 end
-

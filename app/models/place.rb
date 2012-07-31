@@ -1,10 +1,7 @@
 class Place < ActiveRecord::Base
-
   mount_uploader :photo, PhotoUploader
 
   attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photo
-
-  #attr_accessible :created_at, :photo, :updated_at, :user_id
 
   geocoded_by :address 
 

@@ -3,5 +3,5 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
 
-  validates_presence_of :content
+  validates :content, length: { in: 5..500 }, presence: true
 end

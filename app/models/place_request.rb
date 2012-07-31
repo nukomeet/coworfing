@@ -1,8 +1,6 @@
 class PlaceRequest < ActiveRecord::Base
   attr_accessible :active, :body, :requested_on
 
-  #attr_accessible :created_at, :status, :updated_at
-
   belongs_to :place
   belongs_to :booker, class_name: 'User', inverse_of: :place_requests_sent
   belongs_to :receiver, class_name: 'User', inverse_of: :place_requests_received
@@ -13,5 +11,6 @@ class PlaceRequest < ActiveRecord::Base
 
   symbolize :status, in: [:pending, :approved, :rejected], default: :pending, scopes: true, methods: true
 
-  validates :requested_on, :body, presence: true
+  validates :requested_on, presence: true
+  validates :body, length: { in: 5..500 }, presence: true
 end

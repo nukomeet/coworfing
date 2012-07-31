@@ -19,8 +19,6 @@ class PlaceRequestsController < ApplicationController
     end
   end
 
-  # GET /place_requests
-  # GET /place_requests.json
   def index
     @place_requests = current_user.place_requests_received
 

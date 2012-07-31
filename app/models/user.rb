@@ -17,8 +17,8 @@ class User < ActiveRecord::Base
   has_many :places
   has_many :invitations, class_name: 'User', as:  :invited_by
 
-  has_many :place_requests_received, class_name: 'PlaceRequest'
-  has_many :place_requests_sent, class_name: 'PlaceRequest'
+  has_many :place_requests_received, class_name: 'PlaceRequest', foreign_key: 'receiver_id'
+  has_many :place_requests_sent, class_name: 'PlaceRequest', foreign_key: 'booker_id'
   has_many :comments
 
   # defining roles 
