@@ -32,6 +32,7 @@ end
 
 group :test do
   gem 'faker'
+  gem 'fakeweb'
   gem 'capybara'
   gem 'launchy'
   gem 'spork', '~> 0.9.0.rc'
