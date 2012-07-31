@@ -13,10 +13,10 @@ FactoryGirl.define do
     zipcode { Faker::Address.zip_code }
     country { Faker::Address.country }
     photo { Faker::Internet.domain_name }
-    #association :user, :regular
+    association :user
     
     trait :private do
-      kind "private"
+      kind :private
     end
     
     trait :public do
@@ -26,5 +26,5 @@ FactoryGirl.define do
     trait :business do
       kind :business
     end
-  end
+  end 
 end
