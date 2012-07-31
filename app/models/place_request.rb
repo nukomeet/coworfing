@@ -11,5 +11,6 @@ class PlaceRequest < ActiveRecord::Base
 
   symbolize :status, in: [:pending, :approved, :rejected], default: :pending, scopes: true, methods: true
 
-  validates :requested_on, :body, presence: true
+  validates :requested_on, presence: true
+  validates :body, length: { in: 5..500 }, presence: true
 end
