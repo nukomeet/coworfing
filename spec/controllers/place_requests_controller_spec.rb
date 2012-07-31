@@ -160,5 +160,6 @@ describe PlaceRequestsController do
       response.should redirect_to(place_requests_url)
     end
   end
+=end
 
 end
