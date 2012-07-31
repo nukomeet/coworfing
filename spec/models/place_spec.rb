@@ -1,28 +1,73 @@
 require 'spec_helper'
 
 describe Place do
-  it "has a valid factory" do
-    FactoryGirl.create(:place).should be_valid 
-  end
-
+  it "has a valid facotry" do
+    FactoryGirl.create(:place, :public)
+  end 
+  
   it "is invalid without a name" do
-    FactoryGirl.build(:place, name: nil).should_not be_valid 
+    FactoryGirl.build(:place, :public, name: nil).should_not be_valid
   end
-
+  
+  it "is invalid with name shorter than 5 characters" do
+    FactoryGirl.build(:place, :public, name: String.random_alphanum(4) ).should_not be_valid
+  end
+  
+  it "is invalid with name longer than 45 characters" do
+    FactoryGirl.build(:place, :public, name: String.random_alphanum(46) ).should_not be_valid
+  end
+  
   it "is invalid without a desc" do
-    FactoryGirl.build(:place, desc: nil).should_not be_valid 
+    FactoryGirl.build(:place, :public, desc: nil).should_not be_valid
   end
-
-  it "returns a place full address as a string" do
-    place = FactoryGirl.create(:place, address_line1: '16 Rue de Temple', city: 'Paris', country: 'France')
-    place.address.should == '16 Rue de Temple, Paris, France'
+  
+  it "is invalid with desc shorter than 5 characters" do
+    FactoryGirl.build(:place, :public, desc: String.random_alphanum(4) ).should_not be_valid
   end
-
-  it "returns places that match a given city" do
-    london = FactoryGirl.create(:place, city: "London")
-    paris = FactoryGirl.create(:place, city: "Paris")
-    berlin = FactoryGirl.create(:place, city: "Berlin")
-
-    Place.city("Paris").should == [paris]
+  
+  it "is invalid with desc longer than 500 characters" do
+    FactoryGirl.build(:place, :public, desc: String.random_alphanum(501) ).should_not be_valid
+  end
+  
+  it "is invalid without an address_line1" do
+    FactoryGirl.build(:place, :public, address_line1: nil).should_not be_valid
+  end
+  
+  it "is invalid without a city" do
+    FactoryGirl.build(:place, :public, city: nil).should_not be_valid
+  end
+  
+  it "is invalid without a country" do
+    FactoryGirl.build(:place, :public, country: nil).should_not be_valid
+  end
+  
+  it "returns a full address as a string" do
+    FactoryGirl.create(:place, :public, address_line1: "Baker Rd", city: "NYC", country: "United States").address.should == "Baker Rd, NYC, United States"
+  end
+  
+  describe ".city" do
+    before :each do
+      @berlin = FactoryGirl.create( :place, :public, city: "Berlin" )
+      @paris = FactoryGirl.create( :place, :public, city: "Paris" )
+      @new_york = FactoryGirl.create(:place, :public, city: "New York")  
+    end
+    
+    context "matching city" do
+      it "returns an array of results that match" do
+        Place.city(["Berlin"]).should == [@berlin]
+      end
+    end
+    
+    context "non-matching city" do
+      it "doesn't return places that don't contain provided cities" do
+        Place.city(["London"]).should_not include @berlin
+      end
+    end
+    
+    context "empty parameter" do
+      it "returns all places" do
+        Place.city([]).should == [@berlin, @paris, @new_york]  
+      end
+    end  
   end
 end

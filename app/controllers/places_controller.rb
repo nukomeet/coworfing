@@ -3,13 +3,13 @@ class PlacesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def submitted
-    @places = Place.order(:created_at).page params[:page] 
+    @places = @places.order(:created_at).page params[:page] 
     render 'places'
   end
 
   def index
-    @places = Place.order(:updated_at).page(params[:page]).city(params[:cities])
-    @place_names = Place.uniq.pluck(:city)
+    @place_names = @places.uniq.pluck(:city)
+    @places = @places.order(:created_at).page(params[:page]).city(params[:cities])
 
     respond_to do |format|
       format.html 
@@ -25,7 +25,6 @@ class PlacesController < ApplicationController
   end
 
   def new
-    @place = Place.new
     @place.name = "#{current_user.name}'s place"
 
     respond_to do |format|
@@ -39,7 +38,6 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(params[:place])
     @place.user = current_user
 
     respond_to do |format|
@@ -62,8 +60,6 @@ class PlacesController < ApplicationController
   # PUT /places/1
   # PUT /places/1.json
   def update
-    @place = Place.find(params[:id])
-
     respond_to do |format|
       if @place.update_attributes(params[:place])
         format.html { redirect_to @place, notice: 'Place was successfully updated.' }
@@ -78,7 +74,6 @@ class PlacesController < ApplicationController
   # DELETE /places/1
   # DELETE /places/1.json
   def destroy
-    @place = Place.find(params[:id])
     @place.destroy
 
     respond_to do |format|

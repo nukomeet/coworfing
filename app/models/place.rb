@@ -25,8 +25,8 @@ class Place < ActiveRecord::Base
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
 
   class << self
-    def city(cities)
-      if cities
+    def city(cities=nil)
+      unless cities.blank?
         where(city: cities)
       else
         all

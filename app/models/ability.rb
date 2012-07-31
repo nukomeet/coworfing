@@ -2,8 +2,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
-
+    # guest user (not logged in)
+    user = user
+    unless user
+      #TODO add default role to user - guest
+      user = User.new
+      user.role = 'guest'
+      #puts user.to_yaml
+    end
+    
     if user.admin?
       can :manage, :all
       can :invite, User
@@ -30,8 +37,8 @@ class Ability
 
     if user.guest?
       can :create, Demand 
-      can :read, Place, public: true
-      can :read, User, public: true
+      can :read, Place, kind: :public
+      can :read, User, kind: :public
     end
 
   end
