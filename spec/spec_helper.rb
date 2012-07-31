@@ -75,3 +75,8 @@ Spork.each_run do
     SimpleCov.start 'rails'
   end
 end
+
+RSpec.configure do |config|
+  config.include Devise::TestHelpers, :type => :controller
+  config.extend ControllerMacros, :type => :controller
+end
