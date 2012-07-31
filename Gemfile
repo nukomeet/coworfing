@@ -39,6 +39,7 @@ group :test do
   gem 'guard-spork', '0.3.2'
   gem 'shoulda'
   gem "email_spec"
+  gem 'simplecov', require: false
 end
 
 gem 'jquery-rails'
@@ -54,7 +55,6 @@ gem "cancan"
 gem "simple_form"
 gem 'mini_magick'
 gem 'rabl'
-gem 'yajl-ruby'
 gem 'heroku'
 gem 'fog'
 gem 'symbolize', require: 'symbolize/active_record'
