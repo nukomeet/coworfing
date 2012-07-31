@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :comment do
-    content "MyString"
+    content { Faker::Lorem.paragraph(1) }
   end
 end
