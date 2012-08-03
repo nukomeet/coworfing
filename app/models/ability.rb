@@ -38,7 +38,7 @@ class Ability
     if user.guest?
       can :create, Demand 
       can :read, Place, kind: :public
-      can :read, User, kind: :public
+      can :read, User, public: :true
     end
 
   end

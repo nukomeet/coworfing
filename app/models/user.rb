@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
   has_many :place_requests_received, class_name: 'PlaceRequest', foreign_key: 'receiver_id'
   has_many :place_requests_sent, class_name: 'PlaceRequest', foreign_key: 'booker_id'
   has_many :comments
+  
+  scope :with_username, where("username is not null")
+  scope :with_photo, where("photo is not null")
 
   # defining roles 
   def admin?
