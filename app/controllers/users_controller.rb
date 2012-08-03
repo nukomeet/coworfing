@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   #before_filter :authenticate_user!, except: [:index, :show]
-  #load_and_authorize_resource
+  load_and_authorize_resource
 
   def show
     # TODO security problem: fix when not logged, and user knows username of
@@ -14,9 +14,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    @featured = User.where("username IS NOT NULL and photo IS NOT NULL")
-    @users = User.where("username IS NOT NULL") - @featured
-
+    #@featured = User.where("username IS NOT NULL and photo IS NOT NULL")
+    #@users = User.where("username IS NOT NULL") - @featured
+    @featured = @users.with_photo.with_username
+    @users = @users.with_username - @featured
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users + @featured }
