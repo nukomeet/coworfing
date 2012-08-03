@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
 
   def index
     @place_names = @places.uniq.pluck(:city)
-    @places = @places.order(:created_at).page(params[:page]).city(params[:cities])
+    @places = @places.city(params[:cities]).page(params[:page])
 
     respond_to do |format|
       format.html 

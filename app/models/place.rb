@@ -27,7 +27,7 @@ class Place < ActiveRecord::Base
       unless cities.blank?
         where(city: cities)
       else
-        all
+        self 
       end
     end
   end
