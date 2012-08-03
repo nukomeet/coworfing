@@ -37,4 +37,15 @@ class User < ActiveRecord::Base
     self.role == "guest"
   end
   
+  def invitation_accepted?
+    self.invitation_accepted_at? or self.username or !self.regular?
+  end
+  
+  def self.valid_attribute?(attr, params)
+    mock = self.new( params )
+    unless mock.valid?
+      return ! mock.errors.has_key?(attr)
+    end
+    #true
+  end
 end
