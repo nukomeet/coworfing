@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :place
+  
+  delegate :username, to: :user
 
   validates :content, length: { in: 5..500 }, presence: true
   validates :user, :place, presence: true
