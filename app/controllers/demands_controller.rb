@@ -1,29 +1,36 @@
 class DemandsController < ApplicationController
- load_and_authorize_resource
-  before_filter :authenticate_user!, except: [:create]
+ before_filter :authenticate_user!, except: [:create]
 
   def index
-    @demands = Demand.all 
-
+    @demands = User.all 
+    authorize! :read, :demands
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @demands }
     end
   end
-
-  def create
-    @demand = Demand.new(params[:demand])
-#   h = Hominid::API.new('6b03f54a48fd31cf2057feefa4b09e0c-us4')
-
+  
+  def create    
     respond_to do |format|
-      if @demand.save
+      if User.valid_attribute?(:email, params[:demand])
+        @demand = User.new (params[:demand])
+        @demand.role = "regular"
+        @demand.skip_invitation = true
+        @demand.invite!
         format.html { redirect_to root_url, notice: 'Invitation Request was successfully sent.' }
-#       listSubscribe('6b03f54a48fd31cf2057feefa4b09e0c-us4', 'efa754b651', @demand.email)
       else
-        format.html { render action: "new" }
+        format.html { render "/home/index" }
       end
     end
   end
-
-
+  
+  def accept
+    @user = User.find(params[:id])
+    authorize! :invite, @user
+    @user.invite!
+    
+    respond_to do |format|
+      format.html { redirect_to demands_url }
+    end
+  end
 end
