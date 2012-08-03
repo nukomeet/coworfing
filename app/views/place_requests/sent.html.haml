@@ -21,9 +21,9 @@
           %tr
             %td{rowspan:2}= idx+1
             %td
-              = link_to place_request.receiver.name, profile_path(place_request.receiver.username)
+              = link_to place_request.receiver_name, profile_path(place_request.receiver_username)
             %td
-              = link_to place_request.place.name, place_path(place_request.place)
+              = link_to place_request.place_name, place_path(place_request.place)
             %td= status_h(place_request.status)
             %td= time_ago_in_words(place_request.created_at)
           %tr

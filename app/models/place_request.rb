@@ -7,9 +7,14 @@ class PlaceRequest < ActiveRecord::Base
 
   delegate :name, to: :place, allow_nil: true, prefix: true # .place_name
   delegate :name, to: :booker, allow_nil: true, prefix: true # .booker_name
+  delegate :name, to: :receiver, prefix: true # receiver_name
   delegate :username, to: :booker, allow_nil: true, prefix: true # .booker_username
+  delegate :username, to: :receiver, prefix: true  # .booker_username
+
+  
 
   symbolize :status, in: [:pending, :approved, :rejected], default: :pending, scopes: true, methods: true
+  
 
   validates :requested_on, presence: true
   validates :body, length: { in: 5..500 }, presence: true
