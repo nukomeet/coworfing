@@ -59,7 +59,7 @@ $(function () {
 
     function addLocation(place) {
 
-        var latLng = new google.maps.LatLng(place.coordinates[1], place.coordinates[0]);
+        var latLng = new google.maps.LatLng(place.latitude, place.longitude);
         var marker = new google.maps.Marker(
             { 
                 position: latLng,

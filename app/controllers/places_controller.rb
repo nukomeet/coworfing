@@ -3,7 +3,7 @@ class PlacesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def submitted
-    @places = @places.order(:created_at).page params[:page] 
+    @places = @places.accessible_by(current_ability).order(:created_at).page params[:page] 
     render 'places'
   end
 

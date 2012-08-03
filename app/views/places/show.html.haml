@@ -50,7 +50,7 @@
     = t('place.comments')
   - for comment in @place.comments
     %h4
-      = link_to comment.user.username, profile_path(comment.user.username) 
+      = link_to comment.username, profile_path(comment.username) 
     %p= comment.content
 - if user_signed_in?
   %hr
