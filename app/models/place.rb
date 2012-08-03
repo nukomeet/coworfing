@@ -21,6 +21,8 @@ class Place < ActiveRecord::Base
   validates :country, presence: true
 
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
+  
+  scope :by_user, ->(user_id){where(user_id: user_id)}
 
   class << self
     def city(cities=nil)
