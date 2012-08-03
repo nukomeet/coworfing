@@ -1,19 +1,14 @@
 class Users::InvitationsController < Devise::InvitationsController
   helper_method :after_invite_path_for
 
-   def new
-     if cannot?( :invite, User )
-       raise CanCan::AccessDenied
-     else
-        super
-     end
-   end
+  def new
+    authorize! :invite, User
+    super
+  end
+   
    def create
-     if cannot?( :invite, User )
-       raise CanCan::AccessDenied
-     else
-       super
-     end
+    authorize! :invite, User
+    super
    end
 
    # PUT /resource/invitation

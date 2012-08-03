@@ -8,7 +8,6 @@ class Ability
       #TODO add default role to user - guest
       user = User.new
       user.role = 'guest'
-      #puts user.to_yaml
     end
     
     if user.admin?
