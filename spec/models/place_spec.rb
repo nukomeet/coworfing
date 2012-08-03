@@ -36,6 +36,15 @@ describe Place do
   it "is invalid without a city" do
     FactoryGirl.build(:place, :public, city: nil).should_not be_valid
   end
+
+  it "is invalid with a city that begins on ends with a space" do
+    FactoryGirl.build(:place, :public, city: 'Paris ').should_not be_valid
+    FactoryGirl.build(:place, :public, city: ' London Zdroj').should_not be_valid
+  end
+
+  it "is valid with a city that has a space inside" do
+    FactoryGirl.build(:place, :public, city: 'Londek Zdroj').should be_valid
+  end
   
   it "is invalid without a country" do
     FactoryGirl.build(:place, :public, country: nil).should_not be_valid
@@ -66,7 +75,7 @@ describe Place do
     
     context "empty parameter" do
       it "returns all places" do
-        Place.city([]).should == [@berlin, @paris, @new_york]  
+        Place.city([]).all.should == [@berlin, @paris, @new_york]  
       end
     end  
   end
