@@ -6,8 +6,13 @@
       %legend List Your Place
 
       = f.input :name, input_html: { class: 'span5' }
-      - unless @place.photo?
-        = f.input :photo, as: :file
+      
+      - if !@place.photo? || @place.new_record?
+        - unless @place.photo_cache.nil?
+          = f.input :photo, as: :file, :hint => @place.photo_name.to_s
+        -else
+          = f.input :photo, as: :file
+        = f.hidden_field :photo_cache
       - else
         = f.input :remove_photo, as: :boolean
         .control-group

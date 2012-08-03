@@ -1,7 +1,7 @@
 class Place < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
-  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photo
+  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photo, :photo_cache
 
   geocoded_by :address 
 
@@ -21,8 +21,6 @@ class Place < ActiveRecord::Base
   validates :country, presence: true
 
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
-  
-  scope :by_user, ->(user_id){where(user_id: user_id)}
 
   class << self
     def city(cities=nil)
@@ -36,5 +34,9 @@ class Place < ActiveRecord::Base
 
   def address
     [address_line1, city, country].join(', ')
+  end
+  
+  def photo_name
+    self.photo.to_s.match(/[^\/]*$/).to_s
   end
 end
