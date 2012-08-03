@@ -38,7 +38,10 @@ Coworfing::Application.routes.draw do
       get 'page/:page', action: :index, on: :collection
     end
 
-    resources :demands
+    resources :demands, :only => [:create, :index] do 
+      put "accept", on: :member
+    end
+    
     resources :place_requests, path: 'requests' do
       get 'approve', on: :member
       get 'reject', on: :member

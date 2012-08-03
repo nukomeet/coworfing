@@ -31,11 +31,15 @@ module ApplicationHelper
     end
   end
 
-  def confirm_button_with_class(name, path, confirm_text, classes, disabled=false)
+  def confirm_button_with_class(name, path, confirm_text, classes, disabled=false, method=:get)
     if disabled 
       link_to(name, '#', class: classes + ' disabled')
     else
-      link_to(name, path, confirm: confirm_text, class: classes)
+      link_to(name, path, data: { confirm: confirm_text }, class: classes, method: method)
     end
+  end
+  
+  def invitation_status(user)
+    user.invitation_accepted? ? "accepted" : "awaiting"   
   end
 end

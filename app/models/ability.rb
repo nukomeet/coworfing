@@ -14,6 +14,7 @@ class Ability
     if user.admin?
       can :manage, :all
       can :invite, User
+      can :read, :demands
     end
 
     if user.regular? 

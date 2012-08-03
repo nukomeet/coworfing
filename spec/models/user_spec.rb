@@ -99,5 +99,26 @@ describe User do
     end
 
   end
-
+  
+  describe "valid_attribute?" do
+   
+   before :each do
+    @bob = FactoryGirl.create(:user, :regular, email: "bob@dot.com") 
+   end
+   
+   context "valid attribute" do
+      params = { email: "jerry@dot.com"}
+      it "returns true" do
+        User.valid_attribute?(:email, params).should == true
+      end
+   end
+   
+   context "invalid attribute" do
+      params = { email: "bob@dot.com"}
+      it "returns false" do 
+        User.valid_attribute?(:email, params).should == false
+      end
+   end 
+  
+  end
 end

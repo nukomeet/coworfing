@@ -5,12 +5,24 @@
     %thead
       %tr
         %th #
-        %th Email 
-        %th Requested At 
+        %th Email
+        %th Username
+        %th Role
+        %th Created at
+        %th Status
+        %th
 
     %tbody
       - @demands.each_with_index do |demand, idx|
         %tr
           %td= idx+1
           %td= demand.email
+          %td= demand.username
+          %td= demand.role
           %td= demand.created_at
+          %td= invitation_status(demand)
+          %td
+            .btn-toolbar.pull-right
+              .btn-group
+                = confirm_button_with_class("Accept", accept_demand_path(demand), 'Are you sure?', 'btn btn-danger', demand.invitation_accepted?, :put)
+                = link_to('Edit', edit_user_path(demand), :class=>'btn btn-success')
