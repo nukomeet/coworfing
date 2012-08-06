@@ -67,12 +67,7 @@
         %hr
     .row
       .span7.offset1
-        = form_for Demand.new do |f|
-          %fieldset
-            .controls
-              .input-append
-                = f.text_field :email, {class: "span4", placeholder: 'Enter your email address...'}
-                = f.submit 'Invite me', class: 'btn'
+        = render partial: "demands/form"
                         
       .span3
         %p.pull-right{:style => "margin-top:10px"}
