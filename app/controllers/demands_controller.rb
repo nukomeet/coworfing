@@ -12,7 +12,7 @@ class DemandsController < ApplicationController
   
   def create    
     respond_to do |format|
-      if User.valid_attribute?(:email, params[:demand])
+      if User.valid_attribute?(:email, params[:user])
         @demand = User.new (params[:demand])
         @demand.role = "regular"
         @demand.skip_invitation = true

@@ -35,8 +35,7 @@ class Ability
       can :see, :places
     end
 
-    if user.guest?
-      can :create, Demand 
+    if user.guest? 
       can :read, Place, kind: :public
       can :read, User, public: :true
     end

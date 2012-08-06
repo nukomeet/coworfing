@@ -31,10 +31,6 @@
           %strong= t('description.par2')
           = t('description.par3')
           %strong= t('description.par4')
-        = form_for Demand.new do |f|
-          .controls
-            .input-append
-              = f.text_field :email, {class: "span4 large", placeholder: 'Enter your email address...'}
-              = f.submit 'Invite me', class: 'btn btn-success'
+        = render partial: "demands/form"
   .row
     .span12.graded
