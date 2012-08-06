@@ -16,12 +16,11 @@ Coworfing::Application.routes.draw do
       post 'login' => 'devise/sessions#create', as: :user_session
       delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
 
-      # TODO: Why I cannot use get/put here ? :locale error
-      match 'settings/edit' => 'settings#edit', via: :get, as: :user_settings_edit
-      match 'settings' => 'settings#update', via: :put, as: :user_settings_update
+      get 'settings' => 'registrations#edit', as: :user_settings_edit
+      put 'settings' => 'registrations#update', as: :user_settings_update
 
-      match "password/edit" => 'settings/password#edit', as: :user_password_edit
-      match "password" => 'settings/password#update', via: :put, as: :user_password_update
+      put "settings/password" => 'registrations#update', as: :user_password_update
+      get "settings/password" => 'registrations#password', as: :user_password_edit
     end
     
     authenticated :user do
@@ -29,7 +28,6 @@ Coworfing::Application.routes.draw do
     end
 
     resources :users
-
 
     resources :places do 
       resources :comments, :only => :create

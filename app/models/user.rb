@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public, :photo_cache
   #attr_accessible :confirmation_sent_at, :confirmation_token, :created_at, :current_sign_in_at, :current_sign_in_ip, :encrypted_password, :last_sign_in_at, :last_sign_in_ip, :photo, :remember_created_at, :role, :sign_in_count, :updated_at, :invitation_accepted_at, :invitation_sent_at, :invitation_token, :invited_by_id, :invited_by_type, :reset_password_sent_at, :reset_password_token
 
   mount_uploader :photo, PhotoUploader
