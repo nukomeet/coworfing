@@ -11,8 +11,6 @@
     <h3>Go ahead, <br/> invite them! </h3>
   </div>
   <div class="span4 invite">
-    <%= after_invite_path_for(resource) %>
-
     <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
       <%= devise_error_messages! %>
 
