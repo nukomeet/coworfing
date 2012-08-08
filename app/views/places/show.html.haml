@@ -43,6 +43,11 @@
               %i.icon-white.icon-lock
               = t('place.demand')
     = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"
+    %p
+      = t('place.added_by')
+      = link_to @place.user.username, profile_path(@place.user.username) 
+      - if can? :update, @place 
+        = link_to 'Edit', edit_place_path(@place), { class: 'btn' }
       
 - if @place.comments.size > 0 
   %hr
