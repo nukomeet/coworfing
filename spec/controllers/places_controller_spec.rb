@@ -27,7 +27,7 @@ describe PlacesController do
       it "populates an array of places" do
         sign_in regular
         get :index
-        assigns(:places).should == @private + @public    
+        (@private + @public).should include(*assigns(:places))    
       end
     end 
   end
