@@ -27,7 +27,7 @@ Coworfing::Application.routes.draw do
         root to: 'home#map'
     end
 
-    resources :users
+    resources :users, :only => [:index]
 
     resources :places do 
       resources :comments, :only => :create

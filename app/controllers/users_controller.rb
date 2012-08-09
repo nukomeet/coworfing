@@ -1,21 +1,14 @@
 class UsersController < ApplicationController
 
-  #before_filter :authenticate_user!, except: [:index, :show]
-  load_and_authorize_resource
+  before_filter :authenticate_user!, except: [:index, :show]
+  load_and_authorize_resource only: [:index]
 
   def show
-    # TODO security problem: fix when not logged, and user knows username of
-    # private provile
-    @user = User.first(conditions: { username: params[:username] })
-  end
-
-  def edit 
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:username])
+    authorize! :show, @user
   end
 
   def index
-    #@featured = User.where("username IS NOT NULL and photo IS NOT NULL")
-    #@users = User.where("username IS NOT NULL") - @featured
     @featured = @users.with_photo.with_username
     @users = @users.with_username - @featured
     
