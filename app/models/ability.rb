@@ -5,7 +5,6 @@ class Ability
     # guest user (not logged in)
     user = user
     unless user
-      #TODO add default role to user - guest
       user = User.new
       user.role = 'guest'
     end
@@ -22,9 +21,7 @@ class Ability
       can :read, Place
       can :submitted, Place, user_id: user.id
 
-      can :invite, User
-
-      can :update, User, :user_id => user.id 
+      can :invite, User 
       can :read, User
 
       can :read, PlaceRequest, booker_id: user.id 
@@ -37,7 +34,7 @@ class Ability
 
     if user.guest? 
       can :read, Place, kind: :public
-      can :read, User, public: :true
+      can :read, User, public: true
     end
 
   end
