@@ -1,16 +1,14 @@
 class HomeController < ApplicationController
   def index
-    @user_count = User.all.count
-    @place_count = Place.all.count
-    @place_req_count = PlaceRequest.all.count
+    @user_count = User.count
+    @place_count = Place.count
+    @place_req_count = PlaceRequest.count
   end
 
   def map
-    @places = []
+    @places = Place.all
+    @place_names = Place.uniq.pluck(:city)
     authorize! :see, :places
-
-    @places = Place.limit(params[:limit].to_i)
-
     respond_to do |format|
       format.html 
       format.json { }
