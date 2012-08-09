@@ -4,8 +4,7 @@
       .controls
         .input-append
           = select_tag "cities", options_for_select(@place_names), multiple: true, class: 'span6 chzn-select'
-          
-          = submit_tag t('search'), class: 'btn'
+          = submit_tag t('search'), class: 'btn search_btn'
   .span4.last
     = link_to new_place_path, { class: 'btn btn-info' } do
       %i.icon-map-marker.icon-white
