@@ -53,18 +53,18 @@ describe DemandsController do
     context "with valid attributes" do
       it "creates a new demand" do
         expect{
-          post :create, demand: { :email => "email@dot.com" }
+          post :create, user: { :email => "email@dot.com" }
         }.to change(User,:count).by(1)
       end
       
       it "assigns newly created Demand as @demand" do
-        post :create, demand: { :email => "email@dot.com" }
+        post :create, user: { :email => "email@dot.com" }
         assigns(:demand).should be_a(User)
         assigns(:demand).should be_persisted
       end
       
       it "redirects to root_url" do
-        post :create, demand: { :email => "email@dot.com" }
+        post :create, user: { :email => "email@dot.com" }
         response.should redirect_to root_url
       end
     end
@@ -72,12 +72,12 @@ describe DemandsController do
     context "with invalid attributes" do
       it "does not save the new demand" do
         expect{
-          post :create, demand: { :email => "" }
+          post :create, user: { :email => "" }
         }.to_not change(User,:count)
       end
       
       it "re-render the home view" do
-        post :create, demand: { :email => "" }
+        post :create, user: { :email => "" }
         response.should render_template "home/index"
       end
     end 
