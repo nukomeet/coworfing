@@ -71,6 +71,7 @@
 
 %h2 
   = t('place.near_by')
+
 %ul.thumbnails.row
   - @place.nearbys(0.5, {:units => :km}).each do |place|
     .span2
@@ -82,6 +83,5 @@
         .caption
           %h5
             = link_to place.name, place_path(place)
-          %p= place.address
 
 = render partial: 'shared/demand_modal' 
