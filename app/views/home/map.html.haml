@@ -3,7 +3,7 @@
     = form_tag places_path, method: :get, class: 'form-inline'  do
       .controls
         .input-append
-          = select_tag "cities", options_for_select(Place.uniq.pluck(:city)), multiple: true, class: 'span7 chzn-select'
+          = select_tag "cities", options_for_select(@place_names), multiple: true, class: 'span6 chzn-select'
           = submit_tag t('search'), class: 'btn search_btn'
   .span4.last
     = link_to new_place_path, { class: 'btn btn-info' } do
@@ -14,6 +14,3 @@
 %ul.thumbnails
   %li.span12
     #mapino.thumbnail
-
-- unless user_signed_in?
-  = render partial: 'shared/getting_started_modal' 
