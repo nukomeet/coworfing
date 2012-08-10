@@ -1,4 +1,4 @@
-# Sample localization file for English. Add more files in this directory for other locales.
+plit Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
@@ -267,6 +267,6 @@ en:
     discussion: 'Discussion is welcome'
     blabla: 'No blabla please'
     comments: 'Comments'
-    tell_us: 'Tell us what you think about this place' 
+    tell_us: 'Write a review about this place' 
     public: 'public'
 
