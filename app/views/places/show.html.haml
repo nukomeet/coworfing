@@ -45,7 +45,7 @@
             %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
               %i.icon-white.icon-lock
               = t('place.demand')
-    = image_tag "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"
+    = link_to image_tag("http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
     %p
       = t('place.added_by')
       = link_to @place.user.username, profile_path(@place.user.username) 
