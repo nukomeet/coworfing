@@ -12,31 +12,38 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def password
-    @user = User.find(current_user.id)
+    @user = current_user
   end
   
   def update
-    @user = User.find(current_user.id)
+    @user = current_user
     email_changed = @user.email != params[:user][:email]
-    password_changed = !params[:user][:password].empty?
+    password_changed = false 
+    if params[:user][:password]
+      password_changed = !params[:user][:password].empty?
+    end
     successfully_updated = if email_changed or password_changed
       @user.update_with_password(params[:user])
     else
+      params[:user].delete(:current_password)
       @user.update_without_password(params[:user])
     end
-
+    
     if successfully_updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
-      redirect_to root_path
+      redirect_to root_url
     else
       render template_path
     end
   end
   
   def template_path
-    path = Rails.application.routes.recognize_path(request.referer, :method=>:get)
-    puts path.to_yaml
-    return path[:action]
+    if request.referer
+      path = Rails.application.routes.recognize_path(request.referer, :method=>:get)
+      return path[:action]
+    else
+      return :edit
+    end
   end
 end
