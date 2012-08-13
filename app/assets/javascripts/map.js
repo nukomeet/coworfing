@@ -33,30 +33,32 @@ $(function () {
             async: false
         }).responseText
     );
+    
+    if ($("#mapino").length > 0) {
+      map = new google.maps.Map(document.getElementById('mapino'), {
+              zoom: 3,
+              center: new google.maps.LatLng(45.52527, -73.604043),
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+              minZoom: 3
+          });
 
-    map = new google.maps.Map(document.getElementById('mapino'), {
-            zoom: 3,
-            center: new google.maps.LatLng(45.52527, -73.604043),
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            minZoom: 3
-        });
 
+      $.getJSON("/map", { limit: 150 }, function (json) {
+          if (json.length > 0) {
+              for (i = 0; i < json.length; i++) {
+                  var place = json[i];
+                  addLocation(place);
+              }
 
-    $.getJSON("/map", { limit: 150 }, function (json) {
-        if (json.length > 0) {
-            for (i = 0; i < json.length; i++) {
-                var place = json[i];
-                addLocation(place);
-            }
-
-            var markerClusterer = new MarkerClusterer(map, markers, {
-                maxZoom: 18,
-                gridSize: 30,
-		style: null
-            });
-        }
-    });
-
+              var markerClusterer = new MarkerClusterer(map, markers, {
+                  maxZoom: 18,
+                  gridSize: 30,
+		  style: null
+              });
+          }
+      });
+    }
+    
     function addLocation(place) {
 
         var latLng = new google.maps.LatLng(place.latitude, place.longitude);
