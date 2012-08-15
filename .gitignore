@@ -46,7 +46,6 @@ db/*.sqlite3
 /capybara-*.html
 /gems
 /rerun.txt
-/spec/requests
 /spec/routing
 /spec/views
 /specifications
