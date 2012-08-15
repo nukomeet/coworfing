@@ -3,6 +3,8 @@ Coworfing::Application.routes.draw do
     
     match 'contribute' => 'home#contribute', via: :get, as: :contribute
 
+    match 'press' => 'home#press', via: :get, as: :press
+
     match 'home/location' => 'home#location'
 
     match 'map' => 'home#map', via: :get, as: :map
