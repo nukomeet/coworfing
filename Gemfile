@@ -14,6 +14,7 @@ group :assets do
   gem 'sass-rails'
   gem "bootstrap-sass"
   gem 'coffee-rails'
+  gem 'handlebars_assets'
   gem 'uglifier'
   gem 'font-awesome-sass-rails'
   gem "therubyracer", platform: :ruby

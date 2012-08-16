@@ -10,17 +10,33 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require froogaloop
+//= require vendor/froogaloop
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
-//= require jquery.gmap.min
+//= require underscore-min
+//= require backbone-min
+//= require handlebars.runtime
+//= require leaflet
+//= require leaflet.markercluster
 //= require jquery-ui-timepicker-addon
-//= require jquery.masonry.min
 //= require chosen-jquery
-//= require jquery.batchImageLoad
-//= require jquery.cycle
-//= require hero
-//= require_tree .
+//= require vendor/jquery.cycle
+//= require vendor/jquery.batchImageLoad
 
+// Templates
+//= require_tree ../templates/
+
+// Coworfing
+//= require coworfing/namespace
+//= require coworfing/coworfing
+
+// Home
+//= require home/home
+
+// Models
+//= require coworfing/models/place
+
+// Views
+//= require coworfing/views/map/map
