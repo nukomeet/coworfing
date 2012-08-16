@@ -14,3 +14,8 @@
 %ul.thumbnails
   %li.span12
     #mapino.thumbnail
+
+= content_for :javascript do
+  %script
+    var places = new C.Places(#{raw @places.to_json});
+    var mapView = new C.MapView({ collection: places });

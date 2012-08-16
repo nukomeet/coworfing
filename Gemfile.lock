@@ -138,6 +138,10 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
+    handlebars_assets (0.6.2)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt
     heroku (2.30.2)
       heroku-api (~> 0.3.2)
       launchy (>= 0.3.2)
@@ -335,6 +339,7 @@ DEPENDENCIES
   guard-spork (= 0.3.2)
   haml (>= 3.1.6)
   haml-rails (>= 0.3.4)
+  handlebars_assets
   heroku
   hipchat
   hominid

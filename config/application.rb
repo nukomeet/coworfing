@@ -82,5 +82,9 @@ module Coworfing
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    config.assets.paths << Rails.root.join("app", "assets", "templates")
+    
+    config.assets.precompile += %w( application-ie.css )
   end
 end
