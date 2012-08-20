@@ -106,8 +106,12 @@ h3.hand{
   text-align: left;
 }
 
-.footer {
-  margin-bottom: 30px;
+footer {
+  color: #EFEFEF;
+  background: #343434;
+  a{
+    font-weight: bold;
+  }
 }
 
 .footer .links {
@@ -128,9 +132,12 @@ h3.hand{
 }
 
 .footer .links li.privacy{
-  margin-left: 455px;
+  margin-left:38px ;
 }
 
+.footer .links li.credit{
+  float:right;
+}
 #search{
   text-align:justify;
 }
