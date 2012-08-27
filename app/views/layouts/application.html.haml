@@ -29,9 +29,15 @@
       #main{:role => "main"}
         = yield
 
-      %footer
+    %footer
+      .container
         .row.footer
-          .span12
+          .span4
+            %ul.links
+              %li
+                Made by 
+                = link_to 'Nukomeet', 'http://nukomeet.com', :rel => :nofollow, :target => '_blank'
+          .span4
             %ul.links
               %li
                 =link_to(image_tag("facebook.png"), "http://www.facebook.com/coworfing")
@@ -42,14 +48,17 @@
                 = link_to(image_tag('tumblr.jpg'), 'http://coworfing.tumblr.com')
               %li
                 = link_to(image_tag('gmail.png'),"mailto:coworfing@gmail.com")
+            %ul.links
+              %li.privacy
+                = render 'layouts/iubenda'
+          .span4
+            %ul.links.credit
               %li
                 = link_to t('navbar.about_us'), about_path
               %li
-                = link_to 'Contribute', contribute_path
+                = link_to 'Contribute ::', contribute_path
               %li
-                = link_to 'Press', press_path
-              %li.privacy
-                = render 'layouts/iubenda'
+                = link_to 'Press ::', press_path
 
     = javascript_include_tag :application
     = yield(:javascript) if content_for?(:javascript)
