@@ -1,7 +1,8 @@
 Coworfing
-========================
+=========
 
-== WHAT IS IT ABOUT ?!
+WHAT IS IT ABOUT ?!
+-------------------
 
 Welcome into the coworfing source code !
 
@@ -10,15 +11,15 @@ queueing hours in front of a library?
 
 Coworfing displays a map with the best places to work, provides the contact to get
 there and helps building the collaborative working community. New features are to be released regularly, follow us on twitter
-@coworfing our blog http://coworfing.tumblr.com/ and like our facebook page
-! http://www.facebook.com/coworfing
+[@coworfing](http://twitter.com/coworfing), [our blog](http://coworfing.tumblr.com/) and like [our facebook page](http://www.facebook.com/coworfing)
 
 Coworfing is made by you, the users, the coworfer community, and also by you,
 contributers to the code. Depending on your skills and desire to participate in
 the collaborative revolution through Coworfing development, here are different
 ways by which you can help !
 
-== HOW TO CONTRIBUTE
+HOW TO CONTRIBUTE
+-----------------
 
 1. Reporting an issue
 
@@ -30,8 +31,8 @@ problem, and (you'd be great) a unit test showing what goes wrong.
 
 2. Getting ready to contribute
 
-First you need to have a working rails development environment (check the
-http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html page).
+First you need to have a working rails development environment. Check the
+[Contributing to Ruby on Rails](http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html page).
 
 Be sure to have postgresql configured, as well as bundler, and of course git.
 
