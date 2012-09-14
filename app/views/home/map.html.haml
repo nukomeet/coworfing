@@ -1,19 +1,21 @@
-.row
-  .span8
-    = form_tag places_path, method: :get, class: 'form-inline'  do
-      .controls
-        .input-append
-          = select_tag "cities", options_for_select(@place_names), multiple: true, class: 'span6 chzn-select'
-          = submit_tag t('search'), class: 'btn search_btn'
-  .span4.last
-    = link_to new_place_path, { class: 'btn btn-info' } do
-      %i.icon-map-marker.icon-white
-      &nbsp;
-      = t('add')
+#map
+  .row
+    .span8
+      %form.form-inline
+        .controls
+          .input-append
+            = text_field_tag 'place_input', nil, class: 'span6'
+            = button_tag t('search'), class: 'btn', id: 'map_search'
 
-%ul.thumbnails
-  %li.span12
-    #mapino.thumbnail
+    .span4.last
+      = link_to new_place_path, { class: 'btn btn-info' } do
+        %i.icon-map-marker.icon-white
+        &nbsp;
+        = t('add')
+
+  %ul.thumbnails
+    %li.span12
+      #mapino.thumbnail
 
 = content_for :javascript do
   %script
