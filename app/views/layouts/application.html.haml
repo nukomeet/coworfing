@@ -17,10 +17,9 @@
 
   %body{class: "#{params[:controller]}_#{params[:action]}"}
     = render :partial => "shared/flash_messages", :locals => {:flash => flash}
-
-    %header.navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
+    .container
+      %header.navbar
+        %nav.navbar-inner
           = link_to 'Coworfing', root_url, class: 'brand'
           = render 'layouts/navigation'
 
@@ -28,8 +27,8 @@
     #container.container
       #main{:role => "main"}
         = yield
-
-    %footer
+      #push
+    %footer{role: "sticky"}
       .container
         .row.footer
           .span4

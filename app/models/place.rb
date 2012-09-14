@@ -26,7 +26,7 @@ class Place < ActiveRecord::Base
   class << self
     def city(cities=nil)
       unless cities.blank?
-        where(city: cities)
+        where(city: cities.map(&:capitalize))
       else
         scoped
       end

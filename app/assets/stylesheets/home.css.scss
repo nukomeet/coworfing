@@ -181,3 +181,25 @@ form.huge {
   color: #08C;
   text-decoration: none;
 }
+
+#push { height: 108px; float:left; width:100%;}
+
+body > #container {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -108px;
+}
+
+footer[role="sticky"] {
+  height: 120px; /* accounts for padding */
+}
+
+footer[role="sticky"] {
+  padding: 20px 0;
+  
+  a {
+    //color: #28bcd6;
+    font-weight: bold;
+  }
+}

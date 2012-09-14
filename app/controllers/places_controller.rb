@@ -9,11 +9,12 @@ class PlacesController < ApplicationController
 
   def index
     @place_names = @places.uniq.pluck(:city)
-    @places = @places.city(params[:cities]).page(params[:page])
+    @places_all = @places.city(params[:cities]) 
+    @places = @places_all.page(params[:page])
 
     respond_to do |format|
       format.html 
-      format.json { render json: @places }
+      format.json { render json: @places_all }
     end
   end
 
