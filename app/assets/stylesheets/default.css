@@ -4,19 +4,23 @@
 }
 
 @font-face {
+  font-family: 'Delius Swash Caps';
   font-style: normal;
   font-weight: 400;
   src: local('Delius Swash Caps'), local('DeliusSwashCaps-Regular'), url('http://themes.googleusercontent.com/static/fonts/deliusswashcaps/v5/uXyrEUnoWApxIOICunRq7-HbywbERJ_YcOpO6Co4fHY.woff') format('woff');
 }
 
 body {
-  background-color: #ECECEC; 
+  background: #FCFCFC url("background.png") top left repeat-x;
+  /*padding: 40px 0 0;*/
   border-top: 3px solid #DDD;
+
 }
 
+.navbar .navbar-inner{}
 
 .navbar .navbar-inner{
-  background: #DFDFDF;
+  background: transparent;
   box-shadow: none;
   filter: none;
   border-top: none;
@@ -182,9 +186,11 @@ footer {
   line-height: 24px;
 }
 
-#search btn-large {
-  font-weight: bold;
+#search .btn {
+  padding: 11px 14px;
+  font-size: 16px;
 }
+
 
 #slider {
 	position:relative;
