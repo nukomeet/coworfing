@@ -2,9 +2,7 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public, :photo_cache
-
-  mount_uploader :photo, PhotoUploader
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public
 
   ROLES = %w(admin regular guest)
 
@@ -21,7 +19,6 @@ class User < ActiveRecord::Base
   has_many :comments
   
   scope :with_username, where("username is not null")
-  scope :with_photo, where("photo is not null")
 
   # defining roles 
   def admin?

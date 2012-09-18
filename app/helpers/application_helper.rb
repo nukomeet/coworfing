@@ -42,4 +42,11 @@ module ApplicationHelper
   def invitation_status(user)
     user.invitation_accepted? ? "accepted" : "awaiting"   
   end
+
+  def avatar_url(email, options = {})  
+    width = options[:width] || 210
+    default = options[:default] || "mm"
+    gravatar_id = Digest::MD5::hexdigest(email).downcase  
+    "http://gravatar.com/avatar/#{gravatar_id}?s=#{width}&d=#{default}"  
+  end  
 end

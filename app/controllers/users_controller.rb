@@ -9,12 +9,9 @@ class UsersController < ApplicationController
   end
 
   def index
-    @featured = @users.with_photo.with_username
-    @users = @users.with_username - @featured
-    
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @users + @featured }
+      format.json { render json: @users }
     end
   end
 end
