@@ -2,8 +2,6 @@ class C.MapView extends Backbone.View
   el: $('#map')
   
   initialize: ->    
-    @geo_url = 'http://maps.googleapis.com/maps/api/geocode/json'
-    
     _.bindAll @
     
     cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png")
@@ -62,7 +60,6 @@ class C.MapView extends Backbone.View
       (data) =>
         if data.queryResult isnt null
           location = data.queryResult
-          console.log location
           @.map.setView(new L.LatLng(parseFloat(location[0]), parseFloat(location[1])), 10)
     )
           
