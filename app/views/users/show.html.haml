@@ -1,9 +1,7 @@
 .row.users
   .span3
-    - if @user.photo?
-      = image_tag(@user.photo_url(:profile))
-    - else 
-      = image_tag('http://cambelt.co/icon/avatar/320x320')
+    %span 
+      = image_tag(avatar_url(@user.email, width: 210))
   .span9
     %h2
       = @user.name
