@@ -3,21 +3,14 @@ class C.MapView extends Backbone.View
   
   initialize: ->    
     _.bindAll @
-    
-    cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png")
-    
+    coords = [parseInt(@options.userLocation.data.latitude), parseInt(@options.userLocation.data.longitude)]        
+    cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png")         
+      
     mapOptions = {
       zoom: 9
-      center: [51.505, -0.09]
+      center: coords
       layers: [cloudmade]
     }
-    
-    $.getJSON(
-      'home/location',
-      (data) ->
-        coords = [parseInt(data.userLocation.data.latitude), parseInt(data.userLocation.data.longitude)]
-        mapOptions.center = coords
-      )
     
     @.markers = new L.MarkerClusterGroup()
     @.markersList = []
