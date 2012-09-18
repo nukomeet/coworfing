@@ -15,8 +15,10 @@ class HomeController < ApplicationController
     end
   end
 
-  def location
-    @location = { 'city' => request.location.city, 'country' => request.location.country }
+  def location    
+    mapQuery = Geocoder.coordinates(params[:query])
+    @location = { 'userLocation' => request.location, 'queryResult' => mapQuery}
+    puts @location.inspect
     respond_to do |format|
       format.html 
       format.json { render json: @location }
