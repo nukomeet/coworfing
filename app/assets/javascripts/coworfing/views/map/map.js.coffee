@@ -2,8 +2,6 @@ class C.MapView extends Backbone.View
   el: $('#map')
   
   initialize: ->    
-    @geo_url = 'http://maps.googleapis.com/maps/api/geocode/json'
-    
     _.bindAll @
     
     cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png")
@@ -13,6 +11,13 @@ class C.MapView extends Backbone.View
       center: [51.505, -0.09]
       layers: [cloudmade]
     }
+    
+    $.getJSON(
+      'home/location',
+      (data) ->
+        coords = [parseInt(data.userLocation.data.latitude), parseInt(data.userLocation.data.longitude)]
+        mapOptions.center = coords
+      )
     
     @.markers = new L.MarkerClusterGroup()
     @.markersList = []
@@ -49,14 +54,14 @@ class C.MapView extends Backbone.View
 
   get_geo_data: (e) => 
     query = $(@el).find("#place_input").val()
-    $.get(
-      @geo_url, 
-      { address: query, sensor: "false"}, 
+    $.getJSON(
+      'home/location',
+      { query: query},
       (data) =>
-        if data.results.length > 0
-          location = data.results[0].geometry.location
-          @.map.setView(new L.LatLng(location.lat, location.lng), 10)
-      )
-      
+        if data.queryResult isnt null
+          location = data.queryResult
+          @.map.setView(new L.LatLng(parseFloat(location[0]), parseFloat(location[1])), 10)
+    )
+          
   prevent_submit: (e) =>
     e.preventDefault()
