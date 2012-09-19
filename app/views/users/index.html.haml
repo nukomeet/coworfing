@@ -1,8 +1,12 @@
-%ul.span14.thumbnails
-  - @users.each do |user|
-    %li.span3
-      .thumbnail
-        = link_to image_tag(avatar_url(user.email, width: 210)), profile_path(user.username || 'nil')
-        .caption
-          %h5
-            = link_to truncate(user.name, :length => 18),  profile_path(user.username || 'nil')
+.row
+  .span12
+    %ul.thumbnails
+      - @users.each do |user|
+        %li.span3
+          .thumbnail
+            = link_to image_tag(avatar_url(user.email, width: 210)), profile_path(user.username || 'nil')
+            .caption
+              %h5
+                = link_to truncate(user.name, :length => 18),  profile_path(user.username || 'nil')
+.row
+  .span12.graded
