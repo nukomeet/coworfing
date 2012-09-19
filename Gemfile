@@ -17,6 +17,7 @@ group :assets do
   gem 'handlebars_assets'
   gem 'uglifier'
   gem 'font-awesome-sass-rails'
+  gem 'yui-compressor'
   gem "therubyracer", platform: :ruby
 end
 

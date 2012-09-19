@@ -8,6 +8,7 @@ CarrierWave.configure do |config|
       :region                 => 'eu-west-1'  # optional, defaults to 'us-east-1'
     }
     config.fog_directory  = 'coworfing-production'
+    config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
     config.fog_public = false
     config.storage = :fog
   else
