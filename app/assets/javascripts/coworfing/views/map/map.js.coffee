@@ -16,7 +16,7 @@ class C.MapView extends Backbone.View
     @.markersList = []
     
     @.map =  L.map('mapino', mapOptions)
-    
+    L.Icon.Default.imagePath = '../assets/images'
     
     @.populate()
     @
