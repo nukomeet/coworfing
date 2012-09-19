@@ -3,7 +3,7 @@ class C.MapView extends Backbone.View
   
   initialize: ->    
     _.bindAll @
-    coords = [parseInt(@options.userLocation.data.latitude), parseInt(@options.userLocation.data.longitude)]        
+    coords = [parseFloat(@options.userLocation.data.latitude), parseFloat(@options.userLocation.data.longitude)]        
     cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png")         
       
     mapOptions = {
