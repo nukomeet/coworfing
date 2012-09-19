@@ -15,49 +15,45 @@
 
     = render 'layouts/analytics'
 
-  %body{class: "#{params[:controller]}_#{params[:action]}"}
-    = render :partial => "shared/flash_messages", :locals => {:flash => flash}
-    .container
+  %body
+    .wrapper
+      = render :partial => "shared/flash_messages", :locals => {:flash => flash}
       %header.navbar
         %nav.navbar-inner
-          = link_to 'Coworfing', root_url, class: 'brand'
-          = render 'layouts/navigation'
+          .container
+            = link_to 'Coworfing', root_url, class: 'brand'
+            = render 'layouts/navigation'
 
 
-    #container.container
-      #main{:role => "main"}
-        = yield
-      #push
+      #container.container
+        #main{:role => "main"}
+          = yield
+        #push
     %footer{role: "sticky"}
       .container
-        .row.footer
+        .row
           .span4
-            %ul.links
-              %li
-                Made by 
-                = link_to 'Nukomeet', 'http://nukomeet.com', :rel => :nofollow, :target => '_blank'
+            %p
+              Made by 
+              = link_to 'Nukomeet', 'http://nukomeet.com', :rel => :nofollow, :target => '_blank'
           .span4
-            %ul.links
-              %li
-                =link_to(image_tag("facebook.png"), "http://www.facebook.com/coworfing")
-                
-              %li
-                =link_to(image_tag("twitter.png"), "http://www.twitter.com/coworfing")
-              %li
-                = link_to(image_tag('tumblr.jpg'), 'http://coworfing.tumblr.com')
-              %li
-                = link_to(image_tag('gmail.png'),"mailto:coworfing@gmail.com")
-            %ul.links
-              %li.privacy
-                = render 'layouts/iubenda'
+            %p
+              = link_to(image_tag("facebook.png"), "http://www.facebook.com/coworfing", class: "icon")
+              = link_to(image_tag("twitter.png"), "http://www.twitter.com/coworfing", class: "icon")
+              = link_to(image_tag('tumblr.jpg'), 'http://coworfing.tumblr.com', class: "icon")
+              = link_to(image_tag('gmail.png'),"mailto:coworfing@gmail.com", class: "icon")
+            %p
+              = render 'layouts/iubenda'
           .span4
-            %ul.links.credit
-              %li
+            .pull-right
+              %p
                 = link_to t('navbar.about_us'), about_path
-              %li
-                = link_to 'Contribute ::', contribute_path
-              %li
-                = link_to 'Press ::', press_path
+                \::
+                = link_to 'Contribute', contribute_path
+                \::
+                = link_to 'Press', press_path
+              %p 
+                All rights reserved.
 
     = javascript_include_tag :application
     = yield(:javascript) if content_for?(:javascript)

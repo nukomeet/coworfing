@@ -1,6 +1,25 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html, body {
+    height: 100%;
+}
+#push {
+    height: 132px;
+    float:left;
+}
+footer[role="sticky"] {
+    height: 60px; /* accounts for padding */
+    padding: 36px 0;
+}
+body > .wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -132px;
+}
+
 /*
 .lead {
   font-size: 55px;
@@ -182,26 +201,4 @@ form.huge {
 .links a {
   color: #08C;
   text-decoration: none;
-}
-
-#push { height: 108px; float:left; width:100%;}
-
-body > #container {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -108px;
-}
-
-footer[role="sticky"] {
-  height: 120px; /* accounts for padding */
-}
-
-footer[role="sticky"] {
-  padding: 20px 0;
-  
-  a {
-    //color: #28bcd6;
-    font-weight: bold;
-  }
 }

@@ -13,8 +13,6 @@
 body {
   background: #FCFCFC url("background.png") top left repeat-x;
   /*padding: 40px 0 0;*/
-  border-top: 3px solid #DDD;
-
 }
 
 .navbar .navbar-inner{}
@@ -113,35 +111,27 @@ h3.hand{
 footer {
   color: #EFEFEF;
   background: #343434;
-  a{
-    font-weight: bold;
-  }
 }
 
-.footer .links {
-  list-style: none;
-  margin-left: 0;
+footer p {
+  font-size: 13px;
+  margin-bottom: 5px;
 }
 
-.footer .links li {
-  float: left;  
+footer a {
+  color: #338BB8;
+  font-weight: bold;
+}
+
+footer a.icon {
   margin-right: 15px;
-  line-height: 34px;
-  height: 34px;
 }
 
-.footer .links li a:hover{
+footer a:hover{
   color: #3799CA;
   text-decoration: underline;
 }
 
-.footer .links li.privacy{
-  margin-left:38px ;
-}
-
-.footer .links li.credit{
-  float:right;
-}
 #search{
   text-align:justify;
 }
@@ -187,7 +177,7 @@ footer {
 }
 
 #search .btn {
-  padding: 11px 14px;
+  padding: 9px 14px;
   font-size: 16px;
 }
 
