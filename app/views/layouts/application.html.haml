@@ -37,12 +37,14 @@
               %span.icon-bar
               %span.icon-bar
               %span.icon-bar
-            %a.brand{:href => "index.html"}
+            %a.brand{:href => "/"}
               %b Coworfing 
             = render 'layouts/navigation'
 
+    = yield :map
     #content.container
       = yield
+  
 
     %footer.row
       .container

@@ -1,3 +1,4 @@
+.hero-unit
 .row
   .span7
     - if @place.photo?
@@ -10,6 +11,12 @@
     %p
       = t('place.added_by')
       = link_to @place.user.name, profile_path(@place.user.username) 
+      %br/
+      - if can? :update, @place 
+        = link_to  edit_place_path(@place) do
+          %i.icon-pencil.icon
+          Edit
+          
     - if @place.features?(:music)
       %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
     - else
@@ -32,7 +39,6 @@
       .icon-plane
       = @place.transport
     %p
-      %INPUT{:class => "btn btn-info span3 btn-large", :TYPE => "button", :VALUE => "Invite friends there", :onClick => "parent.location='mailto:Friends email here?subject=Invitation to cowork&Body=I found this awesome place to work. Would you join me there? Check it out: http://#{request.host+request.fullpath}'"} 
       %span.pull-right
         - if @place.public?
           %span.label.label-info.upcase 
@@ -40,17 +46,7 @@
         - elsif @place.business?
           %span.label.label-success.upcase
             = t('place.business')
-        - unless @place.user == current_user
-          - if @place.private?
-            %a.btn.btn-large{href:'#demand', :'data-toggle' => 'modal'} 
-              %i.icon-white.icon-lock
-              = t('place.demand')
     = link_to image_tag("http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
-    %p
-      = t('place.added_by')
-      = link_to @place.user.username, profile_path(@place.user.username) 
-      - if can? :update, @place 
-        = link_to 'Edit', edit_place_path(@place), { class: 'btn' }
       
 - if @place.comments.size > 0 
   %hr
