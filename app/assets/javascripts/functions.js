@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
 		// initialize tooltip
 		$('[rel=tooltip]').tooltip();
 		// initialize popover
-		$('[rel=popover]').popover();
+		//$('[rel=popover]').popover();
 
 	    $('.accordion').on('show', function (e) {
 	         $(e.target).prev('.accordion-heading').find('.accordion-toggle').addClass('active');
