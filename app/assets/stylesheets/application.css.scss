@@ -12,39 +12,12 @@
  *= require jquery-ui/ui-lightness
  *= require jquery-ui-timepicker-addon
  *= require chosen
- *= require home
  *= require leaflet
  *= require MarkerCluster/MarkerCluster.Default
  *= require MarkerCluster/MarkerCluster
- *= require_tree .
- *= require default
+ *= require theme
+ *= require theme_override
 */
 
-/*
-@import "bootstrap";
-*/
+@import 'bootstrap';
 @import 'font-awesome';
-
-/* GLOBAL */
-
-.thumbnail, .label {
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
-}
-
-
-#container {
-  /*margin-top: 64px;*/
-}
-
-.alert-block {
-  padding-top: 44px;
-}
-
-.search_btn {
-  margin-top: -25px;
-}
-
-
-
