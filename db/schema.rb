@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120803140811) do
+ActiveRecord::Schema.define(:version => 20120921125404) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(:version => 20120803140811) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                :default => "", :null => false
+    t.string   "email",                                :default => "",        :null => false
     t.string   "encrypted_password",                   :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20120803140811) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                           :null => false
-    t.datetime "updated_at",                                           :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
     t.string   "name"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20120803140811) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.string   "role"
+    t.string   "role",                                 :default => "regular"
     t.string   "username"
     t.text     "bio"
     t.string   "website"
