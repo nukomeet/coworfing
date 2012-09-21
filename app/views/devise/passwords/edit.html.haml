@@ -1,14 +1,17 @@
-= simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { method: :put, class: 'form-horizontal' }) do |f|
-  = devise_error_messages!
+.hero-unit
+  %h2 Change Your Password
 
-  = f.hidden_field :reset_password_token
-  %fieldset
-    %legend Change Your Password 
+.row
+  .span12
+    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { method: :put, class: 'form-horizontal' }) do |f|
+      = devise_error_messages!
 
-    = f.input :password
-    = f.input :password_confirmation
+      = f.hidden_field :reset_password_token
+      %fieldset
+        %legend Change Your Password 
 
-  .form-actions
-    = f.submit "Change my password"
+        = f.input :password
+        = f.input :password_confirmation
 
-= render "links"
+      .form-actions
+        = f.submit "Change my password"

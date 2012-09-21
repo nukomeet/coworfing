@@ -1,4 +1,4 @@
-.nav-collapse
+.nav-collapse.fr
   %ul.nav
     -if user_signed_in?
       %li
@@ -19,20 +19,6 @@
       %li= link_to t('login'), new_user_session_path
   - else
     %ul.nav.pull-right
-      %li.dropdown
-        %a.dropdown-toggle{:'data-toggle' => "dropdown"}
-          %i.icon-question-sign.icon-white
-          = t('navbar.requests')
-          %b.caret
-        %ul.dropdown-menu
-          %li
-            = link_to received_place_requests_path do
-              %i.icon-inbox.icon-white
-              = t('navbar.received') 
-          %li
-            = link_to sent_place_requests_path do
-              %i.icon-share.icon-white
-              = t('navbar.sent')
       %li.dropdown
         %a.dropdown-toggle{:'data-toggle' => "dropdown"}
           %i.icon-user.icon-white

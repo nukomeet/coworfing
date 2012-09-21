@@ -1,0 +1,18 @@
+.hero-unit
+  %h2 Invite some friends
+
+.row
+  .span4.invite
+    = simple_form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f|
+      = devise_error_messages!
+      = f.input :email, required: false
+      %p= f.submit "Send an invitation", :class => "btn btn-large btn-info"
+  .span8
+    %p 
+      As the application is still under development, please
+    %ul
+      %li do not invite people you don't know
+      %li do not invite people you don't trust
+      %li do not invite people who cannot understand that the app is under development and may change or suffer from bugs.
+    %p
+      Apart from that, your friends are welcome!

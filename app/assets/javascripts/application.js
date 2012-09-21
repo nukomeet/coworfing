@@ -24,6 +24,9 @@
 //= require chosen-jquery
 //= require vendor/jquery.cycle
 //= require vendor/jquery.batchImageLoad
+//= require jquery.isotope
+//= require jquery.touchSwipe
+//= require functions 
 
 // Templates
 //= require_tree ../templates/

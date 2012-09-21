@@ -1,8 +1,6 @@
 Coworfing::Application.routes.draw do
     match 'about' => 'home#about', via: :get, as: :about
     
-    match 'contribute' => 'home#contribute', via: :get, as: :contribute
-
     match 'press' => 'home#press', via: :get, as: :press
 
     match 'home/location' => 'home#location'

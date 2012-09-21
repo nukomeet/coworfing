@@ -1,33 +1,24 @@
-.row
-  - if user_signed_in? 
-    .span7
-      .row
-        .span5
-          %h4           
-            You can only see public places 
-          %p
-            Add a place and you will gain access to private places! 
-    .span4
-      %p.list-place{:style => "margin-left:30px; margin-top: 20px;"}
-        = link_to new_place_path, { class: 'btn btn-info btn-large' } do
-          %i.icon-map-marker.icon-white
-          &nbsp;
-          = t('add')
-  - else
-    .span12
-      .login.center
-        = link_to new_user_session_path, { class: 'btn btn-info btn-large' } do
-          = t('login_to_add')
-
-%hr
+.hero-unit
 
 .row
   .span8
+    %h1.lead
+      %strong You can only see public places.
+      Add a place and you will gain access to private places! 
+  .span4
+    %p.ac
+      = link_to new_place_path, { class: 'btn btn-primary btn-large' } do
+        %i.icon-map-marker.icon-white
+        = t('add')
+
+.hero-unit.faq
+  .ac
     = form_tag places_path, method: :get, class: 'form-inline'  do
       .controls
         .input-append
-          = select_tag "cities", options_for_select(@place_names), multiple: true, class: 'span6 chzn-select'
-          = submit_tag t('search'), class: 'btn search_btn'
+          = text_field_tag "cities[]", nil, placeholder: t('search') 
+          = button_tag '', class: 'btn btn-search btn-success' do
+            %i.icon-search.icon-white
 
 %hr
 

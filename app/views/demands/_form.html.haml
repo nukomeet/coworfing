@@ -1,6 +1,5 @@
 = form_for User.new, url: "/demands" do |f|
-  %fieldset
-    .controls
-      .input-append
-        = f.text_field :email, {class: "span4 large", placeholder: 'Enter your email address...'}
-        = f.submit 'Invite me', class: 'btn btn-success'
+  .controls
+    .input-append
+      = f.text_field :email, { placeholder: 'Request an invitation' }
+      = f.submit 'Invite me', class: 'btn btn-search btn-success'
