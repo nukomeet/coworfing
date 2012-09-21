@@ -46,7 +46,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bitmask_attributes (0.3.0)
       activerecord (~> 3.0)
-    bootstrap-sass (2.1.0.0)
+    bootstrap-sass (2.0.4.0)
     builder (3.0.3)
     cancan (1.6.8)
     capybara (1.1.2)
@@ -313,7 +313,7 @@ PLATFORMS
 
 DEPENDENCIES
   bitmask_attributes
-  bootstrap-sass
+  bootstrap-sass (= 2.0.4)
   bootstrap_kaminari!
   cancan
   capybara

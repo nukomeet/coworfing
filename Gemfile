@@ -12,7 +12,7 @@ gem 'oj'
 
 group :assets do
   gem 'sass-rails'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '2.0.4'
   gem 'coffee-rails'
   gem 'handlebars_assets'
   gem 'uglifier'
