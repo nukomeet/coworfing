@@ -1,23 +1,14 @@
+.hero-unit
+  %h3 Login
 .row
-  .span6
+  .span12
     = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal' }) do |f|
+      = f.input :email
+      = f.input :password
 
-      %fieldset 
-        %legend Login 
+      - if devise_mapping.rememberable?
+        = f.input :remember_me, as: :boolean
 
-        = f.input :email
-        = f.input :password
-
-        - if devise_mapping.rememberable?
-          = f.input :remember_me, as: :boolean
-
-        .form-actions
-          = f.submit "Sign in", class: 'btn btn-info'
-          - if devise_mapping.recoverable? && controller_name != 'passwords'
-            = link_to "Forgot your password?", new_password_path(resource_name), class: 'btn'
-
-    %hr
-  .span6  
-    %h3
-      Not registered yet? Ask for an invite 
-    = render partial: "demands/form"
+      = f.submit "Sign in", class: 'btn btn-info'
+      - if devise_mapping.recoverable? && controller_name != 'passwords'
+        = link_to "Forgot your password?", new_password_path(resource_name), class: 'btn'
