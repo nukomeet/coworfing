@@ -6,6 +6,7 @@ Coworfing::Application.routes.draw do
     match 'home/location' => 'home#location'
 
     match 'map' => 'home#map', via: :get, as: :map
+    match 'mobile' => 'home#mobile', via: :get, as: :mobile
 
     match 'profile/:username' => 'users#show', via: :get, as: :profile
     match 'people' => 'users#index', via: :get, as: :people
