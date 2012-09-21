@@ -25,4 +25,7 @@ class HomeController < ApplicationController
       format.json { render json: @location }
     end
   end
+  
+  def mobile
+  end
 end

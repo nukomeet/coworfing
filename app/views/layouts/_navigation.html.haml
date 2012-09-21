@@ -1,5 +1,9 @@
 .nav-collapse.fr
   %ul.nav
+    %li
+      = link_to mobile_path do
+        %i.icon-signal.icon-white
+        Mobile
     -if user_signed_in?
       %li
         = link_to map_path do
