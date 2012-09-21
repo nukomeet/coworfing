@@ -16,7 +16,7 @@
     = form_tag places_path, method: :get, class: 'form-inline'  do
       .controls
         .input-append
-          = text_field_tag "cities[]", nil, placeholder: 'Search'
+          = text_field_tag "cities[]", nil, placeholder: t('search') 
           = button_tag '', class: 'btn btn-search btn-success' do
             %i.icon-search.icon-white
 

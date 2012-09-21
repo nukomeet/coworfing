@@ -1,9 +1,5 @@
-.row
-  .span12
-    %p.list-place.centered
-      = link_to ' Add A Place ', new_place_path, { class: 'btn btn-info btn-large' } 
-
-    %hr
+.hero-unit
+  %h2 Your Places
 
 %ul.row.span14.thumbnails
   - @places.each do |place|
@@ -15,8 +11,6 @@
           = link_to image_tag('home.jpg'), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
         .caption
           %h5= truncate(place.name) 
-          %p= truncate(place.desc, :length => 25)
-          %p= truncate(place.address_line1, :length => 25)
           %p
             .btn-toolbar
               .btn-group
@@ -25,4 +19,6 @@
                 = link_to 'Edit', edit_place_path(place), { class: 'btn' }
                 = link_to 'Destroy', place, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger'
 
-  = paginate @places
+.row
+  .span12
+    = paginate @places, theme: 'bootstrap'
