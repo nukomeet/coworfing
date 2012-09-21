@@ -1,19 +1,22 @@
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { method: :put, class: 'form-horizontal' }) do |f|
-  = devise_error_messages!
+.hero-unit
+  %h2 Your Profile
 
-  %fieldset
-    %legend Your Profile
+.row
+  .span12
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { method: :put, class: 'form-horizontal' }) do |f|
+      = devise_error_messages!
 
-    = f.input :name
-    = f.input :username
-    = f.input :email
-    = f.input :current_password
-    = f.input :bio, as: :text, input_html: {rows: 4}
-    = f.input :website
-    = f.input :twitter
-    = f.input :public, as: :boolean
+      = f.input :name
+      = f.input :username
+      = f.input :email
+      = f.input :current_password
+      = f.input :bio, as: :text, input_html: {rows: 4}
+      = f.input :website
+      = f.input :twitter
+      = f.input :public, as: :boolean
 
-    = link_to "Change your password", user_password_edit_path
+      .control-group
+        .controls
+          = link_to "Change your password", user_password_edit_path
 
-    .form-actions
       = f.button :submit, class: 'btn-success btn-large'
