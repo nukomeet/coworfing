@@ -55,7 +55,7 @@
               %li
                 %a{:href => "#", :title => ""} Home
               %li
-                = link_to 'Contribute', contribute_path
+                = link_to 'Contribute', 'http://github.com/nukomeet/coworfing' 
               %li
                 = link_to t('navbar.about_us'), about_path
           .span2
@@ -67,19 +67,18 @@
               %li
                 %a{:href => "https://www.iubenda.com/privacy-policy/327733", :title => ""} Privacy Policy 
               %li
-                %a{:href => "#", :title => ""} Contact
+                = link_to 'Blog', 'http://blog.coworfing.com' 
 
           .span4.social-networks
             %h3 Stay in touch
             %p Stay in touch on social networks
             = link_to('', "http://www.facebook.com/coworfing", class: "icon-facebook", :title => "Follow us on Facebook")
             = link_to('', "http://www.twitter.com/coworfing", class: "icon-twitter", :title => "Follow us on Twitter")
-            = link_to('', 'http://googleplus.com/coworfing', class: "icon-google-plus")
-            = link_to('', 'http://github.com/coworfing', class: "icon-github")
+            = link_to('', 'http://github.com/nukomeet/coworfing', class: "icon-github")
             = link_to('', 'http://coworfing.tumblr.com', class: "icon-google-plus")
           .span4
             %h3 Newsletter
-            %p Subscribe to our monthly newsletter and be the first to know about our news and special deals!
+            %p Subscribe to our monthly newsletter 
             %form
               %input{:placeholder => "Enter your E-mail", :type => "text"}/
               %input.btn{:type => "submit", :value => "Ok"}/
