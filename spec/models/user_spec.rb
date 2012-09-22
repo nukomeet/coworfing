@@ -28,7 +28,16 @@ describe User do
     FactoryGirl.create(:user, email: 'oh@zaiste.net')
     FactoryGirl.build(:user, email: 'oh@zaiste.net').should_not be_valid
   end
-  
+
+  it "is invalid with twitter url" do
+    user = FactoryGirl.build(:user, :twitter => 'http://twitter.com/foobar')
+    user.valid?.should_not be_true
+  end
+
+  it "is invalid with weird twitter" do
+    user = FactoryGirl.build(:user, :twitter => '++foo!bar--')
+    user.valid?.should_not be_true
+  end
   
   describe "passwords" do
 
