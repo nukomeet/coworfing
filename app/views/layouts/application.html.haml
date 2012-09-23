@@ -96,10 +96,11 @@
             .span4
               %i.icon-envelope
               \&nbsp;
-              = link_to("bonjour@nukomeet.com", "mailto:coworfing@gmail.com") 
+              = link_to("bonjour@nukomeet.com", "mailto:bonjour@nukomeet.com") 
 
     = javascript_include_tag :application
     = yield(:javascript) if content_for?(:javascript)
 
 = render 'layouts/uservoice'
+= render 'layouts/analytics'
 
