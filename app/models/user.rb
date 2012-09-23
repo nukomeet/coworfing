@@ -32,6 +32,17 @@ class User < ActiveRecord::Base
   def guest?
     self.role == "guest"
   end
+
+  def gravatar?
+    hash = Digest::MD5.hexdigest(self.email.to_s.downcase)
+    http = Net::HTTP.new('www.gravatar.com', 80)
+    http.read_timeout = 2 
+    response = http.request_head("/avatar/#{hash}?d=404")
+    puts response.inspect
+    response.code != '404'
+  rescue StandardError, Timeout::Error
+    true  # when the website is down, return true
+  end
   
   def invitation_accepted?
     self.invitation_accepted_at? or self.username or !self.regular?
