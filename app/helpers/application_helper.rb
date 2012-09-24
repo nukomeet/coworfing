@@ -49,4 +49,8 @@ module ApplicationHelper
     gravatar_id = Digest::MD5::hexdigest(email).downcase  
     "http://gravatar.com/avatar/#{gravatar_id}?s=#{width}&d=#{default}"  
   end  
+
+  def url_with_protocol(url)
+    /^http/.match(url) ? url : "http://#{url}"
+  end
 end
