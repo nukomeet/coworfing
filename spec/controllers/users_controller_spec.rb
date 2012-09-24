@@ -54,7 +54,7 @@ describe UsersController do
     context "whit no logged user" do      
       it "assigns public Users to @users" do
         get :index
-        assigns(:users).should == @public - [regular]
+        assigns(:users).should == @public + [regular]
       end
     end
     

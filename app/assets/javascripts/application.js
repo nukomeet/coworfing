@@ -24,6 +24,7 @@
 //= require jquery.isotope
 //= require jquery.touchSwipe
 //= require functions 
+//= require vendor/jquery.lazyload.min
 
 // Templates
 //= require_tree ../templates/

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource only: [:index]
 
   def show
-    @user = User.find_by_username(params[:username])
+    @user = User.find_by_username(params[:username]) || User.find(params[:username])
     authorize! :show, @user
   end
 

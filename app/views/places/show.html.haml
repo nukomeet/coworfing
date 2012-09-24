@@ -10,7 +10,7 @@
       = @place.name
     %p
       = t('place.added_by')
-      = link_to @place.user.name, profile_path(@place.user.username) 
+      = link_to @place.user_name, profile_path(@place.user_username || @place.user_id) 
       %br/
       - if can? :update, @place 
         = link_to  edit_place_path(@place) do
