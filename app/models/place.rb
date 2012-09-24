@@ -13,6 +13,8 @@ class Place < ActiveRecord::Base
 
   has_many :place_requests
   has_many :comments
+  
+  delegate :name, :username, to: :user, allow_nil: true, prefix: true
 
   validates :name, length: { in: 5..45 }
   validates :desc, length: { in: 5..500 }, presence: true
