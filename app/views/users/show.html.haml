@@ -17,7 +17,7 @@
           %td= @user.bio
         %tr
           %th Website 
-          %td= link_to @user.website, @user.website
+          %td= link_to @user.website, url_with_protocol(@user.website), target: '_blank'
         %tr
           %th Skillz 
           %td

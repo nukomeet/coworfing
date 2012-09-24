@@ -40,5 +40,6 @@ en:
         public: 'Mark this, if you want to publicize your profile to other users'
         name: 'Enter your full name'
         username: 'Enter your Coworfing username'
+        twitter: 'Only Twitter username, without @ sign'
 
 
