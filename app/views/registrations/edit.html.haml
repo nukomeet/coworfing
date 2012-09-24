@@ -13,7 +13,11 @@
       = f.input :website
       = f.input :twitter
       = f.input :public, as: :boolean
-
+      .control-group
+        .controls.profile-avatar
+          = image_tag(avatar_url(resource.email, width: 36, class: "thumbnail"))
+          %p
+            = link_to "Change your avatar at Gravatar.com.", "http://gravatar.com/"
       .control-group
         .controls
           = link_to "Change your password", user_password_edit_path
