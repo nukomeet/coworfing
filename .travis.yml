@@ -12,5 +12,5 @@ before_script:
   - cp config/database.yml.$DB config/database.yml
   - psql -c 'create database coworfing_test;' -U postgres
 script:
-  - bundle exec rake db:test:prepare
+  - RAILS_ENV=test bundle exec rake db:migrate
   - bundle exec rspec spec
