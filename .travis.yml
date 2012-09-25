@@ -6,8 +6,11 @@ rvm:
 branches:
   only:
     - master
-before_install: gem install bundler --pre
+before_install: 
+  - gem install bundler --pre
 before_script:
   - cp config/database.yml.$DB config/database.yml
   - psql -c 'create database coworfing_test;' -U postgres
-  - bundle exec rake db:migrate
+script:
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec
