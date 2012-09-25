@@ -21,9 +21,6 @@
 //= require leaflet.markercluster
 //= require jquery-ui-timepicker-addon
 //= require chosen-jquery
-//= require jquery.isotope
-//= require jquery.touchSwipe
-//= require functions 
 //= require vendor/jquery.lazyload.min
 
 // Templates
