@@ -1,3 +1,12 @@
+env:
+  - DB=postgres
 language: ruby
 rvm:
   - "1.9.3"
+branches:
+  only:
+    - master
+before_install: gem install bundler --pre
+before_script:
+  - cp config/database.yml.$DB config/database.yml
+  - psql -c 'create database coworfing_test;' -U postgres
