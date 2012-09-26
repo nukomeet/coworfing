@@ -9,6 +9,9 @@ class UsersController < ApplicationController
   end
 
   def index
+    @featured = @users.select { |u| u.gravatar? }
+    @rest = @users - @featured
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @users }

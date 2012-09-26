@@ -1,0 +1,6 @@
+%li.span2
+  .thumbnail
+    %figure.cap-bot
+      = link_to profile_path(user.username || user.id) do
+        = image_tag('person.png', class: 'lazy', 'data-original' => avatar_url(user.email, width: 131), width: 131 , height: 131)
+      %figcaption= user.username
