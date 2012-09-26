@@ -22,6 +22,7 @@
 //= require jquery-ui-timepicker-addon
 //= require chosen-jquery
 //= require vendor/jquery.lazyload.min
+//= require vendor/jquery.geocomplete.min
 
 // Templates
 //= require_tree ../templates/
@@ -35,3 +36,4 @@
 
 // Views
 //= require coworfing/views/map/map
+//= require coworfing/views/places/new
