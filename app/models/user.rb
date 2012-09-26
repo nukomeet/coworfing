@@ -35,14 +35,9 @@ class User < ActiveRecord::Base
   end
 
   def gravatar?
-    hash = Digest::MD5.hexdigest(self.email.to_s.downcase)
-    http = Net::HTTP.new('www.gravatar.com', 80)
-    http.read_timeout = 2 
-    response = http.request_head("/avatar/#{hash}?d=404")
-    puts response.inspect
-    response.code != '404'
-  rescue StandardError, Timeout::Error
-    true  # when the website is down, return true
+    Rails.cache.fetch(self.email, expires_in: 1.days) do
+      ask_gravatar(self.email)
+    end
   end
   
   def invitation_accepted?
@@ -55,5 +50,18 @@ class User < ActiveRecord::Base
       return ! mock.errors.has_key?(attr)
     end
     #true
+  end
+
+  private
+
+  def ask_gravatar(email)
+    hash = Digest::MD5.hexdigest(email.to_s.downcase)
+    http = Net::HTTP.new('gravatar.com', 80)
+    http.read_timeout = 2 
+    response = http.request_head("/avatar/#{hash}?d=404")
+    puts response.inspect
+    response.code != '404'
+  rescue StandardError, Timeout::Error
+    true  # when the website is down, return true
   end
 end
