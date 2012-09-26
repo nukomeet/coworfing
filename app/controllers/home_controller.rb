@@ -14,16 +14,6 @@ class HomeController < ApplicationController
       format.json { }
     end
   end
-
-  def location    
-    mapQuery = Geocoder.coordinates(params[:query])
-    @location = {'queryResult' => mapQuery}
-    
-    respond_to do |format|
-      format.html 
-      format.json { render json: @location }
-    end
-  end
   
   def mobile
   end

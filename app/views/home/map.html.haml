@@ -11,6 +11,9 @@
 = content_for :map do
   #mapino
 
+= content_for :preload_javascript do
+  %script{ src: "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en", :type => "text/javascript" }
+
 = content_for :javascript do
   %script
     var places = new C.Places(#{raw @places.to_json});
