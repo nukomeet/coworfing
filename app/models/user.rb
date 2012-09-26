@@ -59,7 +59,6 @@ class User < ActiveRecord::Base
     http = Net::HTTP.new('gravatar.com', 80)
     http.read_timeout = 2 
     response = http.request_head("/avatar/#{hash}?d=404")
-    puts response.inspect
     response.code != '404'
   rescue StandardError, Timeout::Error
     true  # when the website is down, return true
