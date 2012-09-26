@@ -7,7 +7,6 @@ class HomeController < ApplicationController
 
   def map
     @places = Place.all
-    @place_names = Place.uniq.pluck(:city)
     @location = request.location
     authorize! :see, :places
     respond_to do |format|
