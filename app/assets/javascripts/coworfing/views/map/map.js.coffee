@@ -27,7 +27,6 @@ class C.MapView extends Backbone.View
     @
     
   events:
-    "click #map_search" : "get_geo_data"
     "submit form" : "prevent_submit"
     
   
