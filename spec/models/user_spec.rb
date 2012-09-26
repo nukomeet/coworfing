@@ -38,6 +38,16 @@ describe User do
     user = FactoryGirl.build(:user, :twitter => '++foo!bar--')
     user.valid?.should_not be_true
   end
+
+  it "is featured with a defined photo at Gravatar" do
+    user = FactoryGirl.build(:user, email: 'oh@zaiste.net')
+    user.gravatar?.should be_true
+  end
+
+  it "is not featured with no defined photo at Gravatar" do
+    user = FactoryGirl.build(:user, email: 'hohoho@zaiste.net')
+    user.gravatar?.should_not be_true
+  end
   
   describe "passwords" do
 
