@@ -2,8 +2,8 @@ require 'faker'
 
 FactoryGirl.define do
   factory :place do
-    name { truncate( Faker::Company.name, 45 )   }
-    desc { truncate( Faker::Lorem.paragraph(1), 500 ) }
+    name { Faker::Company.name   }
+    desc { Faker::Lorem.paragraph(1) }
     website { Faker::Internet.domain_name }
     wifi { Faker::Lorem.words(2).join("") }
     transport { Faker::Lorem.words(3).join(" ") }
