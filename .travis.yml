@@ -3,9 +3,6 @@ env:
 language: ruby
 rvm:
   - "1.9.3"
-branches:
-  only:
-    - master
 before_install: 
   - gem install bundler --pre
 before_script:
