@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :name, :email, :username, case_sensitive: false
 
   validates :username, format: { with: /\A\w+\Z/i }, length: { in: 2..12 }, presence: true, uniqueness: true
+  validates :twitter,  format: { with: /\A\w+\Z/i }, allow_nil: true
 
   has_many :places
   has_many :invitations, class_name: 'User', as:  :invited_by

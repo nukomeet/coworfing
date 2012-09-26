@@ -1,31 +1,50 @@
-= simple_form_for(@place, html: { multipart: true, class: 'form-horizontal'}) do |f|
-  = f.error_notification
+#place_form.row
+  .span7.details
+    = simple_form_for(@place, html: { multipart: true, class: 'form-horizontal'}) do |f|
+      = f.error_notification    
+      
+      
+      = f.input :name, input_html: { class: 'span5' }
+      .control-group.string.optional
+        .controls    
+          = text_field_tag :geocomplete,nil, autocomplete: false, placeholder: "Location"
+      
+      = f.input :address_line1, input_html: { class: 'span5'}
+      = f.input :city, input_html: { class: 'span3', 'data-geo' => 'locality' }
+      = f.input :country, input_html: { class: 'span3 chzn-select', 'data-geo' => 'country' }
+      = f.input :desc, as: :text, input_html: { rows: 4, class: 'span5' }
+      = f.input :website, input_html: { class: 'span3', 'data-geo' => 'website' }
+      = f.input :wifi, input_html: { class: 'span5' }
+      = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
+      
+      
+      - if !@place.photo? || @place.new_record?
+        - unless @place.photo_cache.nil?
+          = f.input :photo, as: :file, :hint => @place.photo_name.to_s
+        -else
+          = f.input :photo, as: :file
+        = f.hidden_field :photo_cache
+      - else
+        = f.input :remove_photo, as: :boolean
+        .control-group
+          .control-label Image
+          .controls
+            %ul.thumbnails
+              %li.thumbnail= image_tag(@place.photo_url(:thumb)) 
 
-  = f.input :name, input_html: { class: 'span5' }
-  - if !@place.photo? || @place.new_record?
-    - unless @place.photo_cache.nil?
-      = f.input :photo, as: :file, :hint => @place.photo_name.to_s
-    -else
-      = f.input :photo, as: :file
-    = f.hidden_field :photo_cache
-  - else
-    = f.input :remove_photo, as: :boolean
-    .control-group
-      .control-label Image
-      .controls
-        %ul.thumbnails
-          %li.thumbnail= image_tag(@place.photo_url(:thumb)) 
-  = f.input :address_line1, input_html: { class: 'span5' }
-  = f.input :city, input_html: { class: 'span3' }
-  = f.input :country, input_html: { class: 'span3 chzn-select' },  prompt: 'Select your country' 
-  = f.input :desc, as: :text, input_html: { rows: 4, class: 'span5' }
-  = f.input :website, input_html: { class: 'span3' }
-  = f.input :wifi, input_html: { class: 'span5' }
-  = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
+      = f.input :kind, required: true, collection: Place.get_kind_values, input_html: { class: 'chzn-select span2' }
 
-  = f.input :kind, required: true, collection: Place.get_kind_values, input_html: { class: 'chzn-select span2' }
+      = f.input :features, label: 'Smoke' do
+        = check_box_tag 'place[features][]', 'smoke' 
 
-  = f.input :features, label: 'Smoke' do
-    = check_box_tag 'place[features][]', 'smoke' 
+      = f.button :submit, class: 'btn btn-info btn-large'
+      
+  .span5 
+    #geo_map
 
-  = f.button :submit, class: 'btn btn-info btn-large'
+= content_for :preload_javascript do
+  %script{:src => "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en", :type => "text/javascript"}
+  
+= content_for :javascript do
+  :javascript
+    var place_form = new C.NewPlaceView();

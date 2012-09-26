@@ -1,7 +1,10 @@
 .hero-unit
 .row.users
   .span3
-    %p
+    - if can? :edit_avatar, @user
+      = link_to "http://gravatar.com/emails/" do
+        = image_tag(avatar_url(@user.email, width: 210), class: 'thumbnail', :"rel"=> "tooltip", :'data-placement'=>"top", :'data-original-title'=>"Change your avatar at Gravatar.com") 
+    - else
       = image_tag(avatar_url(@user.email, width: 210), class: 'thumbnail')
   .span9
     %h2
@@ -17,10 +20,10 @@
           %td= @user.bio
         %tr
           %th Website 
-          %td= link_to @user.website, @user.website
+          %td= link_to @user.website, url_with_protocol(@user.website), target: '_blank'
         %tr
           %th Skillz 
           %td
         %tr
           %th Twitter 
-          %td
+          %td= link_to @user.twitter, twitter_url(@user)

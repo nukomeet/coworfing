@@ -8,8 +8,7 @@ class PlacesController < ApplicationController
   end
 
   def index
-    @place_names = @places.uniq.pluck(:city)
-    @places_all = @places.city(params[:cities]) 
+    @places_all = @places.location(params[:location]) 
     @places = @places_all.page(params[:page])
 
     respond_to do |format|
@@ -17,7 +16,7 @@ class PlacesController < ApplicationController
       format.json
     end
   end
-
+  
   def show
     respond_to do |format|
       format.html # show.html.erb

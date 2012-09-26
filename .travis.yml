@@ -1,0 +1,13 @@
+env:
+  - DB=postgres
+language: ruby
+rvm:
+  - "1.9.3"
+before_install: 
+  - gem install bundler --pre
+before_script:
+  - cp config/database.yml.$DB config/database.yml
+  - psql -c 'create database coworfing_test;' -U postgres
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - bundle exec rspec spec

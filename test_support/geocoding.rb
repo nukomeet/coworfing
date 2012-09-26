@@ -43,6 +43,16 @@ google_json = <<-JSON
         "lng": -73.9933710
       },
       "location_type": "ROOFTOP",
+      "bounds": {
+        "southwest": {
+          "lat": 40.7473324,
+          "lng": -73.9965316
+        },
+        "northeast": {
+          "lat": 40.7536276,
+          "lng": -73.9902364
+        }
+      },
       "viewport": {
         "southwest": {
           "lat": 40.7473324,

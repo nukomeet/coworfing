@@ -10,7 +10,6 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require vendor/froogaloop
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
@@ -22,11 +21,8 @@
 //= require leaflet.markercluster
 //= require jquery-ui-timepicker-addon
 //= require chosen-jquery
-//= require vendor/jquery.cycle
-//= require vendor/jquery.batchImageLoad
-//= require jquery.isotope
-//= require jquery.touchSwipe
-//= require functions 
+//= require vendor/jquery.lazyload.min
+//= require vendor/jquery.geocomplete.min
 
 // Templates
 //= require_tree ../templates/
@@ -35,11 +31,10 @@
 //= require coworfing/namespace
 //= require coworfing/coworfing
 
-// Home
-//= require home/home
-
 // Models
 //= require coworfing/models/place
 
 // Views
 //= require coworfing/views/map/map
+//= require coworfing/views/places/new
+//= require coworfing/views/places/places_search

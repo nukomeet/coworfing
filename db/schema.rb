@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120921125404) do
+ActiveRecord::Schema.define(:version => 20120924101654) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20120921125404) do
     t.text     "bio"
     t.string   "website"
     t.string   "twitter"
-    t.boolean  "public"
+    t.boolean  "public",                               :default => false,     :null => false
     t.string   "photo"
   end
 

@@ -10,55 +10,62 @@
       = link_to new_place_path, { class: 'btn btn-primary btn-large' } do
         %i.icon-map-marker.icon-white
         = t('add')
+#places
+  .hero-unit.faq
+    .ac
+      = form_tag "/l", method: :get, id: "search_form", class: 'form-inline'  do
+        .controls
+          .input-append
+            = text_field_tag "location", nil || params[:location], placeholder: t('search') 
+            = button_tag '', id: "submit_location", class: 'btn btn-search btn-success', name: "" do
+              %i.icon-search.icon-white
 
-.hero-unit.faq
-  .ac
-    = form_tag places_path, method: :get, class: 'form-inline'  do
-      .controls
-        .input-append
-          = text_field_tag "cities[]", nil, placeholder: t('search') 
-          = button_tag '', class: 'btn btn-search btn-success' do
-            %i.icon-search.icon-white
+  %hr
 
-%hr
+  %ul.span14.thumbnails
+    - @places.each do |place|
+      %li.span3
+        .thumbnail
+          - if place.photo?
+            = link_to image_tag(place.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
+          - else
+            = link_to image_tag('home.jpg'), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
+          .caption
+            %h5
+              = link_to truncate(place.name, length: 20), place
+              - if user_signed_in?
+                - if place.public?
+                  %span.label.label-info.pull-right.upcase 
+                    public
+                - elsif place.business?
+                  %span.label.label-success.pull-right.upcase 
+                    pro
+                - else
+                  %span.label.label-warning.pull-right.upcase 
+                    private
+            .place_row
+              = truncate(place.desc, length: 20)
+              .facets.pull-right
+                - if place.features?(:music)
+                  %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
+                - else
+                  %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
+                - if place.features?(:smoke)
+                  %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
+                - else
+                  %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
+                - if place.features?(:discussion)
+                  %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
+                - else
+                  %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
+            
+  .row
+    .span12
+      = paginate @places, theme: 'bootstrap'
 
-%ul.span14.thumbnails
-  - @places.each do |place|
-    %li.span3
-      .thumbnail
-        - if place.photo?
-          = link_to image_tag(place.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
-        - else
-          = link_to image_tag('home.jpg'), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
-        .caption
-          %h5
-            = link_to truncate(place.name, length: 20), place
-            - if user_signed_in?
-              - if place.public?
-                %span.label.label-info.pull-right.upcase 
-                  public
-              - elsif place.business?
-                %span.label.label-success.pull-right.upcase 
-                  pro
-              - else
-                %span.label.label-warning.pull-right.upcase 
-                  private
-          .place_row
-            = truncate(place.desc, length: 20)
-            .facets.pull-right
-              - if place.features?(:music)
-                %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
-              - else
-                %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
-              - if place.features?(:smoke)
-                %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
-              - else
-                %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
-              - if place.features?(:discussion)
-                %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
-              - else
-                %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
-          
-.row
-  .span12
-    = paginate @places, theme: 'bootstrap'
+= content_for :preload_javascript do
+  %script{ src: "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en", :type => "text/javascript" }
+  
+= content_for :javascript do
+  %script
+    var placesView = new C.PlacesSerachForm();

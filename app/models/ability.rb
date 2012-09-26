@@ -12,6 +12,7 @@ class Ability
     if user.admin?
       can :manage, :all
       can :invite, User
+      can :edit_avatar, User, id: user.id
       can :read, :demands
     end
 
@@ -23,7 +24,8 @@ class Ability
 
       can :invite, User 
       can :read, User
-
+      can :edit_avatar, User, id: user.id
+      
       can :read, PlaceRequest, booker_id: user.id 
       can :read, PlaceRequest, receiver_id: user.id 
       can :update, PlaceRequest, status: :pending, receiver_id: user.id

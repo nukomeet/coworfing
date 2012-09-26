@@ -40,7 +40,7 @@ group :test do
   gem 'spork', '~> 0.9.0.rc'
   gem "database_cleaner"
   gem 'guard-spork', '0.3.2'
-  gem 'shoulda'
+  gem 'shoulda', require: false
   gem "email_spec"
   gem 'simplecov', require: false
 end

@@ -74,8 +74,7 @@
             %p Stay in touch on social networks
             = link_to('', "http://www.facebook.com/coworfing", class: "icon-facebook", :title => "Follow us on Facebook")
             = link_to('', "http://www.twitter.com/coworfing", class: "icon-twitter", :title => "Follow us on Twitter")
-            = link_to('', 'http://github.com/nukomeet/coworfing', class: "icon-github")
-            = link_to('', 'http://coworfing.tumblr.com', class: "icon-google-plus")
+            = link_to('', 'http://github.com/nukomeet/coworfing', class: "icon-github")            
           .span4
             %h3 Newsletter
             %p Subscribe to our monthly newsletter 
@@ -96,10 +95,12 @@
             .span4
               %i.icon-envelope
               \&nbsp;
-              = link_to("bonjour@nukomeet.com", "mailto:coworfing@gmail.com") 
-
+              = link_to("bonjour@nukomeet.com", "mailto:bonjour@nukomeet.com") 
+    
+    = yield(:preload_javascript) if content_for?(:preload_javascript)
     = javascript_include_tag :application
     = yield(:javascript) if content_for?(:javascript)
 
 = render 'layouts/uservoice'
+= render 'layouts/analytics'
 
