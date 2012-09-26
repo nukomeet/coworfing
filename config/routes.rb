@@ -12,7 +12,8 @@ Coworfing::Application.routes.draw do
     match 'people' => 'users#index', via: :get, as: :people
     
     # temporary route for mobile app
-    match 'en/places' => 'places#index', via: :get    
+    match 'en/places' => 'places#index', via: :get
+    match 'search/:location' => 'places#search', via: :get, as: :search_place    
     
     devise_for :users, skip: [:sessions], controllers: { invitations: 'users/invitations', registrations: 'registrations' }
     as :user do
@@ -33,9 +34,12 @@ Coworfing::Application.routes.draw do
 
     resources :users, :only => [:index]
 
+    get 'l' => 'places#index', via: :get
+    get 'l/:location' => 'places#index', via: :get
+    
     resources :places do 
       resources :comments, :only => :create
-
+      
       get 'submitted', on: :collection, as: :submitted
       get 'page/:page', action: :index, on: :collection
     end

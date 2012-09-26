@@ -19,16 +19,25 @@ class Place < ActiveRecord::Base
   validates :name, length: { in: 5..45 }
   validates :desc, length: { in: 5..500 }, presence: true
   validates :address_line1, presence: true
-  validates :city, presence: true, format: { with: /\A[a-z][a-z\s]+[a-z]\z/i }
+  validates :city, presence: true, format: { with: /\A\w[\w\s]+\w+\z/i }
 
   validates :country, presence: true
 
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
 
   class << self
-    def city(cities=nil)
-      unless cities.blank?
-        where(city: cities.map(&:capitalize))
+    def location(location=nil)
+      if location
+        geo = Geocoder.search(location.gsub("-", " "))[0]
+        if geo
+          box = [
+                  geo.geometry["bounds"]["southwest"]["lat"],
+                  geo.geometry["bounds"]["southwest"]["lng"], 
+                  geo.geometry["bounds"]["northeast"]["lat"],
+                  geo.geometry["bounds"]["northeast"]["lng"], 
+                ]
+          within_bounding_box(box)
+        end
       else
         scoped
       end

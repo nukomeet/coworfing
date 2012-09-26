@@ -37,3 +37,4 @@
 // Views
 //= require coworfing/views/map/map
 //= require coworfing/views/places/new
+//= require coworfing/views/places/places_search

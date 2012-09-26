@@ -96,7 +96,8 @@
               %i.icon-envelope
               \&nbsp;
               = link_to("bonjour@nukomeet.com", "mailto:bonjour@nukomeet.com") 
-
+    
+    = yield(:preload_javascript) if content_for?(:preload_javascript)
     = javascript_include_tag :application
     = yield(:javascript) if content_for?(:javascript)
 
