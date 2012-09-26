@@ -12,16 +12,19 @@ class C.MapView extends Backbone.View
       layers: [cloudmade]
     }
     
-    @.markers = new L.MarkerClusterGroup()
-    @.markersList = []
+    @search_input = @.$el.find("#place_input")
+    @search_input.geocomplete()
+    @search_input.bind("geocode:result", @get_geo_data)
     
-    @.map =  L.map('mapino', mapOptions)
+    
+    @markers = new L.MarkerClusterGroup()
+    @markersList = []
+    
+    @map =  L.map('mapino', mapOptions)
     L.Icon.Default.imagePath = '../assets/images'
     
-    @.populate()
+    @populate()
     @
-    
-    
     
   events:
     "click #map_search" : "get_geo_data"
@@ -35,26 +38,18 @@ class C.MapView extends Backbone.View
       
       marker.bindPopup(popup)
       
-      @.markersList.push(marker)
-      @.markers.addLayer(marker)
+      @markersList.push(marker)
+      @markers.addLayer(marker)
     false   
       
   populate: =>
-	  @.collection.each (place) =>
-	    @.renderMarker(place)  
-	  @.map.addLayer(@.markers)
+	  @collection.each (place) =>
+	    @renderMarker(place)  
+	  @map.addLayer(@.markers)
 	  false
 
-  get_geo_data: (e) => 
-    query = $(@el).find("#place_input").val()
-    $.getJSON(
-      'home/location',
-      { query: query},
-      (data) =>
-        if data.queryResult isnt null
-          location = data.queryResult
-          @.map.setView(new L.LatLng(parseFloat(location[0]), parseFloat(location[1])), 10)
-    )
-          
+  get_geo_data: (e, r) => 
+    @map.setView([r.geometry.location.Xa, r.geometry.location.Ya], 10)
+   
   prevent_submit: (e) =>
     e.preventDefault()
