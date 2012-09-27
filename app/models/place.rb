@@ -19,7 +19,7 @@ class Place < ActiveRecord::Base
   validates :name, length: { in: 5..45 }
   validates :desc, length: { in: 5..500 }, presence: true
   validates :address_line1, presence: true
-  validates :city, presence: true, format: { with: /\A\w[\w\s]+\w+\z/i }
+  validates :city, presence: true, format: { with: /\A[a-zA-Z]+[\s\D]+[a-zA-Z]+\z/i }
 
   validates :country, presence: true
 
