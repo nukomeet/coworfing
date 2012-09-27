@@ -30,7 +30,7 @@ Coworfing::Application.routes.draw do
         root to: 'home#map'
     end
 
-    resources :users, :only => [:index]
+    resources :users, :only => [:index, :edit, :update]
 
     get 'l' => 'places#index', via: :get
     get 'l/:location' => 'places#index', via: :get
