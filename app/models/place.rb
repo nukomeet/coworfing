@@ -1,7 +1,9 @@
 class Place < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
 
-  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photo, :photo_cache
+  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photo, :photo_cache, :tag_list
+
+  acts_as_taggable
 
   geocoded_by :address 
 

@@ -37,6 +37,8 @@
       = f.input :features, label: 'Smoke' do
         = check_box_tag 'place[features][]', 'smoke' 
 
+      = f.input :tag_list, input_html: { class: 'span5'}, label: 'Tags', placeholder: 'Insert tags, separated by commas'   
+
       = f.button :submit, class: 'btn btn-info btn-large'
       
   .span5 
