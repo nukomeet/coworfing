@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
   
   def update
-    puts params[:user]
     params[:user].delete(:current_password)
     respond_to do |format|
       if @user.update_without_password(params[:user])
