@@ -1,4 +1,4 @@
-Coworfing
+Coworfing [![Build Status](https://secure.travis-ci.org/nukomeet/coworfing.png)](http://travis-ci.org/nukomeet/coworfing)
 =========
 
 WHAT IS IT ABOUT ?!
