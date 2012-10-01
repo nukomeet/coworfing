@@ -11,3 +11,5 @@ before_script:
 script:
   - RAILS_ENV=test bundle exec rake db:migrate
   - bundle exec rspec spec
+notifications:
+  hipchat: <%= ENV['HIPCHAT_TOKEN'] %>@<%= ENV['HIPCHAT_ROOM_ID'] %>

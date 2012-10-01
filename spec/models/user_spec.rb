@@ -45,7 +45,7 @@ describe User do
   end
 
   it "is not featured with no defined photo at Gravatar" do
-    user = FactoryGirl.build(:user, email: 'hohoho@zaiste.net')
+    user = FactoryGirl.build(:user, email: 'hohohoo@zaiste.net')
     user.gravatar?.should_not be_true
   end
   

@@ -8,7 +8,7 @@ class PlacesController < ApplicationController
   end
 
   def index
-    @places_all = @places.location(params[:location]) 
+    @places_all = @places.location(params[:cities]) 
     @places = @places_all.page(params[:page])
 
     respond_to do |format|

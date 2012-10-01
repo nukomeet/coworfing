@@ -9,7 +9,6 @@ FactoryGirl.define do
     password_confirmation {|o| o.password }
     # required if the Devise Confirmable module is used
     confirmed_at Time.now
-    role :guest
     
     trait :regular do
       role :regular
