@@ -12,4 +12,4 @@ script:
   - RAILS_ENV=test bundle exec rake db:migrate
   - bundle exec rspec spec
 notifications:
-  hipchat: 2cbad9345181bfd9d9f163a6159ebd@56513
+  hipchat: <%= ENV['HIPCHAT_TOKEN'] %>@<%= ENV['HIPCHAT_ROOM_ID'] %>
