@@ -16,7 +16,7 @@
       = form_tag "/l", method: :get, id: "search_form", class: 'form-inline'  do
         .controls
           .input-append
-            = text_field_tag "location", nil || params[:location], placeholder: t('search') 
+            = text_field_tag "cities[]", nil || params[:cities], placeholder: t('search'), id: "location" 
             = button_tag '', id: "submit_location", class: 'btn btn-search btn-success', name: "" do
               %i.icon-search.icon-white
 

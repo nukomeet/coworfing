@@ -43,13 +43,13 @@ describe PlacesController do
     end
     
     it "renders the :index view" do
-      get :index, location: "New York"
+      get :index, cities: ["New York"]
       response.should render_template :index
     end
     
     context "with no logged user" do
       it "populate an array of public places" do
-        get :index, location: "New York"
+        get :index, cities: ["New York"]
         assigns(:places).should include @new_york
         assigns(:places).should_not include @new_york_private
         assigns(:places).should_not include @berlin
@@ -59,7 +59,7 @@ describe PlacesController do
     context "with regular user logged in" do
       it "populates an array of places" do
         sign_in regular
-        get :index, location: "New York"
+        get :index, cities: ["New York"]
         assigns(:places).should include @new_york
         assigns(:places).should include @new_york_private   
       end
