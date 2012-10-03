@@ -36,6 +36,7 @@ class Ability
 
     if user.guest? 
       can :read, Place, kind: :public
+      can :read, Place, kind: :business
       can :read, User, public: true
     end
 
