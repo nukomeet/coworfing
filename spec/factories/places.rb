@@ -2,7 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
   factory :place do
-    name { Faker::Lorem.words(4).join(" ") }
+    name { Faker::Company.name   }
     desc { Faker::Lorem.paragraph(1) }
     website { Faker::Internet.domain_name }
     wifi { Faker::Lorem.words(2).join("") }

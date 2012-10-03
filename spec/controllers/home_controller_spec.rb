@@ -35,11 +35,9 @@ describe HomeController do
       it "assigns Places to @places" do
         @private = FactoryGirl.create_list(:place, 5, :private, user: regular)
         @public = FactoryGirl.create_list(:place, 5, :public, user: regular)
-        @place_names = (@private + @public).map(&:city).uniq()
         sign_in regular
         get :map
         assigns(:places).should =~ @private + @public
-        assigns(:place_names).should =~ @place_names
       end
     end
   end

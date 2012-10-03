@@ -3,9 +3,6 @@ env:
 language: ruby
 rvm:
   - "1.9.3"
-branches:
-  only:
-    - master
 before_install: 
   - gem install bundler --pre
 before_script:
@@ -14,3 +11,5 @@ before_script:
 script:
   - RAILS_ENV=test bundle exec rake db:migrate
   - bundle exec rspec spec
+notifications:
+  hipchat: <%= ENV['HIPCHAT_TOKEN'] %>@<%= ENV['HIPCHAT_ROOM_ID'] %>

@@ -1,3 +1,8 @@
+.navbar-inner
+  -webkit-border-radius: 0px
+  -moz-border-radius: 0px
+  border-radius: 0px
+
 .hero-unit
   h1
     font-size: 48px
@@ -104,6 +109,7 @@ figure
   p
     float: left
     margin-top: 7px
+
 footer
   .social-networks
     .icon-tumblr
@@ -118,3 +124,21 @@ footer
 .infos
   h2
     margin-top: 0
+  
+// ============== new place map =============
+#geo_map
+  width: 380px
+  height: 300px
+  
+#geo_map:after
+  content: "Type in an address in the location field."
+  padding-top: 140px
+  display: block
+  text-align: center
+  font-size: 1.5em
+  color: #999
+//===========================================
+
+.pac-container
+  &::after
+    content: ""

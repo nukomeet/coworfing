@@ -54,28 +54,30 @@ describe Place do
     FactoryGirl.create(:place, :public, address_line1: "Baker Rd", city: "NYC", country: "United States").address.should == "Baker Rd, NYC, United States"
   end
   
-  describe ".city" do
+  describe ".location" do
     before :each do
-      @berlin = FactoryGirl.create( :place, :public, city: "Berlin" )
-      @paris = FactoryGirl.create( :place, :public, city: "Paris" )
-      @new_york = FactoryGirl.create(:place, :public, city: "New York")  
+      @berlin = FactoryGirl.create( :place, :public, city: "Berlin")
+      @berlin.latitude = "43.9680364";
+      @berlin.longitude = "-88.9434476";
+      @berlin.save!
+      @new_york = FactoryGirl.create(:place, :public, city: "New York")
     end
     
-    context "matching city" do
+    context "matching location" do
       it "returns an array of results that match" do
-        Place.city(["Berlin"]).should == [@berlin]
+        Place.location("New York").should include @new_york
       end
     end
     
-    context "non-matching city" do
+    context "non-matching location" do
       it "doesn't return places that don't contain provided cities" do
-        Place.city(["London"]).should_not include @berlin
+        Place.location("New York").should_not include @berlin
       end
     end
     
     context "empty parameter" do
       it "returns all places" do
-        Place.city([]).all.should == [@berlin, @paris, @new_york]  
+        Place.location().all.should == [@berlin, @new_york]  
       end
     end  
   end
