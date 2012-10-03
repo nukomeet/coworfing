@@ -53,6 +53,10 @@ describe Place do
   it "returns a full address as a string" do
     FactoryGirl.create(:place, :public, address_line1: "Baker Rd", city: "NYC", country: "United States").address.should == "Baker Rd, NYC, United States"
   end
+
+  it "returns a tag" do
+    FactoryGirl.create(:place, :public, tags: "park").should be_valid
+  end
   
   describe ".location" do
     before :each do

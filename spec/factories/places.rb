@@ -12,6 +12,8 @@ FactoryGirl.define do
     city { Faker::Address.city }
     zipcode { Faker::Address.zip_code }
     country { Faker::Address.country }
+    tag_list { Faker::Lorem.words(1) }
+    tags { Faker::Lorem.words(1) }
     photo { Faker::Internet.domain_name }
     association :user
     
