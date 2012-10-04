@@ -35,7 +35,6 @@ en:
         smoke: 'Check the box if people can smoke in this place'
         music: 'Check the box if the owner of in this place likes to put music'
         discussion: 'Check the box if there is a lot of chatting going on in this place'
-        photo: 'A picture is worth a thousand words'
       user:
         public: 'Mark this, if you want to publicize your profile to other users'
         name: 'Enter your full name'
