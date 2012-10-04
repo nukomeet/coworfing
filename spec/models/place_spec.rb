@@ -55,7 +55,7 @@ describe Place do
   end
 
   it "returns a tag" do
-    FactoryGirl.create(:place, :public, tags: "park").should be_valid
+    FactoryGirl.create(:place, :public, tag_list: "park").should be_valid
   end
   
   describe ".location" do
