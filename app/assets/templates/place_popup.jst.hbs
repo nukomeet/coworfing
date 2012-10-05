@@ -1,2 +1,21 @@
-<strong>{{ place.name }}<strong><br/>
-<a href={{ url }} class='btn btn-info'>View details »</a>
+<div class="thumbnail">
+  {{#if place.photo.small.url}}
+    <img src={{place.photo.small.url}} />
+  {{else}}
+     <img src="assets/home.jpg" />
+  {{/if}}
+  <div class="caption">
+    <h5>
+      {{truncate place.name 20}}
+      
+    </h5>
+    <div class="place_row">
+      <div class="facets">
+        <span class="label label-info upcase">{{ place.kind }}</span>  
+        {{#each place.features}}
+          <span class="icon-{{this}}"></span> 
+        {{/each}}
+      </div>
+    </div> 
+  </div>
+</div>

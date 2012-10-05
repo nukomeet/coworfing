@@ -28,6 +28,7 @@
 //= require_tree ../templates/
 
 // Coworfing
+//= require coworfing/helpers
 //= require coworfing/namespace
 //= require coworfing/coworfing
 

@@ -22,7 +22,7 @@
       %br/
       - if can? :update, @place 
         = link_to  edit_place_path(@place) do
-          %i.icon-pencil.icon
+          %i.icon-pencil
           Edit
           
     - if @place.features?(:music)
@@ -48,13 +48,8 @@
       .icon-plane
       = @place.transport
     %p
-      %span.pull-right
-        - if @place.public?
-          %span.label.label-info.upcase 
-            = t('place.public')
-        - elsif @place.business?
-          %span.label.label-success.upcase
-            = t('place.business')
+      %span{ :class=> "label label-#{@place.kind} pull-right upcase" } 
+        = @place.kind
     = link_to image_tag("http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
       
 - if @place.comments.size > 0 
