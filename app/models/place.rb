@@ -19,7 +19,7 @@ class Place < ActiveRecord::Base
   validates :name, length: { in: 5..45 }
   validates :desc, length: { in: 5..500 }, presence: true
   validates :address_line1, presence: true
-  validates :city, presence: true
+  validates :city, presence: true, format: { with: /\A[a-zA-Z]+[\s\D]+[a-zA-Z]+\z/i }
   validates :country, presence: true
 
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
