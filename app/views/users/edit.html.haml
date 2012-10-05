@@ -1,0 +1,12 @@
+.hero-unit
+  %h2 Your Profile
+.row
+  .span12  
+    = simple_form_for(@user, :html => { method: :put, class: 'form-horizontal' }) do |f|
+
+      %fieldset    
+        = render partial: "form_inputs", locals: { f: f, resource: @user }
+
+        = f.button :submit, class: 'btn-success btn-large'
+        
+    = link_to "Back", :back

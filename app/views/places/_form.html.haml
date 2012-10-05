@@ -15,7 +15,7 @@
       = f.input :desc, as: :text, input_html: { rows: 4, class: 'span5' }
       = f.input :website, input_html: { class: 'span3', 'data-geo' => 'website' }
       = f.input :wifi, input_html: { class: 'span5' }
-      = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }
+      = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }, placeholder: 'If necessary, explain in a few words how to get there'
       
       
       - if !@place.photo? || @place.new_record?

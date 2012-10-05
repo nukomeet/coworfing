@@ -1,0 +1,13 @@
+= f.input :name
+= f.input :username
+= f.input :email
+= f.input :current_password
+= f.input :bio, as: :text, input_html: {rows: 4}
+= f.input :website
+= f.input :twitter
+= f.input :public, as: :boolean
+.control-group
+  .controls.profile-avatar
+    = image_tag(avatar_url(resource.email, width: 36, class: "thumbnail"))
+    %p
+      = link_to "Change your avatar at Gravatar.com.", "http://gravatar.com/"

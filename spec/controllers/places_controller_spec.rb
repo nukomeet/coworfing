@@ -7,8 +7,9 @@ describe PlacesController do
   
   describe "GET index" do
     before :each do
-      @private = FactoryGirl.create_list(:place, 5, :private, user: regular)
-      @public = FactoryGirl.create_list(:place, 5, :public, user: regular)
+      @private = FactoryGirl.create_list(:place, 2, :private, user: regular)
+      @business = FactoryGirl.create_list(:place, 2, :business, user: regular)
+      @public = FactoryGirl.create_list(:place, 2, :public, user: regular)
     end
     
     it "renders the :index view" do
@@ -17,9 +18,9 @@ describe PlacesController do
     end
     
     context "with no logged user" do
-      it "populates an array of public places" do
+      it "populates an array of public and business places" do
         get :index
-        assigns(:places).should == @public
+        assigns(:places).should =~ @public + @business
       end
     end
     
@@ -27,7 +28,7 @@ describe PlacesController do
       it "populates an array of places" do
         sign_in regular
         get :index
-        (@private + @public).should include(*assigns(:places))    
+        assigns(:places).should =~ @private + @public + @business   
       end
     end 
   end
@@ -43,13 +44,13 @@ describe PlacesController do
     end
     
     it "renders the :index view" do
-      get :index, location: "New York"
+      get :index, cities: ["New York"]
       response.should render_template :index
     end
     
     context "with no logged user" do
       it "populate an array of public places" do
-        get :index, location: "New York"
+        get :index, cities: ["New York"]
         assigns(:places).should include @new_york
         assigns(:places).should_not include @new_york_private
         assigns(:places).should_not include @berlin
@@ -59,7 +60,7 @@ describe PlacesController do
     context "with regular user logged in" do
       it "populates an array of places" do
         sign_in regular
-        get :index, location: "New York"
+        get :index, cities: ["New York"]
         assigns(:places).should include @new_york
         assigns(:places).should include @new_york_private   
       end
