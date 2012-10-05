@@ -81,8 +81,8 @@
   - @place.nearbys(0.5, {:units => :km}).each do |place|
     .span2
       .thumbnail
-        - if place.photo?
-          = image_tag(place.photo_url(:thumb))
+        - unless place.photos.empty?
+          = image_tag(place.photos.first.photo_url(:thumb))
         - else
           %img{src: 'http://placehold.it/240x180'}
         .caption
