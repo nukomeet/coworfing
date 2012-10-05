@@ -1,10 +1,18 @@
 .hero-unit
 .row
   .span7
-    - if @place.photo?
-      = image_tag(@place.photo_url(:big))
-    - else
-      = image_tag('http://cambelt.co/540x540/Add+Your+Photo')
+    .thumbnail
+      - if @place.photos.empty?
+        = image_tag('http://cambelt.co/540x540/Add+Your+Photo')      
+      - else
+        #carousel.carousel.slide{rel: 'carousel'}
+          .carousel-inner
+            - @place.photos.each do |photo|
+              .item
+                = image_tag(photo.photo_url(:big))
+          %a.carousel-control.left{href: "#carousel", 'data-slide' => "prev"} &lsaquo;
+          %a.carousel-control.right{href: "#carousel", 'data-slide' => "next"} &rsaquo;
+      
   .span5.infos
     %h2
       = @place.name
@@ -82,3 +90,8 @@
             = link_to place.name, place_path(place)
 
 = render partial: 'shared/demand_modal' 
+
+
+= content_for :javascript do
+  :javascript
+    $('.item').first().addClass("active");

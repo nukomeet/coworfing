@@ -26,10 +26,10 @@
     - @places.each do |place|
       %li.span3
         .thumbnail
-          - if place.photo?
-            = link_to image_tag(place.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
-          - else
+          - if place.photos.empty?
             = link_to image_tag('home.jpg'), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
+          - else
+            = link_to image_tag(place.photos.first.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
           .caption
             %h5
               = link_to truncate(place.name, length: 20), place
@@ -62,6 +62,7 @@
   .row
     .span12
       = paginate @places, theme: 'bootstrap'
+
 
 = content_for :preload_javascript do
   %script{ src: "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en", :type => "text/javascript" }

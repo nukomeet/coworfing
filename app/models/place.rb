@@ -47,8 +47,4 @@ class Place < ActiveRecord::Base
   def address
     [address_line1, city, country].join(', ')
   end
-  
-  def photo_name
-    self.photo.to_s.match(/[^\/]*$/).to_s
-  end
 end
