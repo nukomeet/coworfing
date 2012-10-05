@@ -1,10 +1,18 @@
 .hero-unit
 .row
   .span7
-    - if @place.photo?
-      = image_tag(@place.photo_url(:big))
-    - else
-      = image_tag('http://cambelt.co/540x540/Add+Your+Photo')
+    .thumbnail
+      - if @place.photos.empty?
+        = image_tag('http://cambelt.co/540x540/Add+Your+Photo')      
+      - else
+        #carousel.carousel.slide{rel: 'carousel'}
+          .carousel-inner
+            - @place.photos.each do |photo|
+              .item
+                = image_tag(photo.photo_url(:big))
+          %a.carousel-control.left{href: "#carousel", 'data-slide' => "prev"} &lsaquo;
+          %a.carousel-control.right{href: "#carousel", 'data-slide' => "next"} &rsaquo;
+      
   .span5.infos
     %h2
       = @place.name
@@ -14,7 +22,7 @@
       %br/
       - if can? :update, @place 
         = link_to  edit_place_path(@place) do
-          %i.icon-pencil.icon
+          %i.icon-pencil
           Edit
           
     - if @place.features?(:music)
@@ -40,13 +48,8 @@
       .icon-plane
       = @place.transport
     %p
-      %span.pull-right
-        - if @place.public?
-          %span.label.label-info.upcase 
-            = t('place.public')
-        - elsif @place.business?
-          %span.label.label-success.upcase
-            = t('place.business')
+      %span{ :class=> "label label-#{@place.kind} pull-right upcase" } 
+        = @place.kind
     = link_to image_tag("http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
       
 - if @place.comments.size > 0 
@@ -73,8 +76,8 @@
   - @place.nearbys(0.5, {:units => :km}).each do |place|
     .span2
       .thumbnail
-        - if place.photo?
-          = image_tag(place.photo_url(:thumb))
+        - unless place.photos.empty?
+          = image_tag(place.photos.first.photo_url(:thumb))
         - else
           %img{src: 'http://placehold.it/240x180'}
         .caption
@@ -82,3 +85,8 @@
             = link_to place.name, place_path(place)
 
 = render partial: 'shared/demand_modal' 
+
+
+= content_for :javascript do
+  :javascript
+    $('.item').first().addClass("active");
