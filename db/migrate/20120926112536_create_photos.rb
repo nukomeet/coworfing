@@ -8,9 +8,11 @@ class CreatePhotos < ActiveRecord::Migration
     end
         
     Place.where("photo IS NOT NULL").all.each{ |place|
-      photo = place.photos.build() 
-      photo.write_uploader(:photo, place.photo)
-      photo.save!
+      if File.exists?(place.photo)
+        photo = place.photos.build() 
+        photo.write_uploader(:photo, place.photo)
+        photo.save!
+      end
     }
     
     remove_column :places, :photo

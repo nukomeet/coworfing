@@ -33,16 +33,8 @@
           .caption
             %h5
               = link_to truncate(place.name, length: 20), place
-              - if user_signed_in?
-                - if place.public?
-                  %span.label.label-info.pull-right.upcase 
-                    public
-                - elsif place.business?
-                  %span.label.label-success.pull-right.upcase 
-                    pro
-                - else
-                  %span.label.label-warning.pull-right.upcase 
-                    private
+              %span{ :class=> "label label-#{place.kind} pull-right upcase" } 
+                = place.kind
             .place_row
               = truncate(place.desc, length: 20)
               .facets.pull-right
