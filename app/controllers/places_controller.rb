@@ -26,6 +26,7 @@ class PlacesController < ApplicationController
 
   def new
     @place.name = "#{current_user.name}'s place"
+    @place.photos.build()
 
     respond_to do |format|
       format.html # new.html.erb
