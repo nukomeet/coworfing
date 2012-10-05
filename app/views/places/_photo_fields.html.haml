@@ -1,0 +1,21 @@
+.control-group.string.optional.photo-item
+  %label.file.optional.control-label{:for => 'place_pictures'}
+    Photo
+  .controls    
+    .fileupload-buttonbar
+      - if f.object.photo.blank?
+        .span3
+          = f.file_field :photo
+          = f.hidden_field :photo_cache
+      - else
+        = f.hidden_field :photo
+        = f.hidden_field :photo_cache
+        .span2
+          = image_tag(f.object.photo)
+        .span1
+          &nbsp;
+
+      .span1
+        %a{class: "remove_fields btn", href: "#"}
+          %i{class: "icon-remove"}
+      = f.hidden_field :_destroy, class: 'photo_destroy'
