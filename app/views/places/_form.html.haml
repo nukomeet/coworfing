@@ -21,8 +21,8 @@
       = f.input :features, label: 'Smoke' do
         = check_box_tag 'place[features][]', 'smoke'
 
-      
-      
+      = f.input :tag_list, input_html: { class: 'span5'}, label: 'Tags', placeholder: 'Insert tags, separated by commas'   
+
       = f.fields_for :photos do |builder|
         = render 'photo_fields', f: builder
         
@@ -30,7 +30,7 @@
         %label.file.optional.control-label
         .controls
           = link_to_add_fields "Add photo field", f, :photos
-          
+
       = f.button :submit, class: 'btn btn-info btn-large'
       
   .span5 

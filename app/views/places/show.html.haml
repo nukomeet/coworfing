@@ -42,6 +42,9 @@
     %p
       =  link_to @place.website, "#{@place.website}" 
     %p
+      Tags
+      = raw @place.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')
+    %p
       .icon-map-marker
       = @place.address  
     %p
