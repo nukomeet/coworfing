@@ -13,7 +13,7 @@ FactoryGirl.define do
     zipcode { Faker::Address.zip_code }
     country { Faker::Address.country }
     tag_list { Faker::Lorem.words(1) }
-    photo { Faker::Internet.domain_name }
+    #photo { Faker::Internet.domain_name }
     association :user
     
     trait :private do

@@ -32,10 +32,22 @@ class C.MapView extends Backbone.View
   
   renderMarker: (place) =>	
     if place.get("latitude") and place.get("longitude")
-      marker = new L.Marker( new L.LatLng(place.get("latitude"), place.get("longitude")) )
+      marker = new L.Marker( new L.LatLng(place.get("latitude"), place.get("longitude")), { place: place } )
       popup = JST.place_popup({ place: place.toJSON(), url: place.url() })
       
-      marker.bindPopup(popup)
+      marker.bindPopup(popup, {closeButton: false, maxWidth: 140})
+      
+      marker.on("mouseover", (e) ->
+        this.openPopup()
+      )
+      
+      marker.on("mouseout", (e) ->
+        this.closePopup()
+      )
+      
+      marker.on("click", (e) ->
+        window.location = this.options.place.url();
+      )
       
       @markersList.push(marker)
       @markers.addLayer(marker)

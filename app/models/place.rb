@@ -1,9 +1,7 @@
 class Place < ActiveRecord::Base
-  mount_uploader :photo, PhotoUploader
-
-  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photo, :photo_cache, :tag_list
 
   acts_as_taggable
+  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photos_attributes, :tag_list
 
   geocoded_by :address 
 
@@ -15,6 +13,8 @@ class Place < ActiveRecord::Base
 
   has_many :place_requests
   has_many :comments
+  has_many :photos, :dependent => :destroy
+  accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => Proc.new { |p| p[:photo].blank? && p[:photo_cache].blank? }
   
   delegate :name, :username, to: :user, allow_nil: true, prefix: true
 
@@ -22,7 +22,6 @@ class Place < ActiveRecord::Base
   validates :desc, length: { in: 5..500 }, presence: true
   validates :address_line1, presence: true
   validates :city, presence: true, format: { with: /\A[a-zA-Z]+[\s\D]+[a-zA-Z]+\z/i }
-
   validates :country, presence: true
 
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
@@ -49,9 +48,5 @@ class Place < ActiveRecord::Base
 
   def address
     [address_line1, city, country].join(', ')
-  end
-  
-  def photo_name
-    self.photo.to_s.match(/[^\/]*$/).to_s
   end
 end
