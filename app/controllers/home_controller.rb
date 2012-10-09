@@ -18,9 +18,4 @@ class HomeController < ApplicationController
   def mobile
   end
 
-  def fb
-    @facebook_cookies ||= Koala::Facebook::OAuth.new 
-    @access_token = @facebook_cookies["access_token"]
-    @graph = Koala::Facebook::GraphAPI.new(@access_token)
-  end
 end

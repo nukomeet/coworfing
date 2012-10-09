@@ -53,10 +53,6 @@ class Place < ActiveRecord::Base
     [address_line1, city, country].join(', ')
   end
   
-  def photo_name
-    self.photo.to_s.match(/[^\/]*$/).to_s
-  end
-
   def post_to_facebook
     if ENV['FB_ACCESS_TOKEN'] 
       page = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
