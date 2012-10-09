@@ -17,4 +17,5 @@ class HomeController < ApplicationController
   
   def mobile
   end
+
 end
