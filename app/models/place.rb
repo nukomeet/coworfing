@@ -58,7 +58,9 @@ class Place < ActiveRecord::Base
   end
 
   def post_to_facebook
-    page = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
-    page.put_object('Coworfing', 'feed', message: 'A new place has been added', link: "https://coworfing.com/places/#{self.id}") 
+    if ENV['FB_ACCESS_TOKEN'] 
+      page = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
+      page.put_object('Coworfing', 'feed', message: 'A new place has been added', link: "https://coworfing.com/places/#{self.id}") 
+    end
   end
 end
