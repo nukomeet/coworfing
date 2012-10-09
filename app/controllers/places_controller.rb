@@ -8,8 +8,12 @@ class PlacesController < ApplicationController
   end
 
   def index
-    @places_all = @places.location(params[:cities]) 
-    @places = @places_all.page(params[:page])
+    if params[:tag]
+      @places = @places.tagged_with(params[:tag]).page params[:page]
+    else
+      @places_all = @places.location(params[:location]) 
+      @places = @places_all.page(params[:page])
+    end
 
     respond_to do |format|
       format.html 
@@ -26,6 +30,7 @@ class PlacesController < ApplicationController
 
   def new
     @place.name = "#{current_user.name}'s place"
+    @place.photos.build()
 
     respond_to do |format|
       format.html # new.html.erb

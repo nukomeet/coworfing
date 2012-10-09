@@ -13,11 +13,13 @@
  *= require jquery-ui-timepicker-addon
  *= require chosen
  *= require leaflet
+ *= require leaflet_override
  *= require MarkerCluster/MarkerCluster.Default
  *= require MarkerCluster/MarkerCluster
  *= require theme
  *= require theme_override
  *= require map
+ *= require socialico
 */
 
 @import 'bootstrap';

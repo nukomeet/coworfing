@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20120924101654) do
     t.datetime "updated_at",    :null => false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "photo"
     t.integer  "user_id"
     t.string   "kind"
     t.integer  "features"
+    t.string   "photo"
   end
 
   create_table "users", :force => true do |t|
