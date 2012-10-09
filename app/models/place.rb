@@ -1,5 +1,4 @@
 class Place < ActiveRecord::Base
-  mount_uploader :photo, PhotoUploader
   
   acts_as_taggable
   attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photos_attributes, :tag_list
@@ -53,10 +52,17 @@ class Place < ActiveRecord::Base
     [address_line1, city, country].join(', ')
   end
   
+<<<<<<< HEAD
   def post_to_facebook
     if ENV['FB_ACCESS_TOKEN'] 
       page = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
       page.put_object('Coworfing', 'feed', message: 'A new place has been added', link: "https://coworfing.com/places/#{self.id}") 
     end
   end
+=======
+  def as_json(options={})
+    super(options.merge( :include => [ :photos ] ))
+  end
+  
+>>>>>>> updated map popup
 end

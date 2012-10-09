@@ -1,2 +1,2 @@
 collection @places
-attributes :id, :name, :desc, :longitude, :latitude, :photo, :features, :kind
+attributes :id, :name, :desc, :longitude, :latitude, :photo, :features, :kind, :photos
