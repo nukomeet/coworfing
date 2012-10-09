@@ -1,5 +1,8 @@
 class Place < ActiveRecord::Base
-  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photos_attributes
+  mount_uploader :photo, PhotoUploader
+  
+  acts_as_taggable
+  attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photos_attributes, :tag_list
 
   geocoded_by :address 
 

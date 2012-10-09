@@ -1,4 +1,7 @@
 Coworfing::Application.routes.draw do
+
+    match 'tags/:tag' => 'places#index', via: :get, as: :tag
+
     match 'about' => 'home#about', via: :get, as: :about
     
     match 'press' => 'home#press', via: :get, as: :press

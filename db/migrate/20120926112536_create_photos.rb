@@ -6,20 +6,21 @@ class CreatePhotos < ActiveRecord::Migration
 
       t.timestamps
     end
-        
-    Place.where("photo IS NOT NULL").all.each{ |place|
-      if File.exists?(place.photo)
-        photo = place.photos.build() 
-        photo.write_uploader(:photo, place.photo)
-        photo.save!
-      end
-    }
     
-    remove_column :places, :photo
+    if Rails.env.production?    
+      Place.where("photo IS NOT NULL").all.each{ |place|
+        photo = place.photos.build()
+        photo_uri = URI.parse(place.photo.url) 
+        photo.remote_photo_url = photo_uri.to_s
+        photo.save!
+      }
+    end
+    
+    #remove_column :places, :photo
   end  
   
   def down
-    add_column :places, :photo, :string
+    #add_column :places, :photo, :string
     drop_table :photos
   end
 end
