@@ -1,16 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :password]
-  
-  def new
-    flash[:failure] = "Registration not allowed" 
-    redirect_to root_path
-  end
-
-  def create
-    flash[:failure] = "Registration not allowed" 
-    redirect_to root_path
-  end
-  
+    
   def password
     @user = current_user
   end
