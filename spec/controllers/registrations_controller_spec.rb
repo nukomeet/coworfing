@@ -4,19 +4,25 @@ describe RegistrationsController do
   let(:regular) { FactoryGirl.create(:user, :regular, password: "123qwe", password_confirmation: "123qwe") }
   
   describe "GET new" do
-    it "redirects to root_url" do 
+    it "renders new view" do 
       @request.env["devise.mapping"] = Devise.mappings[:user]
       get :new
-      flash[:failure].should == "Registration not allowed" 
-      response.should redirect_to root_url
+      response.should render_template :new 
+    end
+    
+    it "assigns user" do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      get :new
+      assigns(:user).should be_instance_of(User)
     end
   end
 
   describe "POST create" do
     it "redirects to root_url" do 
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      post :create, user: {}
-      flash[:failure].should == "Registration not allowed" 
+      @attrs = { name: "name name", username: "username", email: "name@name.com", password: "password", password_confirmation: "password" }
+      post :create, user: @attrs
+      assigns(:user).should be_valid
       response.should redirect_to root_url
     end
   end
