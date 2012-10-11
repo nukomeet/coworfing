@@ -55,6 +55,6 @@ Coworfing::Application.routes.draw do
       get 'sent', on: :collection
     end
 
-    root :to => "home#index"
+    root :to => "home#map"
 end
 
