@@ -31,7 +31,7 @@ class Ability
       can :update, PlaceRequest, status: :pending, receiver_id: user.id
       can :create, PlaceRequest 
 
-      can :see, :places
+      #can :see, :places
     end
 
     if user.guest? 

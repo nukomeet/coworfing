@@ -8,7 +8,6 @@ class HomeController < ApplicationController
   def map
     @places = Place.all
     @location = request.location
-    authorize! :see, :places
     respond_to do |format|
       format.html 
       format.json { }
