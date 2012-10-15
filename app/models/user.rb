@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :comments
   
   scope :with_username, where("username is not null")
-
+  
   # defining roles 
   def admin?
     self.role == "admin"
@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
     end
     #true
   end
-
+  
   private
 
   def ask_gravatar(email)

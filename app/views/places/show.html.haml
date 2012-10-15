@@ -15,7 +15,7 @@
       
   .span5.infos
     %h2
-      = @place.name
+      = title ["#{@place.kind} place", @place.name], @place.name
     %p
       = t('place.added_by')
       = link_to @place.user_name, profile_path(@place.user_username || @place.user_id) 
@@ -40,7 +40,7 @@
     %p
       = @place.desc
     %p
-      =  link_to @place.website, "#{@place.website}" 
+      =  link_to @place.website, "#{@place.website}", rel: :nofollow 
     %p
       Tags
       = raw @place.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')

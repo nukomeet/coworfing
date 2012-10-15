@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @featured = @users.select { |u| u.gravatar? }
+    @featured = @users.with_username.select { |u| u.gravatar? }
     @rest = @users - @featured
 
     respond_to do |format|

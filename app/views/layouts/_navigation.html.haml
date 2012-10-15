@@ -18,12 +18,10 @@
         %i.icon-user.icon-white
         = t('navbar.people')
 
-  - unless user_signed_in?
-    %ul.nav.pull-right
-      %li= link_to 'Sign up', new_user_registration_path
+    - unless user_signed_in?
       %li= link_to t('login'), new_user_session_path
-  - else
-    %ul.nav.pull-right
+    
+    - else
       %li.dropdown
         %a.dropdown-toggle{:'data-toggle' => "dropdown"}
           %i.icon-user.icon-white
@@ -40,3 +38,4 @@
           %li= link_to t('navbar.your_password'), user_password_edit_path 
           %li.divider
           %li= link_to t('navbar.log_out'), destroy_user_session_path, method: :delete
+  = link_to 'Sign up', new_user_registration_path, class: "btn btn-primary btn-signup" unless user_signed_in?
