@@ -1,6 +1,6 @@
 class Place < ActiveRecord::Base
-  
-  acts_as_taggable
+  extend FriendlyId
+
   attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photos_attributes, :tag_list
 
   geocoded_by :address 
@@ -8,6 +8,10 @@ class Place < ActiveRecord::Base
   # only add at the end
   bitmask :features, as: [:discussion, :music, :smoke]
   symbolize :kind, in: [:private, :public, :business], scopes: true, methods: true
+
+  acts_as_taggable
+
+  friendly_id :name, use: :slugged
 
   belongs_to :user
 

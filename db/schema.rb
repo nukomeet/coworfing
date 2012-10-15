@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120926112536) do
+ActiveRecord::Schema.define(:version => 20121014195309) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -58,7 +58,10 @@ ActiveRecord::Schema.define(:version => 20120926112536) do
     t.integer  "user_id"
     t.string   "kind"
     t.integer  "features"
+    t.string   "slug"
   end
+
+  add_index "places", ["slug"], :name => "index_places_on_slug", :unique => true
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

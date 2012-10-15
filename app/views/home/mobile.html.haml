@@ -1,6 +1,6 @@
 .hero-unit
   .ac
-    %h1 Mobile app is there!
+    %h1= title "Mobile app is there!"
     %p and waiting for you
 
 .row
@@ -10,11 +10,11 @@
     %p
       Nomads should always have places within easy reach,  so
       we have published Coworfing mobile aplications. The development was led by 
-      %a{:href => "http://www.twitter.com/tomkuk"}
+      %a{:href => "http://www.twitter.com/tomkuk", target: "_blank", rel: :nofollow}
         @tomkuk
       
       %li
-        %a{:href => "https://play.google.com/store/apps/details?id=com.workshop"}
+        %a{:href => "https://play.google.com/store/apps/details?id=com.workshop", target: "_blank", rel: :nofollow}
           Android
       %li iPhone
       %li Windows Phone (soon)
@@ -41,8 +41,8 @@
 .row
   .span12
     .fr
-      %a{:href => "https://play.google.com/store/apps/details?id=com.workshop"}
+      %a{:href => "https://play.google.com/store/apps/details?id=com.workshop", target: "_blank", rel: :nofollow}
         =image_tag('android_app_on_play.png')
             
-      %a{:href => "http://itunes.apple.com/us/app/nukomeet/id"}
+      %a{:href => "http://itunes.apple.com/us/app/nukomeet/id", target: "_blank", rel: :nofollow}
         =image_tag('appstore.jpg')

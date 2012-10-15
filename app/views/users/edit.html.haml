@@ -1,5 +1,5 @@
 .hero-unit
-  %h2 Your Profile
+  %h2= title "Your Profile"
 .row
   .span12  
     = simple_form_for(@user, :html => { method: :put, class: 'form-horizontal' }) do |f|

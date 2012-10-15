@@ -1,12 +1,12 @@
 .hero-unit
-  %h2 Your Places
+  %h2= title "Your Places"
 
 %ul.row.span14.thumbnails
   - @places.each do |place|
     %li.span3
       .thumbnail
-        - if place.photo?
-          = link_to image_tag(place.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
+        - unless place.photos.empty?
+          = link_to image_tag(place.photos.first.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
         - else
           = link_to image_tag('home.jpg'), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
         .caption

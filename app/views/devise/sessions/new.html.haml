@@ -1,5 +1,5 @@
 .hero-unit
-  %h3 Login
+  %h2= title "Login"
 .row
   .span12
     = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: { class: 'form-horizontal' }) do |f|

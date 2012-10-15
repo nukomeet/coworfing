@@ -10,4 +10,4 @@
   .controls.profile-avatar
     = image_tag(avatar_url(resource.email, width: 36, class: "thumbnail"))
     %p
-      = link_to "Change your avatar at Gravatar.com.", "http://gravatar.com/"
+      = link_to "Change your avatar at Gravatar.com.", "http://gravatar.com/", rel: :nofollow, target: "_blank"

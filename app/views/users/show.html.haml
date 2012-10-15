@@ -8,7 +8,7 @@
       = image_tag(avatar_url(@user.email, width: 210), class: 'thumbnail')
   .span9
     %h2
-      = @user.name
+      = title ["Our Worfers", @user.username], @user.name
 
     %table.table.table-condensed
       %tbody
@@ -20,10 +20,10 @@
           %td= @user.bio
         %tr
           %th Website 
-          %td= link_to @user.website, url_with_protocol(@user.website), target: '_blank'
+          %td= link_to @user.website, url_with_protocol(@user.website), rel: :nofollow, target: '_blank'
         %tr
           %th Skillz 
           %td
         %tr
           %th Twitter 
-          %td= link_to @user.twitter, twitter_url(@user)
+          %td= link_to @user.twitter, twitter_url(@user), rel: :nofollow, target: '_blank'

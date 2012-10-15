@@ -123,6 +123,7 @@ GEM
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     formatador (0.2.3)
+    friendly_id (4.0.8)
     geocoder (1.1.4)
     guard (1.4.0)
       listen (>= 0.4.2)
@@ -193,6 +194,8 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     memcachier (0.0.1)
+    meta-tags (1.2.6)
+      actionpack
     mime-types (1.19)
     mini_magick (3.4)
       subexec (~> 0.2.1)
@@ -343,6 +346,7 @@ DEPENDENCIES
   fakeweb
   fog
   font-awesome-sass-rails
+  friendly_id (~> 4.0.1)
   geocoder
   guard
   guard-bundler
@@ -362,6 +366,7 @@ DEPENDENCIES
   koala
   launchy
   memcachier
+  meta-tags
   mini_magick
   oj
   pg
