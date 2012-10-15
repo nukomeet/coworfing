@@ -20,7 +20,6 @@ describe PlacesController do
     context "with no logged user" do
       it "populates an array of public and business places" do
         get :index
-        puts assigns(:places).size
         assigns(:places).should match_array @public + @business
       end
     end
@@ -29,8 +28,6 @@ describe PlacesController do
       it "populates an array of places" do
         sign_in regular
         get :index
-        puts assigns(:places).size
-        puts (@private + @public + @business).size
         assigns(:places).should match_array @private + @public + @business   
       end
     end 
