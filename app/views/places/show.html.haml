@@ -1,60 +1,70 @@
 .hero-unit
 .row
-  .span7
-    .thumbnail
-      - if @place.photos.empty?
-        = image_tag('http://cambelt.co/540x540/Add+Your+Photo')      
+  %div[@place, Mida(:Place)]
+    .span7
+      .thumbnail
+        - if @place.photos.empty?
+          = image_tag('http://cambelt.co/540x540/Add+Your+Photo', :itemprop => "image" )    
+        - else
+          #carousel.carousel.slide{rel: 'carousel'}
+            .carousel-inner
+              - @place.photos.each do |photo|
+                .item
+                  = image_tag(photo.photo_url(:big), :itemprop => "image")
+            %a.carousel-control.left{href: "#carousel", 'data-slide' => "prev"} &lsaquo;
+            %a.carousel-control.right{href: "#carousel", 'data-slide' => "next"} &rsaquo;
+        
+    .span5.infos
+      %h2
+        %span[:name]= title ["#{@place.kind} place", @place.name], @place.name
+        %meta{ itemprop: "url", content: place_url(@place) }
+      %p
+        = t('place.added_by')
+        = link_to @place.user_name, profile_path(@place.user_username || @place.user_id) 
+        %br/
+        - if can? :update, @place 
+          = link_to  edit_place_path(@place) do
+            %i.icon-pencil
+            Edit
+            
+      - if @place.features?(:music)
+        %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
       - else
-        #carousel.carousel.slide{rel: 'carousel'}
-          .carousel-inner
-            - @place.photos.each do |photo|
-              .item
-                = image_tag(photo.photo_url(:big))
-          %a.carousel-control.left{href: "#carousel", 'data-slide' => "prev"} &lsaquo;
-          %a.carousel-control.right{href: "#carousel", 'data-slide' => "next"} &rsaquo;
-      
-  .span5.infos
-    %h2
-      = title ["#{@place.kind} place", @place.name], @place.name
-    %p
-      = t('place.added_by')
-      = link_to @place.user_name, profile_path(@place.user_username || @place.user_id) 
-      %br/
-      - if can? :update, @place 
-        = link_to  edit_place_path(@place) do
-          %i.icon-pencil
-          Edit
-          
-    - if @place.features?(:music)
-      %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
-    - else
-      %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
-    - if @place.features?(:smoke)
-      %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
-    - else
-      %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
-    - if @place.features?(:discussion)
-      %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
-    - else
-      %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
-    %p
-      = @place.desc
-    %p
-      =  link_to @place.website, "#{@place.website}", rel: :nofollow 
-    %p
-      Tags
-      = raw @place.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')
-    %p
-      .icon-map-marker
-      = @place.address  
-    %p
-      .icon-plane
-      = @place.transport
-    %p
-      %span{ :class=> "label label-#{@place.kind} pull-right upcase" } 
-        = @place.kind
-    = link_to image_tag("http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
-      
+        %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
+      - if @place.features?(:smoke)
+        %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
+      - else
+        %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
+      - if @place.features?(:discussion)
+        %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
+      - else
+        %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
+      %p
+        %span[:description]= @place.desc
+      %p
+        =  link_to @place.website, "#{@place.website}", rel: :nofollow 
+      %p
+        Tags
+        = raw @place.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')
+      %div[:address, Mida(:PostalAddress)]
+        .icon-map-marker
+        %span[:streetAddress]= @place.address_line1
+        ,
+        %span[:addressLocality]= @place.city
+        ,
+        %span[:addressCountry]= @place.country   
+      %p
+        .icon-plane
+        = @place.transport
+      %p
+        %span{ :class=> "label label-#{@place.kind} pull-right upcase" } 
+          = @place.kind
+      - static_map_url = "http://maps.google.com/maps/api/staticmap?size=460x300&sensor=false&zoom=16&markers=#{@place.latitude}%2C#{@place.longitude}"
+      = link_to image_tag(static_map_url),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
+      %meta{ itemprop: "map", content: static_map_url }
+      %span[:geo, Mida(:GeoCoordinates)]
+        %meta{ itemprop: "latitude", content: @place.latitude }
+        %meta{ itemprop: "longitude", content: @place.longitude }
 - if @place.comments.size > 0 
   %hr
   %h2 
