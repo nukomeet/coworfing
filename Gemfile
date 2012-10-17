@@ -77,3 +77,4 @@ gem 'koala'
 gem 'acts-as-taggable-on'
 gem 'meta-tags', :require => 'meta_tags'
 gem "friendly_id", "~> 4.0.1"
+gem "green_monkey"
