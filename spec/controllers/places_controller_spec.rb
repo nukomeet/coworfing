@@ -241,9 +241,9 @@ describe PlacesController do
         }.to_not change(Place,:count)
       end
       
-      it "should redirect to root_url" do
+      it "should redirect to login page" do
         delete :destroy, id: @place
-        response.should redirect_to root_url
+        response.should redirect_to new_user_session_url
       end 
     end 
   end
