@@ -1,4 +1,7 @@
 .nav-collapse.fr
+  = link_to new_place_path, class: "btn btn-success btn-new-place" do
+    %i.icon-map-marker.icon-white
+    = " Share a place"
   %ul.nav
     %li
       = link_to mobile_path do
