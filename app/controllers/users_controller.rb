@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_username(params[:username]) || User.find(params[:username])
+    @places = @user.places.accessible_by(current_ability)
+    @reviews = @places.map(&:comments).flatten
     authorize! :show, @user
   end
 

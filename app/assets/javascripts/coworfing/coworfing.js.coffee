@@ -9,9 +9,12 @@ jQuery ->
 		# initialize tooltip
 		$('[rel=tooltip]').tooltip()
 		
+		# initialize tabs
+		$('.nav-tabs a:first').tab('show')
+		
 		# back to top button
 		
-		$('<i id="back-to-top" class="icon-chevron-up"></i>').appendTo($('body'));
+		$('<i id="back-to-top" class="icon-chevron-up"></i>').appendTo($('body'))
 
 		$(window).scroll ()->
 		  if ( $(this).scrollTop() != 0 )

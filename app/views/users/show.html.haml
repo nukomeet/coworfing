@@ -6,24 +6,41 @@
         = image_tag(avatar_url(@user.email, width: 210), class: 'thumbnail', :"rel"=> "tooltip", :'data-placement'=>"top", :'data-original-title'=>"Change your avatar at Gravatar.com") 
     - else
       = image_tag(avatar_url(@user.email, width: 210), class: 'thumbnail')
-  .span9
     %h2
-      = title ["Our Worfers", @user.username], @user.name
-
-    %table.table.table-condensed
-      %tbody
-        %tr
-          %th.span2 Email
-          %td= mail_to @user.email
-        - unless @user.bio.empty?
-          %tr
-            %th Bio 
-            %td= @user.bio
-        - if @user.website
-          %tr
-            %th Website 
-            %td= link_to @user.website, url_with_protocol(@user.website), rel: :nofollow, target: '_blank'
-        - if @user.twitter
-          %tr
-            %th Twitter 
-            %td= link_to @user.twitter, twitter_url(@user), rel: :nofollow, target: '_blank'
+      = title ["Our Worfers", @user.username], @user.username
+    .details
+      - unless @user.bio.blank?
+        %blockquote
+          %p= @user.bio
+      %p
+        %i.icon-envelope
+        = mail_to @user.email
+      - unless @user.website.blank?
+        %p
+          %i.icon-link
+          = link_to @user.website, url_with_protocol(@user.website), rel: :nofollow, target: '_blank'
+      - unless @user.twitter.blank?
+        %p
+          %i.icon-twitter
+          %td= link_to @user.twitter, twitter_url(@user), rel: :nofollow, target: '_blank' 
+  .span9
+    .tabbable
+      %ul.nav.nav-tabs
+        %li
+          %a{href: "#tab1", :"data-toggle"=>"tab"} Places
+        %li
+          %a{href: "#tab2", :"data-toggle"=> "tab"} Activity
+      .tab-content
+        #tab1.tab-pane
+          - unless @places.blank?
+            %ul.thumbnails
+              - @places.each do |place|
+                = render place
+          - else
+            .ac No places posted.
+        #tab2.tab-pane
+          - unless @reviews.blank?
+            - @reviews.each do |review|
+              = render :partial => "places/review", locals: { activity: review } 
+          - else 
+            .ac No recent activities.

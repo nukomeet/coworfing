@@ -1,0 +1,15 @@
+.row.activity.review
+  .span1.activity-type-icon
+    %i.icon-comments
+  .span7
+    .time
+      = time_ago_in_words activity.created_at
+      ago
+    .title
+      = link_to activity.username, profile_path(activity.username)
+      reviewed a place
+      = link_to activity.place.name, place_path(activity.place)
+      = "."  
+    .details
+      %blockquote
+        = truncate activity.content, :length => 150
