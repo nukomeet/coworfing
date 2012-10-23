@@ -16,5 +16,9 @@ class HomeController < ApplicationController
   
   def mobile
   end
-
+  
+  def about
+    @user_count = User.count
+    @place_count = Place.count
+  end
 end
