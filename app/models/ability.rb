@@ -30,7 +30,9 @@ class Ability
       can :read, PlaceRequest, receiver_id: user.id 
       can :update, PlaceRequest, status: :pending, receiver_id: user.id
       can :create, PlaceRequest 
-
+      
+      can :read, Comment
+      
       #can :see, :places
     end
 
@@ -38,6 +40,7 @@ class Ability
       can :read, Place, kind: :public
       can :read, Place, kind: :business
       can :read, User, public: true
+      can :read, Comment, place: { kind: :public }
     end
 
   end
