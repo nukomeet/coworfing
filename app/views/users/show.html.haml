@@ -14,16 +14,16 @@
       %tbody
         %tr
           %th.span2 Email
-          %td= @user.email if user_signed_in?
-        %tr
-          %th Bio 
-          %td= @user.bio
-        %tr
-          %th Website 
-          %td= link_to @user.website, url_with_protocol(@user.website), rel: :nofollow, target: '_blank'
-        %tr
-          %th Skillz 
-          %td
-        %tr
-          %th Twitter 
-          %td= link_to @user.twitter, twitter_url(@user), rel: :nofollow, target: '_blank'
+          %td= mail_to @user.email
+        - unless @user.bio.empty?
+          %tr
+            %th Bio 
+            %td= @user.bio
+        - if @user.website
+          %tr
+            %th Website 
+            %td= link_to @user.website, url_with_protocol(@user.website), rel: :nofollow, target: '_blank'
+        - if @user.twitter
+          %tr
+            %th Twitter 
+            %td= link_to @user.twitter, twitter_url(@user), rel: :nofollow, target: '_blank'
