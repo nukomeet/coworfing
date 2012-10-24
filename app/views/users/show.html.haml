@@ -22,7 +22,16 @@
       - unless @user.twitter.blank?
         %p
           %i.icon-twitter
-          %td= link_to @user.twitter, twitter_url(@user), rel: :nofollow, target: '_blank' 
+          = link_to @user.twitter, twitter_url(@user), rel: :nofollow, target: '_blank'
+      - unless @user.skills.blank?
+        %h2
+          %i.icon-magic
+          Skills
+        %ul.unstyled
+          - @user.skills.split(',')[0..6].each do |s|
+            %li
+              %span.label.label-info= s
+        %small Showing only first 7 skills from LinkedIn
   .span9
     .tabbable
       %ul.nav.nav-tabs
