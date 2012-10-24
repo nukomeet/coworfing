@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails' 
+gem 'rails'
 gem 'pg'
 gem 'thin'
 
@@ -78,3 +78,6 @@ gem 'acts-as-taggable-on'
 gem 'meta-tags', :require => 'meta_tags'
 gem "friendly_id", "~> 4.0.1"
 gem "green_monkey"
+gem 'omniauth'
+gem 'omniauth-linkedin'
+gem 'linkedin'

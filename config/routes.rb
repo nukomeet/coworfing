@@ -3,7 +3,7 @@ Coworfing::Application.routes.draw do
     match 'tags/:tag' => 'places#index', via: :get, as: :tag
 
     match 'about' => 'home#about', via: :get, as: :about
-    
+
     match 'press' => 'home#press', via: :get, as: :press
 
     match 'map' => 'home#map', via: :get, as: :map
@@ -11,11 +11,17 @@ Coworfing::Application.routes.draw do
 
     match 'profile/:username' => 'users#show', via: :get, as: :profile
     match 'people' => 'users#index', via: :get, as: :people
-    
+
     # temporary route for mobile app
-    match 'en/places' => 'places#index', via: :get   
-    
-    devise_for :users, skip: [:sessions], controllers: { invitations: 'users/invitations', registrations: 'registrations' }
+    match 'en/places' => 'places#index', via: :get
+
+    devise_for :users,
+      skip: [:sessions],
+      controllers: {
+        invitations: 'users/invitations',
+        registrations: 'registrations',
+        omniauth_callbacks: 'omniauth_callbacks' }
+
     as :user do
       get 'login' => 'devise/sessions#new', as: :new_user_session
       post 'login' => 'devise/sessions#create', as: :user_session
@@ -27,7 +33,7 @@ Coworfing::Application.routes.draw do
       put "settings/password" => 'registrations#update', as: :user_password_update
       get "settings/password" => 'registrations#password', as: :user_password_edit
     end
-    
+
     authenticated :user do
         root to: 'home#map'
     end
@@ -36,18 +42,18 @@ Coworfing::Application.routes.draw do
 
     get 'l' => 'places#index', via: :get
     get 'l/:cities' => 'places#index', via: :get
-    
-    resources :places do 
+
+    resources :places do
       resources :comments, :only => :create
-      
+
       get 'submitted', on: :collection, as: :submitted
       get 'page/:page', action: :index, on: :collection
     end
 
-    resources :demands, :only => [:create, :index] do 
+    resources :demands, :only => [:create, :index] do
       put "accept", on: :member
     end
-    
+
     resources :place_requests, path: 'requests' do
       get 'approve', on: :member
       get 'reject', on: :member
