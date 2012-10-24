@@ -7,8 +7,8 @@
       = f.input :name
       = f.input :username
       = f.input :email
-      = f.input :password
-      = f.input :password_confirmation
+      = f.input :password, required: true
+      = f.input :password_confirmation, required: true
       = f.input :public, as: :boolean
       .control-group
         .controls  

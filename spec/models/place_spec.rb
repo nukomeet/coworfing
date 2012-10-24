@@ -81,7 +81,7 @@ describe Place do
     
     context "empty parameter" do
       it "returns all places" do
-        Place.location().all.should == [@berlin, @new_york]  
+        Place.location().all.should match_array [@berlin, @new_york]  
       end
     end  
   end
