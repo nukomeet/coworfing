@@ -11,11 +11,11 @@
       %li
         = link_to map_path do
           %i.icon-pushpin.icon-white
-          = t('navbar.map') 
+          = t('navbar.map')
     %li
       = link_to places_path do
         %i.icon-th.icon-white
-        = t('navbar.places') 
+        = t('navbar.places')
     %li
       = link_to people_path do
         %i.icon-user.icon-white
@@ -23,7 +23,7 @@
 
     - unless user_signed_in?
       %li= link_to t('login'), new_user_session_path
-    
+
     - else
       %li.dropdown
         %a.dropdown-toggle{:'data-toggle' => "dropdown"}

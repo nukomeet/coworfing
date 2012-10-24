@@ -3,7 +3,7 @@
   .span3
     - if can? :edit_avatar, @user
       = link_to "http://gravatar.com/emails/" do
-        = image_tag(avatar_url(@user.email, width: 210), class: 'thumbnail', :"rel"=> "tooltip", :'data-placement'=>"top", :'data-original-title'=>"Change your avatar at Gravatar.com") 
+        = image_tag(avatar_url(@user.email, width: 210), class: 'thumbnail', :"rel"=> "tooltip", :'data-placement'=>"top", :'data-original-title'=>"Change your avatar at Gravatar.com")
     - else
       = image_tag(avatar_url(@user.email, width: 210), class: 'thumbnail')
     %h2
@@ -41,6 +41,6 @@
         #tab2.tab-pane
           - unless @reviews.blank?
             - @reviews.each do |review|
-              = render :partial => "places/review", locals: { activity: review } 
-          - else 
+              = render :partial => "places/review", locals: { activity: review }
+          - else
             .ac No recent activities.
