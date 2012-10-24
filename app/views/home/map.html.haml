@@ -10,8 +10,10 @@
 
 = content_for :map do
   .container
-    .hero-unit.ac 
+    .hero-unit.ac
       %h2= title "We share the places where we like to work."
+      - unless user_signed_in?
+        = link_to "Sign in with LinkedIn", user_omniauth_authorize_path(:linkedin), class: 'zocial linkedin'
   #mapino
 
 = content_for :preload_javascript do

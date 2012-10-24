@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public
 
@@ -18,10 +18,12 @@ class User < ActiveRecord::Base
   has_many :place_requests_received, class_name: 'PlaceRequest', foreign_key: 'receiver_id'
   has_many :place_requests_sent, class_name: 'PlaceRequest', foreign_key: 'booker_id'
   has_many :comments
-  
+
+  has_many :identities
+
   scope :with_username, where("username is not null")
-  
-  # defining roles 
+
+  # defining roles
   def admin?
     self.role == "admin"
   end
@@ -39,11 +41,11 @@ class User < ActiveRecord::Base
       ask_gravatar(self.email)
     end
   end
-  
+
   def invitation_accepted?
     self.invitation_accepted_at? or self.username or !self.regular?
   end
-  
+
   def self.valid_attribute?(attr, params)
     mock = self.new( params )
     unless mock.valid?
@@ -51,16 +53,39 @@ class User < ActiveRecord::Base
     end
     #true
   end
-  
+
+  def password_required?
+    super && identities.empty?
+  end
+
+  def update_with_password(params, *options)
+    if encrypted_password.blank?
+      update_attributes(params, *options)
+    else
+      super
+    end
+  end
   private
 
   def ask_gravatar(email)
     hash = Digest::MD5.hexdigest(email.to_s.downcase)
     http = Net::HTTP.new('gravatar.com', 80)
-    http.read_timeout = 2 
+    http.read_timeout = 2
     response = http.request_head("/avatar/#{hash}?d=404")
     response.code != '404'
   rescue StandardError, Timeout::Error
     true  # when the website is down, return true
   end
+
+  def self.new_with_session(params, session)
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
+      end
+    else
+      super
+    end
+  end
+
 end

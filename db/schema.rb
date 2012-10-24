@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014195309) do
+ActiveRecord::Schema.define(:version => 20121024174126) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20121014195309) do
     t.datetime "updated_at", :null => false
     t.integer  "place_id"
     t.integer  "user_id"
+  end
+
+  create_table "identities", :force => true do |t|
+    t.string   "uid"
+    t.string   "provider"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "photos", :force => true do |t|
@@ -111,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20121014195309) do
     t.string   "twitter"
     t.boolean  "public",                               :default => false,     :null => false
     t.string   "photo"
+    t.text     "skills"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
