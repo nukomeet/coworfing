@@ -33,7 +33,6 @@ class C.NewPlaceView extends Backbone.View
     
   addFields: (event) =>    
     event.preventDefault()
-    console.log("dupa")
     element = $(event.currentTarget)
     time = new Date().getTime()
     regexp = new RegExp(element.data("id"), "g")
