@@ -11,7 +11,7 @@ class PlacesController < ApplicationController
     if params[:tag]
       @places = @places.tagged_with(params[:tag]).page params[:page]
     else
-      @places_all = @places.location(params[:location]) 
+      @places_all = @places.location(params[:cities]) 
       @places = @places_all.page(params[:page])
     end
 

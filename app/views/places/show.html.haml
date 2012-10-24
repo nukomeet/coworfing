@@ -42,7 +42,7 @@
       %p
         %span[:description]= @place.desc
       %p
-        =  link_to @place.website, "#{@place.website}", rel: :nofollow 
+        =  link_to @place.website, url_with_protocol(@place.website), target: "_blank" 
       %p
         Tags
         = raw @place.tag_list.map { |t| link_to t, tag_path(t)}.join(', ')
