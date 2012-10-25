@@ -31,7 +31,7 @@ class C.NewPlaceView extends Backbone.View
       when "route" then @.$el.find("#place_address_line1").val(result.address_components[0].long_name)
       
     
-  addFields: (event) =>    
+  addFields: (event) =>
     event.preventDefault()
     element = $(event.currentTarget)
     time = new Date().getTime()
