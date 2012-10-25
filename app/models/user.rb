@@ -2,14 +2,14 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :confirmed_at, :username, :bio, :website, :twitter, :public, :skills
 
   ROLES = %w(admin regular guest)
 
   validates_presence_of :email
   validates_uniqueness_of :name, :email, :username, case_sensitive: false
 
-  validates :username, format: { with: /\A\w+\Z/i }, length: { in: 2..12 }, presence: true, uniqueness: true
+  validates :username, format: { with: /\A[\w-]+\Z/i }, length: { in: 2..20 }, presence: true, uniqueness: true
   validates :twitter,  format: { with: /\A\w+\Z/i }, allow_nil: true
 
   has_many :places

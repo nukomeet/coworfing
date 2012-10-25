@@ -7,7 +7,7 @@
       = f.input :name, input_html: { class: 'span5' }
       .control-group.string.optional
         .controls    
-          = text_field_tag :geocomplete,nil, autocomplete: false, placeholder: "Location", class: 'span5'
+          = text_field_tag :geocomplete, nil, autocomplete: false, placeholder: "Location", :"data-address" => @place.address,  class: 'span5'  
       
       = f.input :address_line1, input_html: { class: 'span5'}
       = f.input :city, input_html: { class: 'span3', 'data-geo' => 'locality' }

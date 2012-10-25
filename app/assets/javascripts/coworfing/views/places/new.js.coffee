@@ -16,6 +16,9 @@ class C.NewPlaceView extends Backbone.View
     @.search_field = @.$el.find("#geocomplete").geocomplete(searchMapOptions)
     @.search_field.bind("geocode:result", @.fillForm)
     
+    if @.search_field.data("address")
+      @.search_field.geocomplete("find", @.search_field.data("address"))
+    
   events:
     "click .add_fields" : "addFields"
     "click .remove_fields" : "removeFields"
@@ -31,7 +34,7 @@ class C.NewPlaceView extends Backbone.View
       when "route" then @.$el.find("#place_address_line1").val(result.address_components[0].long_name)
       
     
-  addFields: (event) =>    
+  addFields: (event) =>
     event.preventDefault()
     element = $(event.currentTarget)
     time = new Date().getTime()

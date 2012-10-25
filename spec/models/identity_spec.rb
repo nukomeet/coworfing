@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Identity do
   before :each do
-    @user = FactoryGirl.create(:user, :regular)
     @identity = FactoryGirl.create(:identity)
   end
 
@@ -14,7 +13,7 @@ describe Identity do
     FactoryGirl.build(:identity, uid: nil, provider: nil, user: @user).should_not be_valid
   end
 
-  it "is invalid without user" do
-    FactoryGirl.build(:identity, user: nil).should_not be_valid
+  it "is valid without user" do
+    FactoryGirl.build(:identity, user: nil).should be_valid
   end
 end
