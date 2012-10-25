@@ -16,8 +16,8 @@ class C.NewPlaceView extends Backbone.View
     @.search_field = @.$el.find("#geocomplete").geocomplete(searchMapOptions)
     @.search_field.bind("geocode:result", @.fillForm)
     
-    if @.search_field.val()
-      @.search_field.geocomplete("find", @.search_field.val())
+    if @.search_field.data("address")
+      @.search_field.geocomplete("find", @.search_field.data("address"))
     
   events:
     "click .add_fields" : "addFields"

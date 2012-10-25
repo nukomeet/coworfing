@@ -55,7 +55,9 @@ class Place < ActiveRecord::Base
   end
 
   def address
-    [address_line1, city, country].join(', ')
+    full_address = [address_line1, city, country].reject(&:blank?)
+    return nil unless full_address
+    full_address.join(', ')
   end
   
   def post_to_facebook
