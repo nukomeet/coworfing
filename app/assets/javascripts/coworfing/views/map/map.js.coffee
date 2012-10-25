@@ -60,8 +60,7 @@ class C.MapView extends Backbone.View
 	  @map.addLayer(@.markers)
 	  false
 
-  get_geo_data: (e, r) => 
-    console.log(r)
+  get_geo_data: (e, r) =>
     @map.setView([r.geometry.location.Ya, r.geometry.location.Za], 10)
    
   prevent_submit: (e) =>
