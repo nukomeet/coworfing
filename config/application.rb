@@ -1,6 +1,3 @@
-ENV["LINKEDIN_CONSUMER_KEY"] = "zu26ftkltf0d"
-ENV["LINKEDIN_CONSUMER_SECRET"] = "aOJEaYLvjkOxUF1S"
-
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
