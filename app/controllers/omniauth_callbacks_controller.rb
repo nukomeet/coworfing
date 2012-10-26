@@ -25,7 +25,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         # The identity is not associated with the current_user so lets
         # associate the identity
   
-        current_user.identities << @identities
+        current_user.identities << @identity
         current_user.skills = fetch_skills_from_linkedin(auth)
         current_user.save
 
