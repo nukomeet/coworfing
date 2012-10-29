@@ -10,7 +10,10 @@
 
       .control-group
         .controls
-          = link_to "Connect with LinkedIn account", user_omniauth_authorize_path(:linkedin), class: 'zocial linkedin'
+          - if current_user.provider?(:linkedin)
+            = link_to "Update account from Linkedin profile", user_omniauth_authorize_path(:linkedin), class: 'zocial linkedin'
+          - else
+            = link_to "Connect account with Linkedin profile", user_omniauth_authorize_path(:linkedin), class: 'zocial linkedin'
       .control-group
         .controls
           = link_to "Change your password", user_password_edit_path
