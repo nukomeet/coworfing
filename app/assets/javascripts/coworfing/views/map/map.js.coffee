@@ -2,14 +2,12 @@ class C.MapView extends Backbone.View
   el: $('#map')
   
   initialize: ->    
-    _.bindAll @
-    coords = [parseFloat(@options.userLocation.data.latitude), parseFloat(@options.userLocation.data.longitude)]        
+    _.bindAll @        
     cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png")         
       
     mapOptions = {
-      zoom: 9
-      center: coords
       layers: [cloudmade]
+      scrollWheelZoom: false
     }
     
     @search_input = @.$el.find("#place_input")
