@@ -3,7 +3,11 @@ class C.MapView extends Backbone.View
   
   initialize: ->    
     _.bindAll @        
-    cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png")         
+    API_KEY = @.options.api_key || "BC9A493B41014CAABB98F0471D759707"
+    cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png", {
+      key: API_KEY
+      styleId: 998
+    })  
       
     mapOptions = {
       layers: [cloudmade]
