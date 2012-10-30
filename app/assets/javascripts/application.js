@@ -19,6 +19,7 @@
 //= require handlebars.runtime
 //= require leaflet
 //= require leaflet.markercluster
+//= require vendor/leaflet.control.autolocate
 //= require jquery-ui-timepicker-addon
 //= require chosen-jquery
 //= require vendor/jquery.lazyload.min
