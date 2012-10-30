@@ -1,4 +1,23 @@
-%p
-  Welcome #{@resource.email}!
-%p You can confirm your account email through the link below:
+%h2
+  Welcome on board #{@resource.email}!
+%p Thanks for registering. You can confirm your account email through the link below:
 %p= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+%h2
+  What's next?
+%p You know a wonderful place to work? Click on 'Share a place' on the top left of the app.
+%p You are looking for a place? Browse the map and find the appropriate spot for you.
+
+%h2
+  Questions?
+%p
+  Write us at 
+  = link_to 'coworfing@gmail.com', "mailto:coworfing@gmail.com"
+%p 
+  Or find us on 
+  = link_to 'Facebook', "http://www.facebook.com/coworfing"
+  ,
+  = link_to 'Twitter', 'http://www.twitter.com/coworfing'
+  and 
+  = link_to 'Our blog', 'http://www.coworfing.tumblr.com'
+%p
+  With much love from the Coworfing team
