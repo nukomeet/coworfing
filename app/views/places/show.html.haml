@@ -19,9 +19,10 @@
         %span[:name]= title ["#{@place.kind} place", @place.name], @place.name
         %meta{ itemprop: "url", content: place_url(@place) }
       %p
-        = t('place.added_by')
-        = link_to @place.user_name, profile_path(@place.user_username || @place.user_id) 
-        %br/
+        -if @place.user_id
+          = t('place.added_by')
+          = link_to @place.user_name, profile_path(@place.user_username || @place.user_id) 
+          %br/
         - if can? :update, @place 
           = link_to  edit_place_path(@place) do
             %i.icon-pencil
