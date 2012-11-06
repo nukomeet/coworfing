@@ -16,27 +16,30 @@ class Ability
       can :read, :demands
     end
 
-    if user.regular? 
+    if user.regular?
       can :manage, Place, user_id: user.id
       can :create, Place
       can :read, Place
       can :submitted, Place, user_id: user.id
 
-      can :invite, User 
+      can :invite, User
       can :read, User
       can :edit_avatar, User, id: user.id
-      
-      can :read, PlaceRequest, booker_id: user.id 
-      can :read, PlaceRequest, receiver_id: user.id 
+
+      can :read, PlaceRequest, booker_id: user.id
+      can :read, PlaceRequest, receiver_id: user.id
       can :update, PlaceRequest, status: :pending, receiver_id: user.id
-      can :create, PlaceRequest 
-      
+      can :create, PlaceRequest
+
       can :read, Comment
-      
+
+      can :manage, Organization, id: user.admin_organization_ids
+      can :read, Organization, id: user.regular_organization_ids
+
       #can :see, :places
     end
 
-    if user.guest? 
+    if user.guest?
       can :read, Place, kind: :public
       can :read, Place, kind: :business
       can :read, User, public: true
