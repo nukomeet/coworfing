@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Index:
+  = @membership.index
+%p
+  %b Create:
+  = @membership.create
+%p
+  %b New:
+  = @membership.new
+%p
+  %b Destroy:
+  = @membership.destroy
+
+= link_to 'Edit', edit_membership_path(@membership)
+\|
+= link_to 'Back', memberships_path

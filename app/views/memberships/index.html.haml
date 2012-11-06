@@ -1,0 +1,16 @@
+%h1 Listing memberships
+
+%table
+  %tr
+    %th Username
+    %th Name
+    %th Role
+    %th
+
+  - @memberships.each do |membership|
+    %tr
+      %td= membership.user.username
+      %td= membership.user.name
+      %td= membership.role
+      %td{colspan: 3}
+        = link_to 'Destroy', [@organization, membership], method: :delete, data: { confirm: 'Are you sure?' }

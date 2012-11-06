@@ -1,0 +1,5 @@
+= simple_form_for([@organization, @membership]) do |f|
+  = f.input :user_id, required: true, collection: User.with_username.map { |u| ["#{u.username} - #{u.name}", u.id] }, input_html: { class: 'chzn-select' }
+
+  .form-actions
+    = f.button :submit
