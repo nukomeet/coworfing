@@ -83,20 +83,22 @@
     %p= f.text_area :content, :rows => 10, class: 'span6'
     = f.button :submit, class: 'btn-info btn-large'
 
-%h2 
-  = t('place.near_by')
+- nearbys = @place.nearbys(0.5, {:units => :km})
+- if nearbys.length > 0
+  %h2 
+    = t('place.near_by')
 
-%ul.thumbnails.row
-  - @place.nearbys(0.5, {:units => :km}).each do |place|
-    .span2
-      .thumbnail
-        - unless place.photos.empty?
-          = image_tag(place.photos.first.photo_url(:thumb))
-        - else
-          %img{src: 'http://placehold.it/240x180'}
-        .caption
-          %h5
-            = link_to place.name, place_path(place)
+  %ul.thumbnails.row
+    - nearbys.each do |place|
+      .span2
+        .thumbnail
+          - unless place.photos.empty?
+            = image_tag(place.photos.first.photo_url(:thumb))
+          - else
+            %img{src: 'http://placehold.it/240x180'}
+          .caption
+            %h5
+              = link_to place.name, place_path(place)
 
 = render partial: 'shared/demand_modal' 
 
