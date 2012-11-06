@@ -21,4 +21,4 @@
 = content_for :javascript do
   %script
     var places = new C.Places(#{raw @places.to_json});
-    var mapView = new C.MapView({ collection: places, userLocation: #{raw @location.to_json} });
+    var mapView = new C.MapView({ collection: places, api_key: "#{raw ENV['CLOUDMADE_KEY']}" } );

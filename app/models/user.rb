@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     #true
   end
 
+  def provider?(provider)
+    ! identities.select {|ident| ident.provider == provider.to_s }.empty?
+  end
+
   def password_required?
     super && identities.empty?
   end
