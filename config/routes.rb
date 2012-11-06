@@ -61,6 +61,10 @@ Coworfing::Application.routes.draw do
       get 'sent', on: :collection
     end
 
+    resources :organizations do
+      resources :memberships
+    end
+
     root :to => "home#map"
 end
 
