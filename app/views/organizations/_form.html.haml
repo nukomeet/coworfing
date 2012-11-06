@@ -1,0 +1,9 @@
+= simple_form_for(@organization) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :gravatar_email
+
+  .form-actions
+    = f.button :submit
