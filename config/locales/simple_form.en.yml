@@ -16,7 +16,7 @@ en:
         adress_line1: 'Adress'
         desc: 'Description'
         wifi: 'WIFI Access Code'
-        address_line1: 'number and street'
+        address_line1: 'Number and street'
         public:  
         smoke: 
         music: 
