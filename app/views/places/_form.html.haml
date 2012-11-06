@@ -3,7 +3,12 @@
     = simple_form_for(@place, html: { multipart: true, class: 'form-horizontal'}) do |f|
       = f.error_notification    
       
-      
+      %div{class: "control-group string required"}
+        %label{class: "string required control-label"}
+          %abbr{title: "required"}
+            *
+          required fields
+          
       = f.input :name, input_html: { class: 'span5' }
       .control-group.string.optional
         .controls    
