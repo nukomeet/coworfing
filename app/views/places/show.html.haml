@@ -11,8 +11,9 @@
               - @place.photos.each do |photo|
                 .item
                   = image_tag(photo.photo_url(:big), :itemprop => "image")
-            %a.carousel-control.left{href: "#carousel", 'data-slide' => "prev"} &lsaquo;
-            %a.carousel-control.right{href: "#carousel", 'data-slide' => "next"} &rsaquo;
+            - if @place.photos.length > 1
+              %a.carousel-control.left{href: "#carousel", 'data-slide' => "prev"} &lsaquo;
+              %a.carousel-control.right{href: "#carousel", 'data-slide' => "next"} &rsaquo;
         
     .span5.infos
       %h2
@@ -66,37 +67,43 @@
       %span[:geo, Mida(:GeoCoordinates)]
         %meta{ itemprop: "latitude", content: @place.latitude }
         %meta{ itemprop: "longitude", content: @place.longitude }
-- if @place.comments.size > 0 
-  %hr
-  %h2 
-    = t('place.comments')
-  - for comment in @place.comments
-    %h4
-      = link_to comment.username, profile_path(comment.username) 
-    %p= comment.content
-- if user_signed_in?
-  %hr
-  %h2 
-    = t('place.tell_us')
-  = form_for [@place, Comment.new] do |f|
-    %p
-    %p= f.text_area :content, :rows => 10, class: 'span6'
-    = f.button :submit, class: 'btn-info btn-large'
+%hr
 
-%h2 
-  = t('place.near_by')
+.row
+  .span7
+    - if @place.comments.size > 0 
 
-%ul.thumbnails.row
-  - @place.nearbys(0.5, {:units => :km}).each do |place|
-    .span2
-      .thumbnail
-        - unless place.photos.empty?
-          = image_tag(place.photos.first.photo_url(:thumb))
-        - else
-          %img{src: 'http://placehold.it/240x180'}
-        .caption
-          %h5
-            = link_to place.name, place_path(place)
+      %h2 
+        = t('place.comments')
+      - for comment in @place.comments
+        %h4
+          = link_to comment.username, profile_path(comment.username) 
+        %p= comment.content
+    - if user_signed_in?
+      
+      %h2 
+        = t('place.tell_us')
+      = form_for [@place, Comment.new] do |f|
+        %p
+        %p= f.text_area :content, :rows => 5, class: 'span6'
+        = f.button :submit, class: 'btn-info btn-large'
+  .span5
+    - nearbys = @place.nearbys(0.5, {:units => :km})
+    - if nearbys.length > 0      
+      %h2 
+        = t('place.near_by')
+
+      %ul.thumbnails.row
+        - nearbys.each do |place|
+          .span2.nearby
+            .thumbnail
+              - unless place.photos.empty?
+                = link_to image_tag(place.photos.first.photo_url(:thumb)), place_path(place)
+              - else
+                %img{src: 'http://placehold.it/240x180'}
+              .caption
+                %h5
+                  = link_to truncate(place.name, :length => 18), place_path(place)
 
 = render partial: 'shared/demand_modal' 
 

@@ -3,9 +3,16 @@
     = simple_form_for(@place, html: { multipart: true, class: 'form-horizontal'}) do |f|
       = f.error_notification    
       
-      
+      %div{class: "control-group string required"}
+        %label{class: "string required control-label"}
+          %abbr{title: "required"}
+            *
+          required fields
+          
       = f.input :name, input_html: { class: 'span5' }
       .control-group.string.optional
+        %label{class: "string optional control-label"}
+          Geocomplete
         .controls    
           = text_field_tag :geocomplete, nil, autocomplete: false, placeholder: "Type the address here, it will fill the next fields automatically", :"data-address" => @place.address,  class: 'span5'  
       
