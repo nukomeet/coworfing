@@ -21,7 +21,22 @@ class User < ActiveRecord::Base
 
   has_many :identities
 
+  has_many :memberships
+  has_many :organizations, through: :memberships
+  has_many :admin_organizations,
+    class_name: Organization,
+    source: :organization,
+    through: :memberships,
+    conditions: { "memberships.role" => "admin" }
+  has_many :regular_organizations,
+    class_name: Organization,
+    source: :organization,
+    through: :memberships,
+    conditions: { "memberships.role" => "regular" }
+
   scope :with_username, where("username is not null")
+
+
 
   # defining roles
   def admin?
