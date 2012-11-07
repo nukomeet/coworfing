@@ -1,9 +1,16 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :membership do
-    user_id 1
-    organization_id 1
-    role "MyString"
+    association :user
+    association :organization
+
+    trait :admin do
+      role :admin
+    end
+
+    trait :regular do
+      role :regular
+    end
   end
 end
