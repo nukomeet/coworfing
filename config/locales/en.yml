@@ -12,7 +12,7 @@ en:
     - Fri
     - Sat
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mar
@@ -38,7 +38,7 @@ en:
       long: ! '%B %d, %Y'
       short: ! '%b %d'
     month_names:
-    - 
+    -
     - January
     - February
     - March
@@ -206,12 +206,12 @@ en:
   activerecord:
     errors:
       <<: *errors
-    symbolizes: 
+    symbolizes:
       place:
         kind:
           private: Private
           public: Public
-          business: Pro 
+          business: Pro
   navbar:
     invite: 'Invite people'
     map: 'Map'
@@ -226,6 +226,7 @@ en:
     your_places: 'Your places'
     your_profile: 'Your profile'
     your_password: 'Change password'
+    organizations: 'Organizations'
     help: 'Help'
     log_out: 'Log out'
   modal:
@@ -233,14 +234,14 @@ en:
     invite: 'Ask for an invitation'
     account?: 'Already have an account?'
   description:
-    title1: 'Find the best places to <strong>work</strong>.' 
-    par1: 'As nomads - freelancers, entrepreneurs, students and teleworkers -' 
-    par2: 'we share the places where we like to work:' 
-    par3: 'Cafés, bars, coworking spaces, librairies, airports, parks,' 
+    title1: 'Find the best places to <strong>work</strong>.'
+    par1: 'As nomads - freelancers, entrepreneurs, students and teleworkers -'
+    par2: 'we share the places where we like to work:'
+    par3: 'Cafés, bars, coworking spaces, librairies, airports, parks,'
     par4: 'and even our own homes.'
     title2: 'What kind of people would you like to work with?'
     par5: 'As nomad workers we can choose who we would like to spend time with. We connect to each other to cowork.'
-    title3: 'Free to work where you want, with the people you want ?' 
+    title3: 'Free to work where you want, with the people you want ?'
     invite: 'Join our tribe of happy nomads'
   login: 'Login'
   login_to_add: 'Sign in to start adding places'
@@ -251,7 +252,7 @@ en:
   search: 'Search'
   details: 'View details'
   home:
-    explanation: 'Find a nice place and make a request' 
+    explanation: 'Find a nice place and make a request'
     worfers: 'happy worfers.'
     places: 'amazing places.'
     requests: 'requests made so far.'
@@ -267,6 +268,6 @@ en:
     discussion: 'Discussion is welcome'
     blabla: 'No blabla please'
     comments: 'Reviews'
-    tell_us: 'Write a review about this place' 
+    tell_us: 'Write a review about this place'
     public: 'public'
 

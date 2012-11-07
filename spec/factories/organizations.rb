@@ -1,8 +1,8 @@
-# Read about factories at https://github.com/thoughtbot/factory_girl
+require 'faker'
 
 FactoryGirl.define do
   factory :organization do
-    name "MyString"
-    gravatar_email "MyString"
+    name { Faker::Company.name }
+    gravatar_email { Faker::Internet.email }
   end
 end

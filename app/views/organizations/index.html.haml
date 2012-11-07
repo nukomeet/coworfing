@@ -1,21 +1,24 @@
-%h1 Listing organizations
+.hero-unit
+  %h2= title "Organizations"
 
-%table
-  %tr
-    %th Name
-    %th Gravatar email
-    %th
-    %th
-    %th
+.row
+  .span12
+    %table.table.table-hover
+      %tr
+        %th #
+        %th Name
+        %th Email
+        %th Members
+        %th
 
-  - @organizations.each do |organization|
-    %tr
-      %td= organization.name
-      %td= organization.gravatar_email
-      %td= link_to 'Show', organization
-      %td= link_to 'Edit', edit_organization_path(organization)
-      %td= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }
+      - @organizations.each_with_index do |organization, idx|
+        %tr
+          %td= idx+1
+          %td= organization.name
+          %td= organization.gravatar_email
+          %td= organization.memberships.count
+          %td{colspan: 2}
+            = link_to 'Members', organization_memberships_path(organization), class: 'btn btn-mini'
+            = link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-mini'
 
-%br
-
-= link_to 'New Organization', new_organization_path
+= link_to 'New Organization', new_organization_path, class: 'btn btn-large btn-primary'

@@ -1,16 +1,22 @@
-%h1 Listing memberships
+.hero-unit
+  %h2= title "Members"
 
-%table
-  %tr
-    %th Username
-    %th Name
-    %th Role
-    %th
+.row
+  .span12
+    %table.table.table-hover
+      %tr
+        %th #
+        %th Username / Name
+        %th Role
+        %th
 
-  - @memberships.each do |membership|
-    %tr
-      %td= membership.user.username
-      %td= membership.user.name
-      %td= membership.role
-      %td{colspan: 3}
-        = link_to 'Destroy', [@organization, membership], method: :delete, data: { confirm: 'Are you sure?' }
+      - @memberships.each_with_index do |membership, idx|
+        %tr
+          %td= idx+1
+          %td
+            = membership.user.username
+            \/
+            %small= membership.user.name
+          %td= membership.role
+          %td
+            = link_to 'Remove member', [@organization, membership], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'

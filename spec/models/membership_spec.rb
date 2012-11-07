@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Membership do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has a valid facotry" do
+    FactoryGirl.create(:membership, :admin)
+  end
 end
