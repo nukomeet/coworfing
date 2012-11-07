@@ -73,3 +73,6 @@ db/*.sqlite3
 
 # vim artifacts
 **.swp
+
+#zeus
+zeus.json
