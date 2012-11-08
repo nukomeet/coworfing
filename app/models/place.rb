@@ -24,10 +24,10 @@ class Place < ActiveRecord::Base
   
   delegate :name, :username, to: :user, allow_nil: true, prefix: true
 
-  validates :name, length: { in: 5..45 }
+  validates :name, length: { in: 2..45 }, presence: true
   validates :desc, length: { in: 5..500 }, presence: true
   validates :address_line1, presence: true
-  validates :city, presence: true, format: { with: /\A[a-zA-Z]+[\s\D]+[a-zA-Z]+\z/i }
+  validates :city, presence: true
   validates :country, presence: true
 
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }

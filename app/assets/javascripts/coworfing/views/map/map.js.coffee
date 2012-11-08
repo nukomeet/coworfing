@@ -2,14 +2,16 @@ class C.MapView extends Backbone.View
   el: $('#map')
   
   initialize: ->    
-    _.bindAll @
-    coords = [parseFloat(@options.userLocation.data.latitude), parseFloat(@options.userLocation.data.longitude)]        
-    cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png")         
+    _.bindAll @        
+    API_KEY = @.options.api_key || "BC9A493B41014CAABB98F0471D759707"
+    cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png", {
+      key: API_KEY
+      styleId: 998
+    })  
       
     mapOptions = {
-      zoom: 9
-      center: coords
       layers: [cloudmade]
+      scrollWheelZoom: false
     }
     
     @search_input = @.$el.find("#place_input")
@@ -22,6 +24,9 @@ class C.MapView extends Backbone.View
     
     @map =  L.map('mapino', mapOptions)
     L.Icon.Default.imagePath = '../assets/images'
+    @map.fitWorld()
+    
+    @map.addControl(new L.Control.Autolocate())
     
     @populate()
     @
