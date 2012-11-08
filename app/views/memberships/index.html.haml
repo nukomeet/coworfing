@@ -20,3 +20,5 @@
           %td= membership.role
           %td
             = link_to 'Remove member', [@organization, membership], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+
+= link_to 'Add Member', new_organization_membership_path(@organization), class: 'btn btn-large btn-primary'

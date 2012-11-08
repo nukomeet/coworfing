@@ -1,14 +1,14 @@
 #place_form.row
   .span7.details
     = simple_form_for(@place, html: { multipart: true, class: 'form-horizontal'}) do |f|
-      = f.error_notification    
-      
-      
+      = f.error_notification
+
+
       = f.input :name, input_html: { class: 'span5' }
       .control-group.string.optional
-        .controls    
-          = text_field_tag :geocomplete, nil, autocomplete: false, placeholder: "Location", :"data-address" => @place.address,  class: 'span5'  
-      
+        .controls
+          = text_field_tag :geocomplete, nil, autocomplete: false, placeholder: "Location", :"data-address" => @place.address,  class: 'span5'
+
       = f.input :address_line1, input_html: { class: 'span5'}
       = f.input :city, input_html: { class: 'span3', 'data-geo' => 'locality' }
       = f.input :country, input_html: { class: 'span3 chzn-select', 'data-geo' => 'country' }
@@ -21,25 +21,25 @@
       = f.input :features, label: 'Smoke' do
         = check_box_tag 'place[features][]', 'smoke'
 
-      = f.input :tag_list, input_html: { class: 'span5'}, label: 'Tags', placeholder: 'Insert tags, separated by commas'   
+      = f.input :tag_list, input_html: { class: 'span5'}, label: 'Tags', placeholder: 'Insert tags, separated by commas'
 
       = f.fields_for :photos do |builder|
         = render 'photo_fields', f: builder
-        
+
       .control-group.string.optional
         %label.file.optional.control-label
         .controls
           = link_to_add_fields "Add photo field", f, :photos
 
       = f.button :submit, class: 'btn btn-info btn-large'
-      
-  .span5 
+
+  .span5
     #geo_map
 
 
 = content_for :preload_javascript do
   %script{:src => "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en", :type => "text/javascript"}
-  
+
 = content_for :javascript do
   :javascript
     var place_form = new C.NewPlaceView();

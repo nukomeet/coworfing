@@ -1,5 +1,4 @@
-= simple_form_for([@organization, @membership]) do |f|
-  = f.input :user_id, required: true, collection: User.with_username.map { |u| ["#{u.username} - #{u.name}", u.id] }, input_html: { class: 'chzn-select' }
+= simple_form_for([@organization, @membership], html: { class: 'form-horizontal' }) do |f|
+  = f.input :user_id, required: true, collection: User.with_username.map { |u| ["#{u.username} - #{u.name}", u.id] }, input_html: { class: 'chzn-select' }, label: 'Select user'
 
-  .form-actions
-    = f.button :submit
+  = f.button :submit, 'Add', class: 'btn btn-primary btn-large'
