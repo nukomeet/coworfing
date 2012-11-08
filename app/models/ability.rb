@@ -17,10 +17,16 @@ class Ability
     end
 
     if user.regular?
-      can :manage, Place, user_id: user.id
+      can :manage, Place, owner_id: user.organization_ids, owner_type: 'Organization'
+      can :manage, Place, owner_id: user.id, owner_type: 'User'
+
+      can :read, Place, owner_type: nil
+      can :read, Place, owner_type: 'User'
+
+
       can :create, Place
-      can :read, Place
-      can :submitted, Place, user_id: user.id
+      can :submitted, Place, owner_id: user.id, owner_type: 'User'
+      can :submitted, Place, owner_id: user.organization_ids, owner_type: 'Organization'
 
       can :invite, User
       can :read, User
@@ -43,8 +49,8 @@ class Ability
     end
 
     if user.guest?
-      can :read, Place, kind: :public
-      can :read, Place, kind: :business
+      can :read, Place, owner_type: [ nil, 'User'], kind: [ :public, :business ]
+
       can :read, User, public: true
       can :read, Comment, place: { kind: :public }
     end
