@@ -14,12 +14,12 @@ FactoryGirl.define do
     country { Faker::Address.country }
     tag_list { Faker::Lorem.words(1) }
     #photo { Faker::Internet.domain_name }
-    association :user
-    
+    association :owner, factory: :user
+
     trait :private do
       kind :private
     end
-    
+
     trait :public do
       kind :public
     end
