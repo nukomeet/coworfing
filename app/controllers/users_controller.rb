@@ -19,10 +19,10 @@ class UsersController < ApplicationController
       format.json { render json: @users }
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     params[:user].delete(:current_password)
     respond_to do |format|

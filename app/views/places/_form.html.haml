@@ -1,14 +1,17 @@
 #place_form.row
   .span7.details
     = simple_form_for(@place, html: { multipart: true, class: 'form-horizontal'}) do |f|
-      = f.error_notification
-
       %div{class: "control-group string required"}
         %label{class: "string required control-label"}
           %abbr{title: "required"}
             *
           required fields
 
+      .control-group.string.optional
+        %label{class: "string optional control-label"}
+          Owner
+        .controls
+          = select_tag :owner, options_from_collection_for_select(owners, "username", "username", @owner.username), class: 'span3 chzn-select'
       = f.input :name, input_html: { class: 'span5' }
       .control-group.string.optional
         %label{class: "string optional control-label"}
@@ -38,7 +41,8 @@
         .controls
           = link_to_add_fields "Add photo field", f, :photos
 
-      = f.button :submit, class: 'btn btn-info btn-large'
+      .controls
+        = f.button :submit, class: 'btn btn-primary'
 
   .span5
     #geo_map

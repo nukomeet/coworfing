@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DemandsController do
   let(:regular) { FactoryGirl.create(:user, :regular) }
   let(:admin) { FactoryGirl.create(:user, :admin) }
-  
+
   describe "GET index" do
     before :each do
       @users = FactoryGirl.create_list(:user, 5, :regular)

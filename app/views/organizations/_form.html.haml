@@ -1,9 +1,8 @@
-= simple_form_for(@organization) do |f|
+= simple_form_for(@organization, html: { class: 'form-horizontal' }) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :name
-    = f.input :gravatar_email
+  = f.input :name
+  = f.input :gravatar_email
 
-  .form-actions
-    = f.button :submit
+  .controls
+    = f.button :submit, 'Create', class: 'btn btn-primary'
