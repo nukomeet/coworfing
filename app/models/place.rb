@@ -15,14 +15,14 @@ class Place < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
-  belongs_to :user
+  belongs_to :owner, polymorphic: true
 
   has_many :place_requests
   has_many :comments
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => Proc.new { |p| p[:photo].blank? && p[:photo_cache].blank? }
-  
-  delegate :name, :username, to: :user, allow_nil: true, prefix: true
+
+  delegate :name, :username, to: :owner, allow_nil: true, prefix: true
 
   validates :name, length: { in: 2..45 }, presence: true
   validates :desc, length: { in: 5..500 }, presence: true
