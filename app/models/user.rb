@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
 
   scope :with_username, where("username is not null")
 
+  scope :by_username, lambda { |username| where('username ILIKE ?', username) }
+
 
 
   # defining roles

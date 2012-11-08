@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource only: [:index, :edit, :update]
 
   def show
-    @user = User.find_by_username(params[:username]) || User.find(params[:username])
+    @user = User.by_username(params[:username]).first || Organization.by_name(params[:username]).first
     @places = @user.places.accessible_by(current_ability)
     @reviews = @user.comments
     authorize! :show, @user
