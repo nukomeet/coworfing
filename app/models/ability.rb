@@ -8,7 +8,7 @@ class Ability
       user = User.new
       user.role = 'guest'
     end
-    
+
     if user.admin?
       can :manage, :all
       can :invite, User
@@ -35,6 +35,9 @@ class Ability
 
       can :manage, Organization, id: user.admin_organization_ids
       can :read, Organization, id: user.regular_organization_ids
+
+      can :manage, Membership, organization: { id: user.admin_organization_ids }
+      can :read, Membership
 
       #can :see, :places
     end
