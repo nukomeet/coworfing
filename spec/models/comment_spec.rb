@@ -5,11 +5,11 @@ describe Comment do
     @user = FactoryGirl.create(:user, :regular)
     @place = FactoryGirl.create(:place, :public)
   end
-  
-  
+
+
   it "has a valid facotry" do
     FactoryGirl.create(:comment, user: @user, place: @place)
-  end 
+  end
 
   it "is invalid without a content" do
     FactoryGirl.build(:comment, content: nil, user: @user, place: @place).should_not be_valid

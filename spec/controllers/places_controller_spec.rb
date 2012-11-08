@@ -7,9 +7,9 @@ describe PlacesController do
 
   describe "GET index" do
     before :each do
-      @private = FactoryGirl.create_list(:place, 2, :private, user: regular)
-      @business = FactoryGirl.create_list(:place, 2, :business, user: regular)
-      @public = FactoryGirl.create_list(:place, 2, :public, user: regular)
+      @private = FactoryGirl.create_list(:place, 2, :private, owner: regular)
+      @business = FactoryGirl.create_list(:place, 2, :business, owner: regular)
+      @public = FactoryGirl.create_list(:place, 2, :public, owner: regular)
     end
 
     it "renders the :index view" do
@@ -69,8 +69,8 @@ describe PlacesController do
 
   describe "GET show" do
     before :each do
-      @private_place = FactoryGirl.create(:place, :private, user: regular)
-      @public_place = FactoryGirl.create(:place, :public, user: regular)
+      @private_place = FactoryGirl.create(:place, :private, owner: regular)
+      @public_place = FactoryGirl.create(:place, :public, owner: regular)
     end
 
     it "renders the :show view" do
@@ -115,7 +115,7 @@ describe PlacesController do
   describe "GET edit" do
     context "with regular user logged in" do
       it "assigns requested place to @place and render :edit view" do
-        place = FactoryGirl.create(:place, :private, user: regular)
+        place = FactoryGirl.create(:place, :private, owner: regular)
         sign_in regular
         get :edit, id: place
         assigns(:place).should be
@@ -165,7 +165,7 @@ describe PlacesController do
 
   describe "PUT update" do
     before :each do
-      @place = FactoryGirl.create(:place, :private, user: regular, name: "Bob Place", desc: "Short Bob Place desc")
+      @place = FactoryGirl.create(:place, :public, owner: regular, name: "Bob Place", desc: "Short Bob Place desc")
     end
 
     context "with valid attributes" do
@@ -177,7 +177,7 @@ describe PlacesController do
 
       it "changes @place attributes" do
         sign_in regular
-        put :update, id: @place, place: { name: "Place", desc: "Short Place desc" }
+        put :update, id: @place.id, place: { name: "Place", desc: "Short Place desc" }
         @place.reload
         @place.name.should eq("Place")
         @place.desc.should eq("Short Place desc")
@@ -185,7 +185,7 @@ describe PlacesController do
 
       it "redirects to the updated place" do
         sign_in regular
-        put :update, id: @place, place: FactoryGirl.attributes_for(:place, :private)
+        put :update, id: @place.id, place: FactoryGirl.attributes_for(:place, :public)
         @place.reload
         response.should redirect_to @place
       end
@@ -216,7 +216,7 @@ describe PlacesController do
 
   describe "DELETE destroy" do
     before :each do
-      @place = FactoryGirl.create(:place, :private, user: regular)
+      @place = FactoryGirl.create(:place, :private, owner: regular)
     end
 
     context "with regular user logged in" do
@@ -250,8 +250,8 @@ describe PlacesController do
 
   describe "GET submitted" do
     before :each do
-      @josh_places = FactoryGirl.create_list(:place, 3, :public, user: regular)
-      @bob_places = FactoryGirl.create_list(:place, 5, :public, user: bob_regular)
+      @josh_places = FactoryGirl.create_list(:place, 3, :public, owner: regular)
+      @bob_places = FactoryGirl.create_list(:place, 5, :public, owner: bob_regular)
     end
 
     context "with bob logged in" do

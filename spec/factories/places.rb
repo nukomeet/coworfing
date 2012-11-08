@@ -27,5 +27,5 @@ FactoryGirl.define do
     trait :business do
       kind :business
     end
-  end 
+  end
 end
