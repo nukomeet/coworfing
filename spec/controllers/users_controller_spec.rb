@@ -23,11 +23,11 @@ describe UsersController do
 
       it "assigns public User to @user" do
         get :show, username: @public.username
-        assigns(:user).should == @public
+        assigns(:owner).should == @public
       end
     end
 
-    context "whit regular user logged in" do
+    context "with regular user logged in" do
       it "renders the :show view" do
         sign_in regular
         get :show, username: @private.username
@@ -36,7 +36,7 @@ describe UsersController do
 
       it "assigns public User to @user" do
         get :show, username: @private.username
-        assigns(:user).should == @private
+        assigns(:owner).should == @private
       end
     end
   end
