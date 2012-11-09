@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
   validates :username, format: { with: /\A[\w-]+\Z/i }, length: { in: 2..20 }, presence: true, uniqueness: true
   validates :twitter,  format: { with: /\A\w+\Z/i }, allow_nil: true
 
-  has_many :places
+  validate :username_is_unique_with_organization_name
+
+  has_many :places, as: :owner
   has_many :invitations, class_name: 'User', as:  :invited_by
 
   has_many :place_requests_received, class_name: 'PlaceRequest', foreign_key: 'receiver_id'
@@ -35,6 +37,8 @@ class User < ActiveRecord::Base
     conditions: { "memberships.role" => "regular" }
 
   scope :with_username, where("username is not null")
+
+  scope :by_username, lambda { |username| where('username ILIKE ?', username) }
 
 
 
@@ -75,6 +79,12 @@ class User < ActiveRecord::Base
 
   def password_required?
     super && identities.empty?
+  end
+
+  def username_is_unique_with_organization_name
+    unless Organization.by_name(self.username).empty?
+      errors.add(:username, 'username is already taken')
+    end
   end
 
   def update_with_password(params, *options)

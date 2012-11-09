@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121106134726) do
+ActiveRecord::Schema.define(:version => 20121109134645) do
 
   create_table "comments", :force => true do |t|
     t.text     "content"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20121106134726) do
     t.string   "gravatar_email"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "website"
   end
 
   create_table "photos", :force => true do |t|
@@ -82,6 +83,8 @@ ActiveRecord::Schema.define(:version => 20121106134726) do
     t.string   "kind"
     t.integer  "features"
     t.string   "slug"
+    t.integer  "owner_id"
+    t.string   "owner_type"
   end
 
   add_index "places", ["slug"], :name => "index_places_on_slug", :unique => true

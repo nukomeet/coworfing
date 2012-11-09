@@ -4,10 +4,9 @@ class UsersController < ApplicationController
   load_and_authorize_resource only: [:index, :edit, :update]
 
   def show
-    @user = User.find_by_username(params[:username]) || User.find(params[:username])
-    @places = @user.places.accessible_by(current_ability)
-    @reviews = @user.comments
-    authorize! :show, @user
+    @owner = User.by_username(params[:username]).first || Organization.by_name(params[:username]).first
+    @places = @owner.places.accessible_by(current_ability)
+    authorize! :show, @owner
   end
 
   def index
@@ -19,10 +18,10 @@ class UsersController < ApplicationController
       format.json { render json: @users }
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     params[:user].delete(:current_password)
     respond_to do |format|

@@ -1,7 +1,8 @@
-%h1 Editing organization
+.hero-unit
+  %h2= title "Edit organization"
 
-= render 'form'
+.row
+  .span7
+    = render 'form'
 
-= link_to 'Show', @organization
-\|
-= link_to 'Back', organizations_path
+    = link_to 'Back', organizations_path

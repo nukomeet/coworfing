@@ -1,21 +1,24 @@
 #place_form.row
   .span7.details
     = simple_form_for(@place, html: { multipart: true, class: 'form-horizontal'}) do |f|
-      = f.error_notification    
-      
       %div{class: "control-group string required"}
         %label{class: "string required control-label"}
           %abbr{title: "required"}
             *
           required fields
-          
+
+      .control-group.string.optional
+        %label{class: "string optional control-label"}
+          Owner
+        .controls
+          = select_tag :owner, options_from_collection_for_select(owners, "username", "username", @owner.username), class: 'span3 chzn-select'
       = f.input :name, input_html: { class: 'span5' }
       .control-group.string.optional
         %label{class: "string optional control-label"}
           Geocomplete
-        .controls    
-          = text_field_tag :geocomplete, nil, autocomplete: false, placeholder: "Type the address here, it will fill the next fields automatically", :"data-address" => @place.address,  class: 'span5'  
-      
+        .controls
+          = text_field_tag :geocomplete, nil, autocomplete: false, placeholder: "Type the address here, it will fill the next fields automatically", :"data-address" => @place.address,  class: 'span5'
+
       = f.input :address_line1, input_html: { class: 'span5'}
       = f.input :city, input_html: { class: 'span3', 'data-geo' => 'locality' }
       = f.input :country, input_html: { class: 'span3 chzn-select', 'data-geo' => 'country' }
@@ -28,25 +31,26 @@
       = f.input :features, label: 'Smoke' do
         = check_box_tag 'place[features][]', 'smoke'
 
-      = f.input :tag_list, as: :text, input_html: { rows:2, class: 'span5'}, label: 'Tags', placeholder: 'Tag this place with relevant characteristics (example: "sunny, park, library, beach, coffee house") separate tags by commas'   
+      = f.input :tag_list, as: :text, input_html: { rows:2, class: 'span5'}, label: 'Tags', placeholder: 'Tag this place with relevant characteristics (example: "sunny, park, library, beach, coffee house") separate tags by commas'
 
       = f.fields_for :photos do |builder|
         = render 'photo_fields', f: builder
-        
+
       .control-group.string.optional
         %label.file.optional.control-label
         .controls
           = link_to_add_fields "Add photo field", f, :photos
 
-      = f.button :submit, class: 'btn btn-info btn-large'
-      
-  .span5 
+      .controls
+        = f.button :submit, class: 'btn btn-primary'
+
+  .span5
     #geo_map
 
 
 = content_for :preload_javascript do
   %script{:src => "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en", :type => "text/javascript"}
-  
+
 = content_for :javascript do
   :javascript
     var place_form = new C.NewPlaceView();

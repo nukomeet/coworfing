@@ -1,11 +1,11 @@
 class Place < ActiveRecord::Base
   extend FriendlyId
-  
+
   default_scope order('created_at DESC')
-  
+
   attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photos_attributes, :tag_list
 
-  geocoded_by :address 
+  geocoded_by :address
 
   # only add at the end
   bitmask :features, as: [:discussion, :music, :smoke]
@@ -15,14 +15,14 @@ class Place < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
-  belongs_to :user
+  belongs_to :owner, polymorphic: true
 
   has_many :place_requests
   has_many :comments
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => Proc.new { |p| p[:photo].blank? && p[:photo_cache].blank? }
-  
-  delegate :name, :username, to: :user, allow_nil: true, prefix: true
+
+  delegate :name, :username, to: :owner, allow_nil: true, prefix: true
 
   validates :name, length: { in: 2..45 }, presence: true
   validates :desc, length: { in: 5..500 }, presence: true
@@ -42,9 +42,9 @@ class Place < ActiveRecord::Base
         if geo
           box = [
                   geo.geometry["bounds"]["southwest"]["lat"],
-                  geo.geometry["bounds"]["southwest"]["lng"], 
+                  geo.geometry["bounds"]["southwest"]["lng"],
                   geo.geometry["bounds"]["northeast"]["lat"],
-                  geo.geometry["bounds"]["northeast"]["lng"], 
+                  geo.geometry["bounds"]["northeast"]["lng"],
                 ]
           within_bounding_box(box)
         end
@@ -59,14 +59,14 @@ class Place < ActiveRecord::Base
     return nil unless full_address
     full_address.join(', ')
   end
-  
+
   def post_to_facebook
-    if ENV['FB_ACCESS_TOKEN'] 
+    if ENV['FB_ACCESS_TOKEN']
       page = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
-      page.put_object('Coworfing', 'feed', message: 'A new place has been added', link: "https://coworfing.com/places/#{self.id}") 
+      page.put_object('Coworfing', 'feed', message: 'A new place has been added', link: "https://coworfing.com/places/#{self.id}")
     end
   end
-  
+
   def as_json(options={})
     super(options.merge( :include => [ :photos ] ))
   end

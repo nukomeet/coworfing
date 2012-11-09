@@ -8,7 +8,7 @@ class Ability
       user = User.new
       user.role = 'guest'
     end
-    
+
     if user.admin?
       can :manage, :all
       can :invite, User
@@ -17,10 +17,16 @@ class Ability
     end
 
     if user.regular?
-      can :manage, Place, user_id: user.id
+      can :manage, Place, owner_id: user.organization_ids, owner_type: 'Organization'
+      can :manage, Place, owner_id: user.id, owner_type: 'User'
+
+      can :read, Place, owner_type: nil
+      can :read, Place, owner_type: 'User'
+
+
       can :create, Place
-      can :read, Place
-      can :submitted, Place, user_id: user.id
+      can :submitted, Place, owner_id: user.id, owner_type: 'User'
+      can :submitted, Place, owner_id: user.organization_ids, owner_type: 'Organization'
 
       can :invite, User
       can :read, User
@@ -36,12 +42,15 @@ class Ability
       can :manage, Organization, id: user.admin_organization_ids
       can :read, Organization, id: user.regular_organization_ids
 
+      can :manage, Membership, organization: { id: user.admin_organization_ids }
+      can :read, Membership
+
       #can :see, :places
     end
 
     if user.guest?
-      can :read, Place, kind: :public
-      can :read, Place, kind: :business
+      can :read, Place, owner_type: [ nil, 'User'], kind: [ :public, :business ]
+
       can :read, User, public: true
       can :read, Comment, place: { kind: :public }
     end

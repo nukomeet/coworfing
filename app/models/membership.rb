@@ -3,6 +3,8 @@ class Membership < ActiveRecord::Base
 
   symbolize :role, in: [:admin, :regular], scopes: true, methods: true
 
+  validates :user_id, uniqueness: { scope: :organization_id }
+
   belongs_to :organization
   belongs_to :user
 end

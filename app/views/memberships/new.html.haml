@@ -1,4 +1,9 @@
-%h1 New membership
+.hero-unit
+  %h2= title "Members"
 
-= render 'form'
+.row
+  .span12
+    = render 'form'
+
+    = link_to 'Back', organization_memberships_path(@organization)
 
