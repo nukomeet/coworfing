@@ -1,9 +1,11 @@
 class PlacesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   load_and_authorize_resource
-  
+
+  helper_method :owners
+
   def submitted
-    @places = @places.accessible_by(current_ability).order(:created_at).page params[:page] 
+    @places = @places.accessible_by(current_ability).order(:created_at).page params[:page]
     render 'places'
   end
 
@@ -11,16 +13,16 @@ class PlacesController < ApplicationController
     if params[:tag]
       @places = @places.tagged_with(params[:tag]).page params[:page]
     else
-      @places_all = @places.location(params[:cities]) 
+      @places_all = @places.location(params[:cities])
       @places = @places_all.page(params[:page])
     end
 
     respond_to do |format|
-      format.html 
+      format.html
       format.json
     end
   end
-  
+
   def show
     respond_to do |format|
       format.html # show.html.erb
@@ -31,11 +33,7 @@ class PlacesController < ApplicationController
   def new
     @place.name = "#{current_user.name}'s place"
     @place.photos.build()
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @place }
-    end
+    @owner = current_user
   end
 
   def edit
@@ -44,27 +42,18 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place.user = current_user
+    puts params[:owner]
+    @owner = Organization.where(name: params[:owner]).first || User.where(username: params[:owner]).first
+    puts @owner
+    @place.owner = @owner
 
-    respond_to do |format|
-      if @place.save
-        format.html {redirect_to @place}
-        if current_user.places.count == 3
-          Notification.become_cow_email(current_user).deliver
-          flash[:notice] = 'Congratulations! You just shared a place. Now you have access private places!'
-        else
-          flash[:notice] =  'Great, your place was successfully created.' 
-        end
-        format.json { render json: @place, status: :created, location: @place }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
+    if @place.save
+      redirect_to @place
+    else
+      render action: "new"
     end
   end
 
-  # PUT /places/1
-  # PUT /places/1.json
   def update
     respond_to do |format|
       if @place.update_attributes(params[:place])
@@ -86,5 +75,9 @@ class PlacesController < ApplicationController
       format.html { redirect_to places_url }
       format.json { head :no_content }
     end
+  end
+
+  def owners
+    [current_user] + current_user.organizations.to_a
   end
 end

@@ -1,0 +1,24 @@
+.hero-unit
+  %h2= title "Members"
+
+.row
+  .span12
+    %table.table.table-hover
+      %tr
+        %th #
+        %th Username / Name
+        %th Role
+        %th
+
+      - @memberships.each_with_index do |membership, idx|
+        %tr
+          %td= idx+1
+          %td
+            = membership.user.username
+            \/
+            %small= membership.user.name
+          %td= membership.role
+          %td
+            = link_to 'Remove member', [@organization, membership], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
+
+= link_to 'Add Member', new_organization_membership_path(@organization), class: 'btn btn-primary'
