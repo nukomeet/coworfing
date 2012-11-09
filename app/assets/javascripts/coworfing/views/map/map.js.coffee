@@ -19,7 +19,7 @@ class C.MapView extends Backbone.View
     @search_input.bind("geocode:result", @get_geo_data)
     
     
-    @markers = new L.MarkerClusterGroup()
+    @markers = new L.MarkerClusterGroup({maxClusterRadius: 60})
     @markersList = []
     
     @map =  L.map('mapino', mapOptions)
