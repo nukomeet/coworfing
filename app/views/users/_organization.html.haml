@@ -1,0 +1,38 @@
+.span3
+  - if can? :edit_avatar, owner
+    = link_to "http://gravatar.com/emails/" do
+      = image_tag(avatar_url(owner.gravatar_email, width: 210), class: 'thumbnail', :"rel"=> "tooltip", :'data-placement'=>"top", :'data-original-title'=>"Change your avatar at Gravatar.com")
+  - else
+    = image_tag(avatar_url(owner.gravatar_email, width: 210), class: 'thumbnail')
+  %h2
+    = title ["Our Worfers", owner.username], owner.username
+  .details
+    %p
+      %i.icon-envelope
+      = mail_to owner.gravatar_email
+    - unless owner.website.blank?
+      %p
+        %i.icon-link
+        = link_to owner.website, url_with_protocol(owner.website), rel: :nofollow, target: '_blank'
+.span9
+  .tabbable
+    %ul.nav.nav-tabs
+      %li
+        %a{href: "#tab1", :"data-toggle"=>"tab"} Places
+      %li
+        %a{href: "#tab2", :"data-toggle"=> "tab"} Members
+    .tab-content
+      #tab1.tab-pane
+        - unless places.blank?
+          %ul.thumbnails
+            - places.each do |place|
+              = render place
+        - else
+          .ac No places posted.
+      #tab2.tab-pane
+        - unless owner.users.blank?
+          %ul.thumbnails
+            - owner.users.each do |u|
+              = render partial: "user_avatar", locals: { user: u }
+        - else
+          .ac No recent activities.
