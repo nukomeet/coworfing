@@ -1,5 +1,5 @@
 class Organization < ActiveRecord::Base
-  attr_accessible :gravatar_email, :name
+  attr_accessible :gravatar_email, :name, :website
 
   has_many :memberships
   has_many :users, through: :memberships
