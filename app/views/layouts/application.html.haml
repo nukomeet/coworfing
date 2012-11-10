@@ -12,12 +12,12 @@
     - set_meta_tags :description => "As nomads - freelancers, entrepreneurs, students and teleworkers - we created Coworfing to share the places where we like to work: Cafés, bars, coworking spaces, librairies, airports, parks, and even our own homes."
     = display_meta_tags :site => 'Coworfing', :separator => '-'
     %meta{:content => "Nukomeet", :name => "author"}/
-  
+
     = stylesheet_link_tag :application, :media => "all"
-    
+
     /[if lte IE 8]
       = stylesheet_link_tag "application-ie", :media => "all"
-    
+
     = csrf_meta_tags
 
     = render 'layouts/analytics'
@@ -54,9 +54,9 @@
             %h3 Quick links
             %ul
               %li
-                = link_to 'Home', root_url 
+                = link_to 'Home', root_url
               %li
-                = link_to 'Contribute', 'http://github.com/nukomeet/coworfing', title: "Contribute on Girhub", rel: :nofollow, target: "_blank" 
+                = link_to 'Contribute', 'http://github.com/nukomeet/coworfing', title: "Contribute on Girhub", rel: :nofollow, target: "_blank"
               %li
                 = link_to t('navbar.about_us'), about_path
           .span2
@@ -66,20 +66,20 @@
               %li
                 = link_to 'Press', press_path
               %li
-                %a{:href => "https://www.iubenda.com/privacy-policy/327733", title: "Privacy Policy", rel: :nofollow, target: "_blank"} Privacy Policy 
+                %a{:href => "https://www.iubenda.com/privacy-policy/327733", title: "Privacy Policy", rel: :nofollow, target: "_blank"} Privacy Policy
               %li
-                = link_to 'Blog', 'http://coworfing.tumblr.com', target: "_blank", rel: :nofollow 
+                = link_to 'Blog', 'http://coworfing.tumblr.com', target: "_blank", rel: :nofollow
 
           .span4.social-networks
             %h3 Stay in touch
             %p Stay in touch on social networks
             = link_to('', "http://www.facebook.com/coworfing", class: "icon facebook", rel: :nodollow, target: "_blank",  title: "Follow us on Facebook")
             = link_to('', "http://www.twitter.com/coworfing", class: "icon twitterbird", rel: :nodollow, target: "_blank",  title: "Follow us on Twitter")
-            = link_to('', 'http://github.com/nukomeet/coworfing', class: "icon github", rel: :nodollow, target: "_blank",  title: "Contribute on Github")            
-            = link_to('', 'http://coworfing.tumblr.com', class: "icon tumblr", rel: :nodollow, target: "_blank", title: "Our Blog")            
+            = link_to('', 'http://github.com/nukomeet/coworfing', class: "icon github", rel: :nodollow, target: "_blank",  title: "Contribute on Github")
+            = link_to('', 'http://coworfing.tumblr.com', class: "icon tumblr", rel: :nodollow, target: "_blank", title: "Our Blog")
           .span4
             %h3 Newsletter
-            %p Subscribe to our monthly newsletter 
+            %p Subscribe to our monthly newsletter
             %form
               %input{:placeholder => "Enter your E-mail", :type => "text"}/
               %input.btn{:type => "submit", :value => "Ok"}/
@@ -97,8 +97,8 @@
             .span4
               %i.icon-envelope
               \&nbsp;
-              = link_to("bonjour@nukomeet.com", "mailto:bonjour@nukomeet.com") 
-    
+              = link_to("bonjour@nukomeet.com", "mailto:bonjour@nukomeet.com")
+
     = yield(:preload_javascript) if content_for?(:preload_javascript)
     = javascript_include_tag :application
     = yield(:javascript) if content_for?(:javascript)
