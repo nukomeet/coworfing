@@ -51,15 +51,11 @@ describe User do
 
   it "is connected with Linkedin profile" do
     user = FactoryGirl.create(:user_with_linkedin, email: 'hohoho@zaiste.net')
-    puts user.identities.inspect
-
     user.provider?(:linkedin).should be_true
   end
 
   it "is not connected with Twitter profile" do
     user = FactoryGirl.create(:user_with_linkedin, email: 'hohoho@zaiste.net')
-    puts user.identities.inspect
-
     user.provider?(:twitter).should_not be_true
   end
 
