@@ -1,113 +1,89 @@
 .hero-unit
-  %h1= title "Press" 
+  %h1= title "Press"
 
-.page
-  %h2 Overview
-  .row
-    .span12
-      %p 
-        As nomads - freelancers, entrepreneurs, students and teleworkers - we created 
-        =link_to 'Coworfing', root_url 
-        to share the places where we like to work: Cafés, bars, coworking spaces, librairies, airports, parks, and even our own homes.
+.row
+  .span12
+    %p
+      As nomads - freelancers, entrepreneurs, students and teleworkers - we created
+      =link_to 'Coworfing', root_url
+      to share the places where we like to work: Cafés, bars, coworking spaces, librairies, airports, parks, and even our own homes.
 
-  %h2 Mission
-  .row
-    .span12
-      %p 
-        Provide the
-        %a{:href => "http://www.theatlantic.com/business/archive/2011/09/the-freelance-surge-is-the-industrial-revolution-of-our-time/244229/"} growing crowd 
-        of nomad workers with an awesome lifestyle. 
+%h2 Mission
+.row
+  .span12
+    %p
+      Provide the
+      %a{:href => "http://www.theatlantic.com/business/archive/2011/09/the-freelance-surge-is-the-industrial-revolution-of-our-time/244229/"} growing crowd
+      of nomad workers with an awesome lifestyle.
 
-  %h2 Team
-  .row  
-    .span4
-      %h4 
-        %a{:href => "http://www.twitter.com/zaiste"} Zaiste
-      %p
-        %em The architect
-    .span4
-      %h4
-        %a{:href => "http://www.twitter.com/albanlv"} Albanlv
-      %p 
-        %em The inspiration
-    .span4
-      %h4 
-        %a{:href => "http://www.twitter.com/ecolepublique"} Jeremie
-      %p
-        %em The pollinizer
-  .row  
-    .span4
-      %h4
-        %a{:href => "http://www.twitter.com/tomkuk"} Tomek
-      %p 
-        %em The artist coder
-    .span4
-      %h4
-        %a{:href => "http://www.twitter.com/tukan2can"} Bartek
-      %p 
-        %em The wise programmer 
-    .span4
-      %h4
-        %a{:href => "http://www.twitter.com/julien_mu"} Julien
-      %p 
-        %em The mind
+%h2 Team
+.row
+  .span12
+    %ul.thumbnails
+      - @creators.each do |u|
+        %li.span2
+          .thumbnail
+            = link_to profile_path(u[:username]) do
+              = image_tag(avatar_url(u[:email]))
+            .caption
+              %h5= u[:baseline]
 
-  %h2 Contributors
-  .row
-    .span4
-      %h4 
-        %a{:href => "http://wwww.twitter.com/ofca89"} Lukasz
-      %p Logo design, Story-telling video 
+%h2 Contributors
+.row
+  .span4
+    %h4
+      %a{:href => "http://wwww.twitter.com/ofca89"} Lukasz
+    %p Logo design, Story-telling video
 
-  %h2 Vision
-  .row
-    .span4 
-      %p We believe that offices were justified by the scarcity of tools and the will to control employees. Most of the time our tools are our brains, hands, computers, phones and books, we don't need offices any more.
-    .span4
-      %p We believe that we are at a time where can reinvent the notion of a proper place to work. Why not parks? Swimming pools? Trains? The comfortable home of a stranger? We can travel, switch places and be in a nice environment. It does not go against our productivity, on the contrary.
-    .span4 
-      %p We believe that the need of a "serious environment" to do "serious work" is corporate bullshit that creates unhappy, non creative, and unproductive people.
-  %p
-  .row
-    .span4
-      %p We believe that having no office doesn't mean working alone. On the contrary, it's an opportunity to work with plenty of other people, with different background and activities.
-    .span4
-      %p We believe that coworking is connecting together free and like-minded individuals that have complementary skills. From this emerges collaboration, solidarity, creativity, projects, companies, and more.
-    .span4
-      %p We believe in a world of creative and independent individuals helping each other in order to stay free and sustainable without needing corporations.
+%h2 Vision
+.row
+  .span4
+    %p We believe that offices were justified by the scarcity of tools and the will to control employees. Most of the time our tools are our brains, hands, computers, phones and books, we don't need offices any more.
+  .span4
+    %p We believe that we are at a time where can reinvent the notion of a proper place to work. Why not parks? Swimming pools? Trains? The comfortable home of a stranger? We can travel, switch places and be in a nice environment. It does not go against our productivity, on the contrary.
+  .span4
+    %p We believe that the need of a "serious environment" to do "serious work" is corporate bullshit that creates unhappy, non creative, and unproductive people.
+%p
+.row
+  .span4
+    %p We believe that having no office doesn't mean working alone. On the contrary, it's an opportunity to work with plenty of other people, with different background and activities.
+  .span4
+    %p We believe that coworking is connecting together free and like-minded individuals that have complementary skills. From this emerges collaboration, solidarity, creativity, projects, companies, and more.
+  .span4
+    %p We believe in a world of creative and independent individuals helping each other in order to stay free and sustainable without needing corporations.
 
-  %h2 Technology Stack 
-  .row
-    .span12
-      %ul
-        %li 
-          %p Rails 3.2
-        %li 
-          %p PostgreSQL
-        %li 
-          %p RSpec
+%h2 Technology Stack
+.row
+  .span12
+    %ul
+      %li
+        %p Rails 3.2
+      %li
+        %p PostgreSQL
+      %li
+        %p RSpec
 
-  %h2 Screenshots
-  .row
-    .span12
-      %p
-        %ul.thumbnails
-          %li.span2
-            %a.thumbnail{href: "#{image_path('coworfing1.png')}"}
-              %img{src: "#{image_path('coworfing1.png')}" }/
-          %li.span2
-            %a.thumbnail{href: "#{image_path('coworfing2.png')}"}
-              %img{src: "#{image_path('coworfing2.png')}" }/
-          %li.span2
-            %a.thumbnail{href: "#{image_path('coworfing3.png')}"}
-              %img{src: "#{image_path('coworfing3.png')}" }/
-          %li.span2
-            %a.thumbnail{href: "#{image_path('coworfing4.png')}"}
-              %img{src: "#{image_path('coworfing4.png')}" }/
-         
-  %h2 Logo
-  .row
-    .span12
-      %p.thumbnails
-        %a.span2.thumbnail{href: "#{image_path('logo_coworfing.png')}"}
-          %img{src: "#{image_path('logo_coworfing.png')}" }/
+%h2 Screenshots
+.row
+  .span12
+    %p
+      %ul.thumbnails
+        %li.span2
+          %a.thumbnail{href: "#{image_path('coworfing1.png')}"}
+            %img{src: "#{image_path('coworfing1.png')}" }/
+        %li.span2
+          %a.thumbnail{href: "#{image_path('coworfing2.png')}"}
+            %img{src: "#{image_path('coworfing2.png')}" }/
+        %li.span2
+          %a.thumbnail{href: "#{image_path('coworfing3.png')}"}
+            %img{src: "#{image_path('coworfing3.png')}" }/
+        %li.span2
+          %a.thumbnail{href: "#{image_path('coworfing4.png')}"}
+            %img{src: "#{image_path('coworfing4.png')}" }/
+
+%h2 Logo
+.row
+  .span12
+    %p.thumbnails
+      %a.span2.thumbnail{href: "#{image_path('logo_coworfing.png')}"}
+        %img{src: "#{image_path('logo_coworfing.png')}" }
