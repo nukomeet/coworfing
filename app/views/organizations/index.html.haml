@@ -1,5 +1,5 @@
 .hero-unit
-  %h2= title "Organizations"
+  %h2= title "Communities"
 
 .row
   .span12
@@ -22,4 +22,4 @@
             = link_to 'Members', organization_memberships_path(organization), class: 'btn btn-mini'
             = link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-mini'
 
-= link_to 'New Organization', new_organization_path, class: 'btn btn-primary'
+= link_to 'New Community', new_organization_path, class: 'btn btn-primary'
