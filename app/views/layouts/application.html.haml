@@ -29,23 +29,20 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
   %body
-    = render :partial => "shared/flash_messages", :locals => {:flash => flash}
     %header#header
       .navbar
         .navbar-inner
           .container
-            %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
             %a.brand{:href => "/"}
-              %b Coworfing 
+              %b Coworfing
             = render 'layouts/navigation'
+
+      = render :partial => "shared/flash_messages", :locals => {:flash => flash}
 
     = yield :map
     #content.container
       = yield
-  
+
 
     %footer.row
       .container
