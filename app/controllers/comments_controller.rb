@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      Notification.comment_email(@place.owner).deliver
+      Notification.comment_email(@place.owner).deliver if @place.owner
 
       redirect_to @place, notice: 'Hooray, comment was successfully created.'
     else
