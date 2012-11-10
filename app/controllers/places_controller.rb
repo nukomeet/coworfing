@@ -24,6 +24,7 @@ class PlacesController < ApplicationController
   end
 
   def show
+    @nearbys = @place.nearbys(0.5, {:units => :km})
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @place }
