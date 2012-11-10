@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def map
-    @places = Place.all(:include => :photos)
+    @places = Place.accessible_by(current_ability).includes(:photos)
     @location = request.location
     respond_to do |format|
       format.html
