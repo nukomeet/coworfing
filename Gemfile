@@ -47,6 +47,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
+gem 'select2-rails'
 gem "haml", ">= 3.1.6"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "rspec-rails", ">= 2.10.1", :group => [:development, :test]
@@ -61,7 +62,6 @@ gem 'rabl'
 gem 'heroku'
 gem 'fog'
 gem 'symbolize', require: 'symbolize/active_record'
-gem 'chosen-rails'
 gem 'kaminari'
 gem 'bootstrap_kaminari', git: 'git://github.com/dleavitt/bootstrap_kaminari.git'
 gem 'hominid'
