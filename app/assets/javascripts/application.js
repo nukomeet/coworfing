@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
+//= require select2
 //= require underscore-min
 //= require backbone-min
 //= require handlebars.runtime
@@ -21,7 +22,6 @@
 //= require leaflet.markercluster
 //= require vendor/leaflet.control.autolocate
 //= require jquery-ui-timepicker-addon
-//= require chosen-jquery
 //= require vendor/jquery.lazyload.min
 //= require vendor/jquery.geocomplete.min
 
