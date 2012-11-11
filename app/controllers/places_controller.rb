@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :find_owner, only: [:update, :create]
   load_and_authorize_resource
 
   helper_method :owners
@@ -38,14 +39,12 @@ class PlacesController < ApplicationController
   end
 
   def edit
-    @place = Place.find(params[:id])
+    #@place = Place.find(params[:id])
+    @owner = @place.owner
     @place.photos.build() if @place.photos.blank?
   end
 
   def create
-    puts params[:owner]
-    @owner = Organization.where(name: params[:owner]).first || User.where(username: params[:owner]).first
-    puts @owner
     @place.owner = @owner
 
     if @place.save
@@ -56,14 +55,12 @@ class PlacesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @place.update_attributes(params[:place])
-        format.html { redirect_to @place, notice: 'Place was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
+    @place.owner = @owner
+    
+    if @place.update_attributes(params[:place])
+      redirect_to @place, notice: 'Place was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
@@ -80,5 +77,9 @@ class PlacesController < ApplicationController
 
   def owners
     [current_user] + current_user.organizations.to_a
+  end
+  
+  def find_owner
+    @owner = Organization.where(name: params[:owner]).first || User.where(username: params[:owner]).first
   end
 end

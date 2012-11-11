@@ -76,43 +76,15 @@ figcaption
   background: rgba(0,0,0,0.75)
   color: white
   padding: 10px 20px
-  opacity: 0
-  -webkit-transition: all 0.6s ease
-  -moz-transition:    all 0.6s ease
-  -o-transition:      all 0.6s ease
-
+  opacity: 1
+  
 figure
   display: block
   position: relative
   overflow: hidden
   margin: 0
-  &:hover
-    figcaption
-      opacity: 1
 
-figure
-  &:hover:before
-    opacity: 0
-
-.cap-left
-  &:before
-    bottom: 10px
-    left: 10px
-  figcaption
-    bottom: 0
-    left: -30%
-  &:hover
-    figcaption
-      left: 0
 .cap-bot
-  &:before
-    bottom: 10px
-    left: 10px
-.cap-bot
-  figcaption
-    left: 0
-    bottom: -30%
-.cap-bot:hover
   figcaption
     bottom: 0
 
