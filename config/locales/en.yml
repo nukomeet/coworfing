@@ -226,7 +226,7 @@ en:
     your_places: 'Your places'
     your_profile: 'Your profile'
     your_password: 'Change password'
-    organizations: 'Organizations'
+    communities: 'Communities'
     help: 'Help'
     log_out: 'Log out'
   modal:
@@ -249,7 +249,7 @@ en:
   explain: 'Explain to me'
   mail_input: 'Enter your email address...'
   add: 'Add a place'
-  search: 'Search'
+  search: 'Search by typing a city, country or address'
   details: 'View details'
   home:
     explanation: 'Find a nice place and make a request'

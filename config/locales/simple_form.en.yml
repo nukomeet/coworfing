@@ -13,6 +13,7 @@ en:
     # Labels and hints examples
     labels:
       place: 
+        name: 'Name of the place'
         adress_line1: 'Adress'
         desc: 'Description'
         wifi: 'WIFI Access Code'
