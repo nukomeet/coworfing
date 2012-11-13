@@ -42,7 +42,8 @@
         %ul.thumbnails.span6
           - @place.photos.each do |photo|
             %li.span2.thumbnail
-              = image_tag(photo.photo_url(:big), :itemprop => "image")  
+              = link_to photo.photo_url(:big), :class => "fancybox", :rel => "gallery" do
+                = image_tag(photo.photo_url(:thumb), :itemprop => "image")
     .span6
       .tabbable
         %ul.nav.nav-tabs
