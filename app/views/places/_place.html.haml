@@ -6,7 +6,7 @@
       = link_to image_tag(place.photos.first.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
     .caption
       %h5
-        = link_to truncate(place.name, length: 21), place
+        = link_to truncate(place.name, length: 19), place
         %span{ :class=> "label label-#{place.kind} pull-right upcase" } 
           = place.kind
       .place_row
