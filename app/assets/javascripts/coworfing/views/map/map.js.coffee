@@ -26,13 +26,14 @@ class C.MapView extends Backbone.View
     L.Icon.Default.imagePath = '../assets/images'
     @map.fitWorld()
     
-    @map.addControl(new L.Control.Autolocate())
+    #@map.addControl(new L.Control.Autolocate())
     
     @populate()
     @
     
   events:
     "submit form" : "prevent_submit"
+    "click #autolocate" : "autolocate"
     
   
   renderMarker: (place) =>	
@@ -70,4 +71,8 @@ class C.MapView extends Backbone.View
    
   prevent_submit: (e) =>
     @search_input.geocomplete("find", @search_input.val())
+    e.preventDefault()
+  
+  autolocate: (e) =>
+    @map.locate({setView: true, maxZoom: 16})
     e.preventDefault()

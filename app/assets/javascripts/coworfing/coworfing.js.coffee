@@ -24,3 +24,7 @@ jQuery ->
 				
 		$('#back-to-top').click ()->
 			$('body,html').animate({scrollTop:0},600)
+			
+			
+		# fancybox
+		$(".fancybox").fancybox()
