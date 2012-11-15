@@ -1,18 +1,16 @@
-#map
-  .hero-unit.faq
-    .ac
-      %form.form-inline
-        .controls
-          .input-append
-            = text_field_tag 'place_input', nil, placeholder: t('search')
-            = button_tag t('search'), class: 'btn btn-search btn-success', id: 'map_search' do
-              %i.icon-search.icon-white
-
 = content_for :map do
-  .container
-    .hero-unit.ac
-      %h2= title "We share the places where we like to work."
-
+  #map
+    .container
+      .hero-unit.ac.faq
+        %h2= title "We share the places where we like to work."
+        %form.form-inline
+          .controls
+            .input-append
+              = text_field_tag 'place_input', nil, placeholder: t('search')
+              = button_tag t('search'), class: 'btn btn-search btn-success', id: 'map_search' do
+                %i.icon-search.icon-white
+              = button_tag t('search'), class: 'btn btn-search btn-danger', id: 'autolocate', title: "Find places near you!" do
+                %i.icon-map-marker.icon-white
   #mapino
 
 = content_for :preload_javascript do

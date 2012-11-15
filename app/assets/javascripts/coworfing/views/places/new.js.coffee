@@ -27,7 +27,7 @@ class C.NewPlaceView extends Backbone.View
   fillForm: (event, result) =>
     len = result.address_components.length - 1
     country = result.address_components[len].long_name
-    @.$el.find('#place_country').select(country).trigger("liszt:updated")
+    @.$el.find('#place_country').select(country).trigger("change")
    
     switch result.address_components[0].types[0]
       when "street_number" then @.$el.find("#place_address_line1").val(result.address_components[1].long_name + " " + result.address_components[0].long_name)

@@ -39,7 +39,7 @@ en:
         features: 'Check the box if people can smoke in this place'
         
       user:
-        public: 'Mark this, if you want to publicize your profile to other users'
+        public: 'Mark this, if you want to make your profile visible to unregistered users'
         name: 'Enter your full name'
         username: 'Enter your Coworfing username'
         twitter: 'Only Twitter username, without @ sign'
