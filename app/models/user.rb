@@ -36,6 +36,9 @@ class User < ActiveRecord::Base
     through: :memberships,
     conditions: { "memberships.role" => "regular" }
 
+  has_many :checkins
+  has_many :checkin_places, through: :checkins
+
   scope :with_username, where("username is not null")
 
   scope :by_username, lambda { |username| where('username ILIKE ?', username) }

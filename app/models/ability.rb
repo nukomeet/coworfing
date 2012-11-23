@@ -45,6 +45,10 @@ class Ability
       can :manage, Membership, organization: { id: user.admin_organization_ids }
       can :read, Membership
 
+      can :works, Checkin, user_id: user.id
+      can :worked, Checkin, user_id: user.id
+      can :uncheck, Checkin, user_id: user.id
+
       #can :see, :places
     end
 

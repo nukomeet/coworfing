@@ -14,7 +14,7 @@
         %span[:addressCountry]= @place.country
       %p
         %span{ :class=> "label label-#{@place.kind} upcase" }
-          = @place.kind 
+          = @place.kind
       #map-details
         - static_map_url = "http://maps.google.com/maps/api/staticmap?size=450x140&sensor=false&zoom=15&markers=#{@place.latitude}%2C#{@place.longitude}"
         = link_to image_tag(static_map_url, :class=>"thumbnail"),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
@@ -22,10 +22,16 @@
         %span[:geo, Mida(:GeoCoordinates)]
           %meta{ itemprop: "latitude", content: @place.latitude }
           %meta{ itemprop: "longitude", content: @place.longitude }
-      .details  
+      .details
         - unless @place.desc.blank?
           %blockquote
             %p= @place.desc
+        .btn-toolbar
+          .btn-group
+            = build_checkin_link('I work here', place_works_url(@place), @checkin, :works)
+            = build_checkin_link('I worked here', place_worked_url(@place), @checkin, :worked)
+            = build_checkin_link('Uncheck', place_uncheck_url(@place), @checkin, :uncheck)
+
         - unless @place.website.blank?
           %p
             %i.icon-link
@@ -56,7 +62,12 @@
             %a{href: "#tab3", :"data-toggle"=> "tab"} Reviews
         .tab-content
           #tab1.tab-pane
-            .ac No people worked here.
+            - if @workers.empty?
+              .ac No people worked here.
+            - else
+              %ul.thumbnails.row
+                - @workers.each do |w|
+                  = render partial: 'users/user_avatar', locals: { user: w }
           - unless @nearbys.empty?
             #tab2.tab-pane
               %ul.thumbnails.row
@@ -75,7 +86,7 @@
                 %h4
                   = link_to comment.username, profile_path(comment.username)
                 %p= comment.content
-            - else 
+            - else
               .ac No reviews.
             - if user_signed_in?
 
@@ -85,7 +96,7 @@
                 %p
                 %p= f.text_area :content, :rows => 5, class: 'span6'
                 = f.button :submit, class: 'btn btn-primary'
-                  
+
 = content_for :javascript do
   :javascript
     $('.item').first().addClass("active");
