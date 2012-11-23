@@ -22,10 +22,16 @@
         %span[:geo, Mida(:GeoCoordinates)]
           %meta{ itemprop: "latitude", content: @place.latitude }
           %meta{ itemprop: "longitude", content: @place.longitude }
-      .details  
+      .details
         - unless @place.desc.blank?
           %blockquote
             %p= @place.desc
+        .btn-toolbar
+          .btn-group
+            = build_checkin_link('I work here', place_works_url(@place), @checkin, :works)
+            = build_checkin_link('I worked here', place_worked_url(@place), @checkin, :worked)
+            = build_checkin_link('Uncheck', place_uncheck_url(@place), @checkin, :uncheck)
+
         - unless @place.website.blank?
           %p
             %i.icon-link
@@ -42,7 +48,7 @@
         %ul.thumbnails.span6
           - @place.photos.each do |photo|
             %li.span2.thumbnail
-              = image_tag(photo.photo_url(:big), :itemprop => "image")  
+              = image_tag(photo.photo_url(:big), :itemprop => "image")
     .span6
       .tabbable
         %ul.nav.nav-tabs

@@ -62,4 +62,11 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields btn", :'data-id' => id,  :'data-fields' => fields.gsub("\n", "") )
   end
+
+  def build_checkin_link(title, url, checkin, status)
+    active = !checkin.nil? && checkin.status.to_sym == status ? 'btn btn-primary' : 'btn'
+    disabled = checkin.nil? && status == :uncheck ? 'disabled' : ''
+
+    link_to(title, url, class: "#{active} #{disabled}")
+  end
 end

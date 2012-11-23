@@ -26,10 +26,9 @@ class PlacesController < ApplicationController
 
   def show
     @nearbys = @place.nearbys(0.5, {:units => :km})
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @place }
-    end
+    @workers = @place.checkin_users
+
+    @checkin = @place.checkins.where(user_id: current_user).first
   end
 
   def new
@@ -78,7 +77,7 @@ class PlacesController < ApplicationController
   def owners
     [current_user] + current_user.organizations.to_a
   end
-  
+
   def find_owner
     @owner = Organization.where(name: params[:owner]).first || User.where(username: params[:owner]).first
   end
