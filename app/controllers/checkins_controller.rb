@@ -1,14 +1,37 @@
 class CheckinsController < ApplicationController
   load_and_authorize_resource :place
-  load_and_authorize_resource :checkin, through: :place
 
-  def checkin
-    status = params[:status]
+  def works
+    @checkin = @place.checkins.where(user_id: current_user.id).first
+    if @checkin
+      @checkin.status = :works
+    else
+      @checkin = @place.checkins.build(user_id: current_user.id, status: 'works')
+    end
+    @checkin.save
 
-    raise @checkin.to_yaml
+    redirect_to @place
   end
 
-  def checkout
+  def worked
+    @checkin = @place.checkins.where(user_id: current_user.id).first
+    if @checkin
+      @checkin.status = :worked
+    else
+      @checkin = @place.checkins.build(user_id: current_user.id, status: 'worked')
+    end
+    @checkin.save
+
+    redirect_to @place
+  end
+
+  def uncheck
+    @checkin = @place.checkins.where(user_id: current_user.id).first
+    if @checkin
+      @checkin.destroy
+    end
+
+    redirect_to @place
   end
 
 end

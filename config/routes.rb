@@ -1,5 +1,6 @@
 Coworfing::Application.routes.draw do
 
+
     match 'tags/:tag' => 'places#index', via: :get, as: :tag
 
     match 'about' => 'home#about', via: :get, as: :about
@@ -48,6 +49,10 @@ Coworfing::Application.routes.draw do
 
       get 'submitted', on: :collection, as: :submitted
       get 'page/:page', action: :index, on: :collection
+
+      get 'works', controller: :checkins, action: :works, as: :works
+      get 'worked', controller: :checkins, action: :worked, as: :worked
+      get 'uncheck', controller: :checkins, action: :uncheck, as: :uncheck
     end
 
     resources :demands, :only => [:create, :index] do

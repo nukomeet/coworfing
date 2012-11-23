@@ -12,7 +12,7 @@ module ApplicationHelper
     else
       status.to_s
     end
-    
+
     content_tag :span, status, class: "label label-#{name}"
   end
 

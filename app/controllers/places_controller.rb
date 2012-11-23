@@ -56,7 +56,7 @@ class PlacesController < ApplicationController
 
   def update
     @place.owner = @owner
-    
+
     if @place.update_attributes(params[:place])
       redirect_to @place, notice: 'Place was successfully updated.'
     else
