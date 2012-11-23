@@ -4,7 +4,7 @@ class Checkin < ActiveRecord::Base
   belongs_to :user
   belongs_to :place
 
-  bitmask :status, as: [:works, :worked]
+  symbolize :status, in: [:works, :worked], scopes: :true, methods: true
 
   validates :place_id, uniqueness: { scope: :user_id }
 
