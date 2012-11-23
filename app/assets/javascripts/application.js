@@ -24,6 +24,7 @@
 //= require jquery-ui-timepicker-addon
 //= require vendor/jquery.lazyload.min
 //= require vendor/jquery.geocomplete.min
+//= require jquery.fancybox.pack
 
 // Templates
 //= require_tree ../templates/
