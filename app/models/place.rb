@@ -22,6 +22,9 @@ class Place < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   accepts_nested_attributes_for :photos, :allow_destroy => true, :reject_if => Proc.new { |p| p[:photo].blank? && p[:photo_cache].blank? }
 
+  has_many :checkins
+  has_many :checkin_users, through: :checkins, source: :user, class_name: 'User'
+
   delegate :name, :username, to: :owner, allow_nil: true, prefix: true
 
   validates :name, length: { in: 2..45 }, presence: true

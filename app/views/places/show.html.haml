@@ -61,7 +61,12 @@
             %a{href: "#tab3", :"data-toggle"=> "tab"} Reviews
         .tab-content
           #tab1.tab-pane
-            .ac No people worked here.
+            - if @workers.empty?
+              .ac No people worked here.
+            - else
+              %ul.thumbnails.row
+                - @workers.each do |w|
+                  = render partial: 'users/user_avatar', locals: { user: w }
           - unless @nearbys.empty?
             #tab2.tab-pane
               %ul.thumbnails.row
