@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     conditions: { "memberships.role" => "regular" }
 
   has_many :checkins
-  has_many :checkin_places, through: :checkins
+  has_many :checkin_places, through: :checkins, class_name: "Place", source: :place
 
   scope :with_username, where("username is not null")
 
