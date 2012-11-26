@@ -1,6 +1,10 @@
-%li.span2
-  .thumbnail
-    %figure.cap-bot
+%li.span3.profile
+  .row
+    .span1
       = link_to profile_path(user.username || user.id) do
-        = image_tag(avatar_url(user.email))
-      %figcaption= user.username
+        = image_tag(avatar_url(user.email), class: 'img-circle', width: '50')
+    .span2.bio
+      %h4
+        = link_to user.username, profile_path(user.username)
+      %p= truncate(user.bio, length: 60)
+
