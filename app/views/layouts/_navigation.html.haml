@@ -30,11 +30,11 @@
           = image_tag(avatar_url(current_user.email, width: 40), class: "img-circle")
           %i.caret
         %ul.dropdown-menu
-          %li
-            = link_to submitted_places_path do
-              = t('navbar.your_places')
-          %li= link_to t('navbar.invite'), new_user_invitation_path
-          %li= link_to t('navbar.your_profile'), user_settings_edit_path
+          %li.username= current_user.username
+          %li= link_to t('navbar.public_profile'), profile_path(current_user.username)
+          %li.divider
+          %li= link_to t('navbar.added_places'), submitted_places_path
+          %li= link_to t('navbar.settings'), user_settings_edit_path
           %li= link_to t('navbar.your_password'), user_password_edit_path
           %li= link_to t('navbar.communities'), organizations_path
           %li.divider
