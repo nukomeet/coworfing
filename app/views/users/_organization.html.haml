@@ -1,9 +1,9 @@
 .span3
   - if can? :edit_avatar, owner
     = link_to "http://gravatar.com/emails/" do
-      = image_tag(avatar_url(owner.gravatar_email, width: 210), class: 'thumbnail', :"rel"=> "tooltip", :'data-placement'=>"top", :'data-original-title'=>"Change your avatar at Gravatar.com")
+      = image_tag(avatar_url(owner.gravatar_email, width: 210), class: 'img-circle', :"rel"=> "tooltip", :'data-placement'=>"top", :'data-original-title'=>"Change your avatar at Gravatar.com")
   - else
-    = image_tag(avatar_url(owner.gravatar_email, width: 210), class: 'thumbnail')
+    = image_tag(avatar_url(owner.gravatar_email, width: 210), class: 'img-circle')
   %h2
     = title ["Our Worfers", owner.username], owner.username
   .details
