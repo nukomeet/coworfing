@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :name, :email, :username, case_sensitive: false
 
-  validates :username, format: { with: /\A[\w-]+\Z/i }, length: { in: 2..20 }, presence: true, uniqueness: true
+  validates :username, format: { with: /\A[\w-]+\Z/i, message: "must contain only numbers, letters and - , _ characters" }, length: { in: 2..20 }, presence: true, uniqueness: true
   validates :twitter,  format: { with: /\A\w+\Z/i }, allow_nil: true, allow_blank: true
 
   validate :username_is_unique_with_organization_name
