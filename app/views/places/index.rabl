@@ -10,5 +10,9 @@ node :_id do |p|
   p.id
 end
 
-#child(:photo => :photo) { attributes :url, :big }
-node(:photo) { |p| {:url => p.photo.url, :petit => {:url => p.photo.small.url}  } }
+node(:photo) do |p| 
+	{:url => nil, :petit => {:url => nil } }
+	unless p.photos.empty?
+		{:url => p.photos.first.photo.url, :petit => {:url => p.photos.first.photo.small.url}  }
+	end
+end
