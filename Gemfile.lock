@@ -45,6 +45,9 @@ GEM
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
     addressable (2.3.2)
+    airbrake (3.1.6)
+      builder
+      girl_friday
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bitmask_attributes (0.3.0)
@@ -75,6 +78,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
+    connection_pool (0.9.2)
     country_select (1.0.1)
     daemons (1.1.9)
     dalli (2.3.0)
@@ -127,6 +131,9 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.9)
     geocoder (1.1.5)
+    girl_friday (0.11.1)
+      connection_pool (~> 0.9.0)
+      rubinius-actor
     green_monkey (0.1.4)
       chronic_duration
       haml (>= 3.1.0)
@@ -289,6 +296,9 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.11.0)
+    rubinius-actor (0.0.2)
+      rubinius-core-api
+    rubinius-core-api (0.0.1)
     ruby-hmac (0.4.0)
     rubyzip (0.9.9)
     sass (3.2.3)
@@ -361,6 +371,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  airbrake
   bitmask_attributes
   bootstrap-sass (= 2.0.4)
   bootstrap_kaminari!
