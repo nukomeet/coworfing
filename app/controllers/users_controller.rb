@@ -5,8 +5,12 @@ class UsersController < ApplicationController
 
   def show
     @owner = User.by_username(params[:username]).first || Organization.by_name(params[:username]).first
-    @places = @owner.checkin_places.accessible_by(current_ability)
-    authorize! :show, @owner
+    if @owner.nil?
+      redirect_to people_url, alert: 'User not found!'
+    else
+      @places = @owner.checkin_places.accessible_by(current_ability)
+      authorize! :show, @owner
+    end
   end
 
   def index
