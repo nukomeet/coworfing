@@ -1,5 +1,4 @@
 require 'bundler/capistrano'
-require 'rvm/capistrano'
 require 'hipchat/capistrano'
 
 server 'nukomeet', :web, :app
