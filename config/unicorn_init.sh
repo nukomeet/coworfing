@@ -14,7 +14,7 @@ set -e
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/home/deployer/apps/coworfing/current
 PID=$APP_ROOT/tmp/pids/unicorn.pid
-source $APP_ROOT/.env
+. /home/deployer/apps/coworfing/shared/config/env
 CMD="cd $APP_ROOT; bundle exec unicorn -D -c $APP_ROOT/config/unicorn.rb -E production"
 AS_USER=deployer
 set -u
