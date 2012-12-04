@@ -12,7 +12,7 @@ Coworfing::Application.configure do
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = true # FIXME: turn it off after tests
-  config.cache_store = :dalli_store
+  #config.cache_store = :dalli_store
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
