@@ -3,13 +3,7 @@
 .row
   .span12
     %ul.thumbnails
-      - @featured.each do |user|
-        = render partial: 'user_avatar', locals: { user: user }
-
-.row
-  .span12
-    %ul.thumbnails
-      - @rest.each do |user|
+      - @users.each do |user|
         = render partial: 'user_avatar', locals: { user: user }
 
 = content_for :javascript do

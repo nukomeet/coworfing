@@ -2,7 +2,7 @@
   .row
     .span1
       = link_to profile_path(user.username || user.id) do
-        = image_tag(avatar_url(user.email), class: 'img-circle', width: '50')
+        = image_tag("blank.gif", :'data-original' =>"#{avatar_url(user.email)}", class: 'img-circle lazy', width: '50')
     .span2.bio
       %h4
         = link_to user.username, profile_path(user.username)

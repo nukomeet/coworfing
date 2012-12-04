@@ -15,8 +15,8 @@ class UsersController < ApplicationController
 
   def index
     @users = @users.with_username
-    @featured = @users.select { |u| u.gravatar? }
-    @rest = @users - @featured
+    #@featured = @users.select { |u| u.gravatar? }
+    #@rest = @users - @featured
 
     respond_to do |format|
       format.html # index.html.erb
