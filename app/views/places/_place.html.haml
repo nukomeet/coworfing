@@ -1,26 +1,13 @@
 %li.span3
   .thumbnail
     - if place.photos.empty?
-      = link_to image_tag('home.jpg'), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
+      = link_to image_tag('home.jpg', :'data-original' => asset_path('home.jpg'), class: "lazy"), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
     - else
-      = link_to image_tag(place.photos.first.photo_url(:medium)), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
+      = link_to image_tag('home.jpg', :'data-original'=> place.photos.first.photo_url(:medium), class: "lazy"), place, rel: "popover", "data-original-title" => place.name, "data-content" => place.desc, class: 'place_photo'
     .caption
       %h5
         = link_to truncate(place.name, length: 17), place
         %span{ :class=> "label label-#{place.kind} pull-right upcase" } 
           = place.kind
       .place_row
-        = truncate(place.desc, length: 17)
-        .facets.pull-right
-          - if place.features?(:music)
-            %span{'rel' => 'tooltip', 'data-original-title' => t('place.music'), :class => 'icon-music icon_tooltip'}
-          - else
-            %span{'rel' => 'tooltip', 'data-original-title' => t('place.quiet'), :class => 'icon-headphones icon_tooltip'}                
-          - if place.features?(:smoke)
-            %span{'rel' => 'tooltip', 'data-original-title' => t('place.smoking'), :class => 'icon-ok-circle icon_tooltip'}                
-          - else
-            %span{'rel' => 'tooltip', 'data-original-title' => t('place.no_smoking'), :class => 'icon-ban-circle icon_tooltip'}
-          - if place.features?(:discussion)
-            %span{'rel' => 'tooltip', 'data-original-title' => t('place.discussion'), :class => 'icon-comment icon_tooltip'}              
-          - else
-            %span{'rel' => 'tooltip', 'data-original-title' => t('place.blabla'), :class => 'icon-remove-circle icon_tooltip'}              
+        = truncate(place.desc, length: 17)             
