@@ -2,7 +2,7 @@
   %h2= title "Communities"
 
 .row
-  .span12
+  .span8
     %table.table.table-hover
       %tr
         %th #
@@ -22,4 +22,9 @@
             = link_to 'Members', organization_memberships_path(organization), class: 'btn btn-mini'
             = link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-mini'
 
-= link_to 'New Community', new_organization_path, class: 'btn btn-primary'
+  .span4 
+    %em 
+      A community
+    is a closed group of people with whom you can share places. Select the people with whom you want to share places. 
+  
+    = link_to 'New Community', new_organization_path, class: 'btn btn-primary'
