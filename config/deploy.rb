@@ -15,10 +15,10 @@ set :branch, "master"
 
 # -- HipChat Integration
 
-set :hipchat_token, ENV['HIPCHAT_TOKEN']
-set :hipchat_room_name, "56513"
-set :hipchat_announce, false
-set :hipchat_human, "Zaiste!"
+#set :hipchat_token, ENV['HIPCHAT_TOKEN']
+#set :hipchat_room_name, "56513"
+#set :hipchat_announce, false
+#set :hipchat_human, "Zaiste!"
 
 # if server requests something via IO
 default_run_options[:pty] = true
