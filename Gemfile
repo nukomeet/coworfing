@@ -6,9 +6,10 @@ ruby '1.9.3'
 
 gem 'rails'
 gem 'pg'
-gem 'thin'
 
 gem 'oj'
+gem 'capistrano'
+gem 'unicorn', group: :production
 
 group :assets do
   gem 'sass-rails'
@@ -22,6 +23,7 @@ group :assets do
 end
 
 group :development do
+  gem 'thin'
   gem 'taps', require: false
   gem 'sqlite3'
   gem "guard"

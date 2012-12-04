@@ -16,21 +16,10 @@ set :branch, "master"
 
 # -- HipChat Integration
 
-set :hipchat_token, ENV['HIPCHAT_TOKEN'] 
+set :hipchat_token, ENV['HIPCHAT_TOKEN']
 set :hipchat_room_name, "56513"
-set :hipchat_announce, false 
-set :hipchat_human, "Zaiste!" 
-
-# Add RVM's lib directory to the load path.
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-
-# Load RVM's capistrano plugin.    
-require "rvm/capistrano"
-
-set :rvm_ruby_string, '1.9.3'
-set :rvm_type, :system# Don't use system-wide RVM
-
-set :guy, "John"
+set :hipchat_announce, false
+set :hipchat_human, "Zaiste!"
 
 # if server requests something via IO
 default_run_options[:pty] = true
@@ -48,12 +37,15 @@ namespace :deploy do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
     run "mkdir -p #{shared_path}/config"
-    sudo "ln -nfs #{current_path}/config/mongoid.yml #{shared_path}/config/mongoid.yml"
-
-    #put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
+    put File.read("config/database.example.yml"), "#{shared_path}/config/database.yml"
     puts "Now edit the config files in #{shared_path}."
   end
   after "deploy:setup", "deploy:setup_config"
+
+  task :symlink_config, roles: :app do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+  after "deploy:finalize_update", "deploy:symlink_config"
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
