@@ -98,5 +98,6 @@
                 = f.button :submit, class: 'btn btn-primary'
 
 = content_for :javascript do
-  :javascript
+  %script
     $('.item').first().addClass("active");
+    $("img.lazy").lazyload();
