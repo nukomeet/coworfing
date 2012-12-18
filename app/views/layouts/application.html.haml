@@ -35,7 +35,8 @@
         .navbar-inner
           .container
             %a.brand{:href => "/"}
-              %b Coworfing
+              %b 
+              = image_tag("logo.png")
             = render 'layouts/navigation'
 
       = render :partial => "shared/flash_messages", :locals => {:flash => flash}
