@@ -7,7 +7,6 @@ class HomeController < ApplicationController
 
   def map
     @places = Place.accessible_by(current_ability).includes(:photos)
-    @location = request.location
     respond_to do |format|
       format.html
       format.json { }
