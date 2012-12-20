@@ -1,19 +1,15 @@
 Coworfing [![Build Status](https://secure.travis-ci.org/nukomeet/coworfing.png)](http://travis-ci.org/nukomeet/coworfing)
 =========
 
-Coworfing is build by the coworking community to share the best places to work.
+Coworfing is built by the coworking community to share the best places to work.
 
-Depending on your skills and desire to participate in
- Coworfing development, you can find here
-different ways to participate. 
-
-Check the *Menu* section below to find something to work
+Depending on your skills and desire, you can find here different ways to participate. Check the *Menu* section below to find something to work
 on, and then the *How to contribute* to get started with our code. 
 
-Any doubt or question, tell us: coworfing@gmail.com. 
+
 
 New features are to be released regularly, follow us on twitter
-[@coworfing](http://twitter.com/coworfing), [our blog](http://coworfing.tumblr.com/) and like [our facebook page](http://www.facebook.com/coworfing)
+[@coworfing](http://twitter.com/coworfing), [our blog](http://coworfing.tumblr.com/) and like [our facebook page](http://www.facebook.com/coworfing). Any doubt or question, tell us: coworfing@gmail.com. 
 
 Happy contribution!
 
