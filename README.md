@@ -38,11 +38,14 @@ showing how things go wrong (pretty useful).
 *Help resolve an [open issue](https://github.com/nukomeet/coworfing/issues/283)*
 
 Here is a list of the priority items to solve, click on the item to see the
-corresponding issue, comment on the issue if you have any doubt or question:
+corresponding issue, comment on the issue if you have any doubt or question. The
+list is sorted per priority (first item is the most important).
 
 - [Button "Edit place" on the place page](https://github.com/nukomeet/coworfing/issues/279) (public places can be edited by any logged
 user)
 - [Button "report this place"](https://github.com/nukomeet/coworfing/issues/280) (in order to merge double places)
+- [Search by place name](https://github.com/nukomeet/coworfing/issues/285)
+- [Search by tag](https://github.com/nukomeet/coworfing/issues/286)
 - [When users makes a search on the map, clicks on a place, and goes back to the
 map, he should see the map as the result of his
 search](https://github.com/nukomeet/coworfing/issues/281) (current: taken back to
@@ -52,8 +55,7 @@ map of the world)
 - [User should be able to browse places without going back to the
   list](https://github.com/nukomeet/coworfing/issues/283) (insert
 arrows on right and left, like the picture gallery)
-- [Sorting places per
-  frequentation](https://github.com/nukomeet/coworfing/issues/224) (number of "I worked here") 
+- [Sorting places per frequentation](https://github.com/nukomeet/coworfing/issues/224) (number of "I worked here") 
 - [Display Linkedin skills on places] (based on "I worked here")
 - [Opening times](https://github.com/nukomeet/coworfing/issues/223)
 
