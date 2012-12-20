@@ -13,7 +13,7 @@ New features are to be released regularly, follow us on twitter
 
 Happy contribution!
 
-MENU
+MENU: WHAT TO WORK ON?
 ----
 
 **1. Report an issue**
