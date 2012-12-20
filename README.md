@@ -1,41 +1,36 @@
 Coworfing [![Build Status](https://secure.travis-ci.org/nukomeet/coworfing.png)](http://travis-ci.org/nukomeet/coworfing)
 =========
 
-WHAT IS IT ABOUT ?!
+WELCOME
 -------------------
 
-Welcome into the coworfing source code !
+Coworfing is build by the coworking community to share the best places to work.
 
-Want to discover cool places to work? Tired of working alone from home, of
-queueing hours in front of a library?
-
-Coworfing displays a map with the best places to work, provides the contact to get
-there and helps building the collaborative working community. New features are to be released regularly, follow us on twitter
+New features are to be released regularly, follow us on twitter
 [@coworfing](http://twitter.com/coworfing), [our blog](http://coworfing.tumblr.com/) and like [our facebook page](http://www.facebook.com/coworfing)
 
-Coworfing is made by the community for the community. Depending on your skills and desire to participate in
+Depending on your skills and desire to participate in
 the collaborative revolution through Coworfing development, you can find here
-different ways to participate. Check the *menu* section to find something to work
-on, and then the *How to* to get started with our code. Happy contribution!
+different ways to participate. 
+
+Check the *Menu* section below to find something to work
+on, and then the *How to* to get started with our code. 
+
+Any doubt or question, tell us: coworfing@gmail.com. Happy contribution!
 
 MENU
 ----
 
-1. Report an issue
+**1. Report an issue**
 
-As Coworfing code is hosted on github, we use their issue tracking tool. You
-found a problem ? Check first that you are the only one to have spotted it by
-searching similar issues in the issues list. No ? Then create a bug report, with
+You found a problem ?
+
+Check first that you are the only one to have spotted it by
+searching similar issues in the [issues list](https://github.com/nukomeet/coworfing/issues/283). If your issue is not listed, then create a bug report, with
 at least an explicit title and a descriptive text, the part of code posing
 problem, and (you'd be great) a unit test showing what goes wrong.
 
-You can try to reproduce a bug report, leaving a comment to say you have the
-same problem, you can also precise a fairly vague report, you can add a test
-showing how things go wrong (pretty useful).
-
-2. Solve an issue
-
-*Help resolve an [open issue](https://github.com/nukomeet/coworfing/issues/283)*
+**2. Solve an issue**
 
 Here is a list of the priority items to solve, click on the item to see the
 corresponding issue, comment on the issue if you have any doubt or question. The
@@ -59,12 +54,12 @@ arrows on right and left, like the picture gallery)
 - [Display Linkedin skills on places] (based on "I worked here")
 - [Opening times](https://github.com/nukomeet/coworfing/issues/223)
 
-3. Try and assess pending pull requests
+**3. Try and assess pending pull requests**
 
 You can also try pending pull request that have been submitted to us to test
 their validity.
 
-4. Propose new features
+**4. Propose new features**
 
 Write to us before this (coworfing@gmail.com) as we are focusing now on solving
 issues rather than introducing new features.
@@ -72,7 +67,7 @@ issues rather than introducing new features.
 HOW TO CONTRIBUTE
 -----------------
 
-1. Getting ready to contribute
+**1. Getting ready to contribute**
 
 First you need to have a working rails development environment. Check the
 [Contributing to Ruby on Rails](http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html page).
@@ -98,7 +93,7 @@ Then grab the code and deploy coworfing locally on your computer:
 
 Coworfing is now deployed locally on your computer !
 
-2. Submitting your changes
+**2. Submitting your changes**
 
 If you feel like adding your stone to the collaborative coworfing cathedral,
 please do so using a clear procedure :
