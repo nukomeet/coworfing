@@ -13,10 +13,10 @@ New features are to be released regularly, follow us on twitter
 
 Happy contribution!
 
-MENU: WHAT TO WORK ON?
+#MENU: WHAT TO WORK ON?
 ----
 
-**1. Report an issue**
+##1. Report an issue
 
 You found a problem ?
 
@@ -25,7 +25,7 @@ searching similar issues in the [issues list](https://github.com/nukomeet/coworf
 at least an explicit title and a descriptive text, the part of code posing
 problem, and (you'd be great) a unit test showing what goes wrong.
 
-**2. Solve an issue**
+##2. Solve an issue
 
 Here is a list of the priority items to solve, click on the item to see the
 corresponding issue, comment on the issue if you have any doubt or question. The
@@ -49,20 +49,20 @@ arrows on right and left, like the picture gallery)
 - [Display Linkedin skills on places] (based on "I worked here")
 - [Opening times](https://github.com/nukomeet/coworfing/issues/223)
 
-**3. Try and assess pending pull requests**
+##3. Try and assess pending pull requests
 
 You can also try pending pull request that have been submitted to us to test
 their validity.
 
-**4. Propose new features**
+##4. Propose new features
 
 Write to us before this (coworfing@gmail.com) as we are focusing now on solving
 issues rather than introducing new features.
 
-HOW TO CONTRIBUTE
+#HOW TO CONTRIBUTE
 -----------------
 
-**1. Getting ready to contribute**
+##1. Getting ready to contribute
 
 First you need to have a working rails development environment. Check the
 [Contributing to Ruby on Rails](http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html page).
@@ -88,7 +88,7 @@ Then grab the code and deploy coworfing locally on your computer:
 
 Coworfing is now deployed locally on your computer !
 
-**2. Submitting your changes**
+##2. Submitting your changes
 
 If you feel like adding your stone to the collaborative coworfing cathedral,
 please do so using a clear procedure :
