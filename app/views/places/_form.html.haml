@@ -26,7 +26,7 @@
       = f.input :website, input_html: { class: 'span3', 'data-geo' => 'website' }
       = f.input :wifi, input_html: { class: 'span5' }
       = f.input :transport, as: :text, input_html: { rows: 4, class: 'span5' }, placeholder: 'If necessary, explain in a few words how to get there'
-      = f.input :kind, required: true, collection: Place.get_kind_values, input_html: { class: 'chzn-select span2 first' }
+      = f.input :kind, required: true, collection: Place.get_kind_values, input_html: { class: 'chzn-select span5 first'}, hint: 'Pro is for coworking spaces, public is for any public place (park, cafe, airport hall...), private is for homes' 
 
       = f.input :features, label: 'Smoke' do
         = check_box_tag 'place[features][]', 'smoke'
@@ -55,7 +55,7 @@
   :javascript
     $("#place_tag_list").select2({
       placeholder: "Enter a tag",
-      tags:["Internet + WIFI", "Conference Room", "24x7 Access", "Air Conditioning", "Alarm", "Free coffee", "Kitchen", "Scan", "Fax", "Copier", "Printer","Reception","Secretariat","Pets Allowed","No Smoking","Children permitted","Free Trial", "Projector", "Smoking Area", "Locker", "Peace and Quiet"],
+      tags:["Internet + WIFI", "Plugs", "Park", "View", "Conference Room", "24x7 Access", "Air Conditioning", "Alarm", "Free coffee", "Kitchen", "Scan", "Fax", "Copier", "Printer","Reception","Secretariat","Pets Allowed","No Smoking","Children permitted","Free Trial", "Projector", "Smoking Area", "Locker", "Peace and Quiet"],
       tokenSeparators: [",", " "]
     })
     var place_form = new C.NewPlaceView();
