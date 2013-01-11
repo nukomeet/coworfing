@@ -447,7 +447,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rabl
-  rails
+  rails (= 3.2.11)
   rb-readline
   rspec-rails (>= 2.10.1)
   sass-rails
