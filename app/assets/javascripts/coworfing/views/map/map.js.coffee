@@ -24,7 +24,7 @@ class C.MapView extends Backbone.View
 
     @map =  L.map('mapino', mapOptions)
     L.Icon.Default.imagePath = '../assets/images'
-    @map.fitWorld()
+    @map.locate(setView: true, maxZoom:13)
 
     #@map.addControl(new L.Control.Autolocate())
 
