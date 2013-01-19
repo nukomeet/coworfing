@@ -26,7 +26,7 @@ class C.MapView extends Backbone.View
     L.Icon.Default.imagePath = '../assets/images'
     @map.locate(setView: true, maxZoom:13)
 
-    #@map.addControl(new L.Control.Autolocate())
+    @map.addControl(new L.Control.Autolocate())
 
     @populate()
     @
