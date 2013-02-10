@@ -7,7 +7,3 @@
     %ul.thumbnails
       - @users.each do |user|
         = render partial: 'user_avatar', locals: { user: user }
-
-= content_for :javascript do
-  %script
-    $("img.lazy").lazyload();
