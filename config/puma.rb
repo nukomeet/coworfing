@@ -2,7 +2,7 @@ rails_env = ENV['RAILS_ENV'] || 'development'
 
 threads 4,4
 
-root = "/home/deployer/apps/coworfing/current"
+root = "/home/deployer/apps/coworfing"
 
 bind  "unix:///tmp/puma-coworfing.sock"
 pidfile "#{root}/tmp/puma/pid"

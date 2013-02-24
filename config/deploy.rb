@@ -98,7 +98,7 @@ desc "Deploys the current version to the server."
       #invoke :'rails:assets_precompile'
 
       to :launch do
-        invoke :restart
+        #invoke :restart
       end
     end
 end
