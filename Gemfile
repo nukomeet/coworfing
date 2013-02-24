@@ -9,7 +9,7 @@ gem 'pg'
 
 gem 'oj'
 gem 'capistrano'
-gem 'unicorn', group: :production
+gem 'puma', group: :production
 
 group :assets do
   gem 'sass-rails'
