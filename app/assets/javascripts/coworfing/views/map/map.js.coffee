@@ -67,7 +67,7 @@ class C.MapView extends Backbone.View
 	  false
 
   get_geo_data: (e, r) =>
-    @map.setView([r.geometry.location.Ya, r.geometry.location.Za], 10)
+    @map.setView([r.geometry.location.lat(), r.geometry.location.lng()], 10)
 
   prevent_submit: (e) =>
     @search_input.geocomplete("find", @search_input.val())
