@@ -1,4 +1,4 @@
-Coworfing [![Build Status](https://secure.travis-ci.org/nukomeet/coworfing.png)](http://travis-ci.org/nukomeet/coworfing)
+Coworfing [![Build Status](https://secure.travis-ci.org/nukomeet/coworfing.png)](http://travis-ci.org/nukomeet/coworfing) [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/nukomeet/coworfing)
 =========
 
 Coworfing is built by the coworking community to share the best places to work.
