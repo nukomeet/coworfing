@@ -4,12 +4,13 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.11'
+gem 'rails'
 gem 'pg'
 
 gem 'oj'
 gem 'capistrano'
-gem 'puma', group: :production
+gem 'unicorn', group: :production
+gem 'foreman'
 
 group :assets do
   gem 'sass-rails'
