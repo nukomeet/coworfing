@@ -16,7 +16,7 @@ group :assets do
   gem 'sass-rails'
   gem 'bootstrap-sass', '2.0.4'
   gem 'coffee-rails'
-  gem 'handlebars_assets'
+  gem 'handlebars_assets', '0.9.0'
   gem 'uglifier'
   gem 'font-awesome-sass-rails'
   gem 'yui-compressor'
