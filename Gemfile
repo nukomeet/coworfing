@@ -50,6 +50,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
+gem 'blankslate', git: 'https://github.com/masover/blankslate.git'
 gem 'select2-rails'
 gem "haml", ">= 3.1.6"
 gem "haml-rails", ">= 0.3.4", :group => :development
