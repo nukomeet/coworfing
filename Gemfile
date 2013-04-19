@@ -4,18 +4,19 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.11'
+gem 'rails'
 gem 'pg'
 
 gem 'oj'
 gem 'capistrano'
 gem 'unicorn', group: :production
+gem 'foreman'
 
 group :assets do
   gem 'sass-rails'
   gem 'bootstrap-sass', '2.0.4'
   gem 'coffee-rails'
-  gem 'handlebars_assets'
+  gem 'handlebars_assets', '0.9.0'
   gem 'uglifier'
   gem 'font-awesome-sass-rails'
   gem 'yui-compressor'
@@ -49,6 +50,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-themes'
+gem 'blankslate', git: 'https://github.com/masover/blankslate.git'
 gem 'select2-rails'
 gem "haml", ">= 3.1.6"
 gem "haml-rails", ">= 0.3.4", :group => :development
@@ -63,7 +65,7 @@ gem 'mini_magick'
 gem 'rabl'
 gem 'heroku'
 gem 'fog'
-gem 'symbolize', require: 'symbolize/active_record'
+gem 'symbolize', "4.2.0", require: 'symbolize/active_record'
 gem 'kaminari'
 gem 'bootstrap_kaminari', git: 'git://github.com/dleavitt/bootstrap_kaminari.git'
 gem 'hominid'

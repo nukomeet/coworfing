@@ -42,9 +42,9 @@
         - unless places.blank?
           %ul.thumbnails
             - places.each do |place|
-              = render place
-        - else
-          .ac No places posted.
+              =render place
+        - else 
+          .ac No places checked.
       #tab2.tab-pane
         - unless owner.comments.blank?
           - owner.comments.each do |review|

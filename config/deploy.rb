@@ -1,3 +1,4 @@
+=begin
 require 'bundler/capistrano'
 #require 'hipchat/capistrano'
 
@@ -59,4 +60,61 @@ namespace :deploy do
     end
   end
   before "deploy", "deploy:check_revision"
+end
+=end
+
+require 'mina/git'
+require 'mina/rbenv'
+require 'mina/bundler'
+require 'mina/rails'
+
+set :term_mode, :system
+set :app, 'coworfing'
+set :user, 'deployer'
+set :domain, '88.198.68.40'
+set :deploy_to, "/home/#{user}/apps/#{app}"
+set :repository, "git@github.com:nukomeet/#{app}.git"
+set :shared_paths, ['config/database.yml']
+
+desc "Deploys the current version to the server."
+  task :config do
+    queue "sudo ln -nfs #{deploy_to}/#{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{app}"
+    queue "sudo ln -nfs #{deploy_to}/#{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{app}"
+    queue "mkdir -p #{deploy_to}/#{shared_path}/config"
+    queue "cp #{deploy_to}/#{current_path}/config/database.example.yml #{deploy_to}/#{shared_path}/config/database.yml"
+  end
+
+  task :environment do
+    invoke :'rbenv:load'
+  end
+
+  task :deploy => :environment do
+    deploy do
+      invoke :'git:clone'
+      invoke :'bundle:install'
+      invoke :'deploy:link_shared_paths'
+      invoke :config
+      #invoke :'rails:db_migrate'
+      #invoke :'rails:assets_precompile'
+
+      to :launch do
+        #invoke :restart
+      end
+    end
+end
+
+task :start do
+  queue "/etc/init.d/unicorn_#{app} start"
+end
+
+task :restart do
+  queue "/etc/init.d/unicorn_#{app} restart"
+end
+
+task :stop do
+  queue "/etc/init.d/unicorn_#{app} stop"
+end
+
+task :logs do
+  queue %[cd #{deploy_to}/current && forever logs app.coffee]
 end
