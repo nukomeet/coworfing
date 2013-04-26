@@ -19,9 +19,9 @@
       = stylesheet_link_tag "application-ie", :media => "all"
 
     = csrf_meta_tags
-    
+
     = render 'layouts/analytics'
-    
+
     / Load Open sans from Google Font Directory
     %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800", :rel => "stylesheet", :type => "text/css"}/
     / HTML5 shim, for IE6-8 support of HTML5 elements
@@ -33,7 +33,7 @@
         .navbar-inner
           .container
             %a.brand{:href => "/"}
-              %b 
+              %b
               = image_tag("logo.png")
             = render 'layouts/navigation'
 
@@ -75,11 +75,14 @@
             = link_to('', 'http://github.com/nukomeet/coworfing', class: "icon github", rel: :nodollow, target: "_blank",  title: "Contribute on Github")
             = link_to('', 'http://coworfing.tumblr.com', class: "icon tumblr", rel: :nodollow, target: "_blank", title: "Our Blog")
           .span4
-            %h3 Newsletter
-            %p Subscribe to our monthly newsletter
-            %form
-              %input{:placeholder => "Enter your E-mail", :type => "text"}/
-              %input.btn{:type => "submit", :value => "Ok"}/
+            / Begin MailChimp Signup Form
+            #mc_embed_signup
+              %form#mc-embedded-subscribe-form.validate{:action => "http://coworfing.us4.list-manage1.com/subscribe/post?u=b95cbe692240fe5c779daecff&id=89d8f688dc", :method => "post", :name => "mc-embedded-subscribe-form", :novalidate => "", :target => "_blank"}
+                %label{:for => "mce-EMAIL"} Subscribe to our mailing list
+                %input#mce-EMAIL.email{:name => "EMAIL", :placeholder => "email address", :required => "", :type => "email", :value => ""}/
+                .clear
+                  %input#mc-embedded-subscribe.button.btn.btn-primary{:name => "subscribe", :type => "submit", :value => "Subscribe"}/
+            / End mc_embed_signup
 
       #footer-extra
         .container
