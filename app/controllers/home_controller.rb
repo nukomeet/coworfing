@@ -7,6 +7,10 @@ class HomeController < ApplicationController
 
   def map
     @places = Place.accessible_by(current_ability).includes(:photos)
+    @places.each do |place|
+      place.desc = view_context.escape_javascript(place.desc)
+    end
+
     respond_to do |format|
       format.html
       format.json { }

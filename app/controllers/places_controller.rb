@@ -38,13 +38,13 @@ class PlacesController < ApplicationController
   end
 
   def edit
-    #@place = Place.find(params[:id])
     @owner = @place.owner
     @place.photos.build() if @place.photos.blank?
   end
 
   def create
     @place.owner = @owner
+    @place.desc = view_context.escape_javascript(@place.desc)
 
     if @place.save
       redirect_to @place
