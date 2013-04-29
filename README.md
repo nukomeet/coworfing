@@ -4,12 +4,12 @@ Coworfing [![Build Status](https://secure.travis-ci.org/nukomeet/coworfing.png)]
 Coworfing is built by the coworking community to share the best places to work.
 
 Depending on your skills and desire, you can find here different ways to participate. Check the *Menu* section below to find something to work
-on, and then the *How to contribute* to get started with our code. 
+on, and then the *How to contribute* to get started with our code.
 
 
 
 New features are to be released regularly, follow us on twitter
-[@coworfing](http://twitter.com/coworfing), [our blog](http://coworfing.tumblr.com/) and like [our facebook page](http://www.facebook.com/coworfing). Any doubt or question, tell us: coworfing@gmail.com. 
+[@coworfing](http://twitter.com/coworfing), [our blog](http://coworfing.tumblr.com/) and like [our facebook page](http://www.facebook.com/coworfing). Any doubt or question, tell us: coworfing@gmail.com.
 
 Happy contribution!
 
@@ -21,8 +21,7 @@ Happy contribution!
 You found a problem ?
 
 Check first that you are the only one to have spotted it by
-searching similar issues in the [issues list](https://github.com/nukomeet/coworfing/issues/283). If your issue is not listed, then create a bug report, with
-at least an explicit title and a descriptive text, the part of code posing
+searching similar issues in the [issues list](https://github.com/nukomeet/coworfing/issues). If your issue is not listed, then create a bug report, with at least an explicit title and a descriptive text, the part of code posing
 problem, and (you'd be great) a unit test showing what goes wrong.
 
 ##2. Solve an issue
@@ -45,7 +44,7 @@ map of the world)
 - [User should be able to browse places without going back to the
   list](https://github.com/nukomeet/coworfing/issues/283) (insert
 arrows on right and left, like the picture gallery)
-- [Sorting places per frequentation](https://github.com/nukomeet/coworfing/issues/224) (number of "I worked here") 
+- [Sorting places per frequentation](https://github.com/nukomeet/coworfing/issues/224) (number of "I worked here")
 - [Display Linkedin skills on places] (based on "I worked here")
 - [Opening times](https://github.com/nukomeet/coworfing/issues/223)
 
@@ -65,7 +64,7 @@ issues rather than introducing new features.
 ##1. Getting ready to contribute
 
 First you need to have a working rails development environment. Check the
-[Contributing to Ruby on Rails](http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html page).
+[Contributing to Ruby on Rails](http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html) page.
 
 Be sure to have postgresql configured, as well as bundler, and of course git.
 
@@ -77,12 +76,12 @@ Then grab the code and deploy coworfing locally on your computer:
 
     git clone https://github.com/xxxyourNamexxx/coworfing.git
 
-- Get into your coworfing directory and run 
-  
-    bundle install 
+- Get into your coworfing directory and run
 
-- run 
-    
+    bundle install
+
+- run
+
     rake db:seed
 
 
@@ -102,16 +101,16 @@ please do so using a clear procedure :
   - create a remote
 
     git remote add coworfing https://github.com/nukomeet/coworfing.git
-  
+
   - Get the changes
-  
+
     git fetch coworfing
-    
-  - Get back on your branch and merge  
+
+  - Get back on your branch and merge
 
     git checkout master
     git merge coworfing/master
-  
+
   - Update your repo on github
 
     git push origin master
