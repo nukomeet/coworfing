@@ -83,4 +83,3 @@ gem "green_monkey"
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'linkedin'
-gem 'airbrake'
