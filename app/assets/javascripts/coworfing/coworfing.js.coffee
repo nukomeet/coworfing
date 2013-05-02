@@ -30,3 +30,4 @@ jQuery ->
 
   # fancybox
   $(".fancybox").fancybox()
+
