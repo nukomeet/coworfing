@@ -55,7 +55,8 @@ GEM
     bcrypt-ruby (3.0.1)
     bitmask_attributes (0.4.0)
       activerecord (~> 3.0)
-    bootstrap-sass (2.0.4.0)
+    bootstrap-sass (2.3.1.0)
+      sass (~> 3.2)
     bourne (1.4.0)
       mocha (~> 0.13.2)
     builder (3.0.4)
@@ -75,6 +76,8 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    childprocess (0.3.9)
+      ffi (~> 1.0, >= 1.0.11)
     chronic_duration (0.10.2)
       numerizer (~> 0.1.1)
     coderay (1.0.9)
@@ -93,7 +96,7 @@ GEM
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
-    devise_invitable (1.1.7)
+    devise_invitable (1.1.8)
       actionmailer (~> 3.0)
       devise (>= 2.1.2)
       railties (~> 3.0)
@@ -162,8 +165,9 @@ GEM
     guard-rspec (2.6.0)
       guard (>= 1.8)
       rspec (~> 2.13)
-    guard-spork (0.3.2)
-      guard (>= 0.8.4)
+    guard-spork (1.5.0)
+      childprocess (>= 0.2.3)
+      guard (>= 1.1)
       spork (>= 0.8.4)
     haml (4.0.2)
       tilt
@@ -172,7 +176,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
-    handlebars_assets (0.9.0)
+    handlebars_assets (0.12.0)
       execjs (>= 1.2.9)
       sprockets (>= 2.0.3)
       tilt
@@ -298,7 +302,7 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
-    rb-readline (0.4.2)
+    rb-readline (0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
@@ -395,7 +399,7 @@ DEPENDENCIES
   acts-as-taggable-on
   bitmask_attributes
   blankslate!
-  bootstrap-sass (= 2.0.4)
+  bootstrap-sass
   bootstrap_kaminari!
   cancan
   capistrano
@@ -413,7 +417,7 @@ DEPENDENCIES
   fog
   font-awesome-sass-rails
   foreman
-  friendly_id (~> 4.0.1)
+  friendly_id
   geocoder
   green_monkey
   guard
@@ -421,10 +425,10 @@ DEPENDENCIES
   guard-livereload
   guard-rails
   guard-rspec
-  guard-spork (= 0.3.2)
-  haml (>= 3.1.6)
-  haml-rails (>= 0.3.4)
-  handlebars_assets (= 0.9.0)
+  guard-spork
+  haml
+  haml-rails
+  handlebars_assets
   heroku
   hipchat
   hominid
@@ -443,14 +447,14 @@ DEPENDENCIES
   quiet_assets
   rabl
   rails
-  rb-readline (~> 0.4.2)
+  rb-readline
   rspec-rails (>= 2.10.1)
   sass-rails
   select2-rails
   shoulda
   simple_form
   simplecov
-  spork (~> 0.9.0.rc)
+  spork
   sqlite3
   symbolize (= 4.2.0)
   taps

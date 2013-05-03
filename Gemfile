@@ -14,9 +14,9 @@ gem 'foreman'
 
 group :assets do
   gem 'sass-rails'
-  gem 'bootstrap-sass', '2.0.4'
+  gem 'bootstrap-sass'
   gem 'coffee-rails'
-  gem 'handlebars_assets', '0.9.0'
+  gem 'handlebars_assets'
   gem 'uglifier'
   gem 'font-awesome-sass-rails'
   gem 'yui-compressor'
@@ -40,9 +40,9 @@ group :test do
   gem 'fakeweb'
   gem 'capybara'
   gem 'launchy'
-  gem 'spork', '~> 0.9.0.rc'
+  gem 'spork'
   gem "database_cleaner"
-  gem 'guard-spork', '0.3.2'
+  gem 'guard-spork'
   gem 'shoulda', require: false
   gem "email_spec"
   gem 'simplecov', require: false
@@ -52,8 +52,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-themes'
 gem 'blankslate', git: 'https://github.com/masover/blankslate.git'
 gem 'select2-rails'
-gem "haml", ">= 3.1.6"
-gem "haml-rails", ">= 0.3.4", :group => :development
+gem "haml"
+gem "haml-rails", :group => :development
 gem "rspec-rails", ">= 2.10.1", :group => [:development, :test]
 gem "factory_girl_rails", ">= 3.3.0", :group => [:development, :test]
 gem "hominid"
@@ -74,11 +74,11 @@ gem 'carrierwave'
 gem 'geocoder'
 gem 'bitmask_attributes'
 gem 'country_select'
-gem 'rb-readline', '~> 0.4.2'
+gem 'rb-readline'
 gem 'koala'
 gem 'acts-as-taggable-on'
 gem 'meta-tags', :require => 'meta_tags'
-gem "friendly_id", "~> 4.0.1"
+gem "friendly_id"
 gem "green_monkey"
 gem 'omniauth'
 gem 'omniauth-linkedin'
