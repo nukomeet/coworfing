@@ -64,7 +64,7 @@ gem "simple_form"
 gem 'mini_magick'
 gem 'rabl'
 gem 'heroku'
-gem 'fog'
+gem 'fog', '1.11.1'
 gem 'symbolize', "4.2.0", require: 'symbolize/active_record'
 gem 'kaminari'
 gem 'bootstrap_kaminari', git: 'git://github.com/dleavitt/bootstrap_kaminari.git'
