@@ -27,7 +27,12 @@ jQuery ->
   $('#back-to-top').click ()->
     $('body,html').animate({scrollTop:0},600)
 
-
   # fancybox
   $(".fancybox").fancybox()
+  
+  # show login box on nav
+  $(".navbar-loginbox").click ()->
+    $('.navbar-login').fadeIn()
+    $('#navbar-login-email').focus()
+    return false
 

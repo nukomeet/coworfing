@@ -22,7 +22,16 @@
         = t('navbar.people')
 
     - unless user_signed_in?
-      %li= link_to t('login'), new_user_session_path
+      %li
+        = link_to t('login'), new_user_session_path, class: 'navbar-loginbox'
+        = simple_form_for(:user, :url => session_path(:user), html: { class: 'navbar-login hidden' }) do |f|
+          = f.input :email, placeholder: 'Email', label: false, input_html: { id: 'navbar-login-email', class: 'navbar-input' }
+          = f.input :password, placeholder: 'Password', label: false, input_html: { id: 'navbar-login-password', class: 'navbar-input' }
+          %div.clr
+            = f.input :remember_me, as: :boolean, wrapper_html: { class: 'navbar-login-checkbox fl' }, label_html: { class: 'fr'}
+            = f.submit "Sign in", class: 'btn btn-primary'
+          %div.clr
+            = link_to "Forgot your password?", new_password_path(:user)
 
     - else
       %li.dropdown.current_person
