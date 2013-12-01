@@ -28,6 +28,8 @@ class Ability
       can :submitted, Place, owner_id: user.id, owner_type: 'User'
       can :submitted, Place, owner_id: user.organization_ids, owner_type: 'Organization'
 
+      can :update, Place, kind: :public
+
       can :invite, User
       can :read, User
       can :edit_avatar, User, id: user.id

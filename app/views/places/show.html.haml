@@ -5,6 +5,10 @@
       %h1
         %span[:name]= title ["#{@place.kind} place", @place.name], @place.name
         %meta{ itemprop: "url", content: place_url(@place) }
+      - if can? :update, @place
+        = link_to edit_place_path(@place) do
+          .icon-edit
+          Edit place
       %address[:address, Mida(:PostalAddress)]{:style=>"color: #666"}
         .icon-map-marker
         %span[:streetAddress]= @place.address_line1
