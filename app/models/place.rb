@@ -1,7 +1,7 @@
 class Place < ActiveRecord::Base
   extend FriendlyId
 
-  default_scope order('created_at DESC')
+  default_scope order('checkins_count DESC, created_at DESC')
 
   attr_accessible :address_line1, :address_line2, :city, :country, :desc, :name, :transport, :website, :wifi, :zipcode, :kind, :features, :photos_attributes, :tag_list
 

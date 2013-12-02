@@ -2,7 +2,7 @@ class Checkin < ActiveRecord::Base
   attr_accessible :place_id, :status, :user_id
 
   belongs_to :user
-  belongs_to :place
+  belongs_to :place, counter_cache: true
 
   symbolize :status, in: [:works, :worked], scopes: :true, methods: true
 

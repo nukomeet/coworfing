@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121112180725) do
+ActiveRecord::Schema.define(:version => 20131202222925) do
 
   create_table "checkins", :force => true do |t|
     t.integer  "user_id"
@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20121112180725) do
     t.string   "city"
     t.string   "zipcode"
     t.string   "country"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.string   "photo"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20121112180725) do
     t.string   "slug"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.integer  "checkins_count", :default => 0
   end
 
   add_index "places", ["slug"], :name => "index_places_on_slug", :unique => true
