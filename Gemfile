@@ -1,54 +1,45 @@
-require 'rbconfig'
-HOST_OS = RbConfig::CONFIG['host_os']
 source 'https://rubygems.org'
 
-gem 'rails'
+ruby '2.0.0'
+
+gem 'rails', '3.2.15'
 gem 'pg'
 
 gem 'oj'
 gem 'capistrano'
 gem 'unicorn', group: :production
 gem 'foreman'
+gem 'execjs'
+gem 'therubyracer'
 
 group :assets do
   gem 'sass-rails'
-  gem 'bootstrap-sass'
+  gem 'bootstrap-sass', '2.3.2.0'
   gem 'coffee-rails'
   gem 'handlebars_assets'
-  gem 'uglifier'
   gem 'font-awesome-sass-rails'
+  gem 'uglifier'
   gem 'yui-compressor'
-  gem "therubyracer", platform: :ruby
 end
 
 group :development do
   gem 'thin'
   gem 'taps', require: false
   gem 'sqlite3'
-  gem "guard"
-  gem "guard-bundler"
-  gem "guard-rails"
-  gem "guard-livereload"
-  gem "guard-rspec"
   gem 'quiet_assets'
 end
 
 group :test do
   gem 'faker'
   gem 'fakeweb'
-  gem 'capybara'
   gem 'launchy'
-  gem 'spork'
   gem "database_cleaner"
-  gem 'guard-spork'
   gem 'shoulda', require: false
   gem "email_spec"
-  gem 'simplecov', require: false
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.3.0'
 gem 'jquery-ui-themes'
-gem 'blankslate', git: 'https://github.com/masover/blankslate.git'
 gem 'select2-rails'
 gem "haml"
 gem "haml-rails", :group => :development
@@ -61,8 +52,7 @@ gem "cancan"
 gem "simple_form"
 gem 'mini_magick'
 gem 'rabl'
-gem 'heroku'
-gem 'fog', '1.11.1'
+gem 'fog'
 gem 'symbolize', "4.2.0", require: 'symbolize/active_record'
 gem 'kaminari'
 gem 'bootstrap_kaminari', git: 'git://github.com/dleavitt/bootstrap_kaminari.git'
@@ -71,12 +61,9 @@ gem 'carrierwave'
 gem 'geocoder'
 gem 'bitmask_attributes'
 gem 'country_select'
-gem 'rb-readline'
-gem 'koala'
 gem 'acts-as-taggable-on'
 gem 'meta-tags', :require => 'meta_tags'
-gem "friendly_id"
-gem "green_monkey"
+gem "friendly_id", '4.0.9'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'linkedin'
