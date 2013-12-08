@@ -13,7 +13,7 @@
     = display_meta_tags :site => 'Coworfing', :separator => '-'
     %meta{:content => "Nukomeet", :name => "author"}/
 
-    = stylesheet_link_tag :application, :media => "all"
+    = stylesheet_link_tag "application", :media => "all"
 
     /[if lte IE 8]
       = stylesheet_link_tag "application-ie", :media => "all"
@@ -100,6 +100,5 @@
               = link_to("bonjour@nukomeet.com", "mailto:bonjour@nukomeet.com")
 
     = yield(:preload_javascript) if content_for?(:preload_javascript)
-    = javascript_include_tag :application
+    = javascript_include_tag "application"
     = yield(:javascript) if content_for?(:javascript)
-    = render 'layouts/uservoice'

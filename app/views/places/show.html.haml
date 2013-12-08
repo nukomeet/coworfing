@@ -1,21 +1,21 @@
-%div[@place, Mida(:Place)]
+%div
   .hero-unit
   .row
     .span6
       %h1
-        %span[:name]= title ["#{@place.kind} place", @place.name], @place.name
+        %span= title @place.name
         %meta{ itemprop: "url", content: place_url(@place) }
       - if can? :update, @place
         = link_to edit_place_path(@place) do
           .icon-edit
           Edit place
-      %address[:address, Mida(:PostalAddress)]{:style=>"color: #666"}
+      %address
         .icon-map-marker
-        %span[:streetAddress]= @place.address_line1
+        %span= @place.address_line1
         ,
-        %span[:addressLocality]= @place.city
+        %span= @place.city
         ,
-        %span[:addressCountry]= @place.country
+        %span= @place.country
       %p
         %span{ :class=> "label label-#{@place.kind} upcase" }
           = @place.kind
@@ -23,7 +23,7 @@
         - static_map_url = "http://maps.google.com/maps/api/staticmap?size=450x140&sensor=false&zoom=15&markers=#{@place.latitude}%2C#{@place.longitude}"
         = link_to image_tag(static_map_url, :class=>"thumbnail"),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
         %meta{ itemprop: "map", content: static_map_url }
-        %span[:geo, Mida(:GeoCoordinates)]
+        %span
           %meta{ itemprop: "latitude", content: @place.latitude }
           %meta{ itemprop: "longitude", content: @place.longitude }
       .details

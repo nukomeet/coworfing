@@ -35,8 +35,6 @@ class Place < ActiveRecord::Base
 
   after_validation :geocode, if: lambda { |o| o.address_line1_changed? || o.city_changed? || o.country_changed? }
 
-  after_create :post_to_facebook, if: lambda { |p| p.public? || p.business? }
-
   class << self
     def location(location=[])
       unless location.blank?
@@ -61,13 +59,6 @@ class Place < ActiveRecord::Base
     full_address = [address_line1, city, country].reject(&:blank?)
     return nil unless full_address
     full_address.join(', ')
-  end
-
-  def post_to_facebook
-    if ENV['FB_ACCESS_TOKEN']
-      page = Koala::Facebook::API.new(ENV['FB_ACCESS_TOKEN'])
-      page.put_object('Coworfing', 'feed', message: 'A new place has been added', link: "https://coworfing.com/places/#{self.id}")
-    end
   end
 
   def as_json(options={})
