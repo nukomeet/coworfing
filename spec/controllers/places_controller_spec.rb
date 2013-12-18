@@ -7,9 +7,9 @@ describe PlacesController do
 
   describe "GET index" do
     before :each do
-      @private = FactoryGirl.create_list(:place, 2, :private, owner: regular)
-      @business = FactoryGirl.create_list(:place, 2, :business, owner: regular)
-      @public = FactoryGirl.create_list(:place, 2, :public, owner: regular)
+      @private = FactoryGirl.create_list(:place, 2, :private, owner: regular, checkins_count: 3)
+      @business = FactoryGirl.create_list(:place, 2, :business, owner: regular, checkins_count: 7)
+      @public = FactoryGirl.create_list(:place, 2, :public, owner: regular, checkins_count: 5)
     end
 
     it "renders the :index view" do
@@ -30,6 +30,17 @@ describe PlacesController do
         get :index
         assigns(:places).should match_array @private + @public + @business
       end
+    end
+
+    it "should get places sorted by checkins" do
+      sign_in regular
+      get :index
+      assigns(:places)[0].should be_business
+      assigns(:places)[1].should be_business
+      assigns(:places)[2].should be_public
+      assigns(:places)[3].should be_public
+      assigns(:places)[4].should be_private
+      assigns(:places)[5].should be_private
     end
   end
 

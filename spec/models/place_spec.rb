@@ -85,4 +85,32 @@ describe Place do
       end
     end  
   end
+
+  describe "#checkins_count" do
+    let(:place) { FactoryGirl.create( :place, :public, city: "Riga") }
+
+    subject { place }
+
+    context "without checkins" do
+      its(:checkins_count) { should eq 0 }
+    end
+
+    context "with checkins" do
+      before do
+        place.checkins.create!(status: 'worked')
+        place.reload
+      end
+
+      its(:checkins_count) { should eq 1 }
+
+      context "remove checkin" do
+        before do
+          place.checkins.first.destroy
+          place.reload
+        end
+
+        its(:checkins_count) { should eq 0 }
+      end
+    end
+  end
 end
