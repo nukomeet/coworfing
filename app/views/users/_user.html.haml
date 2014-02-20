@@ -10,9 +10,10 @@
     - unless owner.bio.blank?
       %blockquote
         %p= owner.bio
-    %p
-      %i.icon-envelope
-      = mail_to owner.email
+    - unless owner.public_email.blank?
+      %p
+        %i.icon-envelope
+        = mail_to owner.public_email
     - unless owner.website.blank?
       %p
         %i.icon-link
