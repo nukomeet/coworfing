@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   end
 
   def map
+    @user_count = User.count
     @places = Place.accessible_by(current_ability).includes(:photos)
     @places.each do |place|
       place.desc = view_context.escape_javascript(place.desc)

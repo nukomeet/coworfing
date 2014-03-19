@@ -47,33 +47,10 @@
     %footer.row
       .container
         .row
-          .span2
-            %h3 Quick links
-            %ul
-              %li
-                = link_to 'Home', root_url
-              %li
-                = link_to 'Contribute', 'http://github.com/nukomeet/coworfing', title: "Contribute on Girhub", rel: :nofollow, target: "_blank"
-              %li
-                = link_to t('navbar.about_us'), about_path
-          .span2
-            %br/
-            %br/
-            %ul
-              %li
-                = link_to 'Press', press_path
-              %li
-                %a{:href => "https://www.iubenda.com/privacy-policy/327733", title: "Privacy Policy", rel: :nofollow, target: "_blank"} Privacy Policy
-              %li
-                = link_to 'Blog', 'http://coworfing.tumblr.com', target: "_blank", rel: :nofollow
-
           .span4.social-networks
-            %h3 Stay in touch
             %p Stay in touch on social networks
             = link_to('', "http://www.facebook.com/coworfing", class: "icon facebook", rel: :nodollow, target: "_blank",  title: "Follow us on Facebook")
             = link_to('', "http://www.twitter.com/coworfing", class: "icon twitterbird", rel: :nodollow, target: "_blank",  title: "Follow us on Twitter")
-            = link_to('', 'http://github.com/nukomeet/coworfing', class: "icon github", rel: :nodollow, target: "_blank",  title: "Contribute on Github")
-            = link_to('', 'http://coworfing.tumblr.com', class: "icon tumblr", rel: :nodollow, target: "_blank", title: "Our Blog")
           .span4
             / Begin MailChimp Signup Form
             #mc_embed_signup
@@ -87,17 +64,15 @@
       #footer-extra
         .container
           .row
-            .span4
-              A free and open-source opus by
+            .span2
+              Made by
               = link_to 'Nukomeet', 'http://nukomeet.com', rel: :nofollow, target: '_blank'
-            .span4
-              %i.icon-phone
-              \&nbsp;
-              = link_to 'Open Chat', 'https://www.hipchat.com/g4T5W6KqS', rel: :nofollow, target: '_blank'
-            .span4
+            .span3
               %i.icon-envelope
               \&nbsp;
               = link_to("bonjour@nukomeet.com", "mailto:bonjour@nukomeet.com")
+            .span2
+              %a{:href => "https://www.iubenda.com/privacy-policy/327733", title: "Privacy Policy", rel: :nofollow, target: "_blank"} Privacy Policy
 
     = yield(:preload_javascript) if content_for?(:preload_javascript)
     = javascript_include_tag "application"

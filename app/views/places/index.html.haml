@@ -5,7 +5,6 @@
   .span8
     %h1.lead
       %strong You can only see public places.
-      Add a place and you will gain access to private places! 
   .span4
     %p.ac
       = link_to new_place_path, { class: 'btn btn-primary btn-large' } do
@@ -17,7 +16,7 @@
       = form_tag "/l", method: :get, id: "search_form", class: 'form-inline'  do
         .controls
           .input-append
-            = text_field_tag "cities[]", nil || params[:cities], placeholder: t('search'), id: "location" 
+            = text_field_tag "cities[]", nil || params[:cities], placeholder: t('search'), id: "location"
             = button_tag '', id: "submit_location", class: 'btn btn-search btn-success', name: "" do
               %i.icon-search.icon-white
 
@@ -25,8 +24,8 @@
 
   %ul.span14.thumbnails
     - @places.each do |place|
-      = render place             
-            
+      = render place
+
   .row
     .span12
       = paginate @places, theme: 'bootstrap'
@@ -34,7 +33,7 @@
 
 = content_for :preload_javascript do
   %script{ src: "http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places&language=en", :type => "text/javascript" }
-  
+
 = content_for :javascript do
   %script
     var placesView = new C.PlacesSerachForm();
