@@ -36,6 +36,9 @@ group :test do
   gem "database_cleaner"
   gem 'shoulda', require: false
   gem "email_spec"
+  gem 'capybara'
+  gem 'simplecov'
+  gem 'spork', '~> 1.0rc'
 end
 
 gem 'jquery-rails', '~> 2.3.0'
