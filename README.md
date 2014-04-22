@@ -80,6 +80,10 @@ Then grab the code and deploy coworfing locally on your computer:
 
         rake db:seed
 
+- to prepare the test database
+
+        RAILS_ENV=test rake db:create db:schema:load
+
 
 Coworfing is now deployed locally on your computer!
 
