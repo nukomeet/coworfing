@@ -29,7 +29,7 @@
       .details
         - unless @place.desc.blank?
           %blockquote
-            %p= @place.desc
+            %p= auto_link @place.desc
         .btn-toolbar
           .btn-group
             = build_checkin_link('I work here', place_works_url(@place), @checkin, :works)
