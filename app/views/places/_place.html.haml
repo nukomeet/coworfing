@@ -8,6 +8,6 @@
       %h5
         = link_to truncate(place.name, length: 17), place
         %span{ :class=> "label label-#{place.kind} pull-right upcase" } 
-          = place.kind
+          = link_to place.kind, places_url(by_kind: place.kind)
       .place_row
-        = truncate(place.desc, length: 17)             
+        = truncate(place.desc, length: 17)

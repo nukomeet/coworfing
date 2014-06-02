@@ -133,6 +133,7 @@ GEM
       multi_json
       sprockets (>= 2.0.3)
       tilt
+    has_scope (0.5.1)
     hashie (2.0.5)
     hike (1.2.3)
     hipchat (1.0.1)
@@ -338,6 +339,7 @@ DEPENDENCIES
   haml
   haml-rails
   handlebars_assets
+  has_scope
   hipchat
   hominid
   jquery-rails (~> 2.3.0)

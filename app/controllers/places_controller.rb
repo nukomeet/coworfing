@@ -2,6 +2,7 @@ class PlacesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :find_owner, only: [:update, :create]
   load_and_authorize_resource
+  has_scope :by_kind
 
   helper_method :owners
 
@@ -18,6 +19,7 @@ class PlacesController < ApplicationController
       @places = @places_all.page(params[:page])
     end
 
+    @places = apply_scopes(@places)
     respond_to do |format|
       format.html
     end

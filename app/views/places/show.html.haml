@@ -18,7 +18,7 @@
         %span= @place.country
       %p
         %span{ :class=> "label label-#{@place.kind} upcase" }
-          = @place.kind
+          = link_to @place.kind, places_url(by_kind: @place.kind)
       #map-details
         - static_map_url = "http://maps.google.com/maps/api/staticmap?size=450x140&sensor=false&zoom=15&markers=#{@place.latitude}%2C#{@place.longitude}"
         = link_to image_tag(static_map_url, :class=>"thumbnail"),"http://maps.google.com/maps?q=#{@place.latitude}%2C#{@place.longitude}+(Welcome%A0to%A0#{@place.name}%A0Coworfing!)", :target => "_blank"
