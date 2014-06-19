@@ -3,14 +3,11 @@ class C.MapView extends Backbone.View
 
   initialize: ->
     _.bindAll @
-    API_KEY = @.options.api_key || "BC9A493B41014CAABB98F0471D759707"
-    cloudmade = new L.TileLayer("http://{s}.tile.cloudmade.com/{key}/{styleId}/256/{z}/{x}/{y}.png", {
-      key: API_KEY
-      styleId: 998
-    })
+
+    googleLayer = new L.Google('ROADMAP');
 
     mapOptions = {
-      layers: [cloudmade]
+      layers: [ googleLayer ]
       scrollWheelZoom: false
     }
 
