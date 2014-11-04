@@ -1,7 +1,7 @@
 %h2
   Welcome on board #{@resource.email}!
 %p Thanks for registering. You can confirm your account email through the link below:
-%p= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+%p= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token)
 %h2
   What's next?
 %p You know a wonderful place to work? Click on 'Share a place' on the top left of the app.

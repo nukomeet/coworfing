@@ -76,6 +76,14 @@ Then grab the code and deploy coworfing locally on your computer:
 
         bundle install
 
+- create a postgres user for the app 
+        
+        su - postgres
+        psql
+        create role coworfing with createdb login password 'yourpassword';
+
+- you may have to edit your pg_hba.conf to be able to log to your database. [More details here](http://stackoverflow.com/questions/17443379/psql-fatal-peer-authentication-failed-for-user-dev). 
+
 - run
 
         rake db:seed
