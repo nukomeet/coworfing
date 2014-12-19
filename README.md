@@ -17,7 +17,7 @@ Happy contribution!
 
 Found a problem?
 
-First check that you are the only one to have spotted it by 
+First check that you are the only one to have spotted it by
 searching similar issues in the [issues list](https://github.com/nukomeet/coworfing/issues). If your issue is not listed, then create a bug report, with at least an explicit title and a descriptive text, the part of code posing a
 problem, and (it would be great) a unit test showing what goes wrong.
 
@@ -76,13 +76,13 @@ Then grab the code and deploy coworfing locally on your computer:
 
         bundle install
 
-- create a postgres user for the app 
-        
+- create a postgres user for the app
+
         su - postgres
         psql
         create role coworfing with createdb login password 'yourpassword';
 
-- you may have to edit your pg_hba.conf to be able to log to your database. [More details here](http://stackoverflow.com/questions/17443379/psql-fatal-peer-authentication-failed-for-user-dev). 
+- you may have to edit your pg_hba.conf to be able to log to your database. [More details here](http://stackoverflow.com/questions/17443379/psql-fatal-peer-authentication-failed-for-user-dev).
 
 - run
 
@@ -91,6 +91,12 @@ Then grab the code and deploy coworfing locally on your computer:
 - to prepare the test database
 
         RAILS_ENV=test rake db:create db:schema:load
+
+- you have to create `SECRET_TOKEN` for verifying the integrity of signed cookies
+
+        rake secret
+
+- finaly put your token to `.env` as `SECRET_TOKEN=###` (see `.env.example`)
 
 
 Coworfing is now deployed locally on your computer!
