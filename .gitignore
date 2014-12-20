@@ -76,3 +76,4 @@ db/*.sqlite3
 
 #zeus
 zeus.json
+.env
