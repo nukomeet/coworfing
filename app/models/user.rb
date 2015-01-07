@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  before_save :log_user
+  after_save :log_user
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
@@ -120,4 +122,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  def log_user
+    Rails.logger.info self.inspect
+  end
 end
