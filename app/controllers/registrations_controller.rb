@@ -1,14 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
   prepend_before_filter :authenticate_scope!, :only => [:edit, :update, :destroy, :password]
-    
+
   def password
     @user = current_user
   end
-  
+
   def update
     @user = current_user
     email_changed = @user.email != params[:user][:email]
-    password_changed = false 
+    password_changed = false
     if params[:user][:password]
       password_changed = !params[:user][:password].empty?
     end
@@ -18,7 +18,7 @@ class RegistrationsController < Devise::RegistrationsController
       params[:user].delete(:current_password)
       @user.update_without_password(params[:user])
     end
-    
+
     if successfully_updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
@@ -27,7 +27,7 @@ class RegistrationsController < Devise::RegistrationsController
       render template_path
     end
   end
-  
+
   def template_path
     if request.referer
       path = Rails.application.routes.recognize_path(request.referer, :method=>:get)
