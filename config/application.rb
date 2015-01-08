@@ -87,5 +87,12 @@ module Coworfing
     config.assets.version = '1.0'
     config.assets.paths << Rails.root.join("app", "assets", "templates")
     config.assets.precompile += %w( application-ie.css )
+
+    unless Rails.env.test?
+      log_level = String(ENV['LOG_LEVEL'] || 'info').upcase
+      config.logger = Logger.new(STDOUT)
+      config.logger.level = Logger.const_get(log_level)
+      config.log_level = log_level
+    end
   end
 end
