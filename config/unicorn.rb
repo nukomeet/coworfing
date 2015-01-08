@@ -8,8 +8,8 @@ timeout 30
 
 pid "/home/deployer/apps/coworfing/tmp/unicorn.pid"
 
-stderr_path "/home/deployer/apps/coworfing/current/log/unicorn.stderr.log"
-stdout_path "/home/deployer/apps/coworfing/current/log/unicorn.stdout.log"
+stderr_path "/home/deployer/apps/coworfing/shared/log/unicorn.stderr.log"
+stdout_path "/home/deployer/apps/coworfing/shared/log/unicorn.stdout.log"
 
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) and GC.copy_on_write_friendly = true
